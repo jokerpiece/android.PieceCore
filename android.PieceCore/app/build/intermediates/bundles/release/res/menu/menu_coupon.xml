@@ -1,0 +1,11 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/action_coupon"
+        android:orderInCategory="100"
+        android:showAsAction="ifRoom"
+        android:title="@string/coupon_shutokuzumi"
+        android:icon="@drawable/icon_coupon" />
+
+</menu>
+<!-- From: file:/C:/Users/tadaoka/AndroidstudioProjects/android.PieceCore/app/src/main/res/menu/menu_coupon.xml -->
