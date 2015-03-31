@@ -1,0 +1,67 @@
+10
+
+dir
+33606
+svn://192.168.77.201/usr/local/svn/repos/service/piece_android/branches/LibraryAndApp/android.PieceCore/res
+svn://192.168.77.201/usr/local/svn/repos
+
+
+
+2015-03-27T05:13:07.482401Z
+33606
+tadaoka
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+5c87331a-eb23-0410-b289-d3c1e1086b13
+
+anim
+dir
+
+drawable
+dir
+
+drawable-hdpi
+dir
+
+drawable-ldpi
+dir
+
+drawable-mdpi
+dir
+
+drawable-xhdpi
+dir
+
+drawable-xxhdpi
+dir
+
+layout
+dir
+
+menu
+dir
+
+values
+dir
+
+values-v11
+dir
+
+values-v14
+dir
+
+values-w820dp
+dir
+
