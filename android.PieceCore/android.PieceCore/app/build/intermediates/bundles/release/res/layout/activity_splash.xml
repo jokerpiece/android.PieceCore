@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff" >
+
+	<!-- コンテント -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <!-- cocaロゴ -->
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/splash_default"
+            android:contentDescription="@null"
+            android:scaleType="fitCenter" />
+
+    </LinearLayout>
+
+</RelativeLayout>
+<!-- From: file:/C:/Users/tadaoka/AndroidstudioProjects/work/android.PieceCore/android.PieceCore/app/src/main/res/layout/activity_splash.xml -->
