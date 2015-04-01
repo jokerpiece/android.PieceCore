@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">大人ゴコロ</string>
+    <string name="empty"></string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="home">ホーム</string>
+
+    <string name="all">全て</string>
+    <string name="flyer">チラシ</string>
+    <string name="flyer0">FLYER</string>
+    <string name="flyer1">Flyer</string>
+    <string name="info">お知らせ</string>
+    <string name="info0">INFO</string>
+    <string name="info1">Info</string>
+    <string name="info_list">お知らせ一覧</string>
+
+    <string name="shopping">ショッピング</string>
+    <string name="shopping0">SHOPPING</string>
+    <string name="shopping1">Shopping</string>
+    <string name="item_list">ITEM LIST</string>
+
+    <string name="coupon">クーポン</string>
+    <string name="coupon0">COUPON</string>
+    <string name="coupon1">Coupon</string>
+    <string name="coupon_get">クーポン取得</string>
+    <string name="coupon_get0">GET COUPON</string>
+    <string name="coupon_use">クーポン使用</string>
+    <string name="coupon_use0">USE COUPON</string>
+    <string name="coupon_copy_clipboard">クーポンコードをクリップボードにコピーしました</string>
+
+    <string name="webview">ITEM</string>
+
+    <string name="genre_list">カテゴリ一覧</string>
+    <string name="goods_list">商品一覧</string>
+    <string name="other_goods">他の商品を見る</string>
+
+    <string name="action_settings">設定</string>
+    <string name="item_count">アイテム数：</string>
+    <string name="getcoupon">クーポンをゲットする！＞</string>
+    <string name="no_coupon">申し訳ございません。\n現在、取得できるクーポンがありません。</string>
+    <string name="no_getcoupon">申し訳ございません。\n現在、取得済みクーポンがありません。</string>
+
+    <string name="yen">円</string>
+    <string name="search">検索</string>
+
+    <string name="coupon_shutokuzumi">取得済みクーポン</string>
+    <string name="coupon_tojiru">閉じる</string>
+
+    <drawable name="actionbar_background">#FFFFFF</drawable>
+    <drawable name="theme_text_color">#A1522E</drawable>
+
+    <color name="actionbar_background">#FFFFFF</color>
+    <color name="theme_text_color">#A1522E</color>
+    <color name="info_all_color">#ff6666</color>
+    <color name="info_notice_color">#0080ff</color>
+    <color name="info_flyer_color">#8800ff</color>
+    <color name="info_coupon_color">#008800</color>
+    <color name="background_theme">#fff</color>
+    <!-- <color name="background_theme">#ffebcc</color> -->
+    <color name="background_sub_theme">#402615</color>
+
+    <color name="background_fragment">#fff</color>
+    <color name="tab_unselected">#00ffffff</color>
+    <color name="tab_selected">#ccc</color>
+    <color name="tab_title_color">#231815</color>
+
+</resources>
