@@ -1,3 +1,12 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:1.0.1'
+    }
+}
+
 apply plugin: 'com.android.library'
 
 android {
@@ -15,6 +24,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
     }
+
+//    sourceSets {
+//        main {
+//            manifest.srcFile 'src/main/AndroidManifest.xml'
+//            java.srcDirs = ['src/main/java']
+//            res.srcDirs = ['src/main/res']
+//        }
+//    }
 }
 
 dependencies {
