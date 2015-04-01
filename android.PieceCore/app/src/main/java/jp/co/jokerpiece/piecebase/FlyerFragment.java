@@ -179,9 +179,9 @@ public class FlyerFragment extends Fragment implements OnPageChangeListener{
 		super.onResume();
 		Log.d("aaa", "onResume");
         Log.d(TAG, "title= " + MainBaseActivity.titleOfActionBar.get(FlyerFragment.class.getSimpleName()));
-		AppUtil.setTitleOfActionBar(
-				getActivity().getActionBar(),
-				MainBaseActivity.titleOfActionBar.get(FlyerFragment.class.getSimpleName()));
+//		AppUtil.setTitleOfActionBar(
+//				getActivity().getActionBar(),
+//				MainBaseActivity.titleOfActionBar.get(FlyerFragment.class.getSimpleName()));
 		getActivity().invalidateOptionsMenu();
 		if(alImageViewList != null && alImageViewList.size() >= 1){
 			for(DownloadImageView iv : alImageViewList){

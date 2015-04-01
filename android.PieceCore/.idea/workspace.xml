@@ -38,11 +38,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FlyerFragment.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="FlyerFragment.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/jp/co/jokerpiece/piecebase/FlyerFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="3077" max-vertical-offset="6001">
-              <caret line="181" column="28" selection-start-line="181" selection-start-column="28" selection-end-line="181" selection-end-column="28" />
+            <state vertical-scroll-proportion="0.39071038" vertical-offset="2084" max-vertical-offset="5117">
+              <caret line="181" column="0" selection-start-line="181" selection-start-column="0" selection-end-line="181" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -58,25 +58,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainBaseActivity.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="MainBaseActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/jp/co/jokerpiece/piecebase/MainBaseActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.52492666" vertical-offset="1130" max-vertical-offset="4216">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1181" max-vertical-offset="4216">
               <caret line="99" column="0" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
               <folding>
-                <element signature="e#1278#1302#0" expanded="true" />
-                <element signature="e#5125#5151#0" expanded="true" />
-                <element signature="e#5381#5406#0" expanded="true" />
-                <element signature="e#5852#5879#0" expanded="true" />
-                <element signature="e#6257#6283#0" expanded="true" />
-                <element signature="e#6348#6373#0" expanded="true" />
-                <element signature="e#6444#6469#0" expanded="true" />
-                <element signature="e#6532#6561#0" expanded="true" />
-                <element signature="e#6629#6658#0" expanded="true" />
-                <element signature="e#6719#6750#0" expanded="true" />
-                <element signature="e#6814#6845#0" expanded="true" />
-                <element signature="e#6907#6934#0" expanded="true" />
-                <element signature="e#7001#7031#0" expanded="true" />
                 <element signature="e#7135#7144#0" expanded="true" />
               </folding>
             </state>
@@ -1354,10 +1341,10 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/jp/co/jokerpiece/piecebase/FlyerFragment.java" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/java/jp/co/jokerpiece/piecebase/util/AppUtil.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/jp/co/jokerpiece/piecebase/MainBaseActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/jp/co/jokerpiece/piecebase/FlyerFragment.java" />
       </list>
     </option>
   </component>
@@ -1393,6 +1380,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -1557,7 +1545,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="AndroidView">
         <subPane>
           <PATH>
@@ -1752,21 +1739,21 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32879046" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32879046" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32879046" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32922536" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32922536" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32762837" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1832,22 +1819,43 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/jp/co/jokerpiece/piecebase/MainBaseActivity.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1130" max-vertical-offset="4216">
+          <caret line="99" column="0" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
+          <folding>
+            <element signature="e#7135#7144#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="637" max-vertical-offset="1003">
+          <caret line="25" column="5" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/jp/co/jokerpiece/piecebase/FlyerFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3077" max-vertical-offset="6001">
+          <caret line="181" column="28" selection-start-line="181" selection-start-column="28" selection-end-line="181" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/jp/co/jokerpiece/piecebase/util/AppUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="561">
+          <caret line="8" column="23" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/jp/co/jokerpiece/piecebase/MainBaseActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="4216">
           <caret line="34" column="14" selection-start-line="34" selection-start-column="14" selection-end-line="34" selection-end-column="14" />
           <folding>
-            <element signature="e#1278#1302#0" expanded="true" />
-            <element signature="e#5125#5151#0" expanded="true" />
-            <element signature="e#5381#5406#0" expanded="true" />
-            <element signature="e#5852#5879#0" expanded="true" />
-            <element signature="e#6257#6283#0" expanded="true" />
-            <element signature="e#6348#6373#0" expanded="true" />
-            <element signature="e#6444#6469#0" expanded="true" />
-            <element signature="e#6532#6561#0" expanded="true" />
-            <element signature="e#6629#6658#0" expanded="true" />
-            <element signature="e#6719#6750#0" expanded="true" />
-            <element signature="e#6814#6845#0" expanded="true" />
-            <element signature="e#6907#6934#0" expanded="true" />
-            <element signature="e#7001#7031#0" expanded="true" />
             <element signature="e#7135#7144#0" expanded="true" />
           </folding>
         </state>
@@ -1874,19 +1882,6 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="680" max-vertical-offset="4624">
           <caret line="40" column="51" selection-start-line="40" selection-start-column="51" selection-end-line="40" selection-end-column="51" />
           <folding>
-            <element signature="e#1278#1302#0" expanded="true" />
-            <element signature="e#5125#5151#0" expanded="true" />
-            <element signature="e#5381#5406#0" expanded="true" />
-            <element signature="e#5852#5879#0" expanded="true" />
-            <element signature="e#6257#6283#0" expanded="true" />
-            <element signature="e#6348#6373#0" expanded="true" />
-            <element signature="e#6444#6469#0" expanded="true" />
-            <element signature="e#6532#6561#0" expanded="true" />
-            <element signature="e#6629#6658#0" expanded="true" />
-            <element signature="e#6719#6750#0" expanded="true" />
-            <element signature="e#6814#6845#0" expanded="true" />
-            <element signature="e#6907#6934#0" expanded="true" />
-            <element signature="e#7001#7031#0" expanded="true" />
             <element signature="e#7135#7144#0" expanded="true" />
           </folding>
         </state>
@@ -1913,19 +1908,6 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="867" max-vertical-offset="4590">
           <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
           <folding>
-            <element signature="e#1278#1302#0" expanded="true" />
-            <element signature="e#5125#5151#0" expanded="true" />
-            <element signature="e#5381#5406#0" expanded="true" />
-            <element signature="e#5852#5879#0" expanded="true" />
-            <element signature="e#6257#6283#0" expanded="true" />
-            <element signature="e#6348#6373#0" expanded="true" />
-            <element signature="e#6444#6469#0" expanded="true" />
-            <element signature="e#6532#6561#0" expanded="true" />
-            <element signature="e#6629#6658#0" expanded="true" />
-            <element signature="e#6719#6750#0" expanded="true" />
-            <element signature="e#6814#6845#0" expanded="true" />
-            <element signature="e#6907#6934#0" expanded="true" />
-            <element signature="e#7001#7031#0" expanded="true" />
             <element signature="e#7135#7144#0" expanded="true" />
           </folding>
         </state>
@@ -1952,19 +1934,6 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="1479" max-vertical-offset="4590">
           <caret line="88" column="0" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
           <folding>
-            <element signature="e#1278#1302#0" expanded="true" />
-            <element signature="e#5125#5151#0" expanded="true" />
-            <element signature="e#5381#5406#0" expanded="true" />
-            <element signature="e#5852#5879#0" expanded="true" />
-            <element signature="e#6257#6283#0" expanded="true" />
-            <element signature="e#6348#6373#0" expanded="true" />
-            <element signature="e#6444#6469#0" expanded="true" />
-            <element signature="e#6532#6561#0" expanded="true" />
-            <element signature="e#6629#6658#0" expanded="true" />
-            <element signature="e#6719#6750#0" expanded="true" />
-            <element signature="e#6814#6845#0" expanded="true" />
-            <element signature="e#6907#6934#0" expanded="true" />
-            <element signature="e#7001#7031#0" expanded="true" />
             <element signature="e#7135#7144#0" expanded="true" />
           </folding>
         </state>
@@ -1983,19 +1952,6 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="1436" max-vertical-offset="4590">
           <caret line="95" column="0" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
           <folding>
-            <element signature="e#1278#1302#0" expanded="true" />
-            <element signature="e#5125#5151#0" expanded="true" />
-            <element signature="e#5381#5406#0" expanded="true" />
-            <element signature="e#5852#5879#0" expanded="true" />
-            <element signature="e#6257#6283#0" expanded="true" />
-            <element signature="e#6348#6373#0" expanded="true" />
-            <element signature="e#6444#6469#0" expanded="true" />
-            <element signature="e#6532#6561#0" expanded="true" />
-            <element signature="e#6629#6658#0" expanded="true" />
-            <element signature="e#6719#6750#0" expanded="true" />
-            <element signature="e#6814#6845#0" expanded="true" />
-            <element signature="e#6907#6934#0" expanded="true" />
-            <element signature="e#7001#7031#0" expanded="true" />
             <element signature="e#7135#7144#0" expanded="true" />
           </folding>
         </state>
@@ -2030,19 +1986,6 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4131">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#1278#1302#0" expanded="true" />
-            <element signature="e#5125#5151#0" expanded="true" />
-            <element signature="e#5381#5406#0" expanded="true" />
-            <element signature="e#5852#5879#0" expanded="true" />
-            <element signature="e#6257#6283#0" expanded="true" />
-            <element signature="e#6348#6373#0" expanded="true" />
-            <element signature="e#6444#6469#0" expanded="true" />
-            <element signature="e#6532#6561#0" expanded="true" />
-            <element signature="e#6629#6658#0" expanded="true" />
-            <element signature="e#6719#6750#0" expanded="true" />
-            <element signature="e#6814#6845#0" expanded="true" />
-            <element signature="e#6907#6934#0" expanded="true" />
-            <element signature="e#7001#7031#0" expanded="true" />
             <element signature="e#7135#7144#0" expanded="true" />
           </folding>
         </state>
@@ -2165,14 +2108,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/jp/co/jokerpiece/piecebase/FlyerFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2329" max-vertical-offset="5321">
-          <caret line="181" column="28" selection-start-line="181" selection-start-column="28" selection-end-line="181" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/jp/co/jokerpiece/piecebase/util/AppUtil.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="527">
@@ -2183,24 +2118,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/jp/co/jokerpiece/piecebase/MainBaseActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.52492666" vertical-offset="1130" max-vertical-offset="4216">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1181" max-vertical-offset="4216">
           <caret line="99" column="0" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
           <folding>
-            <element signature="e#1278#1302#0" expanded="true" />
-            <element signature="e#5125#5151#0" expanded="true" />
-            <element signature="e#5381#5406#0" expanded="true" />
-            <element signature="e#5852#5879#0" expanded="true" />
-            <element signature="e#6257#6283#0" expanded="true" />
-            <element signature="e#6348#6373#0" expanded="true" />
-            <element signature="e#6444#6469#0" expanded="true" />
-            <element signature="e#6532#6561#0" expanded="true" />
-            <element signature="e#6629#6658#0" expanded="true" />
-            <element signature="e#6719#6750#0" expanded="true" />
-            <element signature="e#6814#6845#0" expanded="true" />
-            <element signature="e#6907#6934#0" expanded="true" />
-            <element signature="e#7001#7031#0" expanded="true" />
             <element signature="e#7135#7144#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/jp/co/jokerpiece/piecebase/FlyerFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.39071038" vertical-offset="2084" max-vertical-offset="5117">
+          <caret line="181" column="0" selection-start-line="181" selection-start-column="0" selection-end-line="181" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
