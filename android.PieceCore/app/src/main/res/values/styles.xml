@@ -1,0 +1,38 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    -->
+    <style name="AppBaseTheme" parent="android:Theme.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+        <item name="android:actionBarStyle">@style/piece_actionbar_style</item>
+    </style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+
+    <style name="piece_actionbar_style" parent="@android:style/Widget.Holo.Light.ActionBar">
+        <item name="android:background">@drawable/actionbar_background</item>
+        <item name="android:titleTextStyle">@style/piece_TitleTextStyle</item>  
+        <item name="android:actionBarWidgetTheme">@style/actionBarWidgetTheme</item>
+        <item name="android:dropDownListViewStyle">@style/dropDownListViewStyle</item>  
+    </style> 
+    <style name="piece_TitleTextStyle" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
+        <item name="android:textColor">@drawable/theme_text_color</item>
+    </style>
+    <style name="actionBarWidgetTheme">
+        <item name="android:textColor">@drawable/theme_text_color</item>
+        <item name="android:textColorHint">@drawable/theme_text_color</item>
+    </style>
+ 
+    <style name="dropDownListViewStyle" parent="android:style/Widget.ListView.DropDown">
+        <item name="android:background">@drawable/actionbar_background</item>
+    </style>
+</resources>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_fragment" >
+    <android.support.v4.view.ViewPager
+        android:id="@+id/couponpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
+    <jp.co.jokerpiece.piecebase.util.ViewPagerIndicator
+        android:id="@+id/indicator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/couponpager"
+        android:layout_marginTop="5dp"
+        android:visibility="gone" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center" >
+	    <TextView
+	        android:id="@+id/tv_nocoupon"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_margin="40dp"
+	        android:textSize="18sp"
+	        android:textColor="#000000"
+	        android:text="@string/no_coupon"
+	        android:visibility="gone" />
+    </LinearLayout>
+
+</RelativeLayout>
+<!-- From: file:/C:/Users/tadaoka/AndroidstudioProjects/modified/android.PieceCore/app/src/main/res/layout/fragment_coupon.xml --><!-- From: file:/C:/Users/tadaoka/AndroidstudioProjects/modified/android.PieceCore/app/build/intermediates/bundles/debug/res/layout/fragment_coupon.xml -->

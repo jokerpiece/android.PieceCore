@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background_fragment" >
+    <FrameLayout
+        android:id="@+id/categoryImageBase"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </FrameLayout>
+    <TextView
+        android:id="@+id/itemCount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        android:background="#888888"
+        android:textColor="@android:color/white"
+        android:text="@string/item_count"
+        />
+
+    <ListView
+        android:id="@+id/goodsListView"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:adjustViewBounds="true" >
+    </ListView>
+
+</LinearLayout>
+<!-- From: file:/C:/Users/tadaoka/AndroidstudioProjects/modified/android.PieceCore/app/src/main/res/layout/fragment_shopping_goods_list.xml -->
