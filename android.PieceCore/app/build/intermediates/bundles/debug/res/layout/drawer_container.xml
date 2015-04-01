@@ -98,4 +98,4 @@
         android:layout_gravity="start"
         tools:layout="@layout/drawer" />
 
-</android.support.v4.widget.DrawerLayout><!-- From: file:/C:/Users/tadaoka/AndroidstudioProjects/android.PieceCore/app/src/main/res/layout/drawer_container.xml -->
+</android.support.v4.widget.DrawerLayout><!-- From: file:/C:/Users/tadaoka/AndroidstudioProjects/work/android.PieceCore/app/src/main/res/layout/drawer_container.xml -->

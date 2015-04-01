@@ -43,6 +43,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 public class FlyerFragment extends Fragment implements OnPageChangeListener{
+    private static final String TAG = FlyerFragment.class.getSimpleName();
+
 	final Context context = App.getContext();
 	FlyerTimerTask timerTask = null;
 	Timer   mTimer   = null;
@@ -176,6 +178,7 @@ public class FlyerFragment extends Fragment implements OnPageChangeListener{
 	public void onResume() {
 		super.onResume();
 		Log.d("aaa", "onResume");
+        Log.d(TAG, "title= " + MainBaseActivity.titleOfActionBar.get(FlyerFragment.class.getSimpleName()));
 		AppUtil.setTitleOfActionBar(
 				getActivity().getActionBar(),
 				MainBaseActivity.titleOfActionBar.get(FlyerFragment.class.getSimpleName()));
