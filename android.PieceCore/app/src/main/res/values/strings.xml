@@ -64,7 +64,7 @@
     <color name="background_sub_theme">#402615</color>
 
     <color name="background_fragment">#fff</color>
-    <color name="tab_unselected">#00ffffff</color>
+    <color name="tab_unselected">#fff</color>
     <color name="tab_selected">#ccc</color>
     <color name="tab_title_color">#231815</color>
 
