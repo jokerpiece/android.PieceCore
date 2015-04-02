@@ -7,10 +7,10 @@ Pieceプロジェクトはオトナゴコロアプリの最小構成となっています。
 AndroidStudioからPieceプロジェクトを起動して下さい。
 ![Sync Project](./syncProj.png)ボタンを押下でビルドを実行し、![Run Project](./runProj.png)ボタンを押下でアプリを実行して下さい。
 
-## google-play-services_libライブラリのインポート
+#### google-play-services_libライブラリのインポート
 "Piece/app/build.gradle"内のdependenciesで「compile 'com.google.android.gms:play-services:+'」を実行することでライブラリを読み込んでいます。
 
-## android.PieceCoreライブラリのインポート
+#### android.PieceCoreライブラリのインポート
 "Piece/app/build.gradle"内のmavenでurlを指定し、dependenciesで「compile 'jp.co.jokerpiece.android.piececore:android.piececore:0.0.+@aar'」を実行することでライブラリを読み込んでいます。
 
 ### 利用方法
