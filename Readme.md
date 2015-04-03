@@ -213,7 +213,7 @@ Pieceで提供している機能と紐づくクラス名は下記の通りです。
 
 ### PieceSampleプロジェクト
 
-github ( https://github.com/jokerpiece/android.PieceCore ) からPieceSampleプロジェクトをコピーして下さい。
+github(<https://github.com/jokerpiece/android.PieceCore>)からPieceSampleプロジェクトをコピーして下さい。
 PieceSampeプロジェクトはオトナゴコロアプリの最小構成となっています。
 ランチャーアクティビティは、「jp.co.jokerpiece.piece.MainActivity」となります。
 AndroidStudioからPieceSampleプロジェクトを起動して下さい。
