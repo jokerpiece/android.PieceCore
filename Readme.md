@@ -26,9 +26,9 @@ HashMap<String, Object>
 
 | キー | 説明 | バリュー |
 | --- | --- | --- |
-| tabTitle | タブに表示するタイトル | getString(R.string.flyer1), getString(R.string.info1), getString(R.string.shopping1), getString(R.string.coupon1) |
-| tabIcon | タブに設定する画像 | R.drawable.icon_flyer, R.drawable.icon_infomation, R.drawable.icon_shopping, R.drawable.icon_coupon |
-| cls | タブに設定する画面 | FlyerFragment.class, InfomationFragment.class, ShoppingFragment.class, CouponFragment.class |
+| tabTitle | タブに表示するタイトル | getString(R.string.flyer1), getString(R.string.info1), getString(R.string.shopping1), getString(R.string.coupon1), getString(R.string.fitting1) |
+| tabIcon | タブに設定する画像 | R.drawable.icon_flyer, R.drawable.icon_infomation, R.drawable.icon_shopping, R.drawable.icon_coupon, R.drawable.icon_fitting |
+| cls | タブに設定する画面 | FlyerFragment.class, InfomationFragment.class, ShoppingFragment.class, CouponFragment.class, FittingFragment.class |
 
 下記にbuild.gradle、AndroidManifest.xml、styles.xml、MainActivityの記述例を記します。
 
@@ -66,7 +66,7 @@ build.gradle
         compile fileTree(dir: 'libs', include: ['*.jar'])
         compile 'com.android.support:appcompat-v7:21.0.0'
         compile 'com.google.android.gms:play-services:+'
-        compile 'jp.co.jokerpiece.android.piececore:android.piececore:0.0.4+@aar'
+        compile 'jp.co.jokerpiece.android.piececore:android.piececore:0.0.6@aar'
     }
 
 AndroidManifest.xml
@@ -194,6 +194,11 @@ MainActivity.java
                             { put("tabTitle", getString(R.string.coupon1)); }
                             { put("tabIcon", R.drawable.icon_coupon); }
                             { put("cls", CouponFragment.class); }
+                    },
+                    new HashMap<String, Object>() {
+                            { put("tabTitle", getString(R.string.fitting1)); }
+                            { put("tabIcon", R.drawable.icon_fitting); }
+                            { put("cls", FittingFragment.class); }
                     }
             ));
         }
@@ -210,6 +215,7 @@ Pieceで提供している機能と紐づくクラス名は下記の通りです。
 |InfomationFragment.class | お知らせ一覧 |
 |ShoppingFragment.class | ショッピング |
 |CouponFragment.class | クーポン |
+|FittingFragment.class | フィッティング |
 
 ### PieceSampleプロジェクト
 
