@@ -12,6 +12,16 @@ android.PieceCoreƒ‰ƒCƒuƒ‰ƒŠ‚Éudrawable/ic_launcher.pngv‚Í—pˆÓ‚µ‚Ä‚¢‚é‚Ì‚Å–{ƒvƒ
 
 ![Sync Project](./syncProj.png)ƒ{ƒ^ƒ“‚ğ‰Ÿ‰º‚Åƒrƒ‹ƒh‚ğÀs‚µA![Run Project](./runProj.png)ƒ{ƒ^ƒ“‚ğ‰Ÿ‰º‚ÅƒAƒvƒŠ‚ğÀs‚µ‚Ä‰º‚³‚¢B
 
+### app_id‚Ìİ’è
+
+"Piece/app/src/main/assets"ƒtƒHƒ‹ƒ_‚ÌsettingFile.txt‚É–{ƒAƒvƒŠİ’è“à—e‚ğ‹Lq‚µ‚Ä‰º‚³‚¢B
+‰º‹L‚ÉsettingFile.txt‚Ì‹Lq—á‚ğ‹L‚µ‚Ü‚·B
+
+settingFile.txt
+
+    app_id=otonagokoro
+    app_key=jokerpiece_appKey
+    splash_time=3
 
 ### —˜—p•û–@
 
