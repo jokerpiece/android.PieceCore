@@ -76,7 +76,7 @@ build.gradle
         compile fileTree(dir: 'libs', include: ['*.jar'])
         compile 'com.android.support:appcompat-v7:21.0.0'
         compile 'com.google.android.gms:play-services:+'
-        compile 'jp.co.jokerpiece.android.piececore:android.piececore:0.0.6@aar'
+        compile 'jp.co.jokerpiece.android.piececore:android.piececore:0.0.7@aar'
     }
 
 AndroidManifest.xml
