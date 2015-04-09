@@ -1,0 +1,33 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    
+    <WebView
+        android:id="@+id/webview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background_fragment" />
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="30dp"
+            android:layout_height="60dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:src="@drawable/shape_wvback_button"
+            android:contentDescription="@null"/>
+        <ImageView
+            android:id="@+id/iv_next"
+            android:layout_width="30dp"
+            android:layout_height="60dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:src="@drawable/shape_wvnext_button"
+            android:contentDescription="@null"/>
+    </RelativeLayout>>
+    
+</RelativeLayout><!-- From: file:/C:/Users/tadaoka/AndroidstudioProjects/bugfix/android.PieceCore/app/src/main/res/layout/fragment_webview.xml -->
