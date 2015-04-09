@@ -10,7 +10,7 @@ android.PieceCoreƒ‰ƒCƒuƒ‰ƒŠ‚Éudrawable/ic_launcher.pngv‚Í—pˆÓ‚µ‚Ä‚¢‚é‚Ì‚Å–{ƒvƒ
 #### android.PieceCoreƒ‰ƒCƒuƒ‰ƒŠ‚ÌƒCƒ“ƒ|[ƒg
 "Piece/app/build.gradle"“à‚Ìmaven‚Åurl‚ğw’è‚µAdependencies‚Åucompile 'jp.co.jokerpiece.android.piececore:android.piececore:0.0.+@aar'v‚ğÀs‚·‚é‚±‚Æ‚Åƒ‰ƒCƒuƒ‰ƒŠ‚ğ“Ç‚İ‚ñ‚Å‚¢‚Ü‚·B
 
-![Sync Project](./syncProj.png)ƒ{ƒ^ƒ“‚ğ‰Ÿ‰º‚Åƒrƒ‹ƒh‚ğÀs‚µA![Run Project](./runProj.png)ƒ{ƒ^ƒ“‚ğ‰Ÿ‰º‚ÅƒAƒvƒŠ‚ğÀs‚µ‚Ä‰º‚³‚¢B
+![Sync Project](./mdImage/syncProj.png)ƒ{ƒ^ƒ“‚ğ‰Ÿ‰º‚Åƒrƒ‹ƒh‚ğÀs‚µA![Run Project](./mdImage/runProj.png)ƒ{ƒ^ƒ“‚ğ‰Ÿ‰º‚ÅƒAƒvƒŠ‚ğÀs‚µ‚Ä‰º‚³‚¢B
 
 ### app_id‚Ìİ’è
 
@@ -233,4 +233,4 @@ github(<https://github.com/jokerpiece/android.PieceCore>)‚©‚çPieceSampleƒvƒƒWƒF
 PieceSampeƒvƒƒWƒFƒNƒg‚ÍƒIƒgƒiƒSƒRƒƒAƒvƒŠ‚ÌÅ¬\¬‚Æ‚È‚Á‚Ä‚¢‚Ü‚·B
 ƒ‰ƒ“ƒ`ƒƒ[ƒAƒNƒeƒBƒrƒeƒB‚ÍAujp.co.jokerpiece.piece.MainActivityv‚Æ‚È‚è‚Ü‚·B
 AndroidStudio‚©‚çPieceSampleƒvƒƒWƒFƒNƒg‚ğ‹N“®‚µ‚Ä‰º‚³‚¢B
-![Sync Project](./syncProj.png)ƒ{ƒ^ƒ“‚ğ‰Ÿ‰º‚Åƒrƒ‹ƒh‚ğÀs‚µA![Run Project](./runProj.png)ƒ{ƒ^ƒ“‚ğ‰Ÿ‰º‚ÅƒAƒvƒŠ‚ğÀs‚µ‚Ä‰º‚³‚¢B
+![Sync Project](./mdImage/syncProj.png)ƒ{ƒ^ƒ“‚ğ‰Ÿ‰º‚Åƒrƒ‹ƒh‚ğÀs‚µA![Run Project](./mdImage/runProj.png)ƒ{ƒ^ƒ“‚ğ‰Ÿ‰º‚ÅƒAƒvƒŠ‚ğÀs‚µ‚Ä‰º‚³‚¢B
