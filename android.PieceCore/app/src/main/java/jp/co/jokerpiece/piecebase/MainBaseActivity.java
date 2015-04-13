@@ -10,6 +10,11 @@ import jp.co.jokerpiece.piecebase.util.App;
 import jp.co.jokerpiece.piecebase.util.AppUtil;
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.StateListDrawable;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.v4.app.Fragment;
@@ -46,6 +51,7 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
     public static FragmentTabHost tabHost;
 
     public String myTheme = "";
+    public TabColorState tabColorState;
 
     protected ArrayList<HashMap<String, Object>> settingData = new ArrayList<HashMap<String,Object>>();
     public static ArrayList<TabInfo> tabInfoList;
@@ -60,6 +66,7 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
         settingData = setConfig();
         titleOfActionBar = setTitleOfActionBar();
         tabInfoList = setTabInfoList();
+        tabColorState = setTabColorState();
 
         tabHost = (FragmentTabHost) findViewById(R.id.tab_host);
         tabHost.setup(this, getSupportFragmentManager(), R.id.real_content);
@@ -245,42 +252,68 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
     }
 
     /**
-     * タブを追加する。
-     **/
-    public void addTab(TabInfo tabInfo) {
-        View childView = new CustomTabContentView(this, tabInfo.title, tabInfo.resId);
-        TabSpec tabSpec = tabHost.newTabSpec(tabInfo.tag).setIndicator(childView);
-        Bundle args = new Bundle();
-        args.putString("root", tabInfo.cls.getName());
-        tabHost.addTab(tabSpec, RootFragment.class, args);
-    }
-
-    /**
-     * タブ情報を保持しておくクラス。
+     * タブに設定するTabColorStateを取得する。<br>
+     * (TabColorStateのコンストラクタ)<br>
+     * (1)bgSelected: 選択時の背景<br>
+     * (2)bgUnselected: 非選択時の背景<br>
+     * (3)ftSelected: 選択時のフォント色<br>
+     * (4)ftUnselected: 非選択時のフォント色<br>
+     * (例)<br>
+     * return new TabColorState(<br>
+     *      Color.argb(0xff, 0xcc, 0xcc, 0xcc),<br>
+     *      Color.argb(0xff, 0xff, 0xff, 0xff),<br>
+     *      Color.argb(0xff, 0x66, 0x66, 0x66),<br>
+     *      Color.argb(0xff, 0x66, 0x66, 0x66));<br>
+     * (注意)<br>
+     * 設定しない場合は-1を設定する。<br>
+     * 但し、「(1)と(2)」「(3)と(4)」はセットです。
+     * @return タブに設定するTabColorState
      */
-    public class TabInfo {
-        public String tag;
-        public String title;
-        public int resId;
-        public Class<? extends Fragment> cls;
+    public TabColorState setTabColorState() {
+        return new TabColorState(
+                -1,
+                -1,
+                -1,
+                -1);
+    }
 
-        public TabInfo(String tag, String title, int resId, Class<? extends Fragment> cls) {
-            this.tag = tag;
-            this.title = title;
-            this.resId = resId;
-            this.cls = cls;
+        /**
+         * タブを追加する。
+         **/
+        public void addTab(TabInfo tabInfo) {
+            View childView = new CustomTabContentView(this, tabInfo.title, tabInfo.resId);
+            TabSpec tabSpec = tabHost.newTabSpec(tabInfo.tag).setIndicator(childView);
+            Bundle args = new Bundle();
+            args.putString("root", tabInfo.cls.getName());
+            tabHost.addTab(tabSpec, RootFragment.class, args);
         }
-    }
 
-    /**
-     * 現在タブに設定されているフラグメントを取得する。
-     **/
-    private RootFragment getCurrentRootFragment() {
-        return (RootFragment) getSupportFragmentManager().findFragmentById(R.id.real_content);
-    }
+        /**
+         * タブ情報を保持しておくクラス。
+         */
+        public class TabInfo {
+            public String tag;
+            public String title;
+            public int resId;
+            public Class<? extends Fragment> cls;
 
-    @Override
-    public void onTabChanged(String tabId) {
+            public TabInfo(String tag, String title, int resId, Class<? extends Fragment> cls) {
+                this.tag = tag;
+                this.title = title;
+                this.resId = resId;
+                this.cls = cls;
+            }
+        }
+
+        /**
+         * 現在タブに設定されているフラグメントを取得する。
+         **/
+        private RootFragment getCurrentRootFragment() {
+            return (RootFragment) getSupportFragmentManager().findFragmentById(R.id.real_content);
+        }
+
+        @Override
+        public void onTabChanged(String tabId) {
 //		// バックスタックのクリーンアップ
 //		getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
 //
@@ -289,12 +322,12 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
 //                context,
 //                tabInfoList.get(tabHost.getCurrentTab()).cls.getName()));
 //        ft.commit();
-    }
+        }
 
-    /**
-     * TabWidget用の独自Viewを作ります。
-     */
-    public class CustomTabContentView extends FrameLayout {
+        /**
+         * TabWidget用の独自Viewを作ります。
+         */
+        public class CustomTabContentView extends FrameLayout {
         LayoutInflater inflater = (LayoutInflater) getApplicationContext()
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
@@ -325,7 +358,72 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
                     break;
             }
 
+            // Tab colorstate
+            if (tabColorState != null) {
+                // 背景
+                if (tabColorState.bgSelected != -1 && tabColorState.bgUnselected != -1) {
+                    Drawable pressed = new ColorDrawable(Color.argb(0x90, 0x8e, 0xb7, 0xff));
+                    Drawable selected = new ColorDrawable(tabColorState.bgSelected);
+                    Drawable unselected = new ColorDrawable(tabColorState.bgUnselected);
+
+                    StateListDrawable d = new StateListDrawable();
+                    d.addState(new int[]{android.R.attr.state_pressed}, pressed);
+                    d.addState(new int[]{android.R.attr.state_selected}, selected);
+                    d.addState(new int[]{-android.R.attr.state_focused}, unselected);
+
+                    int sdkVersion = android.os.Build.VERSION.SDK_INT;
+                    if (sdkVersion < android.os.Build.VERSION_CODES.JELLY_BEAN) {
+                        ll.setBackgroundDrawable(d);
+                    } else {
+                        ll.setBackground(d);
+                    }
+                }
+
+                // フォント色
+                if (tabColorState.ftSelected != -1 && tabColorState.ftUnselected != -1) {
+                    ColorStateList c = new ColorStateList(
+                            new int[][]{
+                                    new int[]{android.R.attr.state_selected},
+                                    new int[]{-android.R.attr.state_focused}
+                            },
+                            new int[]{
+                                    tabColorState.ftSelected,
+                                    tabColorState.ftUnselected
+                            });
+                    tv.setTextColor(c);
+                }
+            }
+
             addView(childview);
+        }
+    }
+
+    /**
+     * タブに設定するcolorstateを保持する。<br>
+     * (1)bgSelected: 選択時の背景<br>
+     * (2)bgUnselected: 非選択時の背景<br>
+     * (3)ftSelected: 選択時のフォント色<br>
+     * (4)ftUnselected: 非選択時のフォント色<br>
+     */
+    public class TabColorState {
+        /** 選択時の背景 */
+        public int bgSelected;
+        /** 非選択時の背景 */
+        public int bgUnselected;
+        /** 選択時のフォント色 */
+        public int ftSelected;
+        /** 非選択時のフォント色 */
+        public int ftUnselected;
+
+        /**
+         * コンストラクタ
+         */
+        public TabColorState(int bgSelected, int bgUnselected,
+                              int ftSelected, int ftUnselected) {
+            this.bgSelected = bgSelected;
+            this.bgUnselected = bgUnselected;
+            this.ftSelected = ftSelected;
+            this.ftUnselected = ftUnselected;
         }
     }
 
