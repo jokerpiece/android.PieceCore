@@ -34,6 +34,7 @@ public class DeviceTokenAPI extends AsyncTaskLoader<Boolean> implements HttpClie
     	parameter.put("app_id", Config.APP_ID);
     	parameter.put("uuid", Common.getUUID(getContext()));
     	parameter.put("device_token", deviceToken);
+        parameter.put("os_type", Config.OS_TYPE);
 
         String result = null;
         try {
