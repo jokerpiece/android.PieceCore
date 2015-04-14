@@ -34,7 +34,7 @@ public class Common {
 		}
 		SharedPreferences defaultPre = PreferenceManager.getDefaultSharedPreferences(context);
 		uuid = defaultPre.getString("uuid", null);
-		if(uuid == null){
+		if(uuid == null || uuid.equals("jokerpiece-test-uuid")){
 			uuid = UUID.randomUUID().toString();
 			Editor editor = defaultPre.edit();
 			editor.putString("uuid", uuid);
