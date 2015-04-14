@@ -41,8 +41,11 @@ public class Config {
 	//public static final String SERVER_URL = "http://192.168.77.83:8888/pieceSever/";
 
 	//デバッグ用UUID デバッグではない場合nullに;
-	public static final String getDebugUUID = "jokerpiece-test-uuid";
-	//public static final String getDebugUUID = null;
+	//public static final String getDebugUUID = "jokerpiece-test-uuid";
+	public static final String getDebugUUID = null;
+
+    //OSタイプ (1:iOS, 2:android)
+    public static final String OS_TYPE = "2";
 
 	//サーバー接続までのタイムアウト時間
 	public static final int connectionTimeOut = 5000;
@@ -51,7 +54,8 @@ public class Config {
 	public static final int readTimeOut = 30000;
 
 	// プッシュ通知で必要なフィールド(ここから)
-	public static final String PROJECT_ID = "367759414941";	//プロジェクトIDを設定する
+//	public static final String PROJECT_ID = "367759414941";	//プロジェクトIDを設定する
+    public static final String PROJECT_ID;
     public static final String EXTRA_MESSAGE = "message";
     public static final String PROPERTY_REG_ID = "registration_id";
     public static final String PROPERTY_APP_VERSION = "appVersion";
@@ -122,8 +126,19 @@ public class Config {
 
         }
         if (isSuccess) {
-            APP_ID = map.get("app_id");
-            APP_KEY = map.get("app_key");
+            String appId = map.get("app_id");
+            if (appId != null && !appId.equals("")) {
+                APP_ID = appId;
+            } else {
+                APP_ID = "pieceSample";
+            }
+
+            String appKey = map.get("app_key");
+            if (appKey != null && !appKey.equals("")) {
+                APP_KEY = appKey;
+            } else {
+                APP_KEY = "jokerpiece_appKey";
+            }
 
             int splashTime;
             try {
@@ -133,10 +148,18 @@ public class Config {
                 splashTime = 2;
             }
             SPLASH_TIME = splashTime;
+
+            String projectId = map.get("project_id");
+            if (projectId != null && !projectId.equals("")) {
+                PROJECT_ID = projectId;
+            } else {
+                PROJECT_ID = "367759414941";
+            }
         } else {
             APP_ID = "pieceSample";
             APP_KEY = "jokerpiece_appKey";
             SPLASH_TIME = 2;
+            PROJECT_ID = "367759414941";
         }
     }
 
