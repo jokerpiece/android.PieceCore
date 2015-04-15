@@ -10,6 +10,7 @@ import jp.co.jokerpiece.piecebase.util.App;
 import jp.co.jokerpiece.piecebase.util.AppUtil;
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -77,50 +78,6 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
 
         tabHost.setOnTabChangedListener(this);
 
-        Bundle bundle = getIntent().getExtras();
-        if (bundle != null && bundle.getString("type") != null) {
-            switch (bundle.getString("type")) {
-                case NewsListData.NEWS_DATA_TYPE_INFOMATION + "":
-                    MainBaseActivity.tabHost.setCurrentTab(AppUtil.getPosition("Infomation"));
-//    			FragmentManager fmInfo = getSupportFragmentManager();
-//    			FragmentTransaction ftInfo = fmInfo.beginTransaction();
-//    			ftInfo.addToBackStack(null);
-//    			InfomationSyosaiFragment fragmentInfo = new InfomationSyosaiFragment();
-//    			Bundle bundleInfo = new Bundle();
-//    			bundleInfo.putString("newsId", bundle.getString("newsId"));
-//    			fragmentInfo.setArguments(bundleInfo);
-//    			ftInfo.replace(R.id.fragment, fragmentInfo);
-//    			ftInfo.commit();
-                    break;
-                case NewsListData.NEWS_DATA_TYPE_FLYER + "":
-                    MainBaseActivity.tabHost.setCurrentTab(AppUtil.getPosition("Flyer"));
-//    			FragmentManager fmNews = getSupportFragmentManager();
-//    			FragmentTransaction ftNews = fmNews.beginTransaction();
-//    			ftNews.addToBackStack(null);
-//    			FlyerFragment fragmentNews = new FlyerFragment();
-//    			Bundle bundleNews= new Bundle();
-//    			bundleNews.putString("flyer_ID", bundle.getString("flyer_ID"));
-//    			fragmentNews.setArguments(bundleNews);
-//    			ftNews.replace(R.id.fragment, fragmentNews);
-//    			ftNews.commit();
-                    break;
-                case NewsListData.NEWS_DATA_TYPE_COUPON + "":
-                    MainBaseActivity.tabHost.setCurrentTab(AppUtil.getPosition("Coupon"));
-//    			FragmentManager fmCoupon = getSupportFragmentManager();
-//    			FragmentTransaction ftCoupon = fmCoupon.beginTransaction();
-//    			ftCoupon.addToBackStack(null);
-//    			CouponFragment fragmentCoupon = new CouponFragment();
-//    			Bundle bundleCoupon= new Bundle();
-//    			bundleCoupon.putString("coupon_code", bundle.getString("coupon_code"));
-//    			fragmentCoupon.setArguments(bundleCoupon);
-//    			ftCoupon.replace(R.id.fragment, fragmentCoupon);
-//    			ftCoupon.commit();
-                    break;
-                default:
-                    break;
-            }
-        }
-
         // クリックイベントを設定する
         Log.d("numberOfTabs=", "" + tabHost.getTabWidget().getChildCount());
         for (int i = 0; i < tabHost.getTabWidget().getChildCount(); i++) {
@@ -142,6 +99,19 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
                 }
             });
         }
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        runIfGetIntent(intent);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        runIfGetIntent(getIntent());
     }
 
     @Override
@@ -424,6 +394,57 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
             this.bgUnselected = bgUnselected;
             this.ftSelected = ftSelected;
             this.ftUnselected = ftUnselected;
+        }
+    }
+
+    /**
+     * getIntent()で取得できた場合の処理を記述します。
+     * 本メソッドをonResume()で呼んでいるのは、launchModeがsingleTaskの場合、
+     * メインアクティビティを起動中はonCreate()は呼ばれずonResume()から呼ばれるため。
+     */
+    public void runIfGetIntent(Intent intent) {
+        Bundle bundle = intent.getExtras();
+        if (bundle != null && bundle.getString("type") != null) {
+            switch (bundle.getString("type")) {
+                case NewsListData.NEWS_DATA_TYPE_INFOMATION + "":
+                    MainBaseActivity.tabHost.setCurrentTab(AppUtil.getPosition("Infomation"));
+//    			FragmentManager fmInfo = getSupportFragmentManager();
+//    			FragmentTransaction ftInfo = fmInfo.beginTransaction();
+//    			ftInfo.addToBackStack(null);
+//    			InfomationSyosaiFragment fragmentInfo = new InfomationSyosaiFragment();
+//    			Bundle bundleInfo = new Bundle();
+//    			bundleInfo.putString("newsId", bundle.getString("newsId"));
+//    			fragmentInfo.setArguments(bundleInfo);
+//    			ftInfo.replace(R.id.fragment, fragmentInfo);
+//    			ftInfo.commit();
+                    break;
+                case NewsListData.NEWS_DATA_TYPE_FLYER + "":
+                    MainBaseActivity.tabHost.setCurrentTab(AppUtil.getPosition("Flyer"));
+//    			FragmentManager fmNews = getSupportFragmentManager();
+//    			FragmentTransaction ftNews = fmNews.beginTransaction();
+//    			ftNews.addToBackStack(null);
+//    			FlyerFragment fragmentNews = new FlyerFragment();
+//    			Bundle bundleNews= new Bundle();
+//    			bundleNews.putString("flyer_ID", bundle.getString("flyer_ID"));
+//    			fragmentNews.setArguments(bundleNews);
+//    			ftNews.replace(R.id.fragment, fragmentNews);
+//    			ftNews.commit();
+                    break;
+                case NewsListData.NEWS_DATA_TYPE_COUPON + "":
+                    MainBaseActivity.tabHost.setCurrentTab(AppUtil.getPosition("Coupon"));
+//    			FragmentManager fmCoupon = getSupportFragmentManager();
+//    			FragmentTransaction ftCoupon = fmCoupon.beginTransaction();
+//    			ftCoupon.addToBackStack(null);
+//    			CouponFragment fragmentCoupon = new CouponFragment();
+//    			Bundle bundleCoupon= new Bundle();
+//    			bundleCoupon.putString("coupon_code", bundle.getString("coupon_code"));
+//    			fragmentCoupon.setArguments(bundleCoupon);
+//    			ftCoupon.replace(R.id.fragment, fragmentCoupon);
+//    			ftCoupon.commit();
+                    break;
+                default:
+                    break;
+            }
         }
     }
 
