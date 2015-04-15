@@ -101,7 +101,7 @@ public class Common {
 	public static void setupGcm(Context context,Activity activity,int loaderID){
 		Common.context = context;
 		Common.activity = activity;
-		Common.loaderID = loaderID;
+		Common.loaderID = 100000;
         if (checkPlayServices()) {
 
             gcm = GoogleCloudMessaging.getInstance(context);
@@ -215,7 +215,7 @@ public class Common {
     }
 
 	private static void registDeviceToken(){
-		activity.getLoaderManager().initLoader(Config.loaderCnt++, null, new LoaderCallbacks<Boolean>(){
+		activity.getLoaderManager().initLoader(loaderID, null, new LoaderCallbacks<Boolean>(){
 			@Override
 			public Loader<Boolean> onCreateLoader(int id, Bundle args) {
 				DeviceTokenAPI registAPI = new DeviceTokenAPI(context, regid);
