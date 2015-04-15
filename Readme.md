@@ -56,7 +56,7 @@ build.gradle
             minSdkVersion 14
             targetSdkVersion 21
             versionCode 1
-            versionName "1.0"
+            versionName "1.0.0"
         }
         buildTypes {
             release {
@@ -219,7 +219,7 @@ MainActivity.java
 
 GcmBroadcastReceiver.java
 
-    package jp.co.jokerpiece.otonagokoro_;
+    package jp.co.jokerpiece.piece;
     
     import android.app.Activity;
     import android.content.ComponentName;
@@ -244,7 +244,7 @@ GcmBroadcastReceiver.java
 
 GcmIntentService.java
 
-    package jp.co.jokerpiece.otonagokoro_;
+    package jp.co.jokerpiece.piece;
     
     import android.content.Intent;
     import android.util.Log;
