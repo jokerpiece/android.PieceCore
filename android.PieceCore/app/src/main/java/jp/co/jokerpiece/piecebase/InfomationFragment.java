@@ -10,6 +10,7 @@ import android.app.LoaderManager.LoaderCallbacks;
 import android.content.Context;
 import android.content.Loader;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
@@ -26,6 +27,8 @@ public class InfomationFragment extends Fragment implements OnPageChangeListener
 	ViewPager viewPager;
 	PagerTabStrip viewPagerTab;
 	NewsListData infoListData;
+
+    Handler handler = new Handler();
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -95,6 +98,7 @@ public class InfomationFragment extends Fragment implements OnPageChangeListener
 	}
 
 	private void getInfomation(){
+        viewPager.setVisibility(View.INVISIBLE);
         getActivity().getLoaderManager().initLoader(Config.loaderCnt++, null, new LoaderCallbacks<NewsListData>() {
 			@Override
 			public Loader<NewsListData> onCreateLoader(int id, Bundle args) {
@@ -106,6 +110,7 @@ public class InfomationFragment extends Fragment implements OnPageChangeListener
 			public void onLoadFinished(Loader<NewsListData> loader, NewsListData data) {
 				if(data == null){
 					Common.serverErrorMessage(context);
+                    viewPager.setVisibility(View.INVISIBLE);
 					return;
 				}
 				infoListData = data;
@@ -113,7 +118,7 @@ public class InfomationFragment extends Fragment implements OnPageChangeListener
 		        viewPager.setAdapter(
 		                new InfomationListPageAdapter(
 		                  getChildFragmentManager(), context, data));
-
+                viewPager.setVisibility(View.VISIBLE);
 			}
 			@Override
 			public void onLoaderReset(Loader<NewsListData> loader) {
