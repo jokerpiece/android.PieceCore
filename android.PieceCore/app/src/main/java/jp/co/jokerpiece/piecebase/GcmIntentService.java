@@ -20,7 +20,7 @@ import android.util.Log;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 
 public class GcmIntentService extends IntentService {
-	public static final String TAG = "GcmIntentService";
+    public static final String TAG = "GcmIntentService";
     public static final int NOTIFICATION_ID = 1;
     private NotificationManager mNotificationManager;
     NotificationCompat.Builder builder;
@@ -49,7 +49,7 @@ public class GcmIntentService extends IntentService {
                     String key = it.next() + "";
                     String value = extras.getString(key) + "";
                     if (key.equals("message")) {
-                    	result = value;
+                        result = value;
                     }
                 }
                 HashMap<String, String> map = parseJSON(result);
@@ -64,79 +64,79 @@ public class GcmIntentService extends IntentService {
     }
 
     public HashMap<String, String> parseJSON(String result) {
-    	//Log.d(TAG, "result= " + result);
-    	HashMap<String, String> map = new HashMap<String, String>();
+        //Log.d(TAG, "result= " + result);
+        HashMap<String, String> map = new HashMap<String, String>();
 
-    	try {
-			JSONObject rootObject = new JSONObject(result);
+        try {
+            JSONObject rootObject = new JSONObject(result);
 
-			JSONObject infoObject = rootObject.getJSONObject("info");
-			map.put("title", infoObject.getString("title"));
-			map.put("type", infoObject.getString("type"));
-			map.put("id", infoObject.getString("id"));
+            JSONObject infoObject = rootObject.getJSONObject("info");
+            map.put("title", infoObject.getString("title"));
+            map.put("type", infoObject.getString("type"));
+            map.put("id", infoObject.getString("id"));
 
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
-    	Log.d(TAG, "map= " + map);
-    	return map;
+        Log.d(TAG, "map= " + map);
+        return map;
     }
 
     private void sendNotification(HashMap<String, String> map) {
-    	String title = getBlankIfNull(map.get("title"));
-    	String msg = getBlankIfNull(map.get("alert"));
-    	Log.d("sendNotification", "title= " + title + "\nmsg= " + msg);
+        String title = getBlankIfNull(map.get("title"));
+        String msg = getBlankIfNull(map.get("alert"));
+        Log.d("sendNotification", "title= " + title + "\nmsg= " + msg);
         mNotificationManager = (NotificationManager)
                 this.getSystemService(Context.NOTIFICATION_SERVICE);
 
         Intent intent = getSelectedIntent(map);
         PendingIntent contentIntent = PendingIntent.getActivity(this, 0,
-                intent, 0);
+                intent, PendingIntent.FLAG_CANCEL_CURRENT);
 
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(this)
-        .setSmallIcon(R.drawable.ic_launcher)
-        .setContentTitle(title)
-        .setStyle(new NotificationCompat.BigTextStyle()
-        .bigText(msg))
-        .setContentText(msg);
+                        .setSmallIcon(R.drawable.status_icon)
+                        .setContentTitle(title)
+                        .setStyle(new NotificationCompat.BigTextStyle()
+                                .bigText(msg))
+                        .setContentText(msg);
 
         mBuilder.setContentIntent(contentIntent);
         mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());
     }
 
     public Intent getSelectedIntent(HashMap<String, String> map) {
-    	Intent intent = null;
-    	switch (getBlankIfNull(map.get("type"))) {
-    	case NewsListData.NEWS_DATA_TYPE_INFOMATION + "":
-			intent = new Intent(this, MainBaseActivity.class);
-    		intent.putExtra("type", getBlankIfNull(map.get("type")));
-			intent.putExtra("newsId", getBlankIfNull(map.get("id")));
-			Log.d(TAG, "InfomationSyosaiActivityにintentを投げます。(newsId: " + getBlankIfNull(map.get("id")) + ")");
-    		break;
-    	case NewsListData.NEWS_DATA_TYPE_FLYER + "":
-			intent = new Intent(this, MainBaseActivity.class);
-    		intent.putExtra("type", getBlankIfNull(map.get("type")));
-			intent.putExtra("flyer_ID", getBlankIfNull(map.get("id")));
-			Log.d(TAG, "FlyerActivityにintentを投げます。(flyer_ID: " + getBlankIfNull(map.get("id")) + ")");
-    		break;
-    	case NewsListData.NEWS_DATA_TYPE_COUPON + "":
-			intent = new Intent(this, MainBaseActivity.class);
-    		intent.putExtra("type", getBlankIfNull(map.get("type")));
-			intent.putExtra("coupon_code", getBlankIfNull(map.get("id")));
-			Log.d(TAG, "CouponActivityにintentを投げます。(coupon_ID: " + getBlankIfNull(map.get("id")) + ")");
-    		break;
-    	default:
-    		intent = new Intent(this, MainBaseActivity.class);
-    		break;
-    	}
-    	return intent;
+        Intent intent = null;
+        switch (getBlankIfNull(map.get("type"))) {
+            case NewsListData.NEWS_DATA_TYPE_INFOMATION + "":
+                intent = new Intent(this, MainBaseActivity.class);
+                intent.putExtra("type", getBlankIfNull(map.get("type")));
+                intent.putExtra("newsId", getBlankIfNull(map.get("id")));
+                Log.d(TAG, "type: Infomation, newsId: " + getBlankIfNull(map.get("id")));
+                break;
+            case NewsListData.NEWS_DATA_TYPE_FLYER + "":
+                intent = new Intent(this, MainBaseActivity.class);
+                intent.putExtra("type", getBlankIfNull(map.get("type")));
+                intent.putExtra("flyer_ID", getBlankIfNull(map.get("id")));
+                Log.d(TAG, "type: Flyer, flyer_ID: " + getBlankIfNull(map.get("id")));
+                break;
+            case NewsListData.NEWS_DATA_TYPE_COUPON + "":
+                intent = new Intent(this, MainBaseActivity.class);
+                intent.putExtra("type", getBlankIfNull(map.get("type")));
+                intent.putExtra("coupon_code", getBlankIfNull(map.get("id")));
+                Log.d(TAG, "type: Coupon, coupon_ID: " + getBlankIfNull(map.get("id")));
+                break;
+            default:
+                intent = new Intent(this, MainBaseActivity.class);
+                break;
+        }
+        return intent;
     }
 
     public String getBlankIfNull(String s) {
-    	s = (s == null ? "": s);
-    	return s;
+        s = (s == null ? "": s);
+        return s;
     }
 
 }
