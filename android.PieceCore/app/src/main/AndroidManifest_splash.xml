@@ -47,7 +47,8 @@
         </activity>
         <activity
             android:name=".MainBaseActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:launchMode="singleTask">
         </activity>
 
         <!-- プッシュ通知に必要なアクティビティ(ここから) -->
