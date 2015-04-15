@@ -19,9 +19,10 @@ android.PieceCoreƒ‰ƒCƒuƒ‰ƒŠ‚Éudrawable/ic_launcher.pngv‚Í—pˆÓ‚µ‚Ä‚¢‚é‚Ì‚Å–{ƒvƒ
 
 settingFile.txt
 
-    app_id=otonagokoro
+    app_id=pieceSample
     app_key=jokerpiece_appKey
     splash_time=3
+    project_id=367759414941
 
 ### —˜—p•û–@
 
@@ -40,7 +41,7 @@ HashMap<String, Object>
 | tabIcon | ƒ^ƒu‚Éİ’è‚·‚é‰æ‘œ | R.drawable.icon_flyer, R.drawable.icon_infomation, R.drawable.icon_shopping, R.drawable.icon_coupon, R.drawable.icon_fitting |
 | cls | ƒ^ƒu‚Éİ’è‚·‚é‰æ–Ê | FlyerFragment.class, InfomationFragment.class, ShoppingFragment.class, CouponFragment.class, FittingFragment.class |
 
-‰º‹L‚Ébuild.gradleAAndroidManifest.xmlAstyles.xmlAMainActivity‚Ì‹Lq—á‚ğ‹L‚µ‚Ü‚·B
+‰º‹L‚Ébuild.gradleAAndroidManifest.xmlAstyles.xmlAMainActivityAGcmBroadcastReceiverAGcmIntentService‚Ì‹Lq—á‚ğ‹L‚µ‚Ü‚·B
 
 build.gradle
 
@@ -76,7 +77,7 @@ build.gradle
         compile fileTree(dir: 'libs', include: ['*.jar'])
         compile 'com.android.support:appcompat-v7:21.0.0'
         compile 'com.google.android.gms:play-services:+'
-        compile 'jp.co.jokerpiece.android.piececore:android.piececore:0.0.7@aar'
+        compile 'jp.co.jokerpiece.android.piececore:android.piececore:0.0.16@aar'
     }
 
 AndroidManifest.xml
@@ -121,7 +122,8 @@ AndroidManifest.xml
             android:launchMode="singleTop">
             <activity
                 android:name=".MainActivity"
-                android:screenOrientation="portrait">
+                android:screenOrientation="portrait"
+                android:launchMode="singleTask">
                 <intent-filter>
                     <action android:name="android.intent.action.MAIN" />
                     <category android:name="android.intent.category.LAUNCHER" />
@@ -132,13 +134,13 @@ AndroidManifest.xml
             <meta-data
                 android:name="com.google.android.gms.version"
                 android:value="@integer/google_play_services_version"/>
-            <service android:name="jp.co.jokerpiece.piecebase.GcmIntentService" android:enabled="true"/>
+            <service android:name=".GcmIntentService" android:enabled="true"/>
             <receiver
-                android:name="jp.co.jokerpiece.piecebase.GcmBroadcastReceiver"
+                android:name=".GcmBroadcastReceiver"
                 android:permission="com.google.android.c2dm.permission.SEND" >
                 <intent-filter>
                     <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-                    <category android:name="jp.co.jokerpiece.piecebase" />
+                    <category android:name="jp.co.jokerpiece.piece" />
                 </intent-filter>
             </receiver>
             <!-- ƒvƒbƒVƒ…’Ê’m‚É•K—v‚ÈƒAƒNƒeƒBƒrƒeƒB(‚±‚±‚Ü‚Å) -->
@@ -215,6 +217,75 @@ MainActivity.java
 
     }
 
+GcmBroadcastReceiver.java
+
+    package jp.co.jokerpiece.otonagokoro_;
+    
+    import android.app.Activity;
+    import android.content.ComponentName;
+    import android.content.Context;
+    import android.content.Intent;
+    import android.support.v4.content.WakefulBroadcastReceiver;
+    
+    public class GcmBroadcastReceiver extends WakefulBroadcastReceiver {
+    
+        @Override
+        public void onReceive(Context context, Intent intent) {
+    
+            // Explicitly specify that GcmMessageHandler will handle the intent.
+            ComponentName comp = new ComponentName(context.getPackageName(),
+                    GcmIntentService.class.getName());
+    
+            // Start the service, keeping the device awake while it is launching.
+            startWakefulService(context, (intent.setComponent(comp)));
+            setResultCode(Activity.RESULT_OK);
+        }
+    }
+
+GcmIntentService.java
+
+    package jp.co.jokerpiece.otonagokoro_;
+    
+    import android.content.Intent;
+    import android.util.Log;
+    
+    import java.util.HashMap;
+    
+    import jp.co.jokerpiece.piecebase.data.NewsListData;
+    
+    public class GcmIntentService extends jp.co.jokerpiece.piecebase.GcmIntentService {
+        public static final String TAG = GcmIntentService.class.getSimpleName();
+    
+        @Override
+        public Intent getSelectedIntent(HashMap<String, String> map) {
+            Intent intent = null;
+            switch (getBlankIfNull(map.get("type"))) {
+                case NewsListData.NEWS_DATA_TYPE_INFOMATION + "":
+                    intent = new Intent(this, MainActivity.class);
+                    intent.putExtra("type", getBlankIfNull(map.get("type")));
+                    intent.putExtra("newsId", getBlankIfNull(map.get("id")));
+                    Log.d(TAG, "type: Infomation, newsId: " + getBlankIfNull(map.get("id")));
+                    break;
+                case NewsListData.NEWS_DATA_TYPE_FLYER + "":
+                    intent = new Intent(this, MainActivity.class);
+                    intent.putExtra("type", getBlankIfNull(map.get("type")));
+                    intent.putExtra("flyer_ID", getBlankIfNull(map.get("id")));
+                    Log.d(TAG, "type: Flyer, flyer_ID: " + getBlankIfNull(map.get("id")));
+                    break;
+                case NewsListData.NEWS_DATA_TYPE_COUPON + "":
+                    intent = new Intent(this, MainActivity.class);
+                    intent.putExtra("type", getBlankIfNull(map.get("type")));
+                    intent.putExtra("coupon_code", getBlankIfNull(map.get("id")));
+                    Log.d(TAG, "type: Coupon, coupon_code: " + getBlankIfNull(map.get("id")));
+                    break;
+                default:
+                    intent = new Intent(this, MainActivity.class);
+                    break;
+            }
+            return intent;
+        }
+    }
+
 ### ‹@”\ƒNƒ‰ƒX
 
 Piece‚Å’ñ‹Ÿ‚µ‚Ä‚¢‚é‹@”\‚Æ•R‚Ã‚­ƒNƒ‰ƒX–¼‚Í‰º‹L‚Ì’Ê‚è‚Å‚·B
@@ -230,7 +301,7 @@ Piece‚Å’ñ‹Ÿ‚µ‚Ä‚¢‚é‹@”\‚Æ•R‚Ã‚­ƒNƒ‰ƒX–¼‚Í‰º‹L‚Ì’Ê‚è‚Å‚·B
 ### PieceSampleƒvƒƒWƒFƒNƒg
 
 github(<https://github.com/jokerpiece/android.PieceCore>)‚©‚çPieceSampleƒvƒƒWƒFƒNƒg‚ğƒRƒs[‚µ‚Ä‰º‚³‚¢B
-PieceSampeƒvƒƒWƒFƒNƒg‚ÍƒIƒgƒiƒSƒRƒƒAƒvƒŠ‚ÌÅ¬\¬‚Æ‚È‚Á‚Ä‚¢‚Ü‚·B
+PieceSampeƒvƒƒWƒFƒNƒg‚ÍPieceƒAƒvƒŠ‚ÌÅ¬\¬‚Æ‚È‚Á‚Ä‚¢‚Ü‚·B
 ƒ‰ƒ“ƒ`ƒƒ[ƒAƒNƒeƒBƒrƒeƒB‚ÍAujp.co.jokerpiece.piece.MainActivityv‚Æ‚È‚è‚Ü‚·B
 AndroidStudio‚©‚çPieceSampleƒvƒƒWƒFƒNƒg‚ğ‹N“®‚µ‚Ä‰º‚³‚¢B
 ![Sync Project](./mdImage/syncProj.png)ƒ{ƒ^ƒ“‚ğ‰Ÿ‰º‚Åƒrƒ‹ƒh‚ğÀs‚µA![Run Project](./mdImage/runProj.png)ƒ{ƒ^ƒ“‚ğ‰Ÿ‰º‚ÅƒAƒvƒŠ‚ğÀs‚µ‚Ä‰º‚³‚¢B
