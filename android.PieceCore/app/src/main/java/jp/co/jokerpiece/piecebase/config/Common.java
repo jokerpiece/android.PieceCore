@@ -97,11 +97,11 @@ public class Common {
     private static GoogleCloudMessaging gcm;
     private static String regid = "";
     private static Activity activity = null;
-    private static int loaderID = -1;
+    private static int loaderID = 100000;
 	public static void setupGcm(Context context,Activity activity,int loaderID){
 		Common.context = context;
 		Common.activity = activity;
-		Common.loaderID = 100000;
+//		Common.loaderID = 100000;
         if (checkPlayServices()) {
 
             gcm = GoogleCloudMessaging.getInstance(context);
@@ -215,7 +215,7 @@ public class Common {
     }
 
 	private static void registDeviceToken(){
-		activity.getLoaderManager().initLoader(loaderID, null, new LoaderCallbacks<Boolean>(){
+		activity.getLoaderManager().initLoader(loaderID++, null, new LoaderCallbacks<Boolean>(){
 			@Override
 			public Loader<Boolean> onCreateLoader(int id, Bundle args) {
 				DeviceTokenAPI registAPI = new DeviceTokenAPI(context, regid);
