@@ -27,6 +27,11 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <!-- プッシュ通知の設定(ここまで) -->
 
+    <!-- bluetoothの設定(ここから) -->
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <!-- bluetoothの設定(ここまで) -->
+
     <!-- ライブラリのアプリケーションを使用するため -->
     <!-- "jp.co.jokerpiece.piecebase.util.App"を設定する必要があります -->
     <application

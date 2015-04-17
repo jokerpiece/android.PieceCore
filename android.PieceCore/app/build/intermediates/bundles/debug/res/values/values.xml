@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/C:/Users/tadaoka/AndroidstudioProjects/bugfix/android.PieceCore/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/C:/Users/tadaoka/AndroidstudioProjects/work/android.PieceCore/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <color name="actionbar_background">#FFFFFF</color>
     <color name="background_fragment">#fff</color>
@@ -18,12 +18,12 @@
     <color name="tab_unselected">#fff</color>
     <color name="tab_unselected_cute">#fff9f9</color>
     <color name="theme_text_color">#666</color>
-    <!-- From: file:/C:/Users/tadaoka/AndroidstudioProjects/bugfix/android.PieceCore/app/src/main/res/values/dimens.xml -->
+    <!-- From: file:/C:/Users/tadaoka/AndroidstudioProjects/work/android.PieceCore/app/src/main/res/values/dimens.xml -->
     <eat-comment/>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="navigation_drawer_width">240dp</dimen>
-    <!-- From: file:/C:/Users/tadaoka/AndroidstudioProjects/bugfix/android.PieceCore/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/C:/Users/tadaoka/AndroidstudioProjects/work/android.PieceCore/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <drawable name="actionbar_background">#FFFFFF</drawable>
     <drawable name="actionbar_background_cute">#FFF9F9</drawable>
@@ -70,7 +70,7 @@
     <string name="shopping1">Shopping</string>
     <string name="webview">ITEM</string>
     <string name="yen">円</string>
-    <!-- From: file:/C:/Users/tadaoka/AndroidstudioProjects/bugfix/android.PieceCore/app/src/main/res/values/styles.xml -->
+    <!-- From: file:/C:/Users/tadaoka/AndroidstudioProjects/work/android.PieceCore/app/src/main/res/values/styles.xml -->
     <eat-comment/>
     <style name="AppBaseTheme" parent="android:Theme.Light">
         <!--

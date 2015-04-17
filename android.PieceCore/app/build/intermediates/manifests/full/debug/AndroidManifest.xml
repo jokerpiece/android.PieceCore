@@ -25,8 +25,14 @@
 
     <uses-permission android:name="jp.co.jokerpiece.piece.permission.C2D_MESSAGE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-
     <!-- プッシュ通知の設定(ここまで) -->
+
+
+    <!-- bluetoothの設定(ここから) -->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+
+    <!-- bluetoothの設定(ここまで) -->
     <!-- ライブラリのアプリケーションを使用するため -->
     <!-- "jp.co.jokerpiece.piecebase.util.App"を設定する必要があります -->
     <application
@@ -37,18 +43,14 @@
         android:launchMode="singleTop"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="jp.co.jokerpiece.piecebase.SplashBaseActivity"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Light.NoTitleBar" >
+            android:name="jp.co.jokerpiece.piecebase.MainBaseActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name="jp.co.jokerpiece.piecebase.MainBaseActivity"
-            android:screenOrientation="portrait" >
         </activity>
 
         <!-- プッシュ通知に必要なアクティビティ(ここから) -->

@@ -83,8 +83,8 @@ int color wallet_secondary_text_holo_dark 0x7f06002a
 int dimen activity_horizontal_margin 0x7f070000
 int dimen activity_vertical_margin 0x7f070001
 int dimen navigation_drawer_width 0x7f070002
-int drawable actionbar_background 0x7f020039
-int drawable actionbar_background_cute 0x7f02003a
+int drawable actionbar_background 0x7f02003a
+int drawable actionbar_background_cute 0x7f02003b
 int drawable backbtn 0x7f020000
 int drawable common_full_open_on_phone 0x7f020001
 int drawable common_ic_googleplayservices 0x7f020002
@@ -142,8 +142,9 @@ int drawable shape_wvback_button 0x7f020035
 int drawable shape_wvnext_button 0x7f020036
 int drawable shop_logo 0x7f020037
 int drawable splash_default 0x7f020038
-int drawable theme_text_color 0x7f02003b
-int drawable theme_text_color_cute 0x7f02003c
+int drawable status_icon 0x7f020039
+int drawable theme_text_color 0x7f02003c
+int drawable theme_text_color_cute 0x7f02003d
 int id action_coupon 0x7f0c004c
 int id action_coupon_use 0x7f0c004d
 int id action_settings 0x7f0c004b

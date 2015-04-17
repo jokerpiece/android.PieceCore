@@ -3,4 +3,4 @@
     android:id="@+id/fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent" />
-<!-- From: file:/C:/Users/tadaoka/AndroidstudioProjects/bugfix/android.PieceCore/app/src/main/res/layout/root_fragment.xml -->
+<!-- From: file:/C:/Users/tadaoka/AndroidstudioProjects/work/android.PieceCore/app/src/main/res/layout/root_fragment.xml -->

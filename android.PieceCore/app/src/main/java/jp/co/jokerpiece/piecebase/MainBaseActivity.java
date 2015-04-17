@@ -4,11 +4,16 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
+import jp.co.jokerpiece.piecebase.config.Common;
 import jp.co.jokerpiece.piecebase.config.Config;
 import jp.co.jokerpiece.piecebase.data.NewsListData;
 import jp.co.jokerpiece.piecebase.util.App;
 import jp.co.jokerpiece.piecebase.util.AppUtil;
+import jp.co.jokerpiece.piecebase.util.BeaconUtil;
+
 import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
@@ -16,6 +21,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.StateListDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.v4.app.Fragment;
@@ -48,7 +54,9 @@ import android.widget.TextView;
  * AppUtil.getPositionメソッドが-1で返ってくる場合は何も起こりません。
  */
 public class MainBaseActivity extends FragmentActivity implements OnTabChangeListener {
-    private Context context = App.getContext();
+    private static final String TAG = MainBaseActivity.class.getSimpleName();
+
+    private Context context;
     public static FragmentTabHost tabHost;
 
     public String myTheme = "";
@@ -60,6 +68,7 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        context = this;
 
         setTheme();
         setContentView(R.layout.activity_main);
@@ -110,8 +119,12 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
     @Override
     protected void onResume() {
         super.onResume();
-
         runIfGetIntent(getIntent());
+
+        // プッシュ通知処理の初期化
+        Common.setupGcm(context, (Activity) context, Config.loaderCnt++);
+//        // ビーコン処理の初期化
+//        BeaconUtil.init(this);
     }
 
     @Override
@@ -133,6 +146,21 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
                 }
         }
         return false;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        switch (requestCode) {
+            case BeaconUtil.REQUEST_ENABLE_BT:
+                if (resultCode == Activity.RESULT_OK) {
+                    // Bluetoothの自動ONが成功した場合呼ばれる
+                    Log.d(TAG, "Bluetoothの自動ONに成功しました。");
+                    BeaconUtil.isGetBluetoothAdapter = true;
+                }
+                break;
+        }
     }
 
     /**
@@ -305,7 +333,7 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
             super(context);
         }
 
-        @SuppressLint("InflateParams")
+        @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
         public CustomTabContentView(Context context, String title, int resId) {
             this(context);
             View childview = inflater.inflate(R.layout.tab_widget, null);

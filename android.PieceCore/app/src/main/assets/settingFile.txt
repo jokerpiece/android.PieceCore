@@ -1,3 +1,4 @@
 app_id=pieceSample
 app_key=jokerpiece_appKey
-splash_time=5
+splash_time=1
+project_id=

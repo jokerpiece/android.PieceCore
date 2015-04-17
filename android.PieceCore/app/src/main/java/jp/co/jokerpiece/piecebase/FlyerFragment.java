@@ -102,8 +102,6 @@ public class FlyerFragment extends Fragment implements OnPageChangeListener{
         		context,
         		new ArrayList<FlyerHeaderData>());
 
-        Common.setupGcm(context, getActivity(), Config.loaderCnt++);
-
         return rootView;
 	}
 

@@ -2,13 +2,6 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\tadaoka\AndroidstudioProjects\bugfix\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-analytics\7.0.0\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="29fd6d3794b71491c2789708cd8d03c71feb8954">
-        <dex dex="C:\Users\tadaoka\AndroidstudioProjects\bugfix\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-64f6b2e53f413fefefcdf406f7909f21eab8a659.jar" />
-    </item>
-    <item
         jar="C:\Users\tadaoka\AndroidstudioProjects\bugfix\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-nearby\7.0.0\classes.jar"
         jumboMode="false"
         revision="21.1.2"
@@ -16,11 +9,11 @@
         <dex dex="C:\Users\tadaoka\AndroidstudioProjects\bugfix\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-46f03df849d1e2c50c4bc0852ff0b41a8c5a574a.jar" />
     </item>
     <item
-        jar="C:\Users\tadaoka\AndroidstudioProjects\bugfix\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-fitness\7.0.0\classes.jar"
+        jar="C:\Users\tadaoka\AndroidstudioProjects\work\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-cast\7.0.0\classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="3c0b099f9de16b265ecd6122fcb603e7d0d29f90">
-        <dex dex="C:\Users\tadaoka\AndroidstudioProjects\bugfix\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-3f9df2ee29ae9f363e069fbc4a3e6853ad34d5de.jar" />
+        sha1="4cd0b093824b3228fffc21ea369b98d0b1db6566">
+        <dex dex="C:\Users\tadaoka\AndroidstudioProjects\work\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-64bf6f51e5f4b504e3bcd883b2e319e32e730ecd.jar" />
     </item>
     <item
         jar="C:\Users\tadaoka\AndroidstudioProjects\bugfix\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wallet\7.0.0\classes.jar"
@@ -30,11 +23,11 @@
         <dex dex="C:\Users\tadaoka\AndroidstudioProjects\bugfix\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-291e8989fdab95b606d23d79669ae7bcf1412272.jar" />
     </item>
     <item
-        jar="C:\Users\tadaoka\AndroidstudioProjects\bugfix\android.PieceCore\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.0.0\classes.jar"
+        jar="C:\Users\tadaoka\AndroidstudioProjects\work\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appstate\7.0.0\classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
-        <dex dex="C:\Users\tadaoka\AndroidstudioProjects\bugfix\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-132f601dd84560eb0d045addbd1bd6c07b9e3926.jar" />
+        sha1="7ff613bf78ab057293892fdbd4169eda899c89b9">
+        <dex dex="C:\Users\tadaoka\AndroidstudioProjects\work\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-8fc6e97743dcdf3bd6a037310aa392b394d4723d.jar" />
     </item>
     <item
         jar="C:\Users\tadaoka\AndroidstudioProjects\bugfix\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-safetynet\7.0.0\classes.jar"
@@ -44,25 +37,25 @@
         <dex dex="C:\Users\tadaoka\AndroidstudioProjects\bugfix\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-4577a0dc7139c85507be064016d828fe58963b3e.jar" />
     </item>
     <item
-        jar="C:\Users\tadaoka\AndroidstudioProjects\bugfix\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-identity\7.0.0\classes.jar"
+        jar="C:\Users\tadaoka\AndroidstudioProjects\work\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-identity\7.0.0\classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="fb04b12526b0073c7fb1ebb70c5842d82ee95596">
-        <dex dex="C:\Users\tadaoka\AndroidstudioProjects\bugfix\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-1d06f80a0d6c0b789273f5e05a5dff73ac4b6c26.jar" />
+        <dex dex="C:\Users\tadaoka\AndroidstudioProjects\work\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-037f9580121c9942dd551f62902974c65be19954.jar" />
     </item>
     <item
-        jar="C:\Users\tadaoka\AndroidstudioProjects\bugfix\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-location\7.0.0\classes.jar"
+        jar="C:\Users\tadaoka\AndroidstudioProjects\work\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-panorama\7.0.0\classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="73ccb92b70112f2e463e415ef8d7275de7da6516">
-        <dex dex="C:\Users\tadaoka\AndroidstudioProjects\bugfix\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-68372f67089457028a0d15e6c2303d0def18b73a.jar" />
+        sha1="1c5a76debf0c2857ccad422c4a80ed785982f8df">
+        <dex dex="C:\Users\tadaoka\AndroidstudioProjects\work\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-cd423516640db9d6b2f87308503132f3b8d8f1e5.jar" />
     </item>
     <item
-        jar="C:\Users\tadaoka\AndroidstudioProjects\bugfix\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-cast\7.0.0\classes.jar"
+        jar="C:\Users\tadaoka\AndroidstudioProjects\work\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-games\7.0.0\classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="4cd0b093824b3228fffc21ea369b98d0b1db6566">
-        <dex dex="C:\Users\tadaoka\AndroidstudioProjects\bugfix\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-7f088e78d50c95ffdce486ceba2d79b337fc8587.jar" />
+        sha1="055783146ba9654a725442563be78cad303aad1f">
+        <dex dex="C:\Users\tadaoka\AndroidstudioProjects\work\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-1ea0666e2074fc6e0147268a06814402041228e7.jar" />
     </item>
     <item
         jar="C:\Users\tadaoka\AndroidstudioProjects\bugfix\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads\7.0.0\classes.jar"
@@ -86,11 +79,11 @@
         <dex dex="C:\Users\tadaoka\AndroidstudioProjects\bugfix\android.PieceCore\app\build\intermediates\pre-dexed\debug\internal_impl-22.0.0-f97a39542372f1c0b7fac4030b8729be79adab33.jar" />
     </item>
     <item
-        jar="C:\Users\tadaoka\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\22.0.0\support-annotations-22.0.0.jar"
+        jar="C:\Users\tadaoka\AndroidstudioProjects\work\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-analytics\7.0.0\classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="685d0b2c590447e85284ed84712cb363ba04eff8">
-        <dex dex="C:\Users\tadaoka\AndroidstudioProjects\bugfix\android.PieceCore\app\build\intermediates\pre-dexed\debug\support-annotations-22.0.0-83751fbe0b32a8b306cb08a5f10952806699f78c.jar" />
+        sha1="29fd6d3794b71491c2789708cd8d03c71feb8954">
+        <dex dex="C:\Users\tadaoka\AndroidstudioProjects\work\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-c64f4d042666d7863cbfdd3642e315c375f4aea8.jar" />
     </item>
     <item
         jar="C:\Users\tadaoka\AndroidstudioProjects\bugfix\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-panorama\7.0.0\classes.jar"
@@ -107,11 +100,172 @@
         <dex dex="C:\Users\tadaoka\AndroidstudioProjects\bugfix\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-e8ca906c9f329076c6a5154bc7b93a1f1a40a60e.jar" />
     </item>
     <item
+        jar="C:\Users\tadaoka\AndroidstudioProjects\work\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wearable\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="3033cc3a2c68dff3e5b646d6d084bdbdf7d00b25">
+        <dex dex="C:\Users\tadaoka\AndroidstudioProjects\work\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-31551019ba3c14239df5964306d390041a588064.jar" />
+    </item>
+    <item
         jar="C:\Users\tadaoka\AndroidstudioProjects\bugfix\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-plus\7.0.0\classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="0e8228b4bc69c6a2c8d7c18498a77e53417d2574">
         <dex dex="C:\Users\tadaoka\AndroidstudioProjects\bugfix\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-361b1ba470e4a77527c25ee1aecc005af579bffb.jar" />
+    </item>
+    <item
+        jar="C:\Users\tadaoka\AndroidstudioProjects\work\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-drive\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="41b3870cbe5fa546d8095b5b89d42cb69f3dd175">
+        <dex dex="C:\Users\tadaoka\AndroidstudioProjects\work\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-ec51b73bd70af766b0dbc45987becdf9c14b5e46.jar" />
+    </item>
+    <item
+        jar="C:\Users\tadaoka\AndroidstudioProjects\bugfix\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-games\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="055783146ba9654a725442563be78cad303aad1f">
+        <dex dex="C:\Users\tadaoka\AndroidstudioProjects\bugfix\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-9adfc0ffe406a9e426714ff45dd892c55f239bb1.jar" />
+    </item>
+    <item
+        jar="C:\Users\tadaoka\AndroidstudioProjects\work\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wallet\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="a96b762bde4139de855735f175ec4d17dca55a6d">
+        <dex dex="C:\Users\tadaoka\AndroidstudioProjects\work\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-f30874e9a786755aba3431f61b2c151ce06e1f3e.jar" />
+    </item>
+    <item
+        jar="C:\Users\tadaoka\AndroidstudioProjects\bugfix\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appstate\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="7ff613bf78ab057293892fdbd4169eda899c89b9">
+        <dex dex="C:\Users\tadaoka\AndroidstudioProjects\bugfix\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-e86deb2486865011e1121bce4d0720cf151dea56.jar" />
+    </item>
+    <item
+        jar="C:\Users\tadaoka\AndroidstudioProjects\work\android.PieceCore\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.0.0\libs\internal_impl-22.0.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="b5b92f469d515a13d778900f6d50c03d12f35504">
+        <dex dex="C:\Users\tadaoka\AndroidstudioProjects\work\android.PieceCore\app\build\intermediates\pre-dexed\debug\internal_impl-22.0.0-36b7b3d6218edd815a84e548698674fa81b18c0d.jar" />
+    </item>
+    <item
+        jar="C:\Users\tadaoka\AndroidstudioProjects\bugfix\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-analytics\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="29fd6d3794b71491c2789708cd8d03c71feb8954">
+        <dex dex="C:\Users\tadaoka\AndroidstudioProjects\bugfix\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-64f6b2e53f413fefefcdf406f7909f21eab8a659.jar" />
+    </item>
+    <item
+        jar="C:\Users\tadaoka\AndroidstudioProjects\bugfix\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-fitness\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="3c0b099f9de16b265ecd6122fcb603e7d0d29f90">
+        <dex dex="C:\Users\tadaoka\AndroidstudioProjects\bugfix\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-3f9df2ee29ae9f363e069fbc4a3e6853ad34d5de.jar" />
+    </item>
+    <item
+        jar="C:\Users\tadaoka\AndroidstudioProjects\work\android.PieceCore\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
+        <dex dex="C:\Users\tadaoka\AndroidstudioProjects\work\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-c6324f5189410a159cfba52e6978a1ea49c884ef.jar" />
+    </item>
+    <item
+        jar="C:\Users\tadaoka\AndroidstudioProjects\work\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-safetynet\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="c976518693e89ad44fbfccfc654941eaec198d08">
+        <dex dex="C:\Users\tadaoka\AndroidstudioProjects\work\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-679741123bae5744eb383580d7f12703050cdad4.jar" />
+    </item>
+    <item
+        jar="C:\Users\tadaoka\AndroidstudioProjects\work\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-nearby\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="ef5f051e7308febe289dc93c67c5f32785b4260a">
+        <dex dex="C:\Users\tadaoka\AndroidstudioProjects\work\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-1736734b7b3e0ccc5377f0a43872ad9041713440.jar" />
+    </item>
+    <item
+        jar="C:\Users\tadaoka\AndroidstudioProjects\bugfix\android.PieceCore\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
+        <dex dex="C:\Users\tadaoka\AndroidstudioProjects\bugfix\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-132f601dd84560eb0d045addbd1bd6c07b9e3926.jar" />
+    </item>
+    <item
+        jar="C:\Users\tadaoka\AndroidstudioProjects\bugfix\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-identity\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="fb04b12526b0073c7fb1ebb70c5842d82ee95596">
+        <dex dex="C:\Users\tadaoka\AndroidstudioProjects\bugfix\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-1d06f80a0d6c0b789273f5e05a5dff73ac4b6c26.jar" />
+    </item>
+    <item
+        jar="C:\Users\tadaoka\AndroidstudioProjects\bugfix\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-location\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="73ccb92b70112f2e463e415ef8d7275de7da6516">
+        <dex dex="C:\Users\tadaoka\AndroidstudioProjects\bugfix\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-68372f67089457028a0d15e6c2303d0def18b73a.jar" />
+    </item>
+    <item
+        jar="C:\Users\tadaoka\AndroidstudioProjects\bugfix\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-cast\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4cd0b093824b3228fffc21ea369b98d0b1db6566">
+        <dex dex="C:\Users\tadaoka\AndroidstudioProjects\bugfix\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-7f088e78d50c95ffdce486ceba2d79b337fc8587.jar" />
+    </item>
+    <item
+        jar="C:\Users\tadaoka\AndroidstudioProjects\work\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-fitness\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="3c0b099f9de16b265ecd6122fcb603e7d0d29f90">
+        <dex dex="C:\Users\tadaoka\AndroidstudioProjects\work\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-ebc80b82c4a81927b4c334bb1813a07b1220f087.jar" />
+    </item>
+    <item
+        jar="C:\Users\tadaoka\AndroidstudioProjects\work\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-location\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="73ccb92b70112f2e463e415ef8d7275de7da6516">
+        <dex dex="C:\Users\tadaoka\AndroidstudioProjects\work\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-f38f1a7cbc3e2b5d9bbf9d22cf9e0f09bc23cb7f.jar" />
+    </item>
+    <item
+        jar="C:\Users\tadaoka\AndroidstudioProjects\work\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="a08d65794b844d8e7540bf9a33859bf3b2482d7f">
+        <dex dex="C:\Users\tadaoka\AndroidstudioProjects\work\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-b2b4efdcf70b68b68b809cfbc2588c4f256915bf.jar" />
+    </item>
+    <item
+        jar="C:\Users\tadaoka\AndroidstudioProjects\work\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-plus\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="0e8228b4bc69c6a2c8d7c18498a77e53417d2574">
+        <dex dex="C:\Users\tadaoka\AndroidstudioProjects\work\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-2957aa2841f725cea763b4f9f84c47e9fbf23bf9.jar" />
+    </item>
+    <item
+        jar="C:\Users\tadaoka\AndroidstudioProjects\work\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="e3d791b42eaa90416cd0b2d2e608092794a3baa4">
+        <dex dex="C:\Users\tadaoka\AndroidstudioProjects\work\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-3b8cee3390ef4140b9061fcaf65d461a44d3d698.jar" />
+    </item>
+    <item
+        jar="C:\Users\tadaoka\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\22.0.0\support-annotations-22.0.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="685d0b2c590447e85284ed84712cb363ba04eff8">
+        <dex dex="C:\Users\tadaoka\AndroidstudioProjects\bugfix\android.PieceCore\app\build\intermediates\pre-dexed\debug\support-annotations-22.0.0-83751fbe0b32a8b306cb08a5f10952806699f78c.jar" />
+    </item>
+    <item
+        jar="C:\Users\tadaoka\AndroidstudioProjects\work\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-maps\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="17f8750d5c0749e44dd7c54aa390d9c937803825">
+        <dex dex="C:\Users\tadaoka\AndroidstudioProjects\work\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-be7dd2cb2337752d9f36dec3a1847fe272437d96.jar" />
+    </item>
+    <item
+        jar="C:\Users\tadaoka\AndroidstudioProjects\work\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4c93d99d454c975536bbe3b42283eee847f03ea3">
+        <dex dex="C:\Users\tadaoka\AndroidstudioProjects\work\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-501951d09568ef21659edc4eee145b15691aa192.jar" />
     </item>
     <item
         jar="C:\Users\tadaoka\AndroidstudioProjects\bugfix\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-gcm\7.0.0\classes.jar"
@@ -128,13 +282,6 @@
         <dex dex="C:\Users\tadaoka\AndroidstudioProjects\bugfix\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-b0f94cc7f40d90f718ef94cb4637cc970a6f19aa.jar" />
     </item>
     <item
-        jar="C:\Users\tadaoka\AndroidstudioProjects\bugfix\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-games\7.0.0\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="055783146ba9654a725442563be78cad303aad1f">
-        <dex dex="C:\Users\tadaoka\AndroidstudioProjects\bugfix\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-9adfc0ffe406a9e426714ff45dd892c55f239bb1.jar" />
-    </item>
-    <item
         jar="C:\Users\tadaoka\AndroidstudioProjects\bugfix\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-maps\7.0.0\classes.jar"
         jumboMode="false"
         revision="21.1.2"
@@ -149,11 +296,11 @@
         <dex dex="C:\Users\tadaoka\AndroidstudioProjects\bugfix\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-3f0614ed507a162331bdbf5968b9f62f82c3824b.jar" />
     </item>
     <item
-        jar="C:\Users\tadaoka\AndroidstudioProjects\bugfix\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appstate\7.0.0\classes.jar"
+        jar="C:\Users\tadaoka\AndroidstudioProjects\work\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-gcm\7.0.0\classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="7ff613bf78ab057293892fdbd4169eda899c89b9">
-        <dex dex="C:\Users\tadaoka\AndroidstudioProjects\bugfix\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-e86deb2486865011e1121bce4d0720cf151dea56.jar" />
+        sha1="9224bc4c54ba95147c7eabd874573763c07cb6be">
+        <dex dex="C:\Users\tadaoka\AndroidstudioProjects\work\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-2524b577b4a396cdaeaef4728d8b9e6d49c9a034.jar" />
     </item>
 
 </items>

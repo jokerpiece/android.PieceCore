@@ -406,8 +406,8 @@ containing a value of this type.
         public static int navigation_drawer_width=0x7f070002;
     }
     public static final class drawable {
-        public static int actionbar_background=0x7f020039;
-        public static int actionbar_background_cute=0x7f02003a;
+        public static int actionbar_background=0x7f02003a;
+        public static int actionbar_background_cute=0x7f02003b;
         public static int backbtn=0x7f020000;
         public static int common_full_open_on_phone=0x7f020001;
         public static int common_ic_googleplayservices=0x7f020002;
@@ -465,8 +465,9 @@ containing a value of this type.
         public static int shape_wvnext_button=0x7f020036;
         public static int shop_logo=0x7f020037;
         public static int splash_default=0x7f020038;
-        public static int theme_text_color=0x7f02003b;
-        public static int theme_text_color_cute=0x7f02003c;
+        public static int status_icon=0x7f020039;
+        public static int theme_text_color=0x7f02003c;
+        public static int theme_text_color_cute=0x7f02003d;
     }
     public static final class id {
         public static int action_coupon=0x7f0c004c;
