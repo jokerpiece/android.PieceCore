@@ -37,9 +37,9 @@ HashMap<String, Object>
 
 | キー | 説明 | バリュー |
 | --- | --- | --- |
-| tabTitle | タブに表示するタイトル | getString(R.string.flyer1), getString(R.string.info1), getString(R.string.shopping1), getString(R.string.coupon1), getString(R.string.fitting1) |
-| tabIcon | タブに設定する画像 | R.drawable.icon_flyer, R.drawable.icon_infomation, R.drawable.icon_shopping, R.drawable.icon_coupon, R.drawable.icon_fitting |
-| cls | タブに設定する画面 | FlyerFragment.class, InfomationFragment.class, ShoppingFragment.class, CouponFragment.class, FittingFragment.class |
+| tabTitle | タブに表示するタイトル | getString(R.string.flyer1), getString(R.string.info1), getString(R.string.shopping1), getString(R.string.coupon1), getString(R.string.fitting1),  getString(R.string.map1)|
+| tabIcon | タブに設定する画像 | R.drawable.icon_flyer, R.drawable.icon_infomation, R.drawable.icon_shopping, R.drawable.icon_coupon, R.drawable.icon_fitting, R.drawable.icon_map |
+| cls | タブに設定する画面 | FlyerFragment.class, InfomationFragment.class, ShoppingFragment.class, CouponFragment.class, FittingFragment.class, MapViewFragment.class |
 
 下記にbuild.gradle、AndroidManifest.xml、styles.xml、MainActivity、GcmBroadcastReceiver、GcmIntentServiceの記述例を記します。
 
@@ -297,6 +297,8 @@ Pieceで提供している機能と紐づくクラス名は下記の通りです。
 |ShoppingFragment.class | ショッピング |
 |CouponFragment.class | クーポン |
 |FittingFragment.class | フィッティング |
+|MapViewFragment.class | マップ |
+
 
 ### PieceSampleプロジェクト
 
