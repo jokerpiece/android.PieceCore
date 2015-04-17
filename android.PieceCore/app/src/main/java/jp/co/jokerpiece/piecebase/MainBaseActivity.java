@@ -211,6 +211,11 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
                     { put("tabTitle", getString(R.string.fitting1)); }
                     { put("tabIcon", R.drawable.icon_fitting); }
                     { put("cls", FittingFragment.class); }
+                },
+                new HashMap<String, Object>() {
+                    { put("tabTitle", getString(R.string.map1)); }
+                    { put("tabIcon", R.drawable.icon_map); }
+                    { put("cls", MapViewFragment.class); }
                 }
         ));
     }
@@ -229,6 +234,8 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
             { put(CouponUseFragment.class.getSimpleName(), R.string.coupon_use0); }
             { put(WebViewFragment.class.getSimpleName(), R.string.webview); }
             { put(FittingFragment.class.getSimpleName(), R.string.fitting0); }
+            { put(MapViewFragment.class.getSimpleName(), R.string.map0); }
+
         };
     }
 

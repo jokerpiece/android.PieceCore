@@ -2,6 +2,7 @@
 <resources>
 
     <string name="app_name">大人ゴコロ</string>
+    <string name="map_key">AIzaSyAxg51n6Chqa6KkE2xtuyV0Xn59zbLPPy8</string>
     <string name="empty"></string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -41,6 +42,8 @@
     <string name="coupon_tojiru">閉じる</string>
     <string name="fitting0">FITTING</string>
     <string name="fitting1">Fitting</string>
+    <string name="map0">MAP</string>
+    <string name="map1">Map</string>
 
     <!-- default theme -->
     <drawable name="actionbar_background">#FFFFFF</drawable>

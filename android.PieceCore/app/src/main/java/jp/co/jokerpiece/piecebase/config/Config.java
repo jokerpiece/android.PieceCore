@@ -77,6 +77,8 @@ public class Config {
 	public static final String SENDID_GET_CPN  = SERVER_URL + "coupon/index.php?Action=get";
     public static final String SENDID_GET_QUES  = SERVER_URL + "fitting/";
 	public static final String PUSHSERVER_URL = SERVER_URL + "device_token/";
+    public static final String SENDID_MAP_LIST = SERVER_URL + "shop/";
+
 	public static final String PASS_WORD = null;
 
 	public static final long scrollDelay = 4000;
