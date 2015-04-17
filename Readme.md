@@ -92,6 +92,8 @@ AndroidManifest.xml
             android:minSdkVersion="14"
             android:targetSdkVersion="21" />
 
+        <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+        <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
         <uses-permission android:name="android.permission.INTERNET"/>
         <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
@@ -120,6 +122,10 @@ AndroidManifest.xml
             android:theme="@style/AppTheme"
             android:label="@string/app_name"
             android:launchMode="singleTop">
+            
+             <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="@string/map_key"/>
             <activity
                 android:name=".MainActivity"
                 android:screenOrientation="portrait"
