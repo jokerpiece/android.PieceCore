@@ -57,7 +57,7 @@ public class FlyerFragment extends Fragment implements OnPageChangeListener{
 //	private int loderCount = 0;
 	LinearLayout llFlyerBase;
 
-	Button btnSendOtherGoods;
+	public Button btnSendOtherGoods;
 
 	FlyerData flyerData;
 	int flyer_ID = -1;
