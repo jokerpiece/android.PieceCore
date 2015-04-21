@@ -62,9 +62,9 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
     public String myTheme = "";
     public TabColorState tabColorState;
 
-    protected ArrayList<HashMap<String, Object>> settingData = new ArrayList<HashMap<String,Object>>();
+    public ArrayList<HashMap<String, Object>> settingData = new ArrayList<HashMap<String,Object>>();
     public static ArrayList<TabInfo> tabInfoList;
-    protected static HashMap<String, Integer> titleOfActionBar;
+    public static HashMap<String, Integer> titleOfActionBar;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
