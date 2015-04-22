@@ -44,6 +44,7 @@ public class CouponFragment extends Fragment implements OnPageChangeListener {
 	private Handler handler = new Handler();
 
 	private CouponImagePageAdapter pageFlagment;
+    public boolean isUse = false;
 
 //	private ArrayList<DownloadImageView> alImageViewList = new ArrayList<DownloadImageView>();
 	private CouponListData couponData = null;
@@ -69,7 +70,7 @@ public class CouponFragment extends Fragment implements OnPageChangeListener {
 
         pageFlagment = new CouponImagePageAdapter(getChildFragmentManager(),
         		new GetCouponData(activity, handler, viewPager, viewPagerIndicator, couponData),
-        		new ArrayList<String>(),false);
+        		new ArrayList<String>(),isUse);
 
         Bundle bundle = getArguments();
         if (bundle != null) {
