@@ -97,7 +97,7 @@ public class InfomationFragment extends Fragment implements OnPageChangeListener
 		}
 	}
 
-	private void getInfomation(){
+	public void getInfomation(){
         viewPager.setVisibility(View.INVISIBLE);
         getActivity().getLoaderManager().initLoader(Config.loaderCnt++, null, new LoaderCallbacks<NewsListData>() {
 			@Override
