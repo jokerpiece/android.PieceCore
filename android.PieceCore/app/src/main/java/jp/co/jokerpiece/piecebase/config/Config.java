@@ -1,11 +1,8 @@
 package jp.co.jokerpiece.piecebase.config;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -26,6 +23,12 @@ public class Config {
 //	public static final String APP_ID = "otonagokoro";
 //	public static final String APP_ID = "kodomogokoro";
     // --- staticイニシャライザで定数を設定(ここまで) --- //
+
+    /**
+     * ビーコン処理を有効にするかどうか
+     * (true:有効、false:無効)
+     */
+    public static final boolean IS_BEACON_ENABLED;
 
 	//新大人ゴコロ本番
 	public static final String SERVER_URL = "http://jokapi.jp/manager/html/xml/";
@@ -157,11 +160,19 @@ public class Config {
             } else {
                 PROJECT_ID = "367759414941";
             }
+
+            String beaconEnabled = map.get("beacon_isEnabled");
+            if (beaconEnabled != null && !beaconEnabled.equals("")) {
+                IS_BEACON_ENABLED = Boolean.valueOf(beaconEnabled).booleanValue();
+            } else {
+                IS_BEACON_ENABLED = false;
+            }
         } else {
             APP_ID = "pieceSample";
             APP_KEY = "jokerpiece_appKey";
             SPLASH_TIME = 2;
             PROJECT_ID = "367759414941";
+            IS_BEACON_ENABLED = false;
         }
     }
 

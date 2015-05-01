@@ -333,3 +333,11 @@ category#jp.co.jokerpiece.piecebase
 ADDED from AndroidManifest.xml:75:17
 	android:name
 		ADDED from AndroidManifest.xml:75:27
+activity#jp.co.jokerpiece.piecebase.RaitenActivity
+ADDED from AndroidManifest.xml:81:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:84:13
+	android:theme
+		ADDED from AndroidManifest.xml:83:13
+	android:name
+		ADDED from AndroidManifest.xml:82:13

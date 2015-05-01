@@ -77,6 +77,14 @@
         </receiver>
         <!-- プッシュ通知に必要なアクティビティ(ここまで) -->
 
+        <!-- ビーコン受信時に表示する透明アクティビティ(ここから) -->
+        <activity
+            android:name="jp.co.jokerpiece.piecebase.RaitenActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- ビーコン受信時に表示する透明アクティビティ(ここまで) -->
+
     </application>
 
 </manifest>

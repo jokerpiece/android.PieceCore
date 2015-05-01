@@ -7,11 +7,9 @@ import java.util.HashMap;
 import jp.co.jokerpiece.piecebase.config.Common;
 import jp.co.jokerpiece.piecebase.config.Config;
 import jp.co.jokerpiece.piecebase.data.NewsListData;
-import jp.co.jokerpiece.piecebase.util.App;
 import jp.co.jokerpiece.piecebase.util.AppUtil;
 import jp.co.jokerpiece.piecebase.util.BeaconUtil;
 
-import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
@@ -23,7 +21,6 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.StateListDrawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -108,6 +105,16 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
                 }
             });
         }
+
+        /**
+         * IS_BEACON_ENABLEDがtrueの場合はビーコン処理を実行する
+         */
+        if (Config.IS_BEACON_ENABLED) {
+            // ビーコン処理の初期化
+            BeaconUtil.init(this);
+            // ビーコン検索処理
+            BeaconUtil.startScan();
+        }
     }
 
     @Override
@@ -123,8 +130,6 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
 
         // プッシュ通知処理の初期化
         Common.setupGcm(context, (Activity) context, Config.loaderCnt++);
-//        // ビーコン処理の初期化
-//        BeaconUtil.init(this);
     }
 
     @Override
@@ -158,6 +163,7 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
                     // Bluetoothの自動ONが成功した場合呼ばれる
                     Log.d(TAG, "Bluetoothの自動ONに成功しました。");
                     BeaconUtil.isGetBluetoothAdapter = true;
+                    BeaconUtil.startScan();
                 }
                 break;
         }

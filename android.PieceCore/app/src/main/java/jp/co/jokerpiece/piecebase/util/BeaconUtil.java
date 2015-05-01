@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import jp.co.jokerpiece.piecebase.RaitenActivity;
 import jp.co.jokerpiece.piecebase.config.Common;
 
 /**
@@ -38,9 +39,11 @@ public class BeaconUtil {
     private static ProgressDialog pd;                   // プログレスダイアログ
     private static Thread searchingThd;                 // ビーコン検索スレッド
     private static ArrayList<BeaconData> beaconList;    // 検知したビーコンのリスト
+    private static BeaconData nearestBeacon;            // 検知したビーコンの中で一番近いもの
 
-    private static final int SCAN_SECONDS = 5;
-    public static final int REQUEST_ENABLE_BT = 0;
+    private static final int SCAN_SECONDS = 3;                // ビーコンスキャン時間
+    private static final boolean IS_DIALOG_SHOWN = false;   // ダイアログを表示するかどうか
+    public static final int REQUEST_ENABLE_BT = 0;           // onActivityResultのリクエストコード
 
     /**
      * BeaconUtilの初期化処理を行う。
@@ -58,12 +61,12 @@ public class BeaconUtil {
         BluetoothManager bluetoothManager =
 				(BluetoothManager) context.getSystemService(Context.BLUETOOTH_SERVICE);
 		bluetoothAdapter = bluetoothManager.getAdapter();
-        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            scanner = bluetoothAdapter.getBluetoothLeScanner();
-        }
 
 		if (bluetoothAdapter != null && bluetoothAdapter.isEnabled()) {
 			isGetBluetoothAdapter = true;
+            if (isGraterEqualThanLollipop()) {
+                scanner = bluetoothAdapter.getBluetoothLeScanner();
+            }
 		} else {
             // Bluetoothを自動ONにする
             Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
@@ -72,22 +75,29 @@ public class BeaconUtil {
     }
 
     // android5.0以上(ここから)
-    private static ScanSettings settings = new ScanSettings.Builder()
-            .setScanMode(ScanSettings.SCAN_MODE_LOW_POWER).build();
-    private static List<ScanFilter> filters = new ArrayList<>();
-    private static ScanCallback callback =
-            new ScanCallback() {
-                @Override
-                public void onScanResult(int callbackType, ScanResult result) {
-                    super.onScanResult(callbackType, result);
+    private static ScanSettings settings;
+    private static List<ScanFilter> filters;
+    private static ScanCallback callback;
+    static {
+        if (isGraterEqualThanLollipop()) {
+            settings = new ScanSettings.Builder()
+                    .setScanMode(ScanSettings.SCAN_MODE_LOW_POWER).build();
+            filters = new ArrayList<>();
+            callback =
+                    new ScanCallback() {
+                        @Override
+                        public void onScanResult(int callbackType, ScanResult result) {
+                            super.onScanResult(callbackType, result);
 
-                    // Get Scan Record byte array (Be warned, this can be null)
-                    if (result.getScanRecord() != null) {
-                        byte[] scanRecord = result.getScanRecord().getBytes();
-                        getBeaconData(scanRecord, result.getRssi());
-                    }
-                }
-            };
+                            // Get Scan Record byte array (Be warned, this can be null)
+                            if (result.getScanRecord() != null) {
+                                byte[] scanRecord = result.getScanRecord().getBytes();
+                                getBeaconData(scanRecord, result.getRssi());
+                            }
+                        }
+                    };
+        }
+    }
     // android5.0以上(ここまで)
 
     /**
@@ -113,9 +123,12 @@ public class BeaconUtil {
         pd = new ProgressDialog(context);
         pd.setTitle("チェックインを探しています...");
 //        pd.setCancelable(false);
-        pd.show();
+        if (IS_DIALOG_SHOWN) {
+            pd.show();
+        }
 
         beaconList = new ArrayList<>();
+        nearestBeacon = null;
 
         searchingThd = new Thread(new Runnable() {
             @Override
@@ -126,7 +139,7 @@ public class BeaconUtil {
                         throw new InterruptedException();
                     }
 
-                    if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    if (isGraterEqualThanLollipop()) {
                         scanner.startScan(filters, settings, callback);
                     } else {
                         bluetoothAdapter.startLeScan(leScanCallback);
@@ -136,7 +149,7 @@ public class BeaconUtil {
                     Thread.sleep(SCAN_SECONDS * 1000);
                     if (Thread.interrupted()) { throw new InterruptedException(); }
 
-                    if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    if (isGraterEqualThanLollipop()) {
                         scanner.stopScan(callback);
                     } else {
                         bluetoothAdapter.stopLeScan(leScanCallback);
@@ -147,16 +160,27 @@ public class BeaconUtil {
                     // ビーコンが見つかった場合
                     if (beaconList.size() != 0) {
                         pd.dismiss();
-                        getNearestBeaconData();
+                        // 見つかったビーコンの中で一番近いものを取得
+                        nearestBeacon = getNearestBeacon();
                     }
                     // ビーコンが見つからなかった場合
                     else {
                         Common.showToast(context, "ビーコンが見つかりませんでした。");
+                        throw new InterruptedException();
                     }
+
                     if (Thread.interrupted()) { throw new InterruptedException(); }
+
+                    // 来店View(透過Activity)を表示する
+                    if (nearestBeacon != null) {
+                        Intent intent = new Intent(context, RaitenActivity.class);
+                        // Activity以外からActivityを呼び出すためのフラグを設定
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        context.startActivity(intent);
+                    }
                 } catch(InterruptedException e) {
                     if (pd != null && pd.isShowing()) { pd.dismiss(); }
-                    if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    if (isGraterEqualThanLollipop()) {
                         scanner.stopScan(callback);
                     } else {
                         bluetoothAdapter.stopLeScan(leScanCallback);
@@ -164,7 +188,7 @@ public class BeaconUtil {
                     e.printStackTrace();
                 } catch(Exception e) {
                     if (pd != null && pd.isShowing()) { pd.dismiss(); }
-                    if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    if (isGraterEqualThanLollipop()) {
                         scanner.stopScan(callback);
                     } else {
                         bluetoothAdapter.stopLeScan(leScanCallback);
@@ -213,7 +237,7 @@ public class BeaconUtil {
      * ビーコンリストの中から一番近いビーコンデータを返す。
      * @return ビーコンデータ、ビーコンリストが空の場合はnullを返す。
      */
-    public static BeaconData getNearestBeaconData() {
+    public static BeaconData getNearestBeacon() {
         BeaconData ret = null;
         int max = -999;
         for (int i = 0; i < beaconList.size(); i++) {
@@ -299,8 +323,26 @@ public class BeaconUtil {
         return new String(hexArray).toUpperCase(new Locale(Locale.getDefault().toString()));
     }
 
+    /**
+     * androidバージョンが4.3以上かどうかを返す。
+     * (備考)4.3より小さい場合はビーコン処理を行えないため。
+     * @return true:4.3以上, false:4.3より小さい
+     */
     public static boolean isGraterThanJellyBeanMr1() {
         if (android.os.Build.VERSION.SDK_INT > android.os.Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * androidバージョンが5.0以上かどうかを返す。
+     * (備考)5.0以上ではstartLeScanメソッドが非推奨のため。
+     * @return true:5.0以上, false:5.0より小さい
+     */
+    public static boolean isGraterEqualThanLollipop() {
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             return true;
         } else {
             return false;

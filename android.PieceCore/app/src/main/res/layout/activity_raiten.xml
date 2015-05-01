@@ -1,0 +1,36 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+    <RelativeLayout
+        android:id="@+id/rl_getstamp"
+        android:layout_width="330dp"
+        android:layout_height="330dp"
+        android:background="@drawable/shape_maru_getstamp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv_thankyou"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="90dp"
+            android:gravity="center"
+            android:textColor="#fff"
+            android:textSize="18sp"
+            android:text="ご来店ありがとうございます!"/>
+
+        <TextView
+            android:id="@+id/tv_getstamp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:textColor="#fff"
+            android:textSize="18sp"
+            android:text="来店スタンプを\nGETしました!"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>
