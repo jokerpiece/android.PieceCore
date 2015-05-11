@@ -313,3 +313,10 @@ PieceSampeプロジェクトはPieceアプリの最小構成となっています。
 ランチャーアクティビティは、「jp.co.jokerpiece.piece.MainActivity」となります。
 AndroidStudioからPieceSampleプロジェクトを起動して下さい。
 ![Sync Project](./mdImage/syncProj.png)ボタンを押下でビルドを実行し、![Run Project](./mdImage/runProj.png)ボタンを押下でアプリを実行して下さい。
+
+### プッシュ通知のアイコン設定
+
+drawable-ldpi、drawable-mdpi、drawable-hdpi、drawable-xhdpiにstatus_icon.pngという名前の画像ファイルを設定して下さい。
+画像サイズは下記URLを参考にして下さい。
+
+* 4.1.4 ステータスバー アイコン<br>(<http://www.techdoctranslator.com/android/practices/ui_guidelines/icon_design/icon_design_status_bar>)
