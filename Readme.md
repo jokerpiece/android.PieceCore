@@ -23,6 +23,7 @@ settingFile.txt
     app_key=jokerpiece_appKey
     splash_time=3
     project_id=367759414941
+    beacon_isEnabled=false
 
 ### —˜—p•û–@
 
