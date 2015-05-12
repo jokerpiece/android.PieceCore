@@ -105,12 +105,12 @@ AndroidManifest.xml
         <uses-permission android:name="android.permission.WAKE_LOCK" />
         <uses-permission android:name="android.permission.GET_ACCOUNTS" />
         <uses-permission
-            android:name="jp.co.jokerpiece.piece.permission.RECEIVE" />
+            android:name="${applicationId}.permission.RECEIVE" />
         <permission
-            android:name="jp.co.jokerpiece.piece.permission.C2D_MESSAGE"
+            android:name="${applicationId}.permission.C2D_MESSAGE"
             android:protectionLevel="signature" />
         <uses-permission
-            android:name="jp.co.jokerpiece.piece.permission.C2D_MESSAGE" />
+            android:name="${applicationId}.permission.C2D_MESSAGE" />
         <uses-permission android:name="android.permission.WAKE_LOCK" />
         <!-- プッシュ通知の設定(ここまで) -->
 
@@ -147,7 +147,7 @@ AndroidManifest.xml
                 android:permission="com.google.android.c2dm.permission.SEND" >
                 <intent-filter>
                     <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-                    <category android:name="jp.co.jokerpiece.piece" />
+                    <category android:name="${applicationId}" />
                 </intent-filter>
             </receiver>
             <!-- プッシュ通知に必要なアクティビティ(ここまで) -->

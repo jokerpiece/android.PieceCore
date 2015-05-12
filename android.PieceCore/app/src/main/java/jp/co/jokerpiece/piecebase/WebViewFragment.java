@@ -16,18 +16,18 @@ import android.widget.ImageView;
 
 @SuppressLint("SetJavaScriptEnabled")
 public class WebViewFragment extends Fragment implements View.OnClickListener {
-	private WebView webView;
+    private WebView webView;
     private ImageView ivBack;
     private ImageView ivNext;
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		View rootView = inflater.inflate(R.layout.fragment_webview, container, false);
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.fragment_webview, container, false);
 
         findViews(rootView);
 
-		webView = (WebView) rootView.findViewById(R.id.webview);
+        webView = (WebView) rootView.findViewById(R.id.webview);
         webView.setWebViewClient(new WebViewClient(){
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
@@ -36,7 +36,7 @@ public class WebViewFragment extends Fragment implements View.OnClickListener {
 
             @Override
             public void onPageFinished(WebView view, String url) {
-            	super.onPageFinished(view, url);
+                super.onPageFinished(view, url);
 //            	ActionBar ab = getActionBar();
 //            	String title = webView.getTitle();
 //            	ab.setTitle(title);
@@ -49,7 +49,7 @@ public class WebViewFragment extends Fragment implements View.OnClickListener {
         if(bundle != null){
             String strUrl = bundle.getString("send_url");
             if (strUrl != null && !strUrl.equals("")) {
-            	webView.loadUrl(strUrl);
+                webView.loadUrl(strUrl);
             }
         }
 
@@ -79,7 +79,7 @@ public class WebViewFragment extends Fragment implements View.OnClickListener {
 //        rootView.setFocusableInTouchMode(true);
 
         return rootView;
-	}
+    }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
@@ -88,24 +88,24 @@ public class WebViewFragment extends Fragment implements View.OnClickListener {
         setHasOptionsMenu(true);
     }
 
-	@Override
-	public void onResume() {
-		super.onResume();
-		AppUtil.setTitleOfActionBar(
-				getActivity().getActionBar(),
-				MainBaseActivity.titleOfActionBar.get(WebViewFragment.class.getSimpleName()));
-		getActivity().invalidateOptionsMenu();
-	}
+    @Override
+    public void onResume() {
+        super.onResume();
+        AppUtil.setTitleOfActionBar(
+                getActivity().getActionBar(),
+                MainBaseActivity.titleOfActionBar.get(WebViewFragment.class.getSimpleName()));
+        getActivity().invalidateOptionsMenu();
+    }
 
-	@Override
-	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-		menu.clear();
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        menu.clear();
 //		MenuItem haveCoupon = menu.add(0 , Menu.FIRST, Menu.NONE ,"閉じる");
 //		haveCoupon.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
 //		haveCoupon.setIcon(android.R.drawable.ic_menu_close_clear_cancel);
 ////        inflater.inflate(R.menu.menu_coupon, menu);
 //        super.onCreateOptionsMenu(menu, inflater);
-	}
+    }
 
 //	@Override
 //	public boolean onOptionsItemSelected(MenuItem item) {
