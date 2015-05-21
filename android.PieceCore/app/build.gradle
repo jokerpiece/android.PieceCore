@@ -30,6 +30,7 @@ android {
 dependencies {
     compile 'com.android.support:support-v4:21.0.3'
     compile 'com.google.android.gms:play-services:+'
+    compile files('libs/zbar.jar')
 }
 
 apply plugin: 'maven'
@@ -40,7 +41,7 @@ uploadArchives {
             repository url: "file://${projectDir}/repository"
             pom.groupId = 'jp.co.jokerpiece.android.piececore'
             pom.artifactId = 'android.piececore'
-            pom.version = '0.0.25'
+            pom.version = '0.0.26'
         }
     }
 }

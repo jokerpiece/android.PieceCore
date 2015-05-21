@@ -56,4 +56,17 @@ public class AppUtil {
         imageView.setImageBitmap(bitmap);
     }
 
+    /**
+     * dpサイズからピクセルを返す。
+     * @param context コンテキスト
+     * @param dp dpサイズ
+     * @return ピクセル
+     */
+    public static int getPixelFromDp(Context context, int dp) {
+        int pixel;
+        float scale = context.getResources().getDisplayMetrics().density;
+        pixel = (int) (dp * scale + 0.5f);
+        return pixel;
+    }
+
 }

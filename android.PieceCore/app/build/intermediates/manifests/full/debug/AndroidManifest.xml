@@ -33,8 +33,16 @@
     <!-- bluetoothの設定(ここから) -->
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
-
     <!-- bluetoothの設定(ここまで) -->
+
+
+    <!-- カメラの設定(ここから) -->
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <!-- カメラの設定(ここまで) -->
     <!-- ライブラリのアプリケーションを使用するため -->
     <!-- "jp.co.jokerpiece.piecebase.util.App"を設定する必要があります -->
     <application
@@ -42,7 +50,6 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:largeHeap="true"
         android:launchMode="singleTop"
         android:theme="@style/AppTheme" >
         <meta-data
