@@ -1,21 +1,21 @@
-### PieceƒvƒƒWƒFƒNƒg‚Ìì¬
-AndroidStudio‚ÅPieceƒvƒƒWƒFƒNƒg(ˆÈ‰ºA–{ƒvƒƒWƒFƒNƒg)‚ğì¬‚µ‚Ä‰º‚³‚¢B
-ƒ‰ƒ“ƒ`ƒƒ[ƒAƒNƒeƒBƒrƒeƒB‚ÍAujp.co.jokerpiece.piece.MainActivityv‚Æ‚È‚è‚Ü‚·B
-ƒ‰ƒCƒuƒ‰ƒŠ‚Æd•¡‚·‚éƒŠƒ\[ƒX‚ÍA–{ƒvƒƒWƒFƒNƒg‚ª—Dæ‚³‚ê‚Ü‚·B
-android.PieceCoreƒ‰ƒCƒuƒ‰ƒŠ‚Éudrawable/ic_launcher.pngv‚Í—pˆÓ‚µ‚Ä‚¢‚é‚Ì‚Å–{ƒvƒƒWƒFƒNƒg‚Ìic_launcherƒtƒ@ƒCƒ‹‚Í‚·‚×‚Äíœ‚µ‚Ä‰º‚³‚¢B
+### Pieceãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã®ä½œæˆ
+AndroidStudioã§Pieceãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆ(ä»¥ä¸‹ã€æœ¬ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆ)ã‚’ä½œæˆã—ã¦ä¸‹ã•ã„ã€‚
+ãƒ©ãƒ³ãƒãƒ£ãƒ¼ã‚¢ã‚¯ãƒ†ã‚£ãƒ“ãƒ†ã‚£ã¯ã€ã€Œjp.co.jokerpiece.piece.MainActivityã€ã¨ãªã‚Šã¾ã™ã€‚
+ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã¨é‡è¤‡ã™ã‚‹ãƒªã‚½ãƒ¼ã‚¹ã¯ã€æœ¬ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆãŒå„ªå…ˆã•ã‚Œã¾ã™ã€‚
+android.PieceCoreãƒ©ã‚¤ãƒ–ãƒ©ãƒªã«ã€Œdrawable/ic_launcher.pngã€ã¯ç”¨æ„ã—ã¦ã„ã‚‹ã®ã§æœ¬ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã®ic_launcherãƒ•ã‚¡ã‚¤ãƒ«ã¯ã™ã¹ã¦å‰Šé™¤ã—ã¦ä¸‹ã•ã„ã€‚
 
-#### google-play-services_libƒ‰ƒCƒuƒ‰ƒŠ‚ÌƒCƒ“ƒ|[ƒg
-"Piece/app/build.gradle"“à‚Ìdependencies‚Åucompile 'com.google.android.gms:play-services:+'v‚ğÀs‚·‚é‚±‚Æ‚Åƒ‰ƒCƒuƒ‰ƒŠ‚ğ“Ç‚İ‚ñ‚Å‚¢‚Ü‚·B
+#### google-play-services_libãƒ©ã‚¤ãƒ–ãƒ©ãƒªã®ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
+"Piece/app/build.gradle"å†…ã®dependenciesã§ã€Œcompile 'com.google.android.gms:play-services:+'ã€ã‚’å®Ÿè¡Œã™ã‚‹ã“ã¨ã§ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã‚’èª­ã¿è¾¼ã‚“ã§ã„ã¾ã™ã€‚
 
-#### android.PieceCoreƒ‰ƒCƒuƒ‰ƒŠ‚ÌƒCƒ“ƒ|[ƒg
-"Piece/app/build.gradle"“à‚Ìmaven‚Åurl‚ğw’è‚µAdependencies‚Åucompile 'jp.co.jokerpiece.android.piececore:android.piececore:0.0.+@aar'v‚ğÀs‚·‚é‚±‚Æ‚Åƒ‰ƒCƒuƒ‰ƒŠ‚ğ“Ç‚İ‚ñ‚Å‚¢‚Ü‚·B
+#### android.PieceCoreãƒ©ã‚¤ãƒ–ãƒ©ãƒªã®ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
+"Piece/app/build.gradle"å†…ã®mavenã§urlã‚’æŒ‡å®šã—ã€dependenciesã§ã€Œcompile 'jp.co.jokerpiece.android.piececore:android.piececore:0.0.+@aar'ã€ã‚’å®Ÿè¡Œã™ã‚‹ã“ã¨ã§ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã‚’èª­ã¿è¾¼ã‚“ã§ã„ã¾ã™ã€‚
 
-![Sync Project](./mdImage/syncProj.png)ƒ{ƒ^ƒ“‚ğ‰Ÿ‰º‚Åƒrƒ‹ƒh‚ğÀs‚µA![Run Project](./mdImage/runProj.png)ƒ{ƒ^ƒ“‚ğ‰Ÿ‰º‚ÅƒAƒvƒŠ‚ğÀs‚µ‚Ä‰º‚³‚¢B
+![Sync Project](./mdImage/syncProj.png)ãƒœã‚¿ãƒ³ã‚’æŠ¼ä¸‹ã§ãƒ“ãƒ«ãƒ‰ã‚’å®Ÿè¡Œã—ã€![Run Project](./mdImage/runProj.png)ãƒœã‚¿ãƒ³ã‚’æŠ¼ä¸‹ã§ã‚¢ãƒ—ãƒªã‚’å®Ÿè¡Œã—ã¦ä¸‹ã•ã„ã€‚
 
-### app_id‚Ìİ’è
+### app_idã®è¨­å®š
 
-"Piece/app/src/main/assets"ƒtƒHƒ‹ƒ_‚ÌsettingFile.txt‚É–{ƒAƒvƒŠİ’è“à—e‚ğ‹Lq‚µ‚Ä‰º‚³‚¢B
-‰º‹L‚ÉsettingFile.txt‚Ì‹Lq—á‚ğ‹L‚µ‚Ü‚·B
+"Piece/app/src/main/assets"ãƒ•ã‚©ãƒ«ãƒ€ã®settingFile.txtã«æœ¬ã‚¢ãƒ—ãƒªè¨­å®šå†…å®¹ã‚’è¨˜è¿°ã—ã¦ä¸‹ã•ã„ã€‚
+ä¸‹è¨˜ã«settingFile.txtã®è¨˜è¿°ä¾‹ã‚’è¨˜ã—ã¾ã™ã€‚
 
 settingFile.txt
 
@@ -25,24 +25,24 @@ settingFile.txt
     project_id=367759414941
     beacon_isEnabled=false
 
-### —˜—p•û–@
+### åˆ©ç”¨æ–¹æ³•
 
-MainActivity‚ÍAƒ‰ƒCƒuƒ‰ƒŠ‚É‚ ‚éujp.co.jokerpiece.piecebase.MainBaseActivityv‚ğextends‚·‚é•K—v‚ª‚ ‚è‚Ü‚·B
-’Ç‰Á‚·‚éƒ^ƒu‚ÍAsetConfig()ƒƒ\ƒbƒh‚ğOverride‚·‚é‚±‚Æ‚ÅAÀ‘•‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·B
+MainActivityã¯ã€ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã«ã‚ã‚‹ã€Œjp.co.jokerpiece.piecebase.MainBaseActivityã€ã‚’extendsã™ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚
+è¿½åŠ ã™ã‚‹ã‚¿ãƒ–ã¯ã€setConfig()ãƒ¡ã‚½ãƒƒãƒ‰ã‚’Overrideã™ã‚‹ã“ã¨ã§ã€å®Ÿè£…ã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚
 
-setConfig()ƒƒ\ƒbƒh‚Å‚ÍAArrayList<HashMap<String, Object>>‚ğ–ß‚è’l‚Æ‚µ‚Ä•Ô‚·•K—v‚ª‚ ‚è‚Ü‚·B
-ƒŠƒXƒg‚Ì”‚ªƒ^ƒu‚Ì”‚Æ‚È‚èAƒ^ƒu‚Ì’†‚Éİ’è‚·‚éİ’è“à—e‚ÍHashMap‚Åİ’è‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·B
-ˆÈ‰º‚ÉHashMap‚Åİ’è‚Å‚«‚éƒL[‚ÆƒoƒŠƒ…[‚ğ¦‚µ‚Ü‚·B
+setConfig()ãƒ¡ã‚½ãƒƒãƒ‰ã§ã¯ã€ArrayList<HashMap<String, Object>>ã‚’æˆ»ã‚Šå€¤ã¨ã—ã¦è¿”ã™å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚
+ãƒªã‚¹ãƒˆã®æ•°ãŒã‚¿ãƒ–ã®æ•°ã¨ãªã‚Šã€ã‚¿ãƒ–ã®ä¸­ã«è¨­å®šã™ã‚‹è¨­å®šå†…å®¹ã¯HashMapã§è¨­å®šã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚
+ä»¥ä¸‹ã«HashMapã§è¨­å®šã§ãã‚‹ã‚­ãƒ¼ã¨ãƒãƒªãƒ¥ãƒ¼ã‚’ç¤ºã—ã¾ã™ã€‚
 
 HashMap<String, Object>
 
-| ƒL[ | à–¾ | ƒoƒŠƒ…[ |
+| ã‚­ãƒ¼ | èª¬æ˜ | ãƒãƒªãƒ¥ãƒ¼ |
 | --- | --- | --- |
-| tabTitle | ƒ^ƒu‚É•\¦‚·‚éƒ^ƒCƒgƒ‹ | getString(R.string.flyer1), getString(R.string.info1), getString(R.string.shopping1), getString(R.string.coupon1), getString(R.string.fitting1),  getString(R.string.map1)|
-| tabIcon | ƒ^ƒu‚Éİ’è‚·‚é‰æ‘œ | R.drawable.icon_flyer, R.drawable.icon_infomation, R.drawable.icon_shopping, R.drawable.icon_coupon, R.drawable.icon_fitting, R.drawable.icon_map |
-| cls | ƒ^ƒu‚Éİ’è‚·‚é‰æ–Ê | FlyerFragment.class, InfomationFragment.class, ShoppingFragment.class, CouponFragment.class, FittingFragment.class, MapViewFragment.class |
+| tabTitle | ã‚¿ãƒ–ã«è¡¨ç¤ºã™ã‚‹ã‚¿ã‚¤ãƒˆãƒ« | getString(R.string.flyer1), getString(R.string.info1), getString(R.string.shopping1), getString(R.string.coupon1), getString(R.string.fitting1), getString(R.string.map1), getString(R.string.barcode1) |
+| tabIcon | ã‚¿ãƒ–ã«è¨­å®šã™ã‚‹ç”»åƒ | R.drawable.icon_flyer, R.drawable.icon_infomation, R.drawable.icon_shopping, R.drawable.icon_coupon, R.drawable.icon_fitting, R.drawable.icon_map, R.drawable.icon_map |
+| cls | ã‚¿ãƒ–ã«è¨­å®šã™ã‚‹ç”»é¢ | FlyerFragment.class, InfomationFragment.class, ShoppingFragment.class, CouponFragment.class, FittingFragment.class, MapViewFragment.class, BarcodeFragment.class |
 
-‰º‹L‚Ébuild.gradleAAndroidManifest.xmlAstyles.xmlAMainActivityAGcmBroadcastReceiverAGcmIntentService‚Ì‹Lq—á‚ğ‹L‚µ‚Ü‚·B
+ä¸‹è¨˜ã«build.gradleã€AndroidManifest.xmlã€styles.xmlã€MainActivityã€GcmBroadcastReceiverã€GcmIntentServiceã®è¨˜è¿°ä¾‹ã‚’è¨˜ã—ã¾ã™ã€‚
 
 build.gradle
 
@@ -98,7 +98,7 @@ AndroidManifest.xml
         <uses-permission android:name="android.permission.INTERNET"/>
         <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
-        <!-- ƒvƒbƒVƒ…’Ê’m‚Ìİ’è(‚±‚±‚©‚ç) -->
+        <!-- ãƒ—ãƒƒã‚·ãƒ¥é€šçŸ¥ã®è¨­å®š(ã“ã“ã‹ã‚‰) -->
         <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
         <uses-permission android:name="android.permission.INTERNET"/>
         <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
@@ -112,10 +112,21 @@ AndroidManifest.xml
         <uses-permission
             android:name="${applicationId}.permission.C2D_MESSAGE" />
         <uses-permission android:name="android.permission.WAKE_LOCK" />
-        <!-- ƒvƒbƒVƒ…’Ê’m‚Ìİ’è(‚±‚±‚Ü‚Å) -->
+        <!-- ãƒ—ãƒƒã‚·ãƒ¥é€šçŸ¥ã®è¨­å®š(ã“ã“ã¾ã§) -->
 
-        <!-- ƒ‰ƒCƒuƒ‰ƒŠ‚ÌƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚ğg—p‚·‚é‚½‚ß -->
-        <!-- "jp.co.jokerpiece.piecebase.util.App"‚ğİ’è‚·‚é•K—v‚ª‚ ‚è‚Ü‚· -->
+        <!-- bluetoothã®è¨­å®š(ã“ã“ã‹ã‚‰) -->
+        <uses-permission android:name="android.permission.BLUETOOTH"/>
+        <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+        <!-- bluetoothã®è¨­å®š(ã“ã“ã¾ã§) -->
+
+        <!-- ã‚«ãƒ¡ãƒ©ã®è¨­å®š(ã“ã“ã‹ã‚‰) -->
+        <uses-permission android:name="android.permission.CAMERA" />
+        <uses-feature android:name="android.hardware.camera" />
+        <uses-feature android:name="android.hardware.camera.autofocus" />
+        <!-- ã‚«ãƒ¡ãƒ©ã®è¨­å®š(ã“ã“ã¾ã§) -->
+
+        <!-- ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã®ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã‚’ä½¿ç”¨ã™ã‚‹ãŸã‚ -->
+        <!-- "jp.co.jokerpiece.piecebase.util.App"ã‚’è¨­å®šã™ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ -->
         <application
             android:allowBackup="true"
             android:icon="@drawable/ic_launcher"
@@ -137,7 +148,7 @@ AndroidManifest.xml
                 </intent-filter>
             </activity>
 
-            <!-- ƒvƒbƒVƒ…’Ê’m‚É•K—v‚ÈƒAƒNƒeƒBƒrƒeƒB(‚±‚±‚©‚ç) -->
+            <!-- ãƒ—ãƒƒã‚·ãƒ¥é€šçŸ¥ã«å¿…è¦ãªã‚¢ã‚¯ãƒ†ã‚£ãƒ“ãƒ†ã‚£(ã“ã“ã‹ã‚‰) -->
             <meta-data
                 android:name="com.google.android.gms.version"
                 android:value="@integer/google_play_services_version"/>
@@ -150,7 +161,7 @@ AndroidManifest.xml
                     <category android:name="${applicationId}" />
                 </intent-filter>
             </receiver>
-            <!-- ƒvƒbƒVƒ…’Ê’m‚É•K—v‚ÈƒAƒNƒeƒBƒrƒeƒB(‚±‚±‚Ü‚Å) -->
+            <!-- ãƒ—ãƒƒã‚·ãƒ¥é€šçŸ¥ã«å¿…è¦ãªã‚¢ã‚¯ãƒ†ã‚£ãƒ“ãƒ†ã‚£(ã“ã“ã¾ã§) -->
 
         </application>
 
@@ -218,6 +229,16 @@ MainActivity.java
                             { put("tabTitle", getString(R.string.fitting1)); }
                             { put("tabIcon", R.drawable.icon_fitting); }
                             { put("cls", FittingFragment.class); }
+                    },
+                    new HashMap<String, Object>() {
+                            { put("tabTitle", getString(R.string.map1)); }
+                            { put("tabIcon", R.drawable.icon_map); }
+                            { put("cls", MapViewFragment.class); }
+                    },
+                    new HashMap<String, Object>() {
+                            { put("tabTitle", getString(R.string.barcode1)); }
+                            { put("tabIcon", R.drawable.icon_map); }
+                            { put("cls", BarcodeFragment.class); }
                     }
             ));
         }
@@ -293,31 +314,36 @@ GcmIntentService.java
         }
     }
 
-### ‹@”\ƒNƒ‰ƒX
+### æ©Ÿèƒ½ã‚¯ãƒ©ã‚¹
 
-Piece‚Å’ñ‹Ÿ‚µ‚Ä‚¢‚é‹@”\‚Æ•R‚Ã‚­ƒNƒ‰ƒX–¼‚Í‰º‹L‚Ì’Ê‚è‚Å‚·B
+Pieceã§æä¾›ã—ã¦ã„ã‚‹æ©Ÿèƒ½ã¨ç´ã¥ãã‚¯ãƒ©ã‚¹åã¯ä¸‹è¨˜ã®é€šã‚Šã§ã™ã€‚
 
-|–¼‘O | à–¾ |
+|åå‰ | èª¬æ˜ |
 | --- | --- |
-|FlyerFragment.class | ƒtƒ‰ƒCƒ„[ |
-|InfomationFragment.class | ‚¨’m‚ç‚¹ˆê—— |
-|ShoppingFragment.class | ƒVƒ‡ƒbƒsƒ“ƒO |
-|CouponFragment.class | ƒN[ƒ|ƒ“ |
-|FittingFragment.class | ƒtƒBƒbƒeƒBƒ“ƒO |
-|MapViewFragment.class | ƒ}ƒbƒv |
+|FlyerFragment.class | ãƒ•ãƒ©ã‚¤ãƒ¤ãƒ¼ |
+|InfomationFragment.class | ãŠçŸ¥ã‚‰ã›ä¸€è¦§ |
+|ShoppingFragment.class | ã‚·ãƒ§ãƒƒãƒ”ãƒ³ã‚° |
+|CouponFragment.class | ã‚¯ãƒ¼ãƒãƒ³ |
+|FittingFragment.class | ãƒ•ã‚£ãƒƒãƒ†ã‚£ãƒ³ã‚° |
+|MapViewFragment.class | ãƒãƒƒãƒ— |
+|BarcodeFragment.class | ãƒãƒ¼ã‚³ãƒ¼ãƒ‰ |
 
+### PieceSampleãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆ
 
-### PieceSampleƒvƒƒWƒFƒNƒg
+github(<https://github.com/jokerpiece/android.PieceCore>)ã‹ã‚‰PieceSampleãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã‚’ã‚³ãƒ”ãƒ¼ã—ã¦ä¸‹ã•ã„ã€‚
+PieceSampeãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã¯Pieceã‚¢ãƒ—ãƒªã®æœ€å°æ§‹æˆã¨ãªã£ã¦ã„ã¾ã™ã€‚
+ãƒ©ãƒ³ãƒãƒ£ãƒ¼ã‚¢ã‚¯ãƒ†ã‚£ãƒ“ãƒ†ã‚£ã¯ã€ã€Œjp.co.jokerpiece.piece.MainActivityã€ã¨ãªã‚Šã¾ã™ã€‚
+AndroidStudioã‹ã‚‰PieceSampleãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã‚’èµ·å‹•ã—ã¦ä¸‹ã•ã„ã€‚
+![Sync Project](./mdImage/syncProj.png)ãƒœã‚¿ãƒ³ã‚’æŠ¼ä¸‹ã§ãƒ“ãƒ«ãƒ‰ã‚’å®Ÿè¡Œã—ã€![Run Project](./mdImage/runProj.png)ãƒœã‚¿ãƒ³ã‚’æŠ¼ä¸‹ã§ã‚¢ãƒ—ãƒªã‚’å®Ÿè¡Œã—ã¦ä¸‹ã•ã„ã€‚
 
-github(<https://github.com/jokerpiece/android.PieceCore>)‚©‚çPieceSampleƒvƒƒWƒFƒNƒg‚ğƒRƒs[‚µ‚Ä‰º‚³‚¢B
-PieceSampeƒvƒƒWƒFƒNƒg‚ÍPieceƒAƒvƒŠ‚ÌÅ¬\¬‚Æ‚È‚Á‚Ä‚¢‚Ü‚·B
-ƒ‰ƒ“ƒ`ƒƒ[ƒAƒNƒeƒBƒrƒeƒB‚ÍAujp.co.jokerpiece.piece.MainActivityv‚Æ‚È‚è‚Ü‚·B
-AndroidStudio‚©‚çPieceSampleƒvƒƒWƒFƒNƒg‚ğ‹N“®‚µ‚Ä‰º‚³‚¢B
-![Sync Project](./mdImage/syncProj.png)ƒ{ƒ^ƒ“‚ğ‰Ÿ‰º‚Åƒrƒ‹ƒh‚ğÀs‚µA![Run Project](./mdImage/runProj.png)ƒ{ƒ^ƒ“‚ğ‰Ÿ‰º‚ÅƒAƒvƒŠ‚ğÀs‚µ‚Ä‰º‚³‚¢B
+### ãƒ—ãƒƒã‚·ãƒ¥é€šçŸ¥ã®ã‚¢ã‚¤ã‚³ãƒ³è¨­å®š
 
-### ƒvƒbƒVƒ…’Ê’m‚ÌƒAƒCƒRƒ“İ’è
+drawable-ldpiã€drawable-mdpiã€drawable-hdpiã€drawable-xhdpiã«status_icon.pngã¨ã„ã†åå‰ã®ç”»åƒãƒ•ã‚¡ã‚¤ãƒ«ã‚’è¨­å®šã—ã¦ä¸‹ã•ã„ã€‚
+ç”»åƒã‚µã‚¤ã‚ºã¯ä¸‹è¨˜URLã‚’å‚è€ƒã«ã—ã¦ä¸‹ã•ã„ã€‚
 
-drawable-ldpiAdrawable-mdpiAdrawable-hdpiAdrawable-xhdpi‚Éstatus_icon.png‚Æ‚¢‚¤–¼‘O‚Ì‰æ‘œƒtƒ@ƒCƒ‹‚ğİ’è‚µ‚Ä‰º‚³‚¢B
-‰æ‘œƒTƒCƒY‚Í‰º‹LURL‚ğQl‚É‚µ‚Ä‰º‚³‚¢B
+* 4.1.4 ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ãƒãƒ¼ ã‚¢ã‚¤ã‚³ãƒ³<br>(<http://www.techdoctranslator.com/android/practices/ui_guidelines/icon_design/icon_design_status_bar>)
 
-* 4.1.4 ƒXƒe[ƒ^ƒXƒo[ ƒAƒCƒRƒ“<br>(<http://www.techdoctranslator.com/android/practices/ui_guidelines/icon_design/icon_design_status_bar>)
+Android5.0ã§ã‚¢ã‚¤ã‚³ãƒ³ã®ã‚«ãƒ©ãƒ¼ãƒãƒ£ãƒãƒ«ãŒç„¡è¦–ã•ã‚Œã‚‹ã‚ˆã†ã«ãªã£ãŸã®ã§ã€é€šçŸ¥ã‚¢ã‚¤ã‚³ãƒ³ã¯ç™½ã®ã‚·ãƒ«ã‚¨ãƒƒãƒˆã«ã—ã¦ä¸‹ã•ã„ã€‚
+è©³ç´°ã«ã¤ã„ã¦ã¯ä¸‹è¨˜URLã‚’å‚è€ƒã«ã—ã¦ä¸‹ã•ã„ã€‚
+
+* Androidã®é€šçŸ¥ã‚¢ã‚¤ã‚³ãƒ³<br>(<http://juggler.jp/tateisu/android/notification_looks/>)
