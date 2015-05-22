@@ -112,30 +112,43 @@ public class CouponImageFragment extends Fragment implements OnClickListener, Do
 			imageView.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v) {
-					CouponData currentCouponData = couponData.data_list.get(viewPager.getCurrentItem());
-					//クリップボードにアイテムコードを格納
-					ClipData.Item item = new ClipData.Item(currentCouponData.coupon_code);
-					String[] mimeType = new String[1];
-					mimeType[0] = ClipDescription.MIMETYPE_TEXT_URILIST;
-					ClipData cd = new ClipData(new ClipDescription("text_data", mimeType), item);
-					ClipboardManager cm = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
-					cm.setPrimaryClip(cd);
-			        Toast.makeText(context,getString(R.string.coupon_copy_clipboard), Toast.LENGTH_LONG).show();
+                    CouponData currentCouponData = couponData.data_list.get(viewPager.getCurrentItem());
+                    //クリップボードにアイテムコードを格納
+                    ClipData.Item item = new ClipData.Item(currentCouponData.coupon_code);
+                    String[] mimeType = new String[1];
+                    mimeType[0] = ClipDescription.MIMETYPE_TEXT_URILIST;
+                    ClipData cd = new ClipData(new ClipDescription("text_data", mimeType), item);
+                    ClipboardManager cm = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
+                    cm.setPrimaryClip(cd);
+                    Toast.makeText(context, getString(R.string.coupon_copy_clipboard), Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, currentCouponData.coupon_url, Toast.LENGTH_LONG).show();
 
-					if(currentCouponData.item_url != null){
-						//item_urlが存在する場合は該当ページに遷移
-						FragmentManager fm = getParentFragment().getFragmentManager();
-						FragmentTransaction ft = fm.beginTransaction();
-						ft.addToBackStack(null);
-						WebViewFragment fragment = new WebViewFragment();
-						Bundle bundle = new Bundle();
-						bundle.putString("send_url", currentCouponData.item_url);
-						fragment.setArguments(bundle);
-						ft.replace(R.id.fragment, fragment);
-						ft.commit();
-					}else if(currentCouponData.category_id != null){
-						// category_idが存在する場合は該当の商品一覧に遷移
-						MainBaseActivity.tabHost.setCurrentTab(AppUtil.getPosition("Shopping"));
+
+                    if ( currentCouponData.coupon_url != null) {
+                        FragmentManager fm = getParentFragment().getFragmentManager();
+                        FragmentTransaction ft = fm.beginTransaction();
+                        ft.addToBackStack(null);
+                        WebViewFragment fragment = new WebViewFragment();
+                        Bundle bundle = new Bundle();
+                        bundle.putString("send_url", currentCouponData.coupon_url);
+                        fragment.setArguments(bundle);
+                        ft.replace(R.id.fragment, fragment);
+                        ft.commit();
+                    } else {
+                        if (currentCouponData.item_url != null) {
+                            //item_urlが存在する場合は該当ページに遷移
+                            FragmentManager fm = getParentFragment().getFragmentManager();
+                            FragmentTransaction ft = fm.beginTransaction();
+                            ft.addToBackStack(null);
+                            WebViewFragment fragment = new WebViewFragment();
+                            Bundle bundle = new Bundle();
+                            bundle.putString("send_url", currentCouponData.item_url);
+                            fragment.setArguments(bundle);
+                            ft.replace(R.id.fragment, fragment);
+                            ft.commit();
+                        } else if (currentCouponData.category_id != null) {
+                            // category_idが存在する場合は該当の商品一覧に遷移
+                            MainBaseActivity.tabHost.setCurrentTab(AppUtil.getPosition("Shopping"));
 //						FragmentManager fm = getParentFragment().getFragmentManager();
 //						FragmentTransaction ft = fm.beginTransaction();
 //						ft.addToBackStack(null);
@@ -146,9 +159,9 @@ public class CouponImageFragment extends Fragment implements OnClickListener, Do
 //						fragment.setArguments(bundle);
 //						ft.replace(R.id.fragment, fragment);
 //						ft.commit();
-					}else{
-						//どちらもない場合はカテゴリ一覧に遷移
-						MainBaseActivity.tabHost.setCurrentTab(AppUtil.getPosition("Shopping"));
+                        } else {
+                            //どちらもない場合はカテゴリ一覧に遷移
+                            MainBaseActivity.tabHost.setCurrentTab(AppUtil.getPosition("Shopping"));
 //						FragmentManager fm = getParentFragment().getFragmentManager();
 //						FragmentTransaction ft = fm.beginTransaction();
 //						ft.addToBackStack(null);
@@ -158,8 +171,9 @@ public class CouponImageFragment extends Fragment implements OnClickListener, Do
 //						fragment.setArguments(bundle);
 //						ft.replace(R.id.fragment, fragment);
 //						ft.commit();
-					}
-				}
+                        }
+                    }
+                }
 			});
 		}
 		return view;

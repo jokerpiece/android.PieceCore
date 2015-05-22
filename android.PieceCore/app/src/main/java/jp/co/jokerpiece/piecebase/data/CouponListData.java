@@ -18,5 +18,6 @@ public class CouponListData {
 		public String coupon_id;
 		public String item_url;
 		public String category_id;
+        public String coupon_url;
 	}
 }

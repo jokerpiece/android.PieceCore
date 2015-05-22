@@ -84,6 +84,7 @@ public class CouponListAPI extends AsyncTaskLoader<CouponListData> implements Ht
 			    data.coupon_title = jsonObject.getString("title");
 			    data.coupon_text = jsonObject.getString("text");
 			    data.coupon_id = jsonObject.getString("coupon_id");
+                data.coupon_url = jsonObject.getString("coupon_url");
 
 			    couponData.data_list.add(data);
 			}

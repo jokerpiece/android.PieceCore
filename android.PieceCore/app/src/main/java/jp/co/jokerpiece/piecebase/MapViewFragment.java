@@ -28,6 +28,7 @@ import android.widget.ListView;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
@@ -60,9 +61,11 @@ public class MapViewFragment extends Fragment implements OnItemClickListener ,Lo
     //    MapController m_controller;
     LocationManager mLocationManager;
     LocationProvider provider;
+    private float zoom;
 
     private GoogleMap aMap;
     private static View rootView;
+
     private int providerNum = 0;
 
     ArrayList<ShopData> addshop = null;
@@ -122,6 +125,13 @@ public class MapViewFragment extends Fragment implements OnItemClickListener ,Lo
         context = getActivity();
         lv = (ListView) rootView.findViewById(R.id.shop_list_view);
         mLocationManager = (LocationManager)context.getSystemService(Context.LOCATION_SERVICE);
+
+        if(aMap == null){
+            aMap = ((MapFragment) getActivity().getFragmentManager().findFragmentById(R.id.map)).getMap();
+
+        }
+        aMap.setMyLocationEnabled(true);
+        zoom = 16.0f;
 //        Location location = mLocationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
 //        if (location != null) {
 //
@@ -241,7 +251,11 @@ public class MapViewFragment extends Fragment implements OnItemClickListener ,Lo
             onLocationChanged(location);
         }
 
-
+        CameraPosition cameraPos = new CameraPosition.Builder()
+                .target(new LatLng(location.getLatitude(), location.getLongitude()))
+                .zoom(zoom)
+                .bearing(0).build();
+        aMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPos));
 //        if (mLocationManager != null) {
 //            // ネットワークから取得を開始する
 //            mLocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
@@ -283,13 +297,16 @@ public class MapViewFragment extends Fragment implements OnItemClickListener ,Lo
         longitude = Double.parseDouble(data.longitude);
         latitude = Double.parseDouble(data.latitude);
         LatLng latLng = new LatLng(latitude, longitude);
-        if(aMap == null){
-            aMap = ((MapFragment) getActivity().getFragmentManager().findFragmentById(R.id.map)).getMap();
-        }
+
         if(aMap != null){
             // aMap.addMarker(new MarkerOptions().position(latLng).title("INFLOAT Co.,Ltd."));
             aMap.addMarker(new MarkerOptions().position(latLng));
-            aMap.moveCamera(CameraUpdateFactory.newCameraPosition(new CameraPosition(latLng, 16, 0, 0)));
+            CameraPosition cameraPos = new CameraPosition.Builder()
+                    .target(new LatLng(latitude,longitude))
+                    .zoom(zoom)
+                    .bearing(0).build();
+            aMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPos));
+//            aMap.moveCamera(CameraUpdateFactory.newCameraPosition(new CameraPosition(latLng, 16, 0, 0)));
         }
 
     }
@@ -307,14 +324,17 @@ public class MapViewFragment extends Fragment implements OnItemClickListener ,Lo
 
 
         LatLng lat = new LatLng(location.getLatitude(), location.getLongitude());
-        if(aMap == null){
-            aMap = ((MapFragment) getActivity().getFragmentManager().findFragmentById(R.id.map)).getMap();
-        }
+
         if(aMap != null){
+            CameraPosition cameraPos = new CameraPosition.Builder()
+                    .target(lat)
+                    .zoom(zoom)
+                    .bearing(0).build();
+            aMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPos));
 //            aMap.addMarker(new MarkerOptions().position(lat));
 //            aMap.addCircle(new CircleOptions().center(lat));
             // aMap.addGroundOverlay()
-            aMap.moveCamera(CameraUpdateFactory.newCameraPosition(new CameraPosition(lat, 16, 0, 0)));
+//            aMap.moveCamera(CameraUpdateFactory.newCameraPosition(new CameraPosition(lat, 16, 0, 0)));
         }
     }
 
