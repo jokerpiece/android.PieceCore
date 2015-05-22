@@ -121,10 +121,9 @@ public class CouponImageFragment extends Fragment implements OnClickListener, Do
                     ClipboardManager cm = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
                     cm.setPrimaryClip(cd);
                     Toast.makeText(context, getString(R.string.coupon_copy_clipboard), Toast.LENGTH_LONG).show();
-                    Toast.makeText(context, currentCouponData.coupon_url, Toast.LENGTH_LONG).show();
 
 
-                    if ( currentCouponData.coupon_url != null) {
+                    if ( currentCouponData.coupon_url != null && !currentCouponData.coupon_url.equals("")) {
                         FragmentManager fm = getParentFragment().getFragmentManager();
                         FragmentTransaction ft = fm.beginTransaction();
                         ft.addToBackStack(null);
