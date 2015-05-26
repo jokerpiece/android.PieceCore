@@ -1,9 +1,11 @@
 package jp.co.jokerpiece.piecebase;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.Gravity;
@@ -19,12 +21,14 @@ import android.widget.TextView;
 import jp.co.jokerpiece.piecebase.util.AppUtil;
 import jp.co.jokerpiece.piecebase.util.CameraMaskView;
 import jp.co.jokerpiece.piecebase.util.CameraSurfaceView;
+import jp.co.jokerpiece.piecebase.util.CameraTextureView;
 
 public class BarcodeFragment extends Fragment {
     private static final String TAG = BarcodeFragment.class.getSimpleName();
 	private Context context;
 
     private static View rootView;
+    private CameraTextureView textureView;
 	private CameraSurfaceView surfaceView;
 	private CameraMaskView maskView;
 
@@ -37,6 +41,23 @@ public class BarcodeFragment extends Fragment {
                     MainBaseActivity.tabHost.setCurrentTab(AppUtil.getPosition("Shopping"));
                     // TODO:バーコード番号を商品一覧画面に設定する処理を追加する必要があります
 
+                }
+            };
+
+    private CameraTextureView.CameraTextureViewCallback callbackOfTextureView =
+            new CameraTextureView.CameraTextureViewCallback() {
+                @Override
+                public void getBarcodeNum(String barcodeNum) {
+                    // バーコード番号を取得できた場合の処理
+                    Log.d(TAG, "barcodeNum: " + barcodeNum);
+                    ((Activity) context).runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            MainBaseActivity.tabHost.setCurrentTab(AppUtil.getPosition("Shopping"));
+                            // TODO:バーコード番号を商品一覧画面に設定する処理を追加する必要があります
+
+                        }
+                    });
                 }
             };
 
@@ -64,6 +85,9 @@ public class BarcodeFragment extends Fragment {
 
         // カメラView
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            textureView = new CameraTextureView(context, callbackOfTextureView);
+            textureView.setLayoutParams(layoutParams);
+            rl.addView(textureView);
         } else {
             surfaceView = new CameraSurfaceView(context, callbackOfSurfaceView);
             surfaceView.setLayoutParams(layoutParams);

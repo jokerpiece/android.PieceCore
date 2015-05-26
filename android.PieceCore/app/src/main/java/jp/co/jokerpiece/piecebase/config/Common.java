@@ -215,27 +215,30 @@ public class Common {
     }
 
 	private static void registDeviceToken(){
-		activity.getLoaderManager().initLoader(loaderID++, null, new LoaderCallbacks<Boolean>(){
-			@Override
-			public Loader<Boolean> onCreateLoader(int id, Bundle args) {
-				DeviceTokenAPI registAPI = new DeviceTokenAPI(context, regid);
-				registAPI.forceLoad();
-				 return registAPI;
-				}
+        Loader l = activity.getLoaderManager().getLoader(loaderID);
+        if (l == null) {
+            activity.getLoaderManager().initLoader(loaderID++, null, new LoaderCallbacks<Boolean>() {
+                @Override
+                public Loader<Boolean> onCreateLoader(int id, Bundle args) {
+                    DeviceTokenAPI registAPI = new DeviceTokenAPI(context, regid);
+                    registAPI.forceLoad();
+                    return registAPI;
+                }
 
-			@Override
-			public void onLoadFinished(Loader<Boolean> loader, Boolean data) {
-				if(data == false){
-					Common.serverErrorMessage(context);
-					return;
-				}
-				// ここにデータ取得時の処理を書く
-			}
+                @Override
+                public void onLoadFinished(Loader<Boolean> loader, Boolean data) {
+                    if (data == false) {
+                        Common.serverErrorMessage(context);
+                        return;
+                    }
+                    // ここにデータ取得時の処理を書く
+                }
 
-			@Override
-			public void onLoaderReset(Loader<Boolean> loader) {
-			}
-        });
+                @Override
+                public void onLoaderReset(Loader<Boolean> loader) {
+                }
+            });
+        }
 	}
     // プッシュ通知で必要なメソッド(ここまで)
 }

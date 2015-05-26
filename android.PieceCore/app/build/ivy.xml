@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ivy-module version="2.0" xmlns:m="http://ant.apache.org/ivy/maven">
-  <info organisation="android.PieceCore" module="app" revision="unspecified" status="integration" publication="20150522114953">
+  <info organisation="android.PieceCore" module="app" revision="unspecified" status="integration" publication="20150526161635">
     <description/>
   </info>
   <configurations>
@@ -37,5 +37,6 @@
   <dependencies>
     <dependency org="com.android.support" name="support-v4" rev="21.0.3" conf="compile-&gt;default"/>
     <dependency org="com.google.android.gms" name="play-services" rev="+" conf="compile-&gt;default"/>
+    <dependency org="me.dm7.barcodescanner" name="zxing" rev="1.7.1" conf="compile-&gt;default"/>
   </dependencies>
 </ivy-module>

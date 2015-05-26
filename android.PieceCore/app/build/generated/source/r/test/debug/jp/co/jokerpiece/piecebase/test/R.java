@@ -372,8 +372,8 @@ containing a value of this type.
         public static final int common_signin_btn_light_text_disabled=0x7f06000b;
         public static final int common_signin_btn_light_text_focused=0x7f06000c;
         public static final int common_signin_btn_light_text_pressed=0x7f06000d;
-        public static final int common_signin_btn_text_dark=0x7f060027;
-        public static final int common_signin_btn_text_light=0x7f060028;
+        public static final int common_signin_btn_text_dark=0x7f06002a;
+        public static final int common_signin_btn_text_light=0x7f06002b;
         public static final int info_all_color=0x7f06000e;
         public static final int info_coupon_color=0x7f06000f;
         public static final int info_flyer_color=0x7f060010;
@@ -386,21 +386,24 @@ containing a value of this type.
         public static final int tab_unselected=0x7f060017;
         public static final int tab_unselected_cute=0x7f060018;
         public static final int theme_text_color=0x7f060019;
-        public static final int wallet_bright_foreground_disabled_holo_light=0x7f06001a;
-        public static final int wallet_bright_foreground_holo_dark=0x7f06001b;
-        public static final int wallet_bright_foreground_holo_light=0x7f06001c;
-        public static final int wallet_dim_foreground_disabled_holo_dark=0x7f06001d;
-        public static final int wallet_dim_foreground_holo_dark=0x7f06001e;
-        public static final int wallet_dim_foreground_inverse_disabled_holo_dark=0x7f06001f;
-        public static final int wallet_dim_foreground_inverse_holo_dark=0x7f060020;
-        public static final int wallet_highlighted_text_holo_dark=0x7f060021;
-        public static final int wallet_highlighted_text_holo_light=0x7f060022;
-        public static final int wallet_hint_foreground_holo_dark=0x7f060023;
-        public static final int wallet_hint_foreground_holo_light=0x7f060024;
-        public static final int wallet_holo_blue_light=0x7f060025;
-        public static final int wallet_link_text_light=0x7f060026;
-        public static final int wallet_primary_text_holo_light=0x7f060029;
-        public static final int wallet_secondary_text_holo_dark=0x7f06002a;
+        public static final int viewfinder_border=0x7f06001a;
+        public static final int viewfinder_laser=0x7f06001b;
+        public static final int viewfinder_mask=0x7f06001c;
+        public static final int wallet_bright_foreground_disabled_holo_light=0x7f06001d;
+        public static final int wallet_bright_foreground_holo_dark=0x7f06001e;
+        public static final int wallet_bright_foreground_holo_light=0x7f06001f;
+        public static final int wallet_dim_foreground_disabled_holo_dark=0x7f060020;
+        public static final int wallet_dim_foreground_holo_dark=0x7f060021;
+        public static final int wallet_dim_foreground_inverse_disabled_holo_dark=0x7f060022;
+        public static final int wallet_dim_foreground_inverse_holo_dark=0x7f060023;
+        public static final int wallet_highlighted_text_holo_dark=0x7f060024;
+        public static final int wallet_highlighted_text_holo_light=0x7f060025;
+        public static final int wallet_hint_foreground_holo_dark=0x7f060026;
+        public static final int wallet_hint_foreground_holo_light=0x7f060027;
+        public static final int wallet_holo_blue_light=0x7f060028;
+        public static final int wallet_link_text_light=0x7f060029;
+        public static final int wallet_primary_text_holo_light=0x7f06002c;
+        public static final int wallet_secondary_text_holo_dark=0x7f06002d;
     }
     public static final class dimen {
         public static final int activity_horizontal_margin=0x7f070000;
@@ -474,9 +477,9 @@ containing a value of this type.
         public static final int theme_text_color_cute=0x7f02003f;
     }
     public static final class id {
-        public static final int action_coupon=0x7f0c0054;
-        public static final int action_coupon_use=0x7f0c0055;
-        public static final int action_settings=0x7f0c0053;
+        public static final int action_coupon=0x7f0c0056;
+        public static final int action_coupon_use=0x7f0c0057;
+        public static final int action_settings=0x7f0c0055;
         public static final int adjust_height=0x7f0c0002;
         public static final int adjust_width=0x7f0c0003;
         public static final int book_now=0x7f0c0011;
@@ -484,6 +487,7 @@ containing a value of this type.
         public static final int buyButton=0x7f0c000d;
         public static final int buy_now=0x7f0c0012;
         public static final int buy_with_google=0x7f0c0013;
+        public static final int camera_preview=0x7f0c004b;
         public static final int categoryImage=0x7f0c0022;
         public static final int categoryImageBase=0x7f0c0045;
         public static final int categoryTitle=0x7f0c0021;
@@ -494,7 +498,7 @@ containing a value of this type.
         public static final int drawer=0x7f0c0027;
         public static final int drawer_layout=0x7f0c0028;
         public static final int flyer_base=0x7f0c003a;
-        public static final int fragment=0x7f0c004b;
+        public static final int fragment=0x7f0c004d;
         public static final int goodsListView=0x7f0c0047;
         public static final int grayscale=0x7f0c0016;
         public static final int headerScroll=0x7f0c0039;
@@ -505,17 +509,17 @@ containing a value of this type.
         public static final int indicator=0x7f0c0031;
         public static final int infomation_list_view=0x7f0c0040;
         public static final int itemCount=0x7f0c0046;
-        public static final int ivCouponImage=0x7f0c0050;
+        public static final int ivCouponImage=0x7f0c0052;
         public static final int ivItemImage=0x7f0c0023;
         public static final int iv_answer1=0x7f0c0037;
         public static final int iv_answer2=0x7f0c0038;
         public static final int iv_back=0x7f0c0049;
-        public static final int iv_info=0x7f0c004c;
+        public static final int iv_info=0x7f0c004e;
         public static final int iv_next=0x7f0c004a;
-        public static final int iv_tab=0x7f0c004e;
+        public static final int iv_tab=0x7f0c0050;
         public static final int left_drawer=0x7f0c0026;
         public static final int ll_getcoupon=0x7f0c0035;
-        public static final int ll_tab=0x7f0c004d;
+        public static final int ll_tab=0x7f0c004f;
         public static final int map=0x7f0c0042;
         public static final int match_parent=0x7f0c000f;
         public static final int menu_icon=0x7f0c001d;
@@ -531,7 +535,7 @@ containing a value of this type.
         public static final int rl_root=0x7f0c002f;
         public static final int sandbox=0x7f0c000b;
         public static final int satellite=0x7f0c0006;
-        public static final int searchView=0x7f0c0056;
+        public static final int searchView=0x7f0c0058;
         public static final int section_label=0x7f0c0041;
         public static final int selectionDetails=0x7f0c000e;
         public static final int sendCoupon=0x7f0c002c;
@@ -541,8 +545,8 @@ containing a value of this type.
         public static final int shop_list_view=0x7f0c0043;
         public static final int shoppingListView=0x7f0c0044;
         public static final int slide=0x7f0c0001;
-        public static final int state=0x7f0c0051;
-        public static final int state2=0x7f0c0052;
+        public static final int state=0x7f0c0053;
+        public static final int state2=0x7f0c0054;
         public static final int strict_sandbox=0x7f0c000c;
         public static final int tab=0x7f0c003f;
         public static final int tab_host=0x7f0c0018;
@@ -553,17 +557,20 @@ containing a value of this type.
         public static final int tv_getstamp=0x7f0c001c;
         public static final int tv_nocoupon=0x7f0c0032;
         public static final int tv_question=0x7f0c0036;
-        public static final int tv_tab=0x7f0c004f;
+        public static final int tv_tab=0x7f0c0051;
         public static final int tv_text=0x7f0c003d;
         public static final int tv_thankyou=0x7f0c001b;
         public static final int tv_title=0x7f0c003c;
         public static final int tvshop_name=0x7f0c001f;
+        public static final int view_finder_view=0x7f0c004c;
         public static final int view_mask=0x7f0c0034;
         public static final int webview=0x7f0c0048;
         public static final int wrap_content=0x7f0c0010;
     }
     public static final class integer {
         public static final int google_play_services_version=0x7f080000;
+        public static final int viewfinder_border_length=0x7f080001;
+        public static final int viewfinder_border_width=0x7f080002;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -590,10 +597,11 @@ containing a value of this type.
         public static final int fragment_shopping=0x7f030015;
         public static final int fragment_shopping_goods_list=0x7f030016;
         public static final int fragment_webview=0x7f030017;
-        public static final int root_fragment=0x7f030018;
-        public static final int row_informationlist=0x7f030019;
-        public static final int tab_widget=0x7f03001a;
-        public static final int view_coupon=0x7f03001b;
+        public static final int merge_camera_preview_view_finder=0x7f030018;
+        public static final int root_fragment=0x7f030019;
+        public static final int row_informationlist=0x7f03001a;
+        public static final int tab_widget=0x7f03001b;
+        public static final int view_coupon=0x7f03001c;
     }
     public static final class menu {
         public static final int global=0x7f0b0000;

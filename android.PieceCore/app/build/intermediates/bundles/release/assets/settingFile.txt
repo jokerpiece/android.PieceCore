@@ -1,4 +1,4 @@
-app_id=izakayaSample
+app_id=pieceSample
 app_key=jokerpiece_appKey
 splash_time=1
 project_id=
