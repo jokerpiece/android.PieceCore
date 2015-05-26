@@ -110,6 +110,23 @@ public class MapViewFragment extends Fragment implements OnItemClickListener ,Lo
                              Bundle savedInstanceState) {
         super.onCreateView(inflater,container,savedInstanceState);
 
+        if(Config.MapFramentNum == 0) {
+            if (Config.Savelist.size() == 1) {
+                Config.Savelist.clear();
+                Config.Savelist.add(0);
+            }
+            if (!Config.Backflg) {
+                if (Config.FragmentCurrentNum != 0) {
+                    Config.Savelist.add(Config.MapFramentNum);
+                    Config.FragmentCurrentNum += 1;
+                }
+            }
+        }else{
+            if(!Config.Backflg) {
+                Config.Savelist.add(Config.MapFramentNum);
+                Config.FragmentCurrentNum += 1;
+            }
+        }
         if(rootView != null){
             ViewGroup parent = (ViewGroup) rootView.getParent();
             // ListViewの設定

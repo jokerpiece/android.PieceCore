@@ -90,6 +90,7 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
             tabHost.getTabWidget().getChildAt(i).setOnTouchListener(new OnTouchListener() {
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
+                    Config.Backflg = false;
                     if (event.getAction() == MotionEvent.ACTION_DOWN
                             && v.equals(tabHost.getCurrentTabView())) {
                         getCurrentRootFragment().getChildFragmentManager()
@@ -115,6 +116,9 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
             // ビーコン検索処理
             BeaconUtil.startScan();
         }
+        //最初のフラグメントを記録
+        Config.Savelist.add(0);
+        setFragmentNum();
     }
 
     @Override
@@ -138,20 +142,48 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
         return super.onCreateOptionsMenu(menu);
     }
 
+//    public boolean onKeyDown(int keyCode, KeyEvent event) {
+//        super.onKeyDown(keyCode, event);
+//
+//        switch(keyCode){
+//            case KeyEvent.KEYCODE_BACK:
+//                //スタックを戻る。
+//                if(!getCurrentRootFragment().popBackStack()){
+//                    return true;
+//                }else{
+//                    return false;
+//                }
+//        }
+//        return false;
+//    }
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        super.onKeyDown(keyCode, event);
+        // KeyEvent.ACTION_DOWN以外のイベントを無視する
+        // （これがないとKeyEvent.ACTION_UPもフックしてしまう）
+        if (event.getAction() != KeyEvent.ACTION_DOWN) {
+            return false;
+        }
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
 
-        switch(keyCode){
-            case KeyEvent.KEYCODE_BACK:
-                //スタックを戻る。
-                if(!getCurrentRootFragment().popBackStack()){
-                    return true;
-                }else{
+            Config.Backflg = true;
+            if(Config.Backflg) {
+                if (!getCurrentRootFragment().popBackStack()) {
+                    if(Config.FragmentCurrentNum > 0) {
+                        MainBaseActivity.tabHost.setCurrentTab((Integer) Config.Savelist.get(Config.FragmentCurrentNum - 1));
+                    }
+                    if (Config.Savelist.size() > 1) {
+                        Config.Savelist.remove(Config.FragmentCurrentNum);
+                    }
+                    if(Config.FragmentCurrentNum > 0) {
+                        Config.FragmentCurrentNum -= 1;
+                    }
+                } else {
                     return false;
                 }
+            }
         }
         return false;
     }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -250,6 +282,18 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
         };
     }
 
+
+    public void setFragmentNum(){
+        //Tebalの順番に合わせて番号を設定
+        Config.FlyerFramentNum = 0;
+        Config.InfoFramentNum = 1;
+        Config.ShoppingFramentNum = 2;
+        Config.CouponFramentNum = 3;
+        Config.FittingFramentNum = 4;
+        Config.MapFramentNum = 5;
+        Config.BarcodeFramentNum = 6;
+        Config.StampFramentNum = 7;
+    }
     /**
      * tabに設定する情報を設定する。
      */

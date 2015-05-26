@@ -81,12 +81,30 @@ public class Config {
     public static final String SENDID_GET_QUES  = SERVER_URL + "fitting/";
 	public static final String PUSHSERVER_URL = SERVER_URL + "device_token/";
     public static final String SENDID_MAP_LIST = SERVER_URL + "shop/";
+    public static final String SENDID_STAMP_LIST = SERVER_URL + "stamp/";
+
+
 
 	public static final String PASS_WORD = null;
 
 	public static final long scrollDelay = 4000;
 
-	/** loaderCount */
+    //使ったフラグメントを記録するための設定
+    public static int FragmentCurrentNum;
+    public static int FlyerFramentNum;
+    public static int InfoFramentNum;
+    public static int ShoppingFramentNum;
+    public static int CouponFramentNum;
+    public static int FittingFramentNum;
+    public static int MapFramentNum;
+    public static int BarcodeFramentNum;
+    public static int StampFramentNum;
+
+    public static List Savelist = new ArrayList<>();
+    public static boolean Backflg = false;
+
+
+    /** loaderCount */
 	public static int loaderCnt = 0;
 	/** タブ画面で戻るボタン押下時の動作 */
 	public static final String BACK_STACK_KEY = "BACK_STACK";

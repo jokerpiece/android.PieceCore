@@ -52,6 +52,23 @@ public class FittingFragment extends Fragment implements DownloadImageSync.Downl
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         context = getActivity();
+        if(Config.FittingFramentNum == 0) {
+            if (Config.Savelist.size() == 1) {
+                Config.Savelist.clear();
+                Config.Savelist.add(0);
+            }
+            if (!Config.Backflg) {
+                if (Config.FragmentCurrentNum != 0) {
+                    Config.Savelist.add(Config.FittingFramentNum);
+                    Config.FragmentCurrentNum += 1;
+                }
+            }
+        }else{
+            if(!Config.Backflg) {
+                Config.Savelist.add(Config.FittingFramentNum);
+                Config.FragmentCurrentNum += 1;
+            }
+        }
         View rootView = inflater.inflate(R.layout.fragment_fitting, container, false);
 
         tvQuestion = (TextView) rootView.findViewById(R.id.tv_question);

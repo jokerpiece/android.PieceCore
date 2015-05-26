@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import jp.co.jokerpiece.piecebase.config.Config;
 import jp.co.jokerpiece.piecebase.util.AppUtil;
 import jp.co.jokerpiece.piecebase.util.CameraMaskView;
 import jp.co.jokerpiece.piecebase.util.CameraSurfaceView;
@@ -64,6 +65,24 @@ public class BarcodeFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
+
+        if(Config.BarcodeFramentNum == 0) {
+            if (Config.Savelist.size() == 1) {
+                Config.Savelist.clear();
+                Config.Savelist.add(0);
+            }
+            if (!Config.Backflg) {
+                if (Config.FragmentCurrentNum != 0) {
+                    Config.Savelist.add(Config.BarcodeFramentNum);
+                    Config.FragmentCurrentNum += 1;
+                }
+            }
+        }else{
+            if(!Config.Backflg) {
+                Config.Savelist.add(Config.BarcodeFramentNum);
+                Config.FragmentCurrentNum += 1;
+            }
+        }
         if (rootView != null) {
             ViewGroup parent = (ViewGroup) rootView.getParent();
             if (parent != null)
