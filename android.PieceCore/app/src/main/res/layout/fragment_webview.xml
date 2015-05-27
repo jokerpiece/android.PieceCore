@@ -17,7 +17,6 @@
             android:layout_width="30dp"
             android:layout_height="60dp"
             android:layout_alignParentLeft="true"
-            android:layout_centerInParent="true"
             android:src="@drawable/shape_wvback_button"
             android:contentDescription="@null"/>
         <ImageView
@@ -25,7 +24,38 @@
             android:layout_width="30dp"
             android:layout_height="60dp"
             android:layout_alignParentRight="true"
-            android:layout_centerInParent="true"
+            android:src="@drawable/shape_wvnext_button"
+            android:contentDescription="@null"/>
+        <ImageView
+            android:id="@+id/iv_backCenter"
+            android:layout_width="30dp"
+            android:layout_height="60dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/shape_wvback_button"
+            android:contentDescription="@null"/>
+        <ImageView
+            android:id="@+id/iv_nextCenter"
+            android:layout_width="30dp"
+            android:layout_height="60dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/shape_wvnext_button"
+            android:contentDescription="@null"/>
+        <ImageView
+            android:id="@+id/iv_backBottom"
+            android:layout_width="30dp"
+            android:layout_height="60dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:src="@drawable/shape_wvback_button"
+            android:contentDescription="@null"/>
+        <ImageView
+            android:id="@+id/iv_nextBottom"
+            android:layout_width="30dp"
+            android:layout_height="60dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
             android:src="@drawable/shape_wvnext_button"
             android:contentDescription="@null"/>
     </RelativeLayout>>

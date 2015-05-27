@@ -103,6 +103,12 @@ public class Config {
     public static List Savelist = new ArrayList<>();
     public static boolean Backflg = false;
 
+    // ImageBackとnextの位置をどこに配置する設定
+    public static int PositionForWebView;
+    final public static int Top = 0;
+    final public static int Center = 1;
+    final public static int Bottom = 2;
+
 
     /** loaderCount */
 	public static int loaderCnt = 0;

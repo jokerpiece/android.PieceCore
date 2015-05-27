@@ -1,5 +1,6 @@
 package jp.co.jokerpiece.piecebase;
 
+import jp.co.jokerpiece.piecebase.config.Config;
 import jp.co.jokerpiece.piecebase.util.AppUtil;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -13,30 +14,58 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 @SuppressLint("SetJavaScriptEnabled")
 public class WebViewFragment extends Fragment implements View.OnClickListener {
     private WebView webView;
     private ImageView ivBack;
     private ImageView ivNext;
+    private ImageView ivBackCenter;
+    private ImageView ivNextCenter;
+    private ImageView ivBackBottom;
+    private ImageView ivNextBottom;
+    //ImageBackとNextを表示するかどうか
+    private ImageView imgBackFlg;
+    private ImageView imgNextFlg;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         View rootView = inflater.inflate(R.layout.fragment_webview, container, false);
 
+        setMode();
         findViews(rootView);
+        //設定しないと最初の読み込みとき出てしまう
+        imgBackFlg.setVisibility(View.GONE);
+        imgNextFlg.setVisibility(View.GONE);
 
         webView = (WebView) rootView.findViewById(R.id.webview);
         webView.setWebViewClient(new WebViewClient(){
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
+
                 return super.shouldOverrideUrlLoading(view, url);
+
             }
 
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
+
+                if (!webView.canGoBack()) {
+                    imgBackFlg.setVisibility(View.GONE);
+                }else{
+                    imgBackFlg.setVisibility(View.VISIBLE);
+                }
+                if (!webView.canGoForward()) {
+                    imgNextFlg.setVisibility(View.GONE);
+                }else{
+                    imgNextFlg.setVisibility(View.VISIBLE);
+                }
+
 //            	ActionBar ab = getActionBar();
 //            	String title = webView.getTitle();
 //            	ab.setTitle(title);
@@ -124,25 +153,64 @@ public class WebViewFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         int i = v.getId();
-        if (i == R.id.iv_back) {
+
+        if (i == R.id.iv_back || i == R.id.iv_backCenter || i == R.id.iv_backBottom) {
             if (webView.canGoBack()) {
                 webView.goBack();
             }
 
-        } else if (i == R.id.iv_next) {
+        } else if (i == R.id.iv_next || i == R.id.iv_nextCenter || i == R.id.iv_nextBottom) {
             if (webView.canGoForward()) {
                 webView.goForward();
             }
 
         }
     }
-
+    //ivBackはどこに設置するか
+    public void setMode(){
+        Config.PositionForWebView = Config.Center;
+    }
     public void findViews(View rootView) {
         ivBack = (ImageView) rootView.findViewById(R.id.iv_back);
         ivNext = (ImageView) rootView.findViewById(R.id.iv_next);
+        ivBackCenter = (ImageView) rootView.findViewById(R.id.iv_backCenter);
+        ivNextCenter = (ImageView) rootView.findViewById(R.id.iv_nextCenter);
+        ivBackBottom = (ImageView) rootView.findViewById(R.id.iv_backBottom);
+        ivNextBottom = (ImageView) rootView.findViewById(R.id.iv_nextBottom);
+
+        switch(Config.PositionForWebView){
+            case Config.Top:
+                ivBackCenter.setVisibility(View.GONE);
+                ivNextCenter.setVisibility(View.GONE);
+                ivBackBottom.setVisibility(View.GONE);
+                ivNextBottom.setVisibility(View.GONE);
+                imgBackFlg = ivBack;
+                imgNextFlg = ivNext;
+                break;
+            case Config.Center:
+                ivBack.setVisibility(View.GONE);
+                ivNext.setVisibility(View.GONE);
+                ivBackBottom.setVisibility(View.GONE);
+                ivNextBottom.setVisibility(View.GONE);
+                imgBackFlg = ivBackCenter;
+                imgNextFlg = ivNextCenter;
+                break;
+            case Config.Bottom:
+                ivBackCenter.setVisibility(View.GONE);
+                ivNextCenter.setVisibility(View.GONE);
+                ivBack.setVisibility(View.GONE);
+                ivNext.setVisibility(View.GONE);
+                imgBackFlg = ivBackBottom;
+                imgNextFlg = ivNextBottom;
+                break;
+        }
 
         ivBack.setOnClickListener(this);
         ivNext.setOnClickListener(this);
+        ivBackCenter.setOnClickListener(this);
+        ivNextCenter.setOnClickListener(this);
+        ivBackBottom.setOnClickListener(this);
+        ivNextBottom.setOnClickListener(this);
     }
 
 }
