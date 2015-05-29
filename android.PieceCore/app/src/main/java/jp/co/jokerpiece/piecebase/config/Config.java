@@ -109,6 +109,7 @@ public class Config {
     final public static int Center = 1;
     final public static int Bottom = 2;
 
+    //public static int currentPoint = 0;
 
     /** loaderCount */
 	public static int loaderCnt = 0;

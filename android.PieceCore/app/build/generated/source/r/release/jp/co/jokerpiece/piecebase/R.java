@@ -411,8 +411,8 @@ containing a value of this type.
         public static int navigation_drawer_width=0x7f070002;
     }
     public static final class drawable {
-        public static int actionbar_background=0x7f02003f;
-        public static int actionbar_background_cute=0x7f020040;
+        public static int actionbar_background=0x7f020040;
+        public static int actionbar_background_cute=0x7f020041;
         public static int backbtn=0x7f020000;
         public static int check=0x7f020001;
         public static int common_full_open_on_phone=0x7f020002;
@@ -474,15 +474,23 @@ containing a value of this type.
         public static int shop_logo=0x7f02003a;
         public static int splash_default=0x7f02003b;
         public static int stamp=0x7f02003c;
-        public static int status_icon=0x7f02003d;
-        public static int test=0x7f02003e;
-        public static int theme_text_color=0x7f020041;
-        public static int theme_text_color_cute=0x7f020042;
+        public static int stampbar=0x7f02003d;
+        public static int stampbase=0x7f02003e;
+        public static int status_icon=0x7f02003f;
+        public static int theme_text_color=0x7f020042;
+        public static int theme_text_color_cute=0x7f020043;
     }
     public static final class id {
-        public static int action_coupon=0x7f0c005a;
-        public static int action_coupon_use=0x7f0c005b;
-        public static int action_settings=0x7f0c0059;
+        public static int BackGround=0x7f0c005c;
+        public static int Endday=0x7f0c004b;
+        public static int Endmonth=0x7f0c004a;
+        public static int RedBarLt=0x7f0c005a;
+        public static int RedBarRt=0x7f0c005b;
+        public static int Startday=0x7f0c0049;
+        public static int Startmonth=0x7f0c0048;
+        public static int action_coupon=0x7f0c0066;
+        public static int action_coupon_use=0x7f0c0067;
+        public static int action_settings=0x7f0c0065;
         public static int adjust_height=0x7f0c0002;
         public static int adjust_width=0x7f0c0003;
         public static int book_now=0x7f0c0011;
@@ -490,7 +498,7 @@ containing a value of this type.
         public static int buyButton=0x7f0c000d;
         public static int buy_now=0x7f0c0012;
         public static int buy_with_google=0x7f0c0013;
-        public static int camera_preview=0x7f0c004f;
+        public static int camera_preview=0x7f0c0056;
         public static int categoryImage=0x7f0c0022;
         public static int categoryImageBase=0x7f0c0045;
         public static int categoryTitle=0x7f0c0021;
@@ -501,9 +509,11 @@ containing a value of this type.
         public static int drawer=0x7f0c0027;
         public static int drawer_layout=0x7f0c0028;
         public static int flyer_base=0x7f0c003a;
-        public static int fragment=0x7f0c0051;
+        public static int fragment=0x7f0c0058;
+        public static int getcoupon=0x7f0c004e;
         public static int goodsListView=0x7f0c0047;
         public static int grayscale=0x7f0c0016;
+        public static int gridview=0x7f0c004d;
         public static int headerScroll=0x7f0c0039;
         public static int header_image=0x7f0c0033;
         public static int holo_dark=0x7f0c0008;
@@ -512,25 +522,26 @@ containing a value of this type.
         public static int indicator=0x7f0c0031;
         public static int infomation_list_view=0x7f0c0040;
         public static int itemCount=0x7f0c0046;
-        public static int ivCouponImage=0x7f0c0056;
+        public static int ivCouponImage=0x7f0c0062;
         public static int ivItemImage=0x7f0c0023;
         public static int iv_answer1=0x7f0c0037;
         public static int iv_answer2=0x7f0c0038;
-        public static int iv_back=0x7f0c0049;
-        public static int iv_backBottom=0x7f0c004d;
-        public static int iv_backCenter=0x7f0c004b;
-        public static int iv_info=0x7f0c0052;
-        public static int iv_next=0x7f0c004a;
-        public static int iv_nextBottom=0x7f0c004e;
-        public static int iv_nextCenter=0x7f0c004c;
-        public static int iv_tab=0x7f0c0054;
+        public static int iv_back=0x7f0c0050;
+        public static int iv_backBottom=0x7f0c0054;
+        public static int iv_backCenter=0x7f0c0052;
+        public static int iv_info=0x7f0c0059;
+        public static int iv_next=0x7f0c0051;
+        public static int iv_nextBottom=0x7f0c0055;
+        public static int iv_nextCenter=0x7f0c0053;
+        public static int iv_tab=0x7f0c0060;
         public static int left_drawer=0x7f0c0026;
         public static int ll_getcoupon=0x7f0c0035;
-        public static int ll_tab=0x7f0c0053;
+        public static int ll_tab=0x7f0c005f;
         public static int map=0x7f0c0042;
         public static int match_parent=0x7f0c000f;
         public static int menu_icon=0x7f0c001d;
         public static int menu_title=0x7f0c001e;
+        public static int message=0x7f0c004c;
         public static int monochrome=0x7f0c0017;
         public static int navigation_drawer=0x7f0c002e;
         public static int none=0x7f0c0000;
@@ -542,7 +553,7 @@ containing a value of this type.
         public static int rl_root=0x7f0c002f;
         public static int sandbox=0x7f0c000b;
         public static int satellite=0x7f0c0006;
-        public static int searchView=0x7f0c005c;
+        public static int searchView=0x7f0c0068;
         public static int section_label=0x7f0c0041;
         public static int selectionDetails=0x7f0c000e;
         public static int sendCoupon=0x7f0c002c;
@@ -552,26 +563,28 @@ containing a value of this type.
         public static int shop_list_view=0x7f0c0043;
         public static int shoppingListView=0x7f0c0044;
         public static int slide=0x7f0c0001;
-        public static int state=0x7f0c0057;
-        public static int state2=0x7f0c0058;
+        public static int stamp_image=0x7f0c005e;
+        public static int state=0x7f0c0063;
+        public static int state2=0x7f0c0064;
         public static int strict_sandbox=0x7f0c000c;
         public static int tab=0x7f0c003f;
         public static int tab_host=0x7f0c0018;
         public static int terrain=0x7f0c0007;
+        public static int textview=0x7f0c005d;
         public static int tvAddress=0x7f0c0020;
         public static int tvPrice=0x7f0c0025;
         public static int tvTitle=0x7f0c0024;
         public static int tv_getstamp=0x7f0c001c;
         public static int tv_nocoupon=0x7f0c0032;
         public static int tv_question=0x7f0c0036;
-        public static int tv_tab=0x7f0c0055;
+        public static int tv_tab=0x7f0c0061;
         public static int tv_text=0x7f0c003d;
         public static int tv_thankyou=0x7f0c001b;
         public static int tv_title=0x7f0c003c;
         public static int tvshop_name=0x7f0c001f;
-        public static int view_finder_view=0x7f0c0050;
+        public static int view_finder_view=0x7f0c0057;
         public static int view_mask=0x7f0c0034;
-        public static int webview=0x7f0c0048;
+        public static int webview=0x7f0c004f;
         public static int wrap_content=0x7f0c0010;
     }
     public static final class integer {
@@ -603,12 +616,14 @@ containing a value of this type.
         public static int fragment_map=0x7f030014;
         public static int fragment_shopping=0x7f030015;
         public static int fragment_shopping_goods_list=0x7f030016;
-        public static int fragment_webview=0x7f030017;
-        public static int merge_camera_preview_view_finder=0x7f030018;
-        public static int root_fragment=0x7f030019;
-        public static int row_informationlist=0x7f03001a;
-        public static int tab_widget=0x7f03001b;
-        public static int view_coupon=0x7f03001c;
+        public static int fragment_stamp=0x7f030017;
+        public static int fragment_webview=0x7f030018;
+        public static int merge_camera_preview_view_finder=0x7f030019;
+        public static int root_fragment=0x7f03001a;
+        public static int row_informationlist=0x7f03001b;
+        public static int stamp_view=0x7f03001c;
+        public static int tab_widget=0x7f03001d;
+        public static int view_coupon=0x7f03001e;
     }
     public static final class menu {
         public static int global=0x7f0b0000;
@@ -699,11 +714,13 @@ containing a value of this type.
         public static int shopping=0x7f09004c;
         public static int shopping0=0x7f09004d;
         public static int shopping1=0x7f09004e;
-        public static int store_picture_message=0x7f09004f;
-        public static int store_picture_title=0x7f090050;
-        public static int wallet_buy_button_place_holder=0x7f090051;
-        public static int webview=0x7f090052;
-        public static int yen=0x7f090053;
+        public static int stamp0=0x7f09004f;
+        public static int stamp1=0x7f090050;
+        public static int store_picture_message=0x7f090051;
+        public static int store_picture_title=0x7f090052;
+        public static int wallet_buy_button_place_holder=0x7f090053;
+        public static int webview=0x7f090054;
+        public static int yen=0x7f090055;
     }
     public static final class style {
         public static int AppBaseTheme=0x7f0a0000;

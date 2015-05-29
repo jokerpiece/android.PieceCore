@@ -259,6 +259,11 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
                     { put("tabTitle", getString(R.string.barcode1)); }
                     { put("tabIcon", R.drawable.icon_map); }
                     { put("cls", BarcodeFragment.class); }
+                },
+                new HashMap<String, Object>() {
+                    { put("tabTitle", getString(R.string.stamp1)); }
+                    { put("tabIcon", R.drawable.icon_map); }
+                    { put("cls", StampFragment.class); }
                 }
         ));
     }
@@ -279,6 +284,8 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
             { put(FittingFragment.class.getSimpleName(), R.string.fitting0); }
             { put(MapViewFragment.class.getSimpleName(), R.string.map0); }
             { put(BarcodeFragment.class.getSimpleName(), R.string.barcode0); }
+            { put(StampFragment.class.getSimpleName(), R.string.stamp0); }
+
         };
     }
 
@@ -294,6 +301,7 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
         Config.BarcodeFramentNum = 6;
         Config.StampFramentNum = 7;
     }
+
     /**
      * tabに設定する情報を設定する。
      */
