@@ -70,20 +70,20 @@ public class FlyerFragment extends Fragment implements OnPageChangeListener{
 			Bundle savedInstanceState) {
         context = getActivity();
 
-        if(Config.FlyerFramentNum == 0) {
+        if(Config.FlyerFragmentNum == 0) {
             if (Config.Savelist.size() == 1) {
                 Config.Savelist.clear();
                 Config.Savelist.add(0);
             }
             if (!Config.Backflg) {
                 if (Config.FragmentCurrentNum != 0) {
-                    Config.Savelist.add(Config.FlyerFramentNum);
+                    Config.Savelist.add(Config.FlyerFragmentNum);
                     Config.FragmentCurrentNum += 1;
                 }
             }
         }else{
             if(!Config.Backflg) {
-                Config.Savelist.add(Config.FlyerFramentNum);
+                Config.Savelist.add(Config.FlyerFragmentNum);
                 Config.FragmentCurrentNum += 1;
             }
         }

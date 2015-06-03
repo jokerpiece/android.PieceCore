@@ -66,20 +66,20 @@ public class BarcodeFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
-        if(Config.BarcodeFramentNum == 0) {
+        if(Config.BarcodeFragmentNum == 0) {
             if (Config.Savelist.size() == 1) {
                 Config.Savelist.clear();
                 Config.Savelist.add(0);
             }
             if (!Config.Backflg) {
                 if (Config.FragmentCurrentNum != 0) {
-                    Config.Savelist.add(Config.BarcodeFramentNum);
+                    Config.Savelist.add(Config.BarcodeFragmentNum);
                     Config.FragmentCurrentNum += 1;
                 }
             }
         }else{
             if(!Config.Backflg) {
-                Config.Savelist.add(Config.BarcodeFramentNum);
+                Config.Savelist.add(Config.BarcodeFragmentNum);
                 Config.FragmentCurrentNum += 1;
             }
         }

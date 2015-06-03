@@ -292,14 +292,15 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
 
     public void setFragmentNum(){
         //Tebalの順番に合わせて番号を設定
-        Config.FlyerFramentNum = 0;
-        Config.InfoFramentNum = 1;
-        Config.ShoppingFramentNum = 2;
-        Config.CouponFramentNum = 3;
-        Config.FittingFramentNum = 4;
-        Config.MapFramentNum = 5;
-        Config.BarcodeFramentNum = 6;
-        Config.StampFramentNum = 7;
+        Config.FlyerFragmentNum = 0;
+        Config.InfoFragmentNum = 1;
+        Config.ShoppingFragmentNum = 2;
+        Config.CouponFragmentNum = 3;
+        Config.FittingFragmentNum = 4;
+        Config.MapFragmentNum = 5;
+        Config.BarcodeFragmentNum = 6;
+        Config.StampFragmentNum = 7;
+        Config.SnsFragmentNum = 8;
     }
 
     /**

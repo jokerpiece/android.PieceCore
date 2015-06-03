@@ -72,6 +72,7 @@ public class CouponUseFragment extends Fragment implements OnPageChangeListener 
 
         getCouponList();
 
+
 		return rootView;
 	}
 
@@ -85,7 +86,9 @@ public class CouponUseFragment extends Fragment implements OnPageChangeListener 
 	@Override
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 		menu.clear();
-		inflater.inflate(R.menu.menu_coupon_use, menu);
+
+        inflater.inflate(R.menu.menu_coupon_use, menu);
+
 //		MenuItem haveCoupon = menu.add(0 , Menu.FIRST, Menu.NONE ,"閉じる");
 //		haveCoupon.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
 //		haveCoupon.setIcon(android.R.drawable.ic_menu_close_clear_cancel);
@@ -193,6 +196,7 @@ public class CouponUseFragment extends Fragment implements OnPageChangeListener 
 			if ((data.coupon_id + "").equals(couponId)) {
 				initPos = i;
 			}
+
 		}
 		pageFlagment.setGetCouponData(new GetCouponData(activity, handler, viewPager, viewPagerIndicator, couponData));
 
@@ -207,5 +211,6 @@ public class CouponUseFragment extends Fragment implements OnPageChangeListener 
 			viewPager.setCurrentItem(initPos, true);
 		}
 	}
+
 
 }

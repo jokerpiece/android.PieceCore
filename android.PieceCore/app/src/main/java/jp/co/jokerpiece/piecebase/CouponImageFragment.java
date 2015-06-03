@@ -1,6 +1,7 @@
 package jp.co.jokerpiece.piecebase;
 
 import jp.co.jokerpiece.piecebase.api.GetCouponAPI;
+import jp.co.jokerpiece.piecebase.config.Config;
 import jp.co.jokerpiece.piecebase.data.CouponListData;
 import jp.co.jokerpiece.piecebase.data.CouponListData.CouponData;
 import jp.co.jokerpiece.piecebase.data.GetCouponData;
@@ -120,7 +121,6 @@ public class CouponImageFragment extends Fragment implements OnClickListener, Do
                     ClipData cd = new ClipData(new ClipDescription("text_data", mimeType), item);
                     ClipboardManager cm = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
                     cm.setPrimaryClip(cd);
-                    Toast.makeText(context, getString(R.string.coupon_copy_clipboard), Toast.LENGTH_LONG).show();
 
 
                     if ( currentCouponData.coupon_url != null && !currentCouponData.coupon_url.equals("")) {
@@ -134,6 +134,7 @@ public class CouponImageFragment extends Fragment implements OnClickListener, Do
                         ft.replace(R.id.fragment, fragment);
                         ft.commit();
                     } else {
+                        Toast.makeText(context, getString(R.string.coupon_copy_clipboard), Toast.LENGTH_LONG).show();
                         if (currentCouponData.item_url != null) {
                             //item_urlが存在する場合は該当ページに遷移
                             FragmentManager fm = getParentFragment().getFragmentManager();

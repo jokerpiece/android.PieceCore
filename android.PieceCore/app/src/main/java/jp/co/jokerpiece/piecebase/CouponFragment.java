@@ -44,7 +44,8 @@ public class CouponFragment extends Fragment implements OnPageChangeListener {
 	private Handler handler = new Handler();
 
 	private CouponImagePageAdapter pageFlagment;
-    public boolean isUse = false;
+    //クーポンURLを持ってるかどうかのフラグ
+    public boolean haveUrlFlg = false;
 
 //	private ArrayList<DownloadImageView> alImageViewList = new ArrayList<DownloadImageView>();
 	private CouponListData couponData = null;
@@ -60,20 +61,20 @@ public class CouponFragment extends Fragment implements OnPageChangeListener {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
         context = getActivity();
-        if(Config.CouponFramentNum == 0) {
+        if(Config.CouponFragmentNum == 0) {
             if (Config.Savelist.size() == 1) {
                 Config.Savelist.clear();
                 Config.Savelist.add(0);
             }
             if (!Config.Backflg) {
                 if (Config.FragmentCurrentNum != 0) {
-                    Config.Savelist.add(Config.CouponFramentNum);
+                    Config.Savelist.add(Config.CouponFragmentNum);
                     Config.FragmentCurrentNum += 1;
                 }
             }
         }else{
             if(!Config.Backflg) {
-                Config.Savelist.add(Config.CouponFramentNum);
+                Config.Savelist.add(Config.CouponFragmentNum);
                 Config.FragmentCurrentNum += 1;
             }
         }
@@ -87,7 +88,7 @@ public class CouponFragment extends Fragment implements OnPageChangeListener {
 
         pageFlagment = new CouponImagePageAdapter(getChildFragmentManager(),
         		new GetCouponData(activity, handler, viewPager, viewPagerIndicator, couponData),
-        		new ArrayList<String>(),isUse);
+        		new ArrayList<String>(),haveUrlFlg);
 
         Bundle bundle = getArguments();
         if (bundle != null) {
@@ -98,9 +99,9 @@ public class CouponFragment extends Fragment implements OnPageChangeListener {
 
         getCouponList();
 
+
         return rootView;
 	}
-
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -145,7 +146,10 @@ public class CouponFragment extends Fragment implements OnPageChangeListener {
 	@Override
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 		menu.clear();
-        inflater.inflate(R.menu.menu_coupon, menu);
+     //   if(!Config.isGetUrl) {
+        if(!haveUrlFlg){
+            inflater.inflate(R.menu.menu_coupon, menu);
+        }
 //		MenuItem haveCoupon = menu.add(0 , Menu.FIRST, Menu.NONE ,"取得済みクーポン");
 //		haveCoupon.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
 //		haveCoupon.setIcon(R.drawable.icon_coupon);
@@ -184,8 +188,10 @@ public class CouponFragment extends Fragment implements OnPageChangeListener {
 					return;
 				}
 				couponData = data;
+
 				// ここにデータ取得時の処理を書く
 				displayCouponAfterGetData();
+
 			}
 
 			@Override
@@ -193,7 +199,20 @@ public class CouponFragment extends Fragment implements OnPageChangeListener {
 			}
         });
 	}
-
+//    public void SetUrlFlg(){
+//        CouponData currentCouponData = couponData.data_list.get(viewPager.getCurrentItem());
+//        if(currentCouponData.coupon_url != null && !currentCouponData.coupon_url.equals("")){
+//            Config.isGetUrl = true;
+//        }
+//        if(Config.isGetUrl){
+//            FragmentManager fm = getFragmentManager();
+//            FragmentTransaction ft = fm.beginTransaction();
+//            ft.addToBackStack(null);
+//            CouponUseFragment fragment = new CouponUseFragment();
+//            ft.replace(R.id.fragment, fragment);
+//            ft.commit();
+//        }
+//    }
 	/**
 	 * クーポンデータ取得後、クーポン情報を表示する。
 	 */
@@ -201,6 +220,7 @@ public class CouponFragment extends Fragment implements OnPageChangeListener {
 		if (couponData == null) { return; }
 
 		ArrayList<CouponData> couponList = couponData.data_list;
+
 		if (couponList == null || couponList.size() == 0) {
 			viewPager.setVisibility(View.GONE);
 			viewPagerIndicator.setVisibility(View.GONE);
@@ -233,6 +253,7 @@ public class CouponFragment extends Fragment implements OnPageChangeListener {
 				initPos = i;
 			}
 		}
+
 		pageFlagment.setGetCouponData(new GetCouponData(activity, handler, viewPager, viewPagerIndicator, couponData));
 
 		viewPager.setAdapter(pageFlagment);

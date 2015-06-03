@@ -91,17 +91,20 @@ public class Config {
 
     //使ったフラグメントを記録するための設定
     public static int FragmentCurrentNum;
-    public static int FlyerFramentNum;
-    public static int InfoFramentNum;
-    public static int ShoppingFramentNum;
-    public static int CouponFramentNum;
-    public static int FittingFramentNum;
-    public static int MapFramentNum;
-    public static int BarcodeFramentNum;
-    public static int StampFramentNum;
+    public static int FlyerFragmentNum;
+    public static int InfoFragmentNum;
+    public static int ShoppingFragmentNum;
+    public static int CouponFragmentNum;
+    public static int FittingFragmentNum;
+    public static int MapFragmentNum;
+    public static int BarcodeFragmentNum;
+    public static int StampFragmentNum;
+    public static int SnsFragmentNum;
 
     public static List Savelist = new ArrayList<>();
     public static boolean Backflg = false;
+
+    public static boolean isGetUrl;
 
     // ImageBackとnextの位置をどこに配置する設定
     public static int PositionForWebView;

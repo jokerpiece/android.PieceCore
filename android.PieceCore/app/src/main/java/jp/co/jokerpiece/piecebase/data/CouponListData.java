@@ -7,7 +7,6 @@ public class CouponListData {
 	public static final int COUPON_DATA_TYPE_GIVEN = 2;
 	public int error_code;
 	public String error_message;
-	
 	public ArrayList<CouponData> data_list;
 
 	public class CouponData{

@@ -49,6 +49,7 @@
     <string name="stamp0">STAMP</string>
     <string name="stamp1">Stamp</string>
 
+
     <!-- default theme -->
     <drawable name="actionbar_background">#FFFFFF</drawable>
     <drawable name="theme_text_color">#666</drawable>
