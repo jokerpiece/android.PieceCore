@@ -224,7 +224,7 @@ public class FlyerFragment extends Fragment implements OnPageChangeListener{
 
 	private void onClickFlyer(String url) {
         if (url != null && !url.equals("") && !url.equals("null")) {
-            FragmentManager fm = getFragmentManager();
+            FragmentManager fm = ((MainBaseActivity)context).getSupportFragmentManager();
             FragmentTransaction ft = fm.beginTransaction();
             ft.addToBackStack(null);
             WebViewFragment fragment = new WebViewFragment();

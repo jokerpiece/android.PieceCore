@@ -17,6 +17,7 @@ import android.content.Context;
 import android.content.Loader;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
@@ -112,7 +113,7 @@ public class ShoppingFragment extends Fragment implements OnItemClickListener {
 			ShoppingListAdapter adapter = new ShoppingListAdapter(context,
 					R.layout.adapter_shopping_category_list,
 					categoryData.data_list,
-					 getActivity().getSupportLoaderManager());
+                    ((FragmentActivity)context).getSupportLoaderManager());
 			shoppingListView.setAdapter(adapter);
 			shoppingListView.setOnItemClickListener(this);
 		}else{
@@ -124,7 +125,7 @@ public class ShoppingFragment extends Fragment implements OnItemClickListener {
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
 		CategoryData data = categoryData.data_list.get(position);
-		FragmentManager fm = getFragmentManager();
+		FragmentManager fm = ((MainBaseActivity)context).getSupportFragmentManager();
 		FragmentTransaction ft = fm.beginTransaction();
 		ft.addToBackStack(null);
 		ShoppingGoodsFragment fragment = new ShoppingGoodsFragment();

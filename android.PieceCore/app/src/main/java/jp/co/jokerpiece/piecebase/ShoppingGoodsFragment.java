@@ -167,7 +167,7 @@ public class ShoppingGoodsFragment extends Fragment implements OnItemClickListen
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
 		ItemData data = itemData.data_list.get(position);
-		FragmentManager fm = getFragmentManager();
+		FragmentManager fm = ((MainBaseActivity)context).getSupportFragmentManager();
 		FragmentTransaction ft = fm.beginTransaction();
 		ft.addToBackStack(null);
 		WebViewFragment fragment = new WebViewFragment();

@@ -66,7 +66,7 @@ public class FlyerImageFragment extends Fragment implements DownloadImageSyncCal
 
 	private void onClickFlyer(String url) {
         if (!url.equals("") && !url.equals("null")) {
-            FragmentManager fm = getParentFragment().getFragmentManager();
+            FragmentManager fm =  ((MainBaseActivity)getActivity()).getSupportFragmentManager();
             FragmentTransaction ft = fm.beginTransaction();
             ft.addToBackStack(null);
             WebViewFragment fragment = new WebViewFragment();
