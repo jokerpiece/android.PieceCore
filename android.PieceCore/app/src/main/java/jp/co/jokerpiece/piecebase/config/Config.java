@@ -102,9 +102,11 @@ public class Config {
     public static int SnsFragmentNum;
 
     public static List Savelist = new ArrayList<>();
+
     public static boolean Backflg = false;
 
-    public static boolean isGetUrl;
+    public static boolean isGetUrl
+            ;
 
     // ImageBackとnextの位置をどこに配置する設定
     public static int PositionForWebView;

@@ -35,23 +35,24 @@ public class InfomationFragment extends Fragment implements OnPageChangeListener
 			Bundle savedInstanceState) {
         context = getActivity();
         //フラグメントをsaveするため
-        if(Config.InfoFragmentNum == 0) {
-            if (Config.Savelist.size() == 1) {
-                Config.Savelist.clear();
-                Config.Savelist.add(0);
-            }
-            if (!Config.Backflg) {
-                if (Config.FragmentCurrentNum != 0) {
-                    Config.Savelist.add(Config.InfoFragmentNum);
-                    Config.FragmentCurrentNum += 1;
-                }
-            }
-        }else{
-            if(!Config.Backflg) {
-                Config.Savelist.add(Config.InfoFragmentNum);
-                Config.FragmentCurrentNum += 1;
-            }
-        }
+//        if(Config.InfoFragmentNum == 0) {
+//            if (Config.Savelist.size() == 1) {
+//                Config.Savelist.clear();
+//                Config.Savelist.add(0);
+//            }
+//            if (!Config.Backflg) {
+//                if (Config.FragmentCurrentNum != 0) {
+//                    Config.Savelist.add(Config.InfoFragmentNum);
+//                    Config.FragmentCurrentNum += 1;
+//                }
+//            }
+//        }else{
+//            if(!Config.Backflg) {
+//                Config.Savelist.add(Config.InfoFragmentNum);
+//                Config.FragmentCurrentNum += 1;
+//            }
+//        }
+        Common.setCurrentFragment(Config.InfoFragmentNum);
 		View rootView = inflater.inflate(R.layout.fragment_infomation, container, false);
 
         viewPager = (ViewPager) rootView.findViewById(R.id.pager);

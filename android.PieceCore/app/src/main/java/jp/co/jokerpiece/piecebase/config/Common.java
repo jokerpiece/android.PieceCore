@@ -241,4 +241,29 @@ public class Common {
         }
 	}
     // プッシュ通知で必要なメソッド(ここまで)
+
+    //フラグメントを記録するため
+    public static void setCurrentFragment(int FragmentNum){
+        if(FragmentNum == 0) {
+            if (Config.Savelist.size() == 1) {
+                Config.Savelist.clear();
+                Config.Savelist.add(0);
+            }
+            if (!Config.Backflg) {
+                if (Config.FragmentCurrentNum != 0) {
+                    if(Config.Savelist.get(Config.FragmentCurrentNum) != FragmentNum) {
+                        Config.Savelist.add(FragmentNum);
+                        Config.FragmentCurrentNum += 1;
+                    }
+                }
+            }
+        }else{
+            if(!Config.Backflg) {
+                if(Config.Savelist.get(Config.FragmentCurrentNum) != FragmentNum) {
+                    Config.Savelist.add(FragmentNum);
+                    Config.FragmentCurrentNum += 1;
+                }
+            }
+        }
+    }
 }

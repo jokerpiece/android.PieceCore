@@ -16,6 +16,8 @@ import jp.co.jokerpiece.piecebase.util.App;
 import jp.co.jokerpiece.piecebase.util.AppUtil;
 import jp.co.jokerpiece.piecebase.util.DownloadImageView;
 import jp.co.jokerpiece.piecebase.util.ViewPagerIndicator;
+
+import android.app.Activity;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.Context;
 import android.content.Loader;
@@ -23,6 +25,7 @@ import android.graphics.Point;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
@@ -137,7 +140,7 @@ public class FlyerFragment extends Fragment implements OnPageChangeListener{
 		alImageViewList.clear();
 		pageFlagment.refresh();
 		pageFlagment.destroyAllItem(viewPagerScroll);
-		Display display = getActivity().getWindowManager().getDefaultDisplay();
+		Display display = ((Activity) context).getWindowManager().getDefaultDisplay();
 		Point point = new Point();
 		display.getSize(point);
 		float scale = (float)point.x / 640.0f;
@@ -171,7 +174,7 @@ public class FlyerFragment extends Fragment implements OnPageChangeListener{
 			}
 			DownloadImageView dlIv = new DownloadImageView(context);
 			if(!dlIv.setImageURL(data.img_url)){
-				getActivity().getSupportLoaderManager().initLoader(Config.loaderCnt++, null, dlIv);
+                ((FragmentActivity) context).getSupportLoaderManager().initLoader(Config.loaderCnt++, null, dlIv);
 			}
 
 			LayoutParams lp = new LinearLayout.LayoutParams((int)(320 * scale),(int)(320 * scale));
@@ -284,7 +287,7 @@ public class FlyerFragment extends Fragment implements OnPageChangeListener{
 
 	private void getFlyerWithID(final int flyerID){
 		this.flyer_ID = flyerID;
-        getActivity().getLoaderManager().initLoader(Config.loaderCnt++, null, new LoaderCallbacks<FlyerData>(){
+        ((Activity)context).getLoaderManager().initLoader(Config.loaderCnt++, null, new LoaderCallbacks<FlyerData>(){
 			@Override
 			public Loader<FlyerData> onCreateLoader(int id, Bundle args) {
 				 FlyerListAPI flyerAPI = new FlyerListAPI(context, flyerID);

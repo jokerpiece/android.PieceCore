@@ -18,6 +18,7 @@ import org.json.JSONObject;
 
 import android.content.AsyncTaskLoader;
 import android.content.Context;
+import android.util.Log;
 
 public class CouponListAPI extends AsyncTaskLoader<CouponListData> implements HttpClientInterface {
 	int mode = -1;
@@ -36,6 +37,7 @@ public class CouponListAPI extends AsyncTaskLoader<CouponListData> implements Ht
     	HashMap<String, String> parameter = new HashMap<String, String>();
     	parameter.put("app_id", Config.APP_ID);
     	parameter.put("uuid", Common.getUUID(getContext()));
+
         String result = null;
         String url = null;
         switch (mode) {

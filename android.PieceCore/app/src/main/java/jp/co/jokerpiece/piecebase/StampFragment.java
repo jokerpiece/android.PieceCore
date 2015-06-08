@@ -53,23 +53,24 @@ public class StampFragment  extends Fragment {
                              Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
 
-        if(Config.StampFragmentNum == 0) {
-            if (Config.Savelist.size() == 1) {
-                Config.Savelist.clear();
-                Config.Savelist.add(0);
-            }
-            if (!Config.Backflg) {
-                if (Config.FragmentCurrentNum != 0) {
-                    Config.Savelist.add(Config.StampFragmentNum);
-                    Config.FragmentCurrentNum += 1;
-                }
-            }
-        }else{
-            if(!Config.Backflg) {
-                Config.Savelist.add(Config.StampFragmentNum);
-                Config.FragmentCurrentNum += 1;
-            }
-        }
+//        if(Config.StampFragmentNum == 0) {
+//            if (Config.Savelist.size() == 1) {
+//                Config.Savelist.clear();
+//                Config.Savelist.add(0);
+//            }
+//            if (!Config.Backflg) {
+//                if (Config.FragmentCurrentNum != 0) {
+//                    Config.Savelist.add(Config.StampFragmentNum);
+//                    Config.FragmentCurrentNum += 1;
+//                }
+//            }
+//        }else{
+//            if(!Config.Backflg) {
+//                Config.Savelist.add(Config.StampFragmentNum);
+//                Config.FragmentCurrentNum += 1;
+//            }
+//        }
+        Common.setCurrentFragment(Config.StampFragmentNum);
         context = getActivity();
         rootView = inflater.inflate(R.layout.fragment_stamp, container, false);
         btn = (Button)rootView.findViewById(R.id.getcoupon);

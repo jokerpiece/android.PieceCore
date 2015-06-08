@@ -55,9 +55,11 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
 
     private Context context;
     public static FragmentTabHost tabHost;
-
     public String myTheme = "";
     public TabColorState tabColorState;
+    String mLastTabId;
+    int NextFragmnent;
+    boolean isTabChange;
 
     public ArrayList<HashMap<String, Object>> settingData = new ArrayList<HashMap<String,Object>>();
     public static ArrayList<TabInfo> tabInfoList;
@@ -85,7 +87,7 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
         tabHost.setOnTabChangedListener(this);
 
         // クリックイベントを設定する
-        Log.d("numberOfTabs=", "" + tabHost.getTabWidget().getChildCount());
+//        Log.d("numberOfTabs=", "" + tabHost.getTabWidget().getChildCount());
         for (int i = 0; i < tabHost.getTabWidget().getChildCount(); i++) {
             tabHost.getTabWidget().getChildAt(i).setOnTouchListener(new OnTouchListener() {
                 @Override
@@ -102,7 +104,7 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
                         ft.commit();
                         return true;
                     }
-                    return false;
+                       return false;
                 }
             });
         }
@@ -142,47 +144,106 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
         return super.onCreateOptionsMenu(menu);
     }
 
-//    public boolean onKeyDown(int keyCode, KeyEvent event) {
-//        super.onKeyDown(keyCode, event);
+//    @Override
+//    public void onBackPressed() {
+//        Config.Backflg = true;
+//        int backStackCnt =
+//                getSupportFragmentManager().getBackStackEntryCount();
+//        if (backStackCnt != 0) {
+//           // if (!getCurrentRootFragment().popBackStack()) {
+//                getSupportFragmentManager().popBackStack();
+//           // }
+//        }else {
+//            if (Config.Backflg) {
+//                if (Config.FragmentCurrentNum > 0) {
+//                    MainBaseActivity.tabHost.setCurrentTab((Integer) Config.Savelist.get(Config.FragmentCurrentNum - 1));
+//                }
+//                if (Config.Savelist.size() > 1) {
+//                    Config.Savelist.remove(Config.FragmentCurrentNum);
+//                }
+//                if (Config.FragmentCurrentNum > 0) {
+//                    Config.FragmentCurrentNum -= 1;
+//                }
+//            }
+//        }
+//    }
+
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        super.onKeyDown(keyCode, event);
+
+        switch(keyCode){
+            case KeyEvent.KEYCODE_BACK:
+//                Config.Backflg = true;
+                //スタックを戻る。
+//                int backStackCnt = getSupportFragmentManager().getBackStackEntryCount();
+//                if (backStackCnt != 0) {
+//                    if (Config.FragmentCurrentNum > 0 && !isTabChange){
+//                        MainBaseActivity.tabHost.setCurrentTab((Integer) Config.Savelist.get(Config.FragmentCurrentNum - 1));
+//                    }
+//                    getSupportFragmentManager().popBackStack();
+//                }
+
+                    if (!getCurrentRootFragment().popBackStack()) {
+//                        if (Config.Backflg) {
+//                            if (Config.FragmentCurrentNum > 0) {
+//                                MainBaseActivity.tabHost.setCurrentTab((Integer) Config.Savelist.get(Config.FragmentCurrentNum - 1));
 //
-//        switch(keyCode){
-//            case KeyEvent.KEYCODE_BACK:
-//                //スタックを戻る。
-//                if(!getCurrentRootFragment().popBackStack()){
+//                            }
+//                            if (Config.Savelist.size() > 1) {
+//                                Config.Savelist.remove(Config.FragmentCurrentNum);
+//                            }
+//                            if (Config.FragmentCurrentNum > 0) {
+//                                Config.FragmentCurrentNum -= 1;
+//                            }
+//                        }
+                        return true;
+                    } else {
+                        return false;
+                    }
+
+                }
+
+
+        return false;
+    }
+
+//    public boolean onKeyDown(int keyCode, KeyEvent event) {
+//        // KeyEvent.ACTION_DOWN以外のイベントを無視する
+//        // （これがないとKeyEvent.ACTION_UPもフックしてしまう）
+//        if (event.getAction() != KeyEvent.ACTION_DOWN) {
+//            return false;
+//        }
+//        if (keyCode == KeyEvent.KEYCODE_BACK) {
+//            Config.Backflg = true;
+//            if(Config.Backflg) {
+//                    if (!getCurrentRootFragment().popBackStack()) {
+//
+//                    if(Config.FragmentCurrentNum > 0) {
+//                        MainBaseActivity.tabHost.setCurrentTab((Integer) Config.Savelist.get(Config.FragmentCurrentNum - 1));
+////                            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+////
+////                            ft.replace(R.id.fragment, Fragment.instantiate(
+////                                    context,
+////                                    tabInfoList.get(Config.FragmentCurrentNum -1).cls.getName()));
+////                            //ft.addToBackStack(null);
+////                            ft.commit();
+//
+//                    }
+//                    if (Config.Savelist.size() > 1) {
+//                        Config.Savelist.remove(Config.FragmentCurrentNum);
+//                    }
+//                    if(Config.FragmentCurrentNum > 0) {
+//                        Config.FragmentCurrentNum -= 1;
+//                    }
+//
 //                    return true;
-//                }else{
+//                } else {
 //                    return false;
 //                }
+//            }
 //        }
 //        return false;
 //    }
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        // KeyEvent.ACTION_DOWN以外のイベントを無視する
-        // （これがないとKeyEvent.ACTION_UPもフックしてしまう）
-        if (event.getAction() != KeyEvent.ACTION_DOWN) {
-            return false;
-        }
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-
-            Config.Backflg = true;
-            if(Config.Backflg) {
-                if (!getCurrentRootFragment().popBackStack()) {
-                    if(Config.FragmentCurrentNum > 0) {
-                        MainBaseActivity.tabHost.setCurrentTab((Integer) Config.Savelist.get(Config.FragmentCurrentNum - 1));
-                    }
-                    if (Config.Savelist.size() > 1) {
-                        Config.Savelist.remove(Config.FragmentCurrentNum);
-                    }
-                    if(Config.FragmentCurrentNum > 0) {
-                        Config.FragmentCurrentNum -= 1;
-                    }
-                } else {
-                    return false;
-                }
-            }
-        }
-        return false;
-    }
 
 
     @Override
@@ -377,20 +438,34 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
         /**
          * 現在タブに設定されているフラグメントを取得する。
          **/
-        private RootFragment getCurrentRootFragment() {
+        public RootFragment getCurrentRootFragment() {
             return (RootFragment) getSupportFragmentManager().findFragmentById(R.id.real_content);
         }
 
         @Override
         public void onTabChanged(String tabId) {
-//		// バックスタックのクリーンアップ
-//		getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-//
-//        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-//        ft.replace(R.id.fragment, Fragment.instantiate(
-//                context,
-//                tabInfoList.get(tabHost.getCurrentTab()).cls.getName()));
-//        ft.commit();
+            Log.d("tabid", "tabId: " + tabId);
+
+		// バックスタックのクリーンアップ
+//            NextFragmnent = Integer.valueOf(tabId.substring(3, 4)).intValue();
+//            tabHost.setCurrentTab(NextFragmnent);
+
+//            if(mLastTabId != tabId) {
+//            if(!Config.Backflg) {
+//                getSupportFragmentManager().popBackStack();
+//                getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+//                getCurrentRootFragment().getChildFragmentManager()
+//                    .popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+
+                ft.replace(R.id.fragment, Fragment.instantiate(
+                        context,
+                        tabInfoList.get(tabHost.getCurrentTab()).cls.getName()));
+                //ft.addToBackStack(null);
+                ft.commit();
+//            }
+//            }
+//            mLastTabId = tabId;
         }
 
         /**

@@ -10,6 +10,8 @@ import jp.co.jokerpiece.piecebase.data.CategoryListData.CategoryData;
 import jp.co.jokerpiece.piecebase.util.App;
 import jp.co.jokerpiece.piecebase.util.AppUtil;
 import jp.co.jokerpiece.piecebase.util.DownloadImageView;
+
+import android.app.Activity;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.Context;
 import android.content.Loader;
@@ -42,23 +44,24 @@ public class ShoppingFragment extends Fragment implements OnItemClickListener {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
         context = getActivity();
-        if(Config.ShoppingFragmentNum == 0) {
-            if (Config.Savelist.size() == 1) {
-                Config.Savelist.clear();
-                Config.Savelist.add(0);
-            }
-            if (!Config.Backflg) {
-                if (Config.FragmentCurrentNum != 0) {
-                    Config.Savelist.add(Config.ShoppingFragmentNum);
-                    Config.FragmentCurrentNum += 1;
-                }
-            }
-        }else{
-            if(!Config.Backflg) {
-                Config.Savelist.add(Config.ShoppingFragmentNum);
-                Config.FragmentCurrentNum += 1;
-            }
-        }
+//        if(Config.ShoppingFragmentNum == 0) {
+//            if (Config.Savelist.size() == 1) {
+//                Config.Savelist.clear();
+//                Config.Savelist.add(0);
+//            }
+//            if (!Config.Backflg) {
+//                if (Config.FragmentCurrentNum != 0) {
+//                    Config.Savelist.add(Config.ShoppingFragmentNum);
+//                    Config.FragmentCurrentNum += 1;
+//                }
+//            }
+//        }else{
+//            if(!Config.Backflg) {
+//                Config.Savelist.add(Config.ShoppingFragmentNum);
+//                Config.FragmentCurrentNum += 1;
+//            }
+//        }
+        Common.setCurrentFragment(Config.ShoppingFragmentNum);
 		View rootView = inflater.inflate(R.layout.fragment_shopping, container, false);
 
 		shoppingListView = (ListView)rootView.findViewById(R.id.shoppingListView);
@@ -134,7 +137,11 @@ public class ShoppingFragment extends Fragment implements OnItemClickListener {
 	}
 
 	private void getGenreList(){
-        getActivity().getLoaderManager().initLoader(Config.loaderCnt++, null, new LoaderCallbacks<CategoryListData>(){
+        Loader l = ((Activity)context).getLoaderManager().getLoader(Config.loaderCnt);
+        if (l != null){
+            return;
+        }
+        ((Activity)context).getLoaderManager().initLoader(Config.loaderCnt++, null, new LoaderCallbacks<CategoryListData>(){
 			@Override
 			public Loader<CategoryListData> onCreateLoader(int id, Bundle args) {
 				 CategoryListAPI categoryAPI = new CategoryListAPI(context);

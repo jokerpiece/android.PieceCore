@@ -406,16 +406,6 @@ ADDED from AndroidManifest.xml:87:9
 		ADDED from AndroidManifest.xml:89:13
 	android:name
 		ADDED from AndroidManifest.xml:88:13
-activity#com.facebook.FacebookActivity
-ADDED from AndroidManifest.xml:94:9
-	android:label
-		ADDED from AndroidManifest.xml:98:13
-	android:configChanges
-		ADDED from AndroidManifest.xml:95:13
-	android:theme
-		ADDED from AndroidManifest.xml:97:13
-	android:name
-		ADDED from AndroidManifest.xml:94:19
 activity#com.google.android.gms.ads.AdActivity
 ADDED from com.google.android.gms:play-services-ads:7.5.0:26:9
 	android:configChanges
