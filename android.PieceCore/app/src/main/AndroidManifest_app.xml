@@ -90,7 +90,30 @@
             android:screenOrientation="portrait" >
         </activity>
         <!-- ビーコン受信時に表示する透明アクティビティ(ここまで) -->
+        <meta-data android:name="com.facebook.sdk.ApplicationId"   android:value="@string/app_id"/>
+        <activity android:name=".Oauth.FacebookActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar">
+        </activity>
+        <activity android:name="com.facebook.FacebookActivity"
+            android:configChanges=
+                "keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar">
+        </activity>
+        <activity
+            android:name=".Oauth.TwitterActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleInstance"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
 
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="callback" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

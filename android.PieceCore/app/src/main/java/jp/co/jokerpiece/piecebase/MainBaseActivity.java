@@ -199,7 +199,6 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         switch (requestCode) {
             case BeaconUtil.REQUEST_ENABLE_BT:
                 if (resultCode == Activity.RESULT_OK) {
@@ -275,6 +274,11 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
                     { put("tabTitle", getString(R.string.stamp1)); }
                     { put("tabIcon", R.drawable.icon_map); }
                     { put("cls", StampFragment.class); }
+                },
+                new HashMap<String, Object>() {
+                    { put("tabTitle", getString(R.string.sns1)); }
+                    { put("tabIcon", R.drawable.icon_map); }
+                    { put("cls", SnsFragment.class); }
                 }
         ));
     }
@@ -296,6 +300,7 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
             { put(MapViewFragment.class.getSimpleName(), R.string.map0); }
             { put(BarcodeFragment.class.getSimpleName(), R.string.barcode0); }
             { put(StampFragment.class.getSimpleName(), R.string.stamp0); }
+            { put(SnsFragment.class.getSimpleName(), R.string.sns0); }
 
         };
     }

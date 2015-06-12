@@ -105,9 +105,20 @@ public class Config {
 
     public static boolean Backflg = false;
 
-    public static boolean isGetUrl
-            ;
+    public static boolean isGetUrl;
 
+    public static String CONSUMER_KEY = "YOUR_CONSUMER_KEY";
+    public static String CONSUMER_SECRET = "YOUR_CONSUMER_SECRET";
+
+    public static String PREFERENCE_NAME = "twitter_oauth";
+    public static final String PREF_KEY_SECRET = "oauth_token_secret";
+    public static final String PREF_KEY_TOKEN = "oauth_token";
+
+    public static final String CALLBACK_URL = "oauth://t4jsample";
+
+    public static final String IEXTRA_AUTH_URL = "auth_url";
+    public static final String IEXTRA_OAUTH_VERIFIER = "oauth_verifier";
+    public static final String IEXTRA_OAUTH_TOKEN = "oauth_token";
     // ImageBackとnextの位置をどこに配置する設定
     public static int PositionForWebView;
     final public static int Top = 0;

@@ -17,6 +17,7 @@ import android.content.Loader;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.Display;
@@ -167,7 +168,7 @@ public class ShoppingGoodsFragment extends Fragment implements OnItemClickListen
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
 		ItemData data = itemData.data_list.get(position);
-		FragmentManager fm = ((MainBaseActivity)context).getSupportFragmentManager();
+		FragmentManager fm = getFragmentManager();
 		FragmentTransaction ft = fm.beginTransaction();
 		ft.addToBackStack(null);
 		WebViewFragment fragment = new WebViewFragment();

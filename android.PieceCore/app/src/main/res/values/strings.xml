@@ -48,7 +48,8 @@
     <string name="barcode1">Barcode</string>
     <string name="stamp0">STAMP</string>
     <string name="stamp1">Stamp</string>
-
+    <string name="sns0">SNS</string>
+    <string name="sns1">Sns</string>
 
     <!-- default theme -->
     <drawable name="actionbar_background">#FFFFFF</drawable>
@@ -79,4 +80,20 @@
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <string name="facebook">facebook</string>
+    <string name="app_id">875096102556887</string>
+    <string name="facebook_authorization">ログインボタンをタップして認証を続行して下さい。</string>
+    <string name="cancel">cancel</string>
+    <string name="error">error</string>
+    <string name="success">success</string>
+    <string name="successfully_posted_post">successfully_posted_post</string>
+    <string name="ok">ok</string>
+    <string name="hello_user">hello_user</string>
+    <string name="cancelled">cancelled</string>
+    <string name="permission_not_granted">permission_not_granted</string>
+
+    <string name="twitter">twitter</string>
+    <string name="gmail">gmail</string>
+
+    
 </resources>

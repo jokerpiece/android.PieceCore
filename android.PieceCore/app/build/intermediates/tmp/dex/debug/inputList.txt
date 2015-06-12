@@ -23,6 +23,7 @@ C:\Users\kaku\AndroidStudioProjects\work\android.PieceCore\android.PieceCore\app
 C:\Users\kaku\AndroidStudioProjects\work\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\debug\internal_impl-22.2.0-513fa7e4d0d6c4129e0a23ab4d26eb6b802c5d91.jar
 C:\Users\kaku\AndroidStudioProjects\work\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-ef48996330c4314a7bb7a829dc4d81758b6b4e17.jar
 C:\Users\kaku\AndroidStudioProjects\work\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-17de8f4477f501cf0660e2068dab084b2b35763b.jar
+C:\Users\kaku\AndroidStudioProjects\work\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\debug\twitter4j-core-4.0.2-4c3a25d216d1b2cd25244480e6d45ef4b6fee4bf.jar
 C:\Users\kaku\AndroidStudioProjects\work\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-7d4d75b55dbdff6608c4221230719e5e3b4a6689.jar
 C:\Users\kaku\AndroidStudioProjects\work\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-bd0435858b896dbcb14a19dd0834481fd756254f.jar
 C:\Users\kaku\AndroidStudioProjects\work\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\debug\core-3.2.0-02db460ac9d5dfe63a703a1d62d3f1b43cfe1c94.jar
