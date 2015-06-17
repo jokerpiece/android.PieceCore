@@ -107,18 +107,19 @@ public class Config {
 
     public static boolean isGetUrl;
 
-    public static String CONSUMER_KEY = "YOUR_CONSUMER_KEY";
-    public static String CONSUMER_SECRET = "YOUR_CONSUMER_SECRET";
+    public static String CONSUMER_KEY = "N1qd3k7y8mT73CZ2hAVxh4JTr";
+    public static String CONSUMER_SECRET = "uQqLoh6lV9KQn6F7o6JyRiQkDueNNPIlrR8GwsmW7P95Q8OZ8d";
+    public static String ACCESS_TOKEN = "3245559282-ncb4SSrwITCEPkgFscWpewRopIBRMQWE2cbj0eU";
+    public static String ACCESS_SECRET = "CpcWqrWVR3E0fbDPxLJs5GRpGM2HUg7i6iDYruH1L9HXX";
 
-    public static String PREFERENCE_NAME = "twitter_oauth";
-    public static final String PREF_KEY_SECRET = "oauth_token_secret";
-    public static final String PREF_KEY_TOKEN = "oauth_token";
+//    public static String PREFERENCE_NAME = "twitter_oauth";
+//    public static final String PREF_KEY_SECRET = "oauth_token_secret";
+//    public static final String PREF_KEY_TOKEN = "oauth_token";
+//    public static final String CALLBACK_URL = "oauth://t4jsample";
+//    public static final String IEXTRA_AUTH_URL = "auth_url";
+//    public static final String IEXTRA_OAUTH_VERIFIER = "oauth_verifier";
+//    public static final String IEXTRA_OAUTH_TOKEN = "oauth_token";
 
-    public static final String CALLBACK_URL = "oauth://t4jsample";
-
-    public static final String IEXTRA_AUTH_URL = "auth_url";
-    public static final String IEXTRA_OAUTH_VERIFIER = "oauth_verifier";
-    public static final String IEXTRA_OAUTH_TOKEN = "oauth_token";
     // ImageBackとnextの位置をどこに配置する設定
     public static int PositionForWebView;
     final public static int Top = 0;

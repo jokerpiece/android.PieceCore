@@ -19,11 +19,12 @@ import android.content.AsyncTaskLoader;
 import android.content.Context;
 
 public class ItemListAPI extends AsyncTaskLoader<ItemListData> implements HttpClientInterface {
-	int category_id = -1;
-	String sarch_word = null;
+	//int category_id = -1;
+	String category_id;
+    String sarch_word = null;
 	int page = -1;
 	String coupon_id = null;
-	public ItemListAPI(Context context,int category_id,String sarch_word,int page) {
+	public ItemListAPI(Context context,String category_id,String sarch_word,int page) {
 		super(context);
 		this.category_id = category_id;
 		this.sarch_word = sarch_word;
@@ -45,7 +46,7 @@ public class ItemListAPI extends AsyncTaskLoader<ItemListData> implements HttpCl
         HashMap<String, String> parameter = new HashMap<String, String>();
         parameter.put("app_id", Config.APP_ID);
         String url = Config.SENDID_ITEM;
-        if(category_id > 0){
+        if(category_id != null){
         	parameter.put("category_id", String.valueOf(category_id));
         }
         if(sarch_word != null){

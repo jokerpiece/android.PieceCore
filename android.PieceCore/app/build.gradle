@@ -34,7 +34,6 @@ dependencies {
     compile 'me.dm7.barcodescanner:zxing:1.7.1'
     compile 'com.facebook.android:facebook-android-sdk:4.2.0'
     compile 'org.twitter4j:twitter4j-core:4.0.2'
-
 }
 
 apply plugin: 'maven'
@@ -45,7 +44,7 @@ uploadArchives {
             repository url: "file://${projectDir}/repository"
             pom.groupId = 'jp.co.jokerpiece.android.piececore'
             pom.artifactId = 'android.piececore'
-            pom.version = '0.0.36'
+            pom.version = '0.0.37'
         }
     }
 }

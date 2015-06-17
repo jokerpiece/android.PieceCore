@@ -12,21 +12,23 @@
         android:text="投稿したい画像をカメラボタンを押して設定してください"/>
     <ImageButton
         android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_height="250dp"
         android:background="@null"
         android:layout_gravity="center"
-        android:scaleType="centerCrop"
-        android:id="@+id/Photo"
-        android:src="@drawable/icon_fitting"
 
+        android:id="@+id/Photo"
+        android:src="@drawable/camera_icon"
         />
-    <Button
-        android:id="@+id/snsButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:background="#9370db"
-        android:text="投稿する"/>
+
+        <Button
+            android:id="@+id/snsButton"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_gravity="center"
+            android:background="#191970"
+            android:textColor="#FFFFFF"
+            android:text="投稿する"/>
 
 </LinearLayout>
 <!-- From: file:/C:/Users/kaku/AndroidStudioProjects/work/android.PieceCore/android.PieceCore/app/src/main/res/layout/snsfragment.xml -->

@@ -130,7 +130,8 @@ public class ShoppingFragment extends Fragment implements OnItemClickListener {
 		ft.addToBackStack(null);
 		ShoppingGoodsFragment fragment = new ShoppingGoodsFragment();
 		Bundle bundle = new Bundle();
-		bundle.putInt("category_id", data.category_id);
+		//bundle.putInt("category_id", data.category_id);
+        bundle.putString("category_id",data.category_id);
         bundle.putString("category_img_url", data.img_url);
 		fragment.setArguments(bundle);
 		ft.replace(R.id.fragment, fragment);

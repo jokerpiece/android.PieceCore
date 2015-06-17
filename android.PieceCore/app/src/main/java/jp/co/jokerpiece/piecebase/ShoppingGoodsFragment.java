@@ -54,7 +54,8 @@ public class ShoppingGoodsFragment extends Fragment implements OnItemClickListen
 	ShoppingGoodsListAdapter adapter = null;
 	FrameLayout categoryBase;
 	TextView tvItemCount;
-	int categoryID= -1;
+	//int categoryID= -1;
+    String categoryID;
 	String searchKeyword = null;
 	String couponID = null;
     String categoryImgUrl = null;
@@ -78,7 +79,8 @@ public class ShoppingGoodsFragment extends Fragment implements OnItemClickListen
 //        getActionBar().setTitle(R.string.goods_list);
         Bundle bundle = getArguments();
         if (bundle != null) {
-	        categoryID = bundle.getInt("category_id", -1);
+	        //categoryID = bundle.getInt("category_id", -1);
+            categoryID = bundle.getString("category_id");
 	        searchKeyword = bundle.getString("searchKeyword");
 	        couponID = bundle.getString("coupon_ID");
             categoryImgUrl = bundle.getString("category_img_url");

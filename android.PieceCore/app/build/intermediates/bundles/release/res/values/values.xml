@@ -29,10 +29,13 @@
     <drawable name="actionbar_background_cute">#FFF9F9</drawable>
     <drawable name="theme_text_color">#666</drawable>
     <drawable name="theme_text_color_cute">#e02849</drawable>
+    <string name="Facebook_msg">ログインボタンをタップして認証を続行して下さい。</string>
+    <string name="Facebook_title">Facebook_Title</string>
     <string name="action_settings">設定</string>
     <string name="all">全て</string>
-    <string name="app_id">875096102556887</string>
+    <string name="app_id">1716893145204841</string>
     <string name="app_name">大人ゴコロ</string>
+    <string name="app_nameForTwitter">MyTwitter</string>
     <string name="barcode0">BARCODE</string>
     <string name="barcode1">Barcode</string>
     <string name="cancel">cancel</string>
@@ -50,7 +53,6 @@
     <string name="empty"/>
     <string name="error">error</string>
     <string name="facebook">facebook</string>
-    <string name="facebook_authorization">ログインボタンをタップして認証を続行して下さい。</string>
     <string name="fitting0">FITTING</string>
     <string name="fitting1">Fitting</string>
     <string name="flyer">チラシ</string>
@@ -61,7 +63,8 @@
     <string name="gmail">gmail</string>
     <string name="goods_list">商品一覧</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="hello_user">hello_user</string>
+    <string name="hello_user">Hello!!</string>
+    <string name="hello_world">Hello world!</string>
     <string name="home">ホーム</string>
     <string name="info">お知らせ</string>
     <string name="info0">INFO</string>
@@ -72,6 +75,7 @@
     <string name="map0">MAP</string>
     <string name="map1">Map</string>
     <string name="map_key">AIzaSyAxg51n6Chqa6KkE2xtuyV0Xn59zbLPPy8</string>
+    <string name="menu_settings">Settings</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="no_coupon">申し訳ございません。\n現在、取得できるクーポンがありません。</string>
@@ -90,6 +94,9 @@
     <string name="success">success</string>
     <string name="successfully_posted_post">successfully_posted_post</string>
     <string name="twitter">twitter</string>
+    <string name="twitter_callback_url">gabu://twitter</string>
+    <string name="twitter_consumer_key">N1qd3k7y8mT73CZ2hAVxh4JTr</string>
+    <string name="twitter_consumer_secret">uQqLoh6lV9KQn6F7o6JyRiQkDueNNPIlrR8GwsmW7P95Q8OZ8d</string>
     <string name="webview">ITEM</string>
     <string name="yen">円</string>
     <!-- From: file:/C:/Users/kaku/AndroidStudioProjects/work/android.PieceCore/android.PieceCore/app/src/main/res/values/styles.xml -->

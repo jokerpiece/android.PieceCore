@@ -304,6 +304,10 @@
     <eat-comment/>
     <integer name="viewfinder_border_length">60</integer>
     <integer name="viewfinder_border_width">4</integer>
+    <!-- From: file:/C:/Users/kaku/AndroidStudioProjects/work/android.PieceCore/android.PieceCore/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="Facebook_msg">ログインボタンをタップして認証を続行して下さい。</string>
+    <string name="Facebook_title">Facebook_Title</string>
     <!-- From: file:/C:/Users/kaku/AndroidStudioProjects/work/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/res/values/values.xml -->
     <eat-comment/>
     <string name="abc_action_bar_home_description">Navigate home</string>
@@ -329,8 +333,9 @@
     <eat-comment/>
     <string name="action_settings">設定</string>
     <string name="all">全て</string>
-    <string name="app_id">875096102556887</string>
+    <string name="app_id">1716893145204841</string>
     <string name="app_name">大人ゴコロ</string>
+    <string name="app_nameForTwitter">MyTwitter</string>
     <!-- From: file:/C:/Users/kaku/AndroidStudioProjects/work/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values/auth_strings.xml -->
     <eat-comment/>
     <string name="auth_google_play_services_client_facebook_display_name">Facebook</string>
@@ -420,7 +425,6 @@
     <string name="empty"/>
     <string name="error">error</string>
     <string name="facebook">facebook</string>
-    <string name="facebook_authorization">ログインボタンをタップして認証を続行して下さい。</string>
     <string name="fitting0">FITTING</string>
     <string name="fitting1">Fitting</string>
     <string name="flyer">チラシ</string>
@@ -431,7 +435,8 @@
     <string name="gmail">gmail</string>
     <string name="goods_list">商品一覧</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="hello_user">hello_user</string>
+    <string name="hello_user">Hello!!</string>
+    <string name="hello_world">Hello world!</string>
     <string name="home">ホーム</string>
     <string name="info">お知らせ</string>
     <string name="info0">INFO</string>
@@ -442,6 +447,7 @@
     <string name="map0">MAP</string>
     <string name="map1">Map</string>
     <string name="map_key">AIzaSyAxg51n6Chqa6KkE2xtuyV0Xn59zbLPPy8</string>
+    <string name="menu_settings">Settings</string>
     <!-- From: file:/C:/Users/kaku/AndroidStudioProjects/work/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.2.0/res/values/values.xml -->
     <eat-comment/>
     <string name="messenger_send_button_text">Send</string>
@@ -483,6 +489,9 @@
     <string name="success">success</string>
     <string name="successfully_posted_post">successfully_posted_post</string>
     <string name="twitter">twitter</string>
+    <string name="twitter_callback_url">gabu://twitter</string>
+    <string name="twitter_consumer_key">N1qd3k7y8mT73CZ2hAVxh4JTr</string>
+    <string name="twitter_consumer_secret">uQqLoh6lV9KQn6F7o6JyRiQkDueNNPIlrR8GwsmW7P95Q8OZ8d</string>
     <!-- From: file:/C:/Users/kaku/AndroidStudioProjects/work/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wallet/7.5.0/res/values/wallet_strings.xml -->
     <eat-comment/>
     <string name="wallet_buy_button_place_holder" translation_description="Text on a button that allows a user to make a payment with Google Wallet [CHAR LIMIT=30]">Buy with Google</string>

@@ -121,9 +121,14 @@
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" >
         </activity>
+
+        <provider
+            android:name="com.facebook.FacebookContentProvider"
+            android:authorities="com.facebook.app.FacebookContentProvider1716893145204841"
+            android:exported="true" />
+
         <activity
             android:name="jp.co.jokerpiece.piecebase.Oauth.TwitterActivity"
-            android:label="@string/app_name"
             android:launchMode="singleInstance"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" >
@@ -133,7 +138,10 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:scheme="callback" />
+                <!-- <data android:scheme="callback" /> -->
+                <data
+                    android:host="twitter"
+                    android:scheme="gabu" />
             </intent-filter>
         </activity>
         <!-- Include the AdActivity and InAppPurchaseActivity configChanges and themes. -->

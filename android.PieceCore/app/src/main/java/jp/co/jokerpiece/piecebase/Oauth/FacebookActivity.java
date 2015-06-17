@@ -1,12 +1,14 @@
 package jp.co.jokerpiece.piecebase.Oauth;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -33,6 +35,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import jp.co.jokerpiece.piecebase.R;
+import jp.co.jokerpiece.piecebase.SnsFragment;
 
 /**
  * Created by kaku on 2015/06/01.
@@ -65,26 +68,26 @@ public class FacebookActivity extends FragmentActivity {
     private FacebookCallback<Sharer.Result> shareCallback = new FacebookCallback<Sharer.Result>() {
         @Override
         public void onCancel() {
-            Log.d("HelloFacebook", "Canceled");
+            //Log.d("HelloFacebook", "Canceled");
         }
 
         @Override
         public void onError(FacebookException error) {
-            Log.d("HelloFacebook", String.format("Error: %s", error.toString()));
-            String title = getString(R.string.error);
-            String alertMessage = error.getMessage();
-            showResult(title, alertMessage);
+         //   Log.d("HelloFacebook", String.format("Error: %s", error.toString()));
+//            String title = getString(R.string.error);
+//            String alertMessage = error.getMessage();
+//            showResult(title, alertMessage);
         }
 
         @Override
         public void onSuccess(Sharer.Result result) {
-            Log.d("HelloFacebook", "Success!");
-            if (result.getPostId() != null) {
-                String title = getString(R.string.success);
-                String id = result.getPostId();
-                String alertMessage = getString(R.string.successfully_posted_post, id);
-                showResult(title, alertMessage);
-            }
+           // Log.d("HelloFacebook", "Success!");
+//            if (result.getPostId() != null) {
+//                String title = getString(R.string.success);
+//                String id = result.getPostId();
+//                String alertMessage = getString(R.string.successfully_posted_post, id);
+//                showResult(title, alertMessage);
+//            }
         }
 
         private void showResult(String title, String alertMessage) {
@@ -105,8 +108,14 @@ public class FacebookActivity extends FragmentActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         FacebookSdk.sdkInitialize(this.getApplicationContext());
-
+        setContentView(R.layout.facebookview);
         callbackManager = CallbackManager.Factory.create();
+        //postStatusUpdateButton = (Button) findViewById(R.id.postStatusUpdateButton);
+        postPhotoButton = (Button) findViewById(R.id.postPhotoButton);
+        greeting = (TextView)findViewById(R.id.tv_message);
+        profilePictureView = (ProfilePictureView) findViewById(R.id.profilePicture);
+        // postStatusUpdateButton.setVisibility(View.GONE);
+        postPhotoButton.setVisibility(View.GONE);
 
         LoginManager.getInstance().registerCallback(callbackManager,
                 new FacebookCallback<LoginResult>() {
@@ -114,12 +123,16 @@ public class FacebookActivity extends FragmentActivity {
                     public void onSuccess(LoginResult loginResult) {
                         handlePendingAction();
                         updateUI();
+//                        postPhotoButton.setVisibility(View.VISIBLE);
+//                        postStatusUpdateButton.setVisibility(View.VISIBLE);
+                        //onClickPostStatusUpdate();
+
                     }
 
                     @Override
                     public void onCancel() {
                         if (pendingAction != PendingAction.NONE) {
-                            showAlert();
+//                            showAlert();
                             pendingAction = PendingAction.NONE;
                         }
                         updateUI();
@@ -129,19 +142,19 @@ public class FacebookActivity extends FragmentActivity {
                     public void onError(FacebookException exception) {
                         if (pendingAction != PendingAction.NONE
                                 && exception instanceof FacebookAuthorizationException) {
-                            showAlert();
+//                            showAlert();
                             pendingAction = PendingAction.NONE;
                         }
                         updateUI();
                     }
 
-                    private void showAlert() {
-                        new AlertDialog.Builder(FacebookActivity.this)
-                                .setTitle(R.string.cancelled)
-                                .setMessage(R.string.permission_not_granted)
-                                .setPositiveButton(R.string.ok, null)
-                                .show();
-                    }
+//                    private void showAlert() {
+//                        new AlertDialog.Builder(FacebookActivity.this)
+//                                .setTitle(R.string.cancelled)
+//                                .setMessage(R.string.permission_not_granted)
+//                                .setPositiveButton(R.string.ok, null)
+//                                .show();
+//                    }
                 });
 
         shareDialog = new ShareDialog(this);
@@ -154,7 +167,7 @@ public class FacebookActivity extends FragmentActivity {
             pendingAction = PendingAction.valueOf(name);
         }
 
-        setContentView(R.layout.facebookview);
+
 
         profileTracker = new ProfileTracker() {
             @Override
@@ -166,22 +179,18 @@ public class FacebookActivity extends FragmentActivity {
             }
         };
 
-        profilePictureView = (ProfilePictureView) findViewById(R.id.profilePicture);
-//        greeting = (TextView) findViewById(R.id.greeting);
-
-//        postStatusUpdateButton = (Button) findViewById(R.id.postStatusUpdateButton);
 //        postStatusUpdateButton.setOnClickListener(new View.OnClickListener() {
 //            public void onClick(View view) {
 //                onClickPostStatusUpdate();
 //            }
 //        });
-//
-//        postPhotoButton = (Button) findViewById(R.id.postPhotoButton);
-//        postPhotoButton.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View view) {
-//                onClickPostPhoto();
-//            }
-//        });
+
+
+        postPhotoButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                onClickPostPhoto();
+            }
+        });
 
         // Can we present the share dialog for regular links?
         canPresentShareDialog = ShareDialog.canShow(
@@ -197,6 +206,18 @@ public class FacebookActivity extends FragmentActivity {
 
         // Logs 'install' and 'app activate' App Events.
         AppEventsLogger.activateApp(this);
+        updateUI();
+    }
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putString(PENDING_ACTION_BUNDLE_KEY, pendingAction.name());
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        callbackManager.onActivityResult(requestCode, resultCode, data);
     }
     @Override
     protected void onPause() {
@@ -205,64 +226,35 @@ public class FacebookActivity extends FragmentActivity {
         // Logs 'app deactivate' App Event.
         AppEventsLogger.deactivateApp(this);
     }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        profileTracker.stopTracking();
+    }
     private void updateUI() {
         boolean enableButtons = AccessToken.getCurrentAccessToken() != null;
 
-        postStatusUpdateButton.setEnabled(enableButtons || canPresentShareDialog);
+       // postStatusUpdateButton.setEnabled(enableButtons || canPresentShareDialog);
         postPhotoButton.setEnabled(enableButtons || canPresentShareDialogWithPhotos);
 
         Profile profile = Profile.getCurrentProfile();
         if (enableButtons && profile != null) {
             profilePictureView.setProfileId(profile.getId());
-            greeting.setText(getString(R.string.hello_user, profile.getFirstName()));
+            postPhotoButton.setVisibility(View.VISIBLE);
+           // postStatusUpdateButton.setVisibility(View.VISIBLE);
+            String name = profile.getName();
+            greeting.setText(getString(R.string.hello_user ) + name);
         } else {
             profilePictureView.setProfileId(null);
-            greeting.setText(null);
+            //LoginManager.getInstance().logOut();
+            greeting.setText(getString(R.string.Facebook_msg));
+           // postStatusUpdateButton.setVisibility(View.GONE);
+            postPhotoButton.setVisibility(View.GONE);
         }
     }
     private void onClickPostPhoto() {
         performPublish(PendingAction.POST_PHOTO, canPresentShareDialogWithPhotos);
     }
-    private void postPhoto() {
-        Bitmap image = BitmapFactory.decodeResource(this.getResources(), R.drawable.icon_facebook);
-        SharePhoto sharePhoto = new SharePhoto.Builder().setBitmap(image).build();
-        ArrayList<SharePhoto> photos = new ArrayList<>();
-        photos.add(sharePhoto);
-
-        SharePhotoContent sharePhotoContent =
-                new SharePhotoContent.Builder().setPhotos(photos).build();
-        if (canPresentShareDialogWithPhotos) {
-            shareDialog.show(sharePhotoContent);
-        } else if (hasPublishPermission()) {
-            ShareApi.share(sharePhotoContent, shareCallback);
-        } else {
-            pendingAction = PendingAction.POST_PHOTO;
-        }
-    }
-    private void onClickPostStatusUpdate() {
-        performPublish(PendingAction.POST_STATUS_UPDATE, canPresentShareDialog);
-    }
-    private void postStatusUpdate() {
-        Profile profile = Profile.getCurrentProfile();
-        ShareLinkContent linkContent = new ShareLinkContent.Builder()
-                .setContentTitle("Hello Facebook")
-                .setContentDescription(
-                        "The 'Hello Facebook' sample  showcases simple Facebook integration")
-                .setContentUrl(Uri.parse("http://developers.facebook.com/docs/android"))
-                .build();
-        if (canPresentShareDialog) {
-            shareDialog.show(linkContent);
-        } else if (profile != null && hasPublishPermission()) {
-            ShareApi.share(linkContent, shareCallback);
-        } else {
-            pendingAction = PendingAction.POST_STATUS_UPDATE;
-        }
-    }
-    private boolean hasPublishPermission() {
-        AccessToken accessToken = AccessToken.getCurrentAccessToken();
-        return accessToken != null && accessToken.getPermissions().contains("publish_actions");
-    }
-
     private void handlePendingAction() {
         PendingAction previouslyPendingAction = pendingAction;
         // These actions may re-set pendingAction if they are still pending, but we assume they
@@ -279,6 +271,46 @@ public class FacebookActivity extends FragmentActivity {
                 postStatusUpdate();
                 break;
         }
+    }
+
+    private void onClickPostStatusUpdate() {
+        performPublish(PendingAction.POST_STATUS_UPDATE, canPresentShareDialog);
+    }
+    private void postStatusUpdate() {
+        Profile profile = Profile.getCurrentProfile();
+        ShareLinkContent linkContent = new ShareLinkContent.Builder()
+                .setContentTitle(this.getString(R.string.Facebook_title))
+                .setContentDescription(
+                       this.getString(R.string.Facebook_msg))
+                .setContentUrl(Uri.parse("http://developers.facebook.com/docs/android"))
+                .build();
+        if (canPresentShareDialog) {
+            shareDialog.show(linkContent);
+        } else if (profile != null && hasPublishPermission()) {
+            ShareApi.share(linkContent, shareCallback);
+        } else {
+            pendingAction = PendingAction.POST_STATUS_UPDATE;
+        }
+    }
+    private void postPhoto() {
+        Bitmap image = BitmapFactory.decodeFile(SnsFragment.filePath);
+        SharePhoto sharePhoto = new SharePhoto.Builder().setBitmap(image).build();
+        ArrayList<SharePhoto> photos = new ArrayList<>();
+        photos.add(sharePhoto);
+
+        SharePhotoContent sharePhotoContent =
+                new SharePhotoContent.Builder().setPhotos(photos).build();
+        if (canPresentShareDialogWithPhotos) {
+            shareDialog.show(sharePhotoContent);
+        } else if (hasPublishPermission()) {
+            ShareApi.share(sharePhotoContent, shareCallback);
+        } else {
+            pendingAction = PendingAction.POST_PHOTO;
+        }
+    }
+    private boolean hasPublishPermission() {
+        AccessToken accessToken = AccessToken.getCurrentAccessToken();
+        return accessToken != null && accessToken.getPermissions().contains("publish_actions");
     }
     private void performPublish(PendingAction action, boolean allowNoToken) {
         AccessToken accessToken = AccessToken.getCurrentAccessToken();
@@ -302,4 +334,6 @@ public class FacebookActivity extends FragmentActivity {
             handlePendingAction();
         }
     }
+
+
 }

@@ -9,8 +9,9 @@ public class CategoryListData {
 	public ArrayList<CategoryData> data_list;
 
 	public class CategoryData{
-		public int category_id;
-		public String img_url;
+		//public int category_id;
+		public String category_id;
+        public String img_url;
 		public String category_name;
 		public String shop_category_url;
 		public String category_text;

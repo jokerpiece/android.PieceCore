@@ -35,7 +35,7 @@
                 android:layout_marginLeft="10dp"
                 android:textColor="#333"
                 android:textSize="16sp"
-                android:text="@string/facebook_authorization"
+                android:text="@string/Facebook_msg"
                 />
             <com.facebook.login.widget.LoginButton
                 android:id="@+id/login_button"
@@ -45,6 +45,19 @@
                 android:layout_marginTop="30dp"
                 android:layout_marginBottom="30dp" />
 
+            <!--<Button-->
+                <!--android:id="@+id/postStatusUpdateButton"-->
+                <!--android:layout_width="fill_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="投稿"-->
+                <!--/>-->
+            <Button
+                android:id="@+id/postPhotoButton"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="@drawable/tweet_corner"
+                android:text="写真を投稿"
+                />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

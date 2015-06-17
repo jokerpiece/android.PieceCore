@@ -10,43 +10,35 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.text.LoginFilter;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.facebook.CallbackManager;
 import com.facebook.FacebookSdk;
-import com.facebook.login.widget.LoginButton;
+
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Calendar;
 
+
 import jp.co.jokerpiece.piecebase.Oauth.FacebookActivity;
-import jp.co.jokerpiece.piecebase.Oauth.FacebookFragment;
 import jp.co.jokerpiece.piecebase.Oauth.TwitterActivity;
 import jp.co.jokerpiece.piecebase.config.Common;
 import jp.co.jokerpiece.piecebase.config.Config;
 import jp.co.jokerpiece.piecebase.util.AppUtil;
 import jp.co.jokerpiece.piecebase.util.ButtonDialogFragment;
-import twitter4j.TwitterException;
+import jp.co.jokerpiece.piecebase.util.TwitterUtils;
+import twitter4j.Twitter;
 import twitter4j.auth.OAuthAuthorization;
 import twitter4j.auth.RequestToken;
-import twitter4j.conf.Configuration;
-import twitter4j.conf.ConfigurationContext;
 
 /**
  * Created by kaku on 2015/06/01.
@@ -57,14 +49,16 @@ public class SnsFragment extends Fragment {
     View rootView;
     Context context;
     ImageButton imageButton;
+    public static InputStream IsForFb;
     static int REQUEST_GET_IMAGE = 100;
     public static RequestToken _req = null;
     public static OAuthAuthorization _oauth = null;
 
-    String filePath;    //選んだ写真のパスを保存する
+    public static String filePath;    //選んだ写真のパスを保存する
     Uri bitmapUri;
     String cameraPath;  //カメラで撮った写真のパスを保存する
     File picFile;
+    Twitter mTwitter;
 
     @Override
     public void onCreate(Bundle saveStanceState){
@@ -81,6 +75,7 @@ public class SnsFragment extends Fragment {
 
         Snsbtn = (Button)rootView.findViewById(R.id.snsButton);
         imageButton = (ImageButton)rootView.findViewById(R.id.Photo);
+        mTwitter = TwitterUtils.getTwitterInstance(context);
 
         final ButtonDialogFragment cdf =
                 ButtonDialogFragment.newInstance(null);
@@ -89,21 +84,24 @@ public class SnsFragment extends Fragment {
             @Override
             public void onFacebookButtonClick() {
                 cdf.dismiss();
-                Intent intent = new Intent(context, FacebookActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(intent);
-//                FragmentManager fm = ((MainBaseActivity)context).getSupportFragmentManager();
-//                FragmentTransaction ft = fm.beginTransaction();
-//                ft.addToBackStack(null);
-//                FacebookFragment fragment = new FacebookFragment();
-//                ft.replace(R.id.fragment, fragment);
-//                ft.commit();
-
+                if(filePath != null) {
+                    Intent intent = new Intent(context, FacebookActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
+                }else{
+                    Toast.makeText(getActivity(), "画像を選んでください", Toast.LENGTH_LONG).show();
+                }
             }
             @Override
             public void onTwitterButtonClick(){
                 cdf.dismiss();
-                executeOauth();
+                if(filePath != null) {
+                    Intent intent = new Intent(context, TwitterActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
+                }else {
+                    Toast.makeText(getActivity(), "画像を選んでください", Toast.LENGTH_LONG).show();
+                }
             }
             @Override
             public  void onGmailButtonClick(){
@@ -159,23 +157,6 @@ public class SnsFragment extends Fragment {
 
     }
 
-    private void executeOauth(){
-        //Twitetr4Jの設定を読み込む
-        Configuration conf = ConfigurationContext.getInstance();
-        //Oauth認証オブジェクト作成
-        _oauth = new OAuthAuthorization(conf);
-        //Oauth認証オブジェクトにconsumerKeyとconsumerSecretを設定
-        _oauth.setOAuthConsumer("iy2FEHXmSXNReJ6nYQ8FRg", "KYro4jM8BHlLSMsSdTylnTcm3pYaTCiG2UZrYK1yI4");
-        //アプリの認証オブジェクト作成
-        try {
-            _req = _oauth.getOAuthRequestToken("Callback://TwitterActivity");
-        } catch (TwitterException e) {
-            e.printStackTrace();
-        }
-        String _uri;
-        _uri = _req.getAuthorizationURL();
-        startActivityForResult(new Intent(Intent.ACTION_VIEW , Uri.parse(_uri)), 0);
-    }
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(REQUEST_GET_IMAGE == requestCode &&
@@ -195,6 +176,8 @@ public class SnsFragment extends Fragment {
             try {
                 if(data.getExtras() != null&&data.getExtras().get("data")!= null){
                         Bitmap capturedImage = (Bitmap) data.getExtras().get("data");
+                        Log.d("bit",""+capturedImage);
+
                         imageButton.setImageBitmap(capturedImage);
                 } else{
                         InputStream stream = context.getContentResolver().openInputStream(data.getData());
@@ -219,7 +202,11 @@ public class SnsFragment extends Fragment {
             cameraPath = bitmapUri.getPath();
             filePath = cameraPath;
         }
+
     }
+
+
+
 
     @Override
     public void onResume() {
@@ -228,6 +215,7 @@ public class SnsFragment extends Fragment {
                     getActivity().getActionBar(),
                     MainBaseActivity.titleOfActionBar.get(SnsFragment.class.getSimpleName()));
             getActivity().invalidateOptionsMenu();
+
     }
     //　撮った写真のファイル名を作る
     protected String getPicFileName(){

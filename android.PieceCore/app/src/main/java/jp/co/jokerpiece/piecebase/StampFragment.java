@@ -94,7 +94,7 @@ public class StampFragment  extends Fragment {
 
     public void getStampListData(){
 
-        getActivity().getLoaderManager().initLoader(Config.loaderCnt++, getArguments(), new LoaderManager.LoaderCallbacks<StampListData>() {
+        ((Activity)context).getLoaderManager().initLoader(Config.loaderCnt++, getArguments(), new LoaderManager.LoaderCallbacks<StampListData>() {
             @Override
             public Loader<StampListData> onCreateLoader(int id, Bundle args) {
                 // stamp_idの取得
@@ -115,17 +115,20 @@ public class StampFragment  extends Fragment {
                 }
 
                 stampData = data;
-                get_point = Integer.valueOf(stampData.get_point).intValue();
-                total_point = Integer.valueOf(stampData.total_point).intValue();
+                if(stampData.get_point != null && stampData.total_point != null){
+                    get_point = Integer.valueOf(stampData.get_point).intValue();
+                    total_point = Integer.valueOf(stampData.total_point).intValue();
+                    showTextView();
+                    showStampView();
+                }
 
-                showTextView();
-                showStampView();
 
             }
             @Override
             public void onLoaderReset(Loader<StampListData> loader) {
 
             }
+
         });
     }
     private void showTextView() {
