@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -51,8 +52,6 @@ public class SnsFragment extends Fragment {
     ImageButton imageButton;
     public static InputStream IsForFb;
     static int REQUEST_GET_IMAGE = 100;
-    public static RequestToken _req = null;
-    public static OAuthAuthorization _oauth = null;
 
     public static String filePath;    //選んだ写真のパスを保存する
     Uri bitmapUri;
@@ -134,7 +133,6 @@ public class SnsFragment extends Fragment {
         imageButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-
                     // インテントを二つ作成
                     //実行フロー
                     //Intent intent = new Intent(Intent.ACTION_GET_CONTENT);

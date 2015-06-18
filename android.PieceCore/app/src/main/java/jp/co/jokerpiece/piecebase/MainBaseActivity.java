@@ -57,10 +57,7 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
     public static FragmentTabHost tabHost;
     public String myTheme = "";
     public TabColorState tabColorState;
-//    String mLastTabId;
-//   int NextFragmnent;
-//    boolean isTabChange = false;
-
+    public boolean isCouponFragment = false;
     public ArrayList<HashMap<String, Object>> settingData = new ArrayList<HashMap<String,Object>>();
     public static ArrayList<TabInfo> tabInfoList;
     public static HashMap<String, Integer> titleOfActionBar;
@@ -100,13 +97,26 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
                         for (int i = 0; i < backStackCount; i++) {
                             getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                         }
-                        if(v.equals(tabHost.getCurrentTabView())){
-                            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                            ft.replace(R.id.fragment, Fragment.instantiate(
-                                    context,
-                                    tabInfoList.get(tabHost.getCurrentTab()).cls.getName()));
-                            ft.commit();
-                            return true;
+                        if(!Config.haveUrlFlg) {
+                            if (tabHost.getCurrentTab() != Config.CouponFragmentNum) {
+                                if (v.equals(tabHost.getCurrentTabView())) {
+                                    FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                                    ft.replace(R.id.fragment, Fragment.instantiate(
+                                            context,
+                                            tabInfoList.get(tabHost.getCurrentTab()).cls.getName()));
+                                    ft.commit();
+                                    return true;
+                                }
+                            }
+                        }else{
+                            if (v.equals(tabHost.getCurrentTabView())) {
+                                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                                ft.replace(R.id.fragment, Fragment.instantiate(
+                                        context,
+                                        tabInfoList.get(tabHost.getCurrentTab()).cls.getName()));
+                                ft.commit();
+                                return true;
+                            }
                         }
                     }
                        return false;
@@ -267,17 +277,17 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
                 },
                 new HashMap<String, Object>() {
                     { put("tabTitle", getString(R.string.barcode1)); }
-                    { put("tabIcon", R.drawable.icon_map); }
+                    { put("tabIcon", R.drawable.icon_barcode); }
                     { put("cls", BarcodeFragment.class); }
                 },
                 new HashMap<String, Object>() {
                     { put("tabTitle", getString(R.string.stamp1)); }
-                    { put("tabIcon", R.drawable.icon_map); }
+                    { put("tabIcon", R.drawable.icon_stamp); }
                     { put("cls", StampFragment.class); }
                 },
                 new HashMap<String, Object>() {
                     { put("tabTitle", getString(R.string.sns1)); }
-                    { put("tabIcon", R.drawable.icon_map); }
+                    { put("tabIcon", R.drawable.icon_sns); }
                     { put("cls", SnsFragment.class); }
                 }
         ));
@@ -399,15 +409,20 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
 
         @Override
         public void onTabChanged(String tabId) {
-            Log.d("tabid", "tabId: " + tabId);
-            Log.d("Slist","list"+Config.Savelist);
-            Log.d("Cnt","Cnt" + getSupportFragmentManager().getBackStackEntryCount());
-//            getSupportFragmentManager().popBackStack();
-            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                ft.replace(R.id.fragment, Fragment.instantiate(
-                        context,
-                        tabInfoList.get(tabHost.getCurrentTab()).cls.getName()));
-            ft.commit();
+            Log.d("tag", "" + tabId);
+            Log.d("t",""+Config.Savelist);
+
+                String s = String.valueOf(Config.CouponFragmentNum);
+                if (!tabId.equals("TAB" + s)) {    //couponFragmentだけは初期化しない
+//                getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                    // 初期化するため
+                    FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                    ft.replace(R.id.fragment, Fragment.instantiate(
+                            context,
+                            tabInfoList.get(tabHost.getCurrentTab()).cls.getName()));
+                    ft.commit();
+                }
+
         }
 
         /**

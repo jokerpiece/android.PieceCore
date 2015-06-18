@@ -251,7 +251,7 @@ public class Common {
             }
             if (!Config.Backflg) {
                 if (Config.FragmentCurrentNum != 0) {
-                    if(Config.Savelist.get(Config.FragmentCurrentNum) != FragmentNum) {
+                    if(!Config.Savelist.get(Config.FragmentCurrentNum).equals(FragmentNum)  ) {
                         Config.Savelist.add(FragmentNum);
                         Config.FragmentCurrentNum += 1;
                     }
@@ -259,7 +259,7 @@ public class Common {
             }
         }else{
             if(!Config.Backflg) {
-                if(Config.Savelist.get(Config.FragmentCurrentNum) != FragmentNum) {
+                if(!Config.Savelist.get(Config.FragmentCurrentNum).equals(FragmentNum)) {
                     Config.Savelist.add(FragmentNum);
                     Config.FragmentCurrentNum += 1;
                 }

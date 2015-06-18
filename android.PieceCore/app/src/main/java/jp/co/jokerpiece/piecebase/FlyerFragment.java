@@ -73,23 +73,8 @@ public class FlyerFragment extends Fragment implements OnPageChangeListener{
 			Bundle savedInstanceState) {
         context = getActivity();
 
-        if(Config.FlyerFragmentNum == 0) {
-            if (Config.Savelist.size() == 1) {
-                Config.Savelist.clear();
-                Config.Savelist.add(0);
-            }
-            if (!Config.Backflg) {
-                if (Config.FragmentCurrentNum != 0) {
-                    Config.Savelist.add(Config.FlyerFragmentNum);
-                    Config.FragmentCurrentNum += 1;
-                }
-            }
-        }else{
-            if(!Config.Backflg) {
-                Config.Savelist.add(Config.FlyerFragmentNum);
-                Config.FragmentCurrentNum += 1;
-            }
-        }
+        Common.setCurrentFragment(Config.FlyerFragmentNum);
+
 		View rootView = inflater.inflate(R.layout.fragment_flyer, container, false);
 
 		if(pageFlagment != null){
@@ -226,12 +211,13 @@ public class FlyerFragment extends Fragment implements OnPageChangeListener{
         if (url != null && !url.equals("") && !url.equals("null")) {
             FragmentManager fm = ((MainBaseActivity)context).getSupportFragmentManager();
             FragmentTransaction ft = fm.beginTransaction();
-            ft.addToBackStack(null);
+
             WebViewFragment fragment = new WebViewFragment();
             Bundle bundle = new Bundle();
             bundle.putString("send_url", url);
             fragment.setArguments(bundle);
             ft.replace(R.id.fragment, fragment);
+            ft.addToBackStack(null);
             ft.commit();
         }
 	}

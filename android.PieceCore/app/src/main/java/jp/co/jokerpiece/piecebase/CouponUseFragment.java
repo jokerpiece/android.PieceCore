@@ -55,12 +55,13 @@ public class CouponUseFragment extends Fragment implements OnPageChangeListener 
 			Bundle savedInstanceState) {
         context = getActivity();
 		View rootView = inflater.inflate(R.layout.fragment_coupon_use, container, false);
-
+        Common.setCurrentFragment(Config.CouponFragmentNum);
 		activity = getActivity();
         viewPager = (ViewPager) rootView.findViewById(R.id.couponpager);
         viewPagerIndicator = (ViewPagerIndicator) rootView.findViewById(R.id.indicator);
         tvNoCoupon = (TextView) rootView.findViewById(R.id.tv_nocoupon);
         viewPager.setOnPageChangeListener(this);
+
         pageFlagment = new CouponImagePageAdapter(getChildFragmentManager(),
         		new GetCouponData(activity, handler, viewPager, viewPagerIndicator, couponData),
         		new ArrayList<String>(),true);
@@ -86,8 +87,9 @@ public class CouponUseFragment extends Fragment implements OnPageChangeListener 
 	@Override
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 		menu.clear();
-
-        inflater.inflate(R.menu.menu_coupon_use, menu);
+        if(!Config.haveUrlFlg) {
+            inflater.inflate(R.menu.menu_coupon_use, menu);
+        }
 
 //		MenuItem haveCoupon = menu.add(0 , Menu.FIRST, Menu.NONE ,"閉じる");
 //		haveCoupon.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
@@ -102,9 +104,9 @@ public class CouponUseFragment extends Fragment implements OnPageChangeListener 
 		if (itemId == R.id.action_coupon_use) {
 			FragmentManager fm = getFragmentManager();
 			FragmentTransaction ft = fm.beginTransaction();
-			ft.addToBackStack(null);
 			CouponFragment fragment = new CouponFragment();
 			ft.replace(R.id.fragment, fragment);
+            ft.addToBackStack(null);
 			ft.commit();
 		}
 		return true;

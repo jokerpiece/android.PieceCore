@@ -15,7 +15,6 @@
         android:layout_height="250dp"
         android:background="@null"
         android:layout_gravity="center"
-
         android:id="@+id/Photo"
         android:src="@drawable/camera_icon"
         />

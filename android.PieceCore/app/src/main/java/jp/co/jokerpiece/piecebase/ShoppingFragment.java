@@ -45,23 +45,6 @@ public class ShoppingFragment extends Fragment implements OnItemClickListener {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
         context = getActivity();
-//        if(Config.ShoppingFragmentNum == 0) {
-//            if (Config.Savelist.size() == 1) {
-//                Config.Savelist.clear();
-//                Config.Savelist.add(0);
-//            }
-//            if (!Config.Backflg) {
-//                if (Config.FragmentCurrentNum != 0) {
-//                    Config.Savelist.add(Config.ShoppingFragmentNum);
-//                    Config.FragmentCurrentNum += 1;
-//                }
-//            }
-//        }else{
-//            if(!Config.Backflg) {
-//                Config.Savelist.add(Config.ShoppingFragmentNum);
-//                Config.FragmentCurrentNum += 1;
-//            }
-//        }
         Common.setCurrentFragment(Config.ShoppingFragmentNum);
 		View rootView = inflater.inflate(R.layout.fragment_shopping, container, false);
 
@@ -127,7 +110,6 @@ public class ShoppingFragment extends Fragment implements OnItemClickListener {
 		CategoryData data = categoryData.data_list.get(position);
 		FragmentManager fm = ((MainBaseActivity)context).getSupportFragmentManager();
 		FragmentTransaction ft = fm.beginTransaction();
-		ft.addToBackStack(null);
 		ShoppingGoodsFragment fragment = new ShoppingGoodsFragment();
 		Bundle bundle = new Bundle();
 		//bundle.putInt("category_id", data.category_id);
@@ -135,7 +117,9 @@ public class ShoppingFragment extends Fragment implements OnItemClickListener {
         bundle.putString("category_img_url", data.img_url);
 		fragment.setArguments(bundle);
 		ft.replace(R.id.fragment, fragment);
-		ft.commit();
+        ft.addToBackStack(null);
+
+        ft.commit();
 	}
 
 	private void getGenreList(){

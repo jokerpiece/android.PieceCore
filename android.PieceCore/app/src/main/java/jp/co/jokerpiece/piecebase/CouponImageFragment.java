@@ -124,27 +124,29 @@ public class CouponImageFragment extends Fragment implements OnClickListener, Do
 
 
                     if ( currentCouponData.coupon_url != null && !currentCouponData.coupon_url.equals("")) {
-                        FragmentManager fm = getParentFragment().getFragmentManager();
+                        FragmentManager fm = ((MainBaseActivity)context).getSupportFragmentManager();
                         FragmentTransaction ft = fm.beginTransaction();
-                        ft.addToBackStack(null);
                         WebViewFragment fragment = new WebViewFragment();
                         Bundle bundle = new Bundle();
                         bundle.putString("send_url", currentCouponData.coupon_url);
                         fragment.setArguments(bundle);
                         ft.replace(R.id.fragment, fragment);
+                        //ft.addToBackStack(null);
                         ft.commit();
                     } else {
+
                         Toast.makeText(context, getString(R.string.coupon_copy_clipboard), Toast.LENGTH_LONG).show();
                         if (currentCouponData.item_url != null) {
                             //item_urlが存在する場合は該当ページに遷移
-                            FragmentManager fm = getParentFragment().getFragmentManager();
+                            FragmentManager fm = ((MainBaseActivity)context).getSupportFragmentManager();
                             FragmentTransaction ft = fm.beginTransaction();
-                            ft.addToBackStack(null);
+
                             WebViewFragment fragment = new WebViewFragment();
                             Bundle bundle = new Bundle();
                             bundle.putString("send_url", currentCouponData.item_url);
                             fragment.setArguments(bundle);
                             ft.replace(R.id.fragment, fragment);
+                            ft.addToBackStack(null);
                             ft.commit();
                         } else if (currentCouponData.category_id != null) {
                             // category_idが存在する場合は該当の商品一覧に遷移
@@ -228,12 +230,13 @@ public class CouponImageFragment extends Fragment implements OnClickListener, Do
 
                             FragmentManager fm = getParentFragment().getFragmentManager();
 							FragmentTransaction ft = fm.beginTransaction();
-							ft.addToBackStack(null);
+
 							CouponUseFragment fragment = new CouponUseFragment();
 							Bundle bundle = new Bundle();
 							bundle.putString("couponId", couponData.data_list.get(viewPager.getCurrentItem()).coupon_id);
 							fragment.setArguments(bundle);
 							ft.replace(R.id.fragment, fragment);
+                            ft.addToBackStack(null);
 							ft.commit();
 					}
 					}, 1000);

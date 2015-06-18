@@ -45,7 +45,7 @@ public class CouponFragment extends Fragment implements OnPageChangeListener {
 
 	private CouponImagePageAdapter pageFlagment;
     //クーポンURLを持ってるかどうかのフラグ
-    public boolean haveUrlFlg = false;
+   // public boolean haveUrlFlg = false;
 
 //	private ArrayList<DownloadImageView> alImageViewList = new ArrayList<DownloadImageView>();
 	private CouponListData couponData = null;
@@ -61,23 +61,6 @@ public class CouponFragment extends Fragment implements OnPageChangeListener {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
         context = getActivity();
-//        if(Config.CouponFragmentNum == 0) {
-//            if (Config.Savelist.size() == 1) {
-//                Config.Savelist.clear();
-//                Config.Savelist.add(0);
-//            }
-//            if (!Config.Backflg) {
-//                if (Config.FragmentCurrentNum != 0) {
-//                    Config.Savelist.add(Config.CouponFragmentNum);
-//                    Config.FragmentCurrentNum += 1;
-//                }
-//            }
-//        }else{
-//            if(!Config.Backflg) {
-//                Config.Savelist.add(Config.CouponFragmentNum);
-//                Config.FragmentCurrentNum += 1;
-//            }
-//        }
         Common.setCurrentFragment(Config.CouponFragmentNum);
 		View rootView = inflater.inflate(R.layout.fragment_coupon, container, false);
 
@@ -89,7 +72,7 @@ public class CouponFragment extends Fragment implements OnPageChangeListener {
 
         pageFlagment = new CouponImagePageAdapter(getChildFragmentManager(),
         		new GetCouponData(activity, handler, viewPager, viewPagerIndicator, couponData),
-        		new ArrayList<String>(),haveUrlFlg);
+        		new ArrayList<String>(),Config.haveUrlFlg);
 
         Bundle bundle = getArguments();
         if (bundle != null) {
@@ -148,7 +131,7 @@ public class CouponFragment extends Fragment implements OnPageChangeListener {
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 		menu.clear();
      //   if(!Config.isGetUrl) {
-        if(!haveUrlFlg){
+        if(!Config.haveUrlFlg){
             inflater.inflate(R.menu.menu_coupon, menu);
         }
 //		MenuItem haveCoupon = menu.add(0 , Menu.FIRST, Menu.NONE ,"取得済みクーポン");
@@ -165,16 +148,16 @@ public class CouponFragment extends Fragment implements OnPageChangeListener {
 		if (itemId == R.id.action_coupon) {
 			FragmentManager fm = getFragmentManager();
 			FragmentTransaction ft = fm.beginTransaction();
-			ft.addToBackStack(null);
 			CouponUseFragment fragment = new CouponUseFragment();
 			ft.replace(R.id.fragment, fragment);
-			ft.commit();
+            ft.addToBackStack(null);
+            ft.commit();
 		}
 		return true;
 	}
 
 	private void getCouponList(){
-		getActivity().getLoaderManager().initLoader(Config.loaderCnt++, null, new LoaderCallbacks<CouponListData>(){
+        ((Activity)context).getLoaderManager().initLoader(Config.loaderCnt++, null, new LoaderCallbacks<CouponListData>(){
 			@Override
 			public Loader<CouponListData> onCreateLoader(int id, Bundle args) {
 				CouponListAPI couponAPI = new CouponListAPI(context, CouponListData.COUPON_DATA_TYPE_NOT_GIVE);
@@ -200,20 +183,6 @@ public class CouponFragment extends Fragment implements OnPageChangeListener {
 			}
         });
 	}
-//    public void SetUrlFlg(){
-//        CouponData currentCouponData = couponData.data_list.get(viewPager.getCurrentItem());
-//        if(currentCouponData.coupon_url != null && !currentCouponData.coupon_url.equals("")){
-//            Config.isGetUrl = true;
-//        }
-//        if(Config.isGetUrl){
-//            FragmentManager fm = getFragmentManager();
-//            FragmentTransaction ft = fm.beginTransaction();
-//            ft.addToBackStack(null);
-//            CouponUseFragment fragment = new CouponUseFragment();
-//            ft.replace(R.id.fragment, fragment);
-//            ft.commit();
-//        }
-//    }
 	/**
 	 * クーポンデータ取得後、クーポン情報を表示する。
 	 */

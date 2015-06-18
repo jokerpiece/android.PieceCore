@@ -1,5 +1,6 @@
 package jp.co.jokerpiece.piecebase;
 
+import android.app.Activity;
 import android.app.LoaderManager;
 import android.content.Context;
 import android.content.Loader;
@@ -183,6 +184,10 @@ public class FittingFragment extends Fragment implements DownloadImageSync.Downl
             iv.setTag(url);
             DownloadImageSync sync = new DownloadImageSync(context, url, iv, this);
             if (!sync.loadImageView()) {
+                Loader l = ((Activity)context).getLoaderManager().getLoader(Config.loaderCnt);
+                if (l != null){
+                    return;
+                }
                 getLoaderManager().initLoader(Config.loaderCnt++, null, sync);
             }
         }
