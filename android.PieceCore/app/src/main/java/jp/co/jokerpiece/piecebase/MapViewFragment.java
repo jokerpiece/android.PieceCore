@@ -348,11 +348,7 @@ public class MapViewFragment extends Fragment implements OnItemClickListener ,Lo
                     .target(lat)
                     .zoom(zoom)
                     .bearing(0).build();
-            aMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPos));
-//            aMap.addMarker(new MarkerOptions().position(lat));
-//            aMap.addCircle(new CircleOptions().center(lat));
-            // aMap.addGroundOverlay()
-//            aMap.moveCamera(CameraUpdateFactory.newCameraPosition(new CameraPosition(lat, 16, 0, 0)));
+            //aMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPos));
         }
     }
 

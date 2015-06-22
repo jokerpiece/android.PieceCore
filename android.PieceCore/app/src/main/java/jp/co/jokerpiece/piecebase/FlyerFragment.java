@@ -234,8 +234,8 @@ public class FlyerFragment extends Fragment implements OnPageChangeListener{
 		}
 	}
 
-	private void getHomeFlyerID(){
-        getActivity().getLoaderManager().initLoader(Config.loaderCnt++, null, new LoaderCallbacks<NewsListData>() {
+	public  void getHomeFlyerID(){
+        ((Activity)context).getLoaderManager().initLoader(Config.loaderCnt++, null, new LoaderCallbacks<NewsListData>() {
 			@Override
 			public Loader<NewsListData> onCreateLoader(int id, Bundle args) {
 				 NewsListAPI newsAPI = new NewsListAPI(context);

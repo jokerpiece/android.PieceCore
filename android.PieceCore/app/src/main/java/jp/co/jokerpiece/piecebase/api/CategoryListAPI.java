@@ -63,7 +63,6 @@ public class CategoryListAPI extends AsyncTaskLoader<CategoryListData> implement
 //				data.category_id = jsonObject.getInt("category_id");
 //                Object o = jsonObject.get("category_id");
 //                if(o instanceof String){
-//
 //                }
                 data.category_id = jsonObject.getString("category_id");
 			    data.category_name = jsonObject.getString("title");

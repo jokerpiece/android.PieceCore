@@ -24,6 +24,8 @@ public class SplashBaseActivity extends Activity {
         // 遷移先クラスの設定
         cls = getTransitionClass();
 
+
+
 		// 指定秒間、スプラッシュ画面を表示する
 		Handler handler = new Handler();
 		handler.postDelayed(new Runnable() {

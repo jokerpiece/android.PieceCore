@@ -58,7 +58,10 @@ public class ShoppingListAdapter extends ArrayAdapter<CategoryData> implements D
 		}
 		if(!exist){
 			listImageView.add(iv);
-		}
+            tv.setVisibility(View.GONE);
+		}else{
+            tv.setVisibility(View.VISIBLE);
+        }
 
 		DownloadImageSync sync = new DownloadImageSync(getContext(), list.get(position).img_url, iv,this);
 		if(!sync.loadImageView()){

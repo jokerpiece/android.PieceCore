@@ -57,7 +57,6 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
     public static FragmentTabHost tabHost;
     public String myTheme = "";
     public TabColorState tabColorState;
-    public boolean isCouponFragment = false;
     public ArrayList<HashMap<String, Object>> settingData = new ArrayList<HashMap<String,Object>>();
     public static ArrayList<TabInfo> tabInfoList;
     public static HashMap<String, Integer> titleOfActionBar;
@@ -170,7 +169,6 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
                 if (backStackCnt != 0) {
                     getSupportFragmentManager().popBackStack();
                 }else{
-//                    isTabChange = true;
                     if (Config.Backflg) {
                         if (Config.FragmentCurrentNum > 0) {
                             MainBaseActivity.tabHost.setCurrentTab((Integer) Config.Savelist.get(Config.FragmentCurrentNum - 1));
