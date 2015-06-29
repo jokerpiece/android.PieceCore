@@ -4,16 +4,21 @@ import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import jp.co.jokerpiece.piecebase.api.CouponListAPI;
 import jp.co.jokerpiece.piecebase.api.FlyerListAPI;
 import jp.co.jokerpiece.piecebase.api.NewsListAPI;
 import jp.co.jokerpiece.piecebase.config.Common;
 import jp.co.jokerpiece.piecebase.config.Config;
+import jp.co.jokerpiece.piecebase.data.CouponListData;
 import jp.co.jokerpiece.piecebase.data.FlyerData;
 import jp.co.jokerpiece.piecebase.data.FlyerData.FlyerHeaderData;
 import jp.co.jokerpiece.piecebase.data.NewsListData;
 import jp.co.jokerpiece.piecebase.data.NewsListData.NewsData;
+import jp.co.jokerpiece.piecebase.data.SaveData;
 import jp.co.jokerpiece.piecebase.util.App;
 import jp.co.jokerpiece.piecebase.util.AppUtil;
+import jp.co.jokerpiece.piecebase.util.BitmapCache;
+import jp.co.jokerpiece.piecebase.util.BitmapDownloader;
 import jp.co.jokerpiece.piecebase.util.DownloadImageView;
 import jp.co.jokerpiece.piecebase.util.ViewPagerIndicator;
 
@@ -21,6 +26,7 @@ import android.app.Activity;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.Context;
 import android.content.Loader;
+import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.os.Handler;
@@ -28,6 +34,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.LoaderManager;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.Log;
@@ -45,7 +52,7 @@ import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
-public class FlyerFragment extends Fragment implements OnPageChangeListener{
+public class FlyerFragment extends BaseFragment implements OnPageChangeListener{
 	Context context;
 	FlyerTimerTask timerTask = null;
 	Timer   mTimer   = null;
@@ -122,6 +129,9 @@ public class FlyerFragment extends Fragment implements OnPageChangeListener{
 		if(flyerData == null){
 			return;
 		}
+        if(SaveData.Flyerdata != null){
+            flyerData = SaveData.Flyerdata;
+        }
 		alImageViewList.clear();
 		pageFlagment.refresh();
 		pageFlagment.destroyAllItem(viewPagerScroll);
@@ -353,4 +363,109 @@ public class FlyerFragment extends Fragment implements OnPageChangeListener{
 		Log.d("FlyerActivity", "onDestroy");
 	}
 
+    @Override
+    public void doInSplash(final Activity activity) {
+        super.doInSplash(activity);
+        Loader l = activity.getLoaderManager().getLoader(Config.loaderCnt);
+        if (l != null){
+            return;
+        }
+        activity.getLoaderManager().initLoader(Config.loaderCnt++, null, new LoaderCallbacks<NewsListData>() {
+            @Override
+            public Loader<NewsListData> onCreateLoader(int id, Bundle args) {
+                NewsListAPI newsAPI = new NewsListAPI(activity);
+                newsAPI.forceLoad();
+                return newsAPI;
+            }
+            @Override
+            public void onLoadFinished(Loader<NewsListData> loader, NewsListData data) {
+                if (data == null) {
+                    Common.serverErrorMessage(activity);
+                    return;
+                }
+                int flyerID = -1;
+                ArrayList<NewsData> data_list = data.data_list;
+                for (int i = 0; i < data_list.size(); i++) {
+                    NewsListData.NewsData newsData = data_list.get(i);
+                    try {
+                        if (Integer.parseInt(newsData.type) == NewsListData.NEWS_DATA_TYPE_FLYER) {
+                            if (flyerID < Integer.parseInt(newsData.id)) {
+                                flyerID = Integer.parseInt(newsData.id);
+                            }
+                        }
+                    } catch (NumberFormatException e) {
+                        e.printStackTrace();
+                    }
+                }
+                final int finalFlyerID = flyerID;
+                if(finalFlyerID > 0) {
+                    activity.getLoaderManager().initLoader(Config.loaderCnt++, null, new LoaderCallbacks<FlyerData>() {
+                        @Override
+                        public Loader<FlyerData> onCreateLoader(int id, Bundle args) {
+                            FlyerListAPI flyerAPI = new FlyerListAPI(activity, finalFlyerID);
+                            flyerAPI.forceLoad();
+                            return flyerAPI;
+                        }
+
+                        @Override
+                        public void onLoadFinished(Loader<FlyerData> loader, FlyerData data) {
+                            if (data == null) {
+                                Common.serverErrorMessage(context);
+                                return;
+                            }
+                            SaveData.Flyerdata = data;
+                            for (final FlyerHeaderData c : data.header_list) {
+                                ((MainBaseActivity) activity).getSupportLoaderManager().initLoader(Config.loaderCnt++, null, new LoaderManager.LoaderCallbacks<Bitmap>() {
+                                    @Override
+                                    public android.support.v4.content.Loader<Bitmap> onCreateLoader(int id, Bundle args) {
+                                        BitmapDownloader bmDownloader = new BitmapDownloader(activity, c.img_url);
+                                        bmDownloader.forceLoad();
+                                        return bmDownloader;
+                                    }
+
+                                    @Override
+                                    public void onLoadFinished(android.support.v4.content.Loader<Bitmap> loader, Bitmap data) {
+                                        if(data != null) {
+                                            BitmapCache.newInstance().putBitmap(c.img_url, data);
+                                        }
+                                    }
+                                    @Override
+                                    public void onLoaderReset(android.support.v4.content.Loader<Bitmap> loader) {
+                                    }
+                                });
+                            }
+                            for (final FlyerData.FlyerBodyData c : data.body_list) {
+                                ((MainBaseActivity) activity).getSupportLoaderManager().initLoader(Config.loaderCnt++, null, new LoaderManager.LoaderCallbacks<Bitmap>() {
+                                    @Override
+                                    public android.support.v4.content.Loader<Bitmap> onCreateLoader(int id, Bundle args) {
+                                        BitmapDownloader bmDownloader = new BitmapDownloader(activity, c.img_url);
+                                        bmDownloader.forceLoad();
+                                        return bmDownloader;
+                                    }
+                                    @Override
+                                    public void onLoadFinished(android.support.v4.content.Loader<Bitmap> loader, Bitmap data) {
+                                        if(data != null) {
+                                            BitmapCache.newInstance().putBitmap(c.img_url, data);
+                                        }
+                                    }
+                                    @Override
+                                    public void onLoaderReset(android.support.v4.content.Loader<Bitmap> loader) {
+                                    }
+                                });
+                            }
+                        }
+
+                        @Override
+                        public void onLoaderReset(Loader<FlyerData> loader) {
+                        }
+                    });
+                }
+
+            }
+            @Override
+            public void onLoaderReset(Loader<NewsListData> loader) {
+
+            }
+        });
+    }
 }

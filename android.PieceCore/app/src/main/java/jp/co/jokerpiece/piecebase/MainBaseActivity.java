@@ -3,14 +3,17 @@ package jp.co.jokerpiece.piecebase;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Timer;
 
 import jp.co.jokerpiece.piecebase.config.Common;
 import jp.co.jokerpiece.piecebase.config.Config;
 import jp.co.jokerpiece.piecebase.data.NewsListData;
+import jp.co.jokerpiece.piecebase.data.SaveData;
 import jp.co.jokerpiece.piecebase.util.AppUtil;
 import jp.co.jokerpiece.piecebase.util.BeaconUtil;
 
 import android.annotation.TargetApi;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -19,8 +22,10 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.StateListDrawable;
+import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -40,6 +45,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TabHost.OnTabChangeListener;
 import android.widget.TabHost.TabSpec;
+import android.widget.TabWidget;
 import android.widget.TextView;
 
 /**
@@ -60,13 +66,42 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
     public ArrayList<HashMap<String, Object>> settingData = new ArrayList<HashMap<String,Object>>();
     public static ArrayList<TabInfo> tabInfoList;
     public static HashMap<String, Integer> titleOfActionBar;
+    ImageView splashView;
+    long timer;
+    public ArrayList<BaseFragment> list = new ArrayList<BaseFragment>();
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         context = this;
-
+        FlyerFragment Fy = new FlyerFragment();
+        CouponFragment Cf = new CouponFragment();
+        ShoppingFragment Sf = new ShoppingFragment();
         setTheme();
+        getActionBar().hide();
         setContentView(R.layout.activity_main);
+        splashView = (ImageView)findViewById(R.id.splashView);
+        timer = Config.SPLASH_TIME * 1000;
+        list.add(Fy);
+        list.add(Cf);
+        list.add(Sf);
+
+        for (int i = 0; i < list.size(); i++) {
+            if(!SaveData.SplashIsFinished) {
+                list.get(i).doInSplash(this);
+            }
+        }
+        // 10秒カウントダウンする
+        CountDownTimer start = new CountDownTimer(timer, 1000) {
+            // カウントダウン処理
+            public void onTick(long millisUntilFinished) {
+            }
+            // カウントが0になった時の処理
+            public void onFinish() {
+                splashView.setVisibility(View.GONE);
+                getActionBar().show();
+            }
+        }.start();
+
 
         settingData = setConfig();
         titleOfActionBar = setTitleOfActionBar();
@@ -287,6 +322,11 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
                     { put("tabTitle", getString(R.string.sns1)); }
                     { put("tabIcon", R.drawable.icon_sns); }
                     { put("cls", SnsFragment.class); }
+                },
+                new HashMap<String, Object>() {
+                    { put("tabTitle", getString(R.string.sns1)); }
+                    { put("tabIcon", R.drawable.icon_sns); }
+                    { put("cls", jp.co.jokerpiece.piecebase.WebViewFragment.class); }
                 }
         ));
     }
@@ -309,6 +349,8 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
             { put(BarcodeFragment.class.getSimpleName(), R.string.barcode0); }
             { put(StampFragment.class.getSimpleName(), R.string.stamp0); }
             { put(SnsFragment.class.getSimpleName(), R.string.sns0); }
+            { put(jp.co.jokerpiece.piecebase.WebViewFragment.class.getSimpleName(), R.string.sns0); }
+
 
         };
     }
@@ -325,6 +367,7 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
         Config.BarcodeFragmentNum = 6;
         Config.StampFragmentNum = 7;
         Config.SnsFragmentNum = 8;
+
     }
 
     /**

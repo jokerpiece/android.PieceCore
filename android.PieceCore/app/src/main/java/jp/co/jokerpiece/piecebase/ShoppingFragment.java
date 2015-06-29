@@ -7,29 +7,37 @@ import jp.co.jokerpiece.piecebase.config.Common;
 import jp.co.jokerpiece.piecebase.config.Config;
 import jp.co.jokerpiece.piecebase.data.CategoryListData;
 import jp.co.jokerpiece.piecebase.data.CategoryListData.CategoryData;
+import jp.co.jokerpiece.piecebase.data.SaveData;
 import jp.co.jokerpiece.piecebase.util.App;
 import jp.co.jokerpiece.piecebase.util.AppUtil;
+import jp.co.jokerpiece.piecebase.util.BitmapCache;
+import jp.co.jokerpiece.piecebase.util.BitmapDownloader;
+import jp.co.jokerpiece.piecebase.util.DownloadImageSync;
 import jp.co.jokerpiece.piecebase.util.DownloadImageView;
 
 import android.app.Activity;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.Context;
 import android.content.Loader;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.LoaderManager;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-public class ShoppingFragment extends Fragment implements OnItemClickListener {
+public class ShoppingFragment extends BaseFragment implements OnItemClickListener {
 	Context context;
 
 	static final int MP = ViewGroup.LayoutParams.MATCH_PARENT;
@@ -51,9 +59,11 @@ public class ShoppingFragment extends Fragment implements OnItemClickListener {
 		shoppingListView = (ListView)rootView.findViewById(R.id.shoppingListView);
 //        getActionBar().setIcon(R.drawable.icon_shopping);
 //        getActionBar().setTitle(R.string.genre_list);
-
-        getGenreList();
-
+        if(SaveData.Categorydata != null){
+            showCategoryView();
+        }else {
+            getGenreList();
+        }
         return rootView;
 	}
 
@@ -90,18 +100,26 @@ public class ShoppingFragment extends Fragment implements OnItemClickListener {
 	}
 
 	private void showCategoryView() {
-		if(categoryData.data_list != null && categoryData.data_list.size() >= 1){
-			shoppingListView.setVisibility(View.VISIBLE);
+        if(SaveData.Categorydata != null) {
+            categoryData = SaveData.Categorydata;
+        }
+//            shoppingListView.setVisibility(View.VISIBLE);
+//            shoppingListView.setAdapter(Config.Sadapter);
+//            shoppingListView.setOnItemClickListener(this);
+//        }else {
+            if (categoryData.data_list != null && categoryData.data_list.size() >= 1) {
+                shoppingListView.setVisibility(View.VISIBLE);
 
-			ShoppingListAdapter adapter = new ShoppingListAdapter(context,
-					R.layout.adapter_shopping_category_list,
-					categoryData.data_list,
-                    ((FragmentActivity)context).getSupportLoaderManager());
-			shoppingListView.setAdapter(adapter);
-			shoppingListView.setOnItemClickListener(this);
-		}else{
-			shoppingListView.setVisibility(View.GONE);
-		}
+                ShoppingListAdapter adapter = new ShoppingListAdapter(context,
+                        R.layout.adapter_shopping_category_list,
+                        categoryData.data_list,
+                        ((FragmentActivity) context).getSupportLoaderManager());
+                shoppingListView.setAdapter(adapter);
+                shoppingListView.setOnItemClickListener(this);
+            } else {
+                shoppingListView.setVisibility(View.GONE);
+            }
+
 	}
 
 	@Override
@@ -149,5 +167,62 @@ public class ShoppingFragment extends Fragment implements OnItemClickListener {
 			public void onLoaderReset(Loader<CategoryListData> loader) {
 			}
         });
+
 	}
+
+    @Override
+    public void doInSplash(final Activity activity) {
+        super.doInSplash(activity);
+
+        Loader l = activity.getLoaderManager().getLoader(Config.loaderCnt);
+        if (l != null){
+            return;
+        }
+        activity.getLoaderManager().initLoader(Config.loaderCnt++, null, new LoaderCallbacks<CategoryListData>() {
+            @Override
+            public Loader<CategoryListData> onCreateLoader(int id, Bundle args) {
+                CategoryListAPI categoryAPI = new CategoryListAPI(activity);
+                categoryAPI.forceLoad();
+                return categoryAPI;
+            }
+
+            @Override
+            public void onLoadFinished(Loader<CategoryListData> loader, CategoryListData data) {
+                if (data == null) {
+                    Common.serverErrorMessage(activity);
+                    return;
+                }
+                SaveData.Categorydata = data;
+                for(final CategoryData c : data.data_list) {
+
+                    ((MainBaseActivity) activity).getSupportLoaderManager().initLoader(Config.loaderCnt++, null, new LoaderManager.LoaderCallbacks<Bitmap>() {
+                        @Override
+                        public android.support.v4.content.Loader<Bitmap> onCreateLoader(int id, Bundle args) {
+                            BitmapDownloader bmDownloader = new BitmapDownloader( activity, c.img_url);
+                            bmDownloader.forceLoad();
+                            return bmDownloader;
+                        }
+
+                        @Override
+                        public void onLoadFinished(android.support.v4.content.Loader<Bitmap> loader, Bitmap data) {
+                            BitmapCache.newInstance().putBitmap(c.img_url, data);
+                        }
+
+                        @Override
+                        public void onLoaderReset(android.support.v4.content.Loader<Bitmap> loader) {
+
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void onLoaderReset(Loader<CategoryListData> loader) {
+            }
+
+        });
+
+
+
+    }
 }

@@ -8,10 +8,15 @@ import java.util.HashMap;
 import java.util.List;
 
 import jp.co.jokerpiece.piecebase.R;
+import jp.co.jokerpiece.piecebase.ShoppingListAdapter;
+import jp.co.jokerpiece.piecebase.data.CategoryListData;
+import jp.co.jokerpiece.piecebase.data.CouponListData;
+import jp.co.jokerpiece.piecebase.data.FlyerData;
 import jp.co.jokerpiece.piecebase.data.MenuData;
 import jp.co.jokerpiece.piecebase.util.App;
 
 import android.content.Context;
+import android.webkit.WebView;
 
 public class Config {
     // --- staticイニシャライザで定数を設定(ここから) --- //
@@ -111,6 +116,8 @@ public class Config {
     public static String CONSUMER_SECRET = "uQqLoh6lV9KQn6F7o6JyRiQkDueNNPIlrR8GwsmW7P95Q8OZ8d";
     public static String ACCESS_TOKEN = "3245559282-ncb4SSrwITCEPkgFscWpewRopIBRMQWE2cbj0eU";
     public static String ACCESS_SECRET = "CpcWqrWVR3E0fbDPxLJs5GRpGM2HUg7i6iDYruH1L9HXX";
+    public static String URL = "http://jokerpiece.co.jp/";
+
 
     // ImageBackとnextの位置をどこに配置する設定
     public static int PositionForWebView;

@@ -2,12 +2,17 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    
-    <WebView
-        android:id="@+id/webview"
+
+    <LinearLayout
+        android:id="@+id/base_webview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/background_fragment" />
+        android:layout_height="match_parent">
+        <WebView
+            android:id="@+id/webview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/background_fragment" />
+    </LinearLayout>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

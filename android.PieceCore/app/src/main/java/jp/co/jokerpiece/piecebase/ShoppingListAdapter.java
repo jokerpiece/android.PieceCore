@@ -64,10 +64,10 @@ public class ShoppingListAdapter extends ArrayAdapter<CategoryData> implements D
         }
 
 		DownloadImageSync sync = new DownloadImageSync(getContext(), list.get(position).img_url, iv,this);
-		if(!sync.loadImageView()){
+        if(!sync.loadImageView()){
 //			loaderManager.initLoader(ID_IMAGES + position, null, sync);
-			loaderManager.initLoader(Config.loaderCnt++, null, sync);
-		}
+            loaderManager.initLoader(Config.loaderCnt++, null, sync);
+        }
 
 		return convertView;
 	}

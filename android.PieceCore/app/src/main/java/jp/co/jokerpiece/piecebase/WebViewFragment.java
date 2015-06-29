@@ -1,8 +1,10 @@
 package jp.co.jokerpiece.piecebase;
 
 import jp.co.jokerpiece.piecebase.config.Config;
+import jp.co.jokerpiece.piecebase.data.SaveData;
 import jp.co.jokerpiece.piecebase.util.AppUtil;
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.net.ConnectivityManager;
@@ -20,11 +22,12 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 @SuppressLint("SetJavaScriptEnabled")
-public class WebViewFragment extends Fragment implements View.OnClickListener {
+public class WebViewFragment extends BaseFragment implements View.OnClickListener {
     private WebView webView;
     private ImageView ivBack;
     private ImageView ivNext;
@@ -38,97 +41,190 @@ public class WebViewFragment extends Fragment implements View.OnClickListener {
     private ImageButton imgReload;
     private TextView tv;
     private TextView error_Msg;
-    private boolean ConnectFailed;
+    private boolean ConnectFailed = false;
     ConnectivityManager conMan;
+    String S_Url = "http://www.cocacoca.jp/";
+    public WebViewFragment(){
+
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+            View rootView = inflater.inflate(R.layout.fragment_webview, container, false);
+            conMan = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+            setMode();
+            findViews(rootView);
+            //設定しないと最初の読み込みとき出てしまう
+            imgBackFlg.setVisibility(View.GONE);
+            imgNextFlg.setVisibility(View.GONE);
+            imgReload.setVisibility(View.GONE);
+            tv.setVisibility(View.GONE);
+            error_Msg.setVisibility(View.GONE);
+            webView = (WebView) rootView.findViewById(R.id.webview);
+            Bundle bundle = getArguments();
+            if (bundle != null) {
+                webView.setWebViewClient(new WebViewClient() {
+                    @Override
+                    public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                        return super.shouldOverrideUrlLoading(view, url);
+                    }
 
-        View rootView = inflater.inflate(R.layout.fragment_webview, container, false);
-        conMan = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
-        ConnectFailed = false;
-        setMode();
-        findViews(rootView);
-        //設定しないと最初の読み込みとき出てしまう
-        imgBackFlg.setVisibility(View.GONE);
-        imgNextFlg.setVisibility(View.GONE);
-        imgReload.setVisibility(View.GONE);
-        tv.setVisibility(View.GONE);
-        error_Msg.setVisibility(View.GONE);
-
-        webView = (WebView) rootView.findViewById(R.id.webview);
-        webView.setWebViewClient(new WebViewClient(){
-            @Override
-            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                return super.shouldOverrideUrlLoading(view, url);
-            }
-
-            @Override
-            public void onPageStarted(WebView view, String url, Bitmap favicon) {
-                super.onPageStarted(view, url, favicon);
-                ConnectFailed = false;
-            }
-
-            @Override
-            public void onPageFinished(WebView view, String url) {
-                super.onPageFinished(view, url);
-                if(ConnectFailed) {
-                    error_Msg.setVisibility(View.VISIBLE);
-                    imgReload.setVisibility(View.VISIBLE);
-                    tv.setVisibility(View.VISIBLE);
-                }else{
-                    error_Msg.setVisibility(View.GONE);
-                    imgReload.setVisibility(View.GONE);
-                    tv.setVisibility(View.GONE);
-                }
-                if (!webView.canGoBack()) {
-                    imgBackFlg.setVisibility(View.GONE);
-                }else{
-                    imgBackFlg.setVisibility(View.VISIBLE);
-                }
-                if (!webView.canGoForward()) {
-                    imgNextFlg.setVisibility(View.GONE);
-                }else{
-                    imgNextFlg.setVisibility(View.VISIBLE);
-                }
+                    @Override
+                    public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                        super.onPageStarted(view, url, favicon);
+                        ConnectFailed = false;
+                    }
+                    @Override
+                    public void onPageFinished(WebView view, String url) {
+                        super.onPageFinished(view, url);
+                        if (ConnectFailed) {
+                            error_Msg.setVisibility(View.VISIBLE);
+                            imgReload.setVisibility(View.VISIBLE);
+                            tv.setVisibility(View.VISIBLE);
+                        } else {
+                            error_Msg.setVisibility(View.GONE);
+                            imgReload.setVisibility(View.GONE);
+                            tv.setVisibility(View.GONE);
+                        }
+                        if (!webView.canGoBack()) {
+                            imgBackFlg.setVisibility(View.GONE);
+                        } else {
+                            imgBackFlg.setVisibility(View.VISIBLE);
+                        }
+                        if (!webView.canGoForward()) {
+                            imgNextFlg.setVisibility(View.GONE);
+                        } else {
+                            imgNextFlg.setVisibility(View.VISIBLE);
+                        }
 
 //            	ActionBar ab = getActionBar();
 //            	String title = webView.getTitle();
 //            	ab.setTitle(title);
-            }
+                    }
 
-            @Override
-            public void onReceivedError(final WebView webview,int errorCode, String description,String failingUrl){
-                 ConnectFailed = true;
-                if(checkNetWork()) {
-                    String s = getErrorMsg(errorCode);
-                    error_Msg.setText(s);
-                }else{
-                    error_Msg.setText("通信できませんでした。\n電波状態をお確かめ下さい。");
-                }
-
-                imgReload.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(View v) {
-                        webView.reload();
+                    public void onReceivedError(final WebView webview, int errorCode, String description, String failingUrl) {
+                        ConnectFailed = true;
+                        if (checkNetWork()) {
+                            String s = getErrorMsg(errorCode);
+                            error_Msg.setText(s);
+                        } else {
+                            error_Msg.setText("通信できませんでした。\n電波状態をお確かめ下さい。");
+                        }
+                        imgReload.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                webView.reload();
+                                imgReload.setVisibility(View.GONE);
+                                tv.setVisibility(View.GONE);
+                            }
+                        });
+                    }
+                });
+                WebSettings webSettings = webView.getSettings();
+                webSettings.setJavaScriptEnabled(true);
+                String strUrl = bundle.getString("send_url");
+                if (strUrl != null && !strUrl.equals("")) {
+                    webView.loadUrl(strUrl);
+                }
+            } else {
+                LinearLayout ll = (LinearLayout) rootView.findViewById(R.id.base_webview);
+                //スプラッシュが終わってからSaveData.Wbの情報をチェックする
+                if(SaveData.SplashIsFinished) {
+                    if (!SaveData.Wb.canGoBack()) {
+                        imgBackFlg.setVisibility(View.GONE);
+                    } else {
+                        imgBackFlg.setVisibility(View.VISIBLE);
+                    }
+                    if (!SaveData.Wb.canGoForward()) {
+                        imgNextFlg.setVisibility(View.GONE);
+                    } else {
+                        imgNextFlg.setVisibility(View.VISIBLE);
+                    }
+                    if (SaveData.ConnectFailed) {
+                        if (checkNetWork()) {
+                            String s = getErrorMsg(SaveData.ErrorCode);
+                            error_Msg.setText(s);
+                        } else {
+                            error_Msg.setText("通信できませんでした。\n電波状態をお確かめ下さい。");
+                        }
+                        imgReload.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                SaveData.Wb.reload();
+                                imgReload.setVisibility(View.GONE);
+                                tv.setVisibility(View.GONE);
+                            }
+                        });
+                        error_Msg.setVisibility(View.VISIBLE);
+                        imgReload.setVisibility(View.VISIBLE);
+                        tv.setVisibility(View.VISIBLE);
+                    } else {
+                        error_Msg.setVisibility(View.GONE);
                         imgReload.setVisibility(View.GONE);
                         tv.setVisibility(View.GONE);
                     }
+                }
+                SaveData.Wb.setWebViewClient(new WebViewClient() {
+                    @Override
+                    public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                        super.onPageStarted(view, url, favicon);
+                        SaveData.ConnectFailed = false;
+                    }
+                    @Override
+                    public void onPageFinished(WebView view, String url) {
+                        super.onPageFinished(view, url);
+                        if (SaveData.ConnectFailed) {
+                            error_Msg.setVisibility(View.VISIBLE);
+                            imgReload.setVisibility(View.VISIBLE);
+                            tv.setVisibility(View.VISIBLE);
+                        } else {
+                            error_Msg.setVisibility(View.GONE);
+                            imgReload.setVisibility(View.GONE);
+                            tv.setVisibility(View.GONE);
+                            SaveData.SplashIsFinished = true;
+                        }
+                        if (!SaveData.Wb.canGoBack()) {
+                            imgBackFlg.setVisibility(View.GONE);
+                        } else {
+                            imgBackFlg.setVisibility(View.VISIBLE);
+                        }
+                        if (!SaveData.Wb.canGoForward()) {
+                            imgNextFlg.setVisibility(View.GONE);
+                        } else {
+                            imgNextFlg.setVisibility(View.VISIBLE);
+                        }
+                    }
+                    @Override
+                    public void onReceivedError(WebView webview, int errorCode, String description, String failingUrl) {
+                        //ConnectFailed = SaveData.ConnectFailed;
+                        SaveData.ConnectFailed = true;
+                        if (checkNetWork()) {
+                            String s = getErrorMsg(errorCode);
+                            error_Msg.setText(s);
+                        } else {
+                            error_Msg.setText("通信できませんでした。\n電波状態をお確かめ下さい。");
+                        }
+                        imgReload.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                SaveData.Wb.reload();
+                                imgReload.setVisibility(View.GONE);
+                                tv.setVisibility(View.GONE);
+                            }
+                        });
+                    }
                 });
+                ViewGroup parent = (ViewGroup) webView.getParent();
+                if (parent != null) {
+                    parent.removeView(webView);
+                }
+                ViewGroup parent2 = (ViewGroup) SaveData.Wb.getParent();
+                if (parent2 != null) {
+                    parent2.removeView(SaveData.Wb);
+                }
+                ll.addView(SaveData.Wb);
             }
-        });
-
-
-        WebSettings webSettings = webView.getSettings();
-        webSettings.setJavaScriptEnabled(true);
-        Bundle bundle = getArguments();
-        if(bundle != null){
-            String strUrl = bundle.getString("send_url");
-            if (strUrl != null && !strUrl.equals("")) {
-                webView.loadUrl(strUrl);
-            }
-        }
-
 //        rootView.setOnKeyListener(new OnKeyListener() {
 //            @Override
 //            public boolean onKey(View v, int keyCode, KeyEvent event) {
@@ -154,7 +250,8 @@ public class WebViewFragment extends Fragment implements View.OnClickListener {
 //        // View#setFocusableInTouchModeでtrueをセットしておくこと
 //        rootView.setFocusableInTouchMode(true);
 
-        return rootView;
+            return rootView;
+
     }
 
     @Override
@@ -171,6 +268,7 @@ public class WebViewFragment extends Fragment implements View.OnClickListener {
                 getActivity().getActionBar(),
                 MainBaseActivity.titleOfActionBar.get(WebViewFragment.class.getSimpleName()));
         getActivity().invalidateOptionsMenu();
+
     }
 
     @Override
@@ -205,12 +303,16 @@ public class WebViewFragment extends Fragment implements View.OnClickListener {
             if (webView.canGoBack()) {
                 webView.goBack();
             }
-
+            if(SaveData.Wb.canGoBack()){
+                SaveData.Wb.goBack();
+            }
         } else if (i == R.id.iv_next || i == R.id.iv_nextCenter || i == R.id.iv_nextBottom) {
             if (webView.canGoForward()) {
                 webView.goForward();
             }
-
+            if(SaveData.Wb.canGoForward()){
+                SaveData.Wb.goForward();
+            }
         }
     }
     //ivBackはどこに設置するか
@@ -218,6 +320,7 @@ public class WebViewFragment extends Fragment implements View.OnClickListener {
         Config.PositionForWebView = Config.Center;
     }
     public void findViews(View rootView) {
+
         ivBack = (ImageView) rootView.findViewById(R.id.iv_back);
         ivNext = (ImageView) rootView.findViewById(R.id.iv_next);
         ivBackCenter = (ImageView) rootView.findViewById(R.id.iv_backCenter);
@@ -267,20 +370,8 @@ public class WebViewFragment extends Fragment implements View.OnClickListener {
 
         String Msg = "";
         switch(ErrorCode){
-            case -1:
-                Msg = "エラー";
-                break;
             case -2:
                 Msg = "サーバーまたはプロキシのホスト名の検索に失敗しました";
-                break;
-            case -3:
-                Msg = "サポートされていない認証方式";
-                break;
-            case -4:
-                Msg = "ユーザー認証はサーバー上で失敗しました";
-                break;
-            case -5:
-                Msg = "ユーザー認証はプロキシ上で失敗しました";
                 break;
             case -6:
                 Msg = "サーバーへの接続に失敗しました";
@@ -291,26 +382,8 @@ public class WebViewFragment extends Fragment implements View.OnClickListener {
             case -8:
                 Msg = "接続がタイムアウトしました";
                 break;
-            case -9:
-                Msg = "リダイレクトが多過ぎ";
-                break;
-            case -10:
-                Msg = "サポートされていないURIスキーム";
-                break;
-            case -11:
-                Msg = "SSLハンドシェイクの実行に失敗しました";
-                break;
-            case -12:
-                Msg = "不正な形式のURL";
-                break;
-            case -13:
-                Msg = "ファイルエラー";
-                break;
-            case -14:
-                Msg = "ファイルは見つかりません";
-                break;
-            case -15:
-                Msg = "リクエストが多過ぎ";
+            default:
+                Msg = "サーバーへの接続に失敗しました";
                 break;
 
         }
@@ -327,8 +400,29 @@ public class WebViewFragment extends Fragment implements View.OnClickListener {
             // ネットワーク未接続
             return false;
         }
-
         // ネットワークに接続している
         return true;
+
+    }
+
+    @Override
+    public void doInSplash(Activity activity) {
+        super.doInSplash(activity);
+        SaveData.Wb = new WebView(activity);
+        SaveData.Wb.setWebViewClient(new WebViewClient(){
+            @Override
+            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                super.onPageStarted(view, url, favicon);
+                SaveData.ConnectFailed = false;
+            }
+            @Override
+            public void onReceivedError(final WebView webview,int errorCode, String description,String failingUrl) {
+                SaveData.ConnectFailed = true;
+                Log.d("t","test");
+            }
+        });
+        WebSettings webSettings = SaveData.Wb.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+        SaveData.Wb.loadUrl(S_Url);
     }
 }

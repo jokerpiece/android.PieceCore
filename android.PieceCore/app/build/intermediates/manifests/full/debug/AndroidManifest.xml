@@ -63,21 +63,21 @@
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="@string/map_key" />
-
+        <!-- <activity -->
+        <!-- android:name=".SplashBaseActivity" -->
+        <!-- android:theme="@android:style/Theme.Light.NoTitleBar" -->
+        <!-- android:screenOrientation="portrait"> -->
+        <!-- </activity> -->
         <activity
-            android:name="jp.co.jokerpiece.piecebase.SplashBaseActivity"
+            android:name="jp.co.jokerpiece.piecebase.MainBaseActivity"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Light.NoTitleBar" >
+            android:theme="@style/Theme.AppCompat.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name="jp.co.jokerpiece.piecebase.MainBaseActivity"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
         </activity>
 
         <!-- プッシュ通知に必要なアクティビティ(ここから) -->

@@ -5,21 +5,27 @@ import java.util.ArrayList;
 import jp.co.jokerpiece.piecebase.api.CouponListAPI;
 import jp.co.jokerpiece.piecebase.config.Common;
 import jp.co.jokerpiece.piecebase.config.Config;
+import jp.co.jokerpiece.piecebase.data.CategoryListData;
 import jp.co.jokerpiece.piecebase.data.CouponListData;
 import jp.co.jokerpiece.piecebase.data.CouponListData.CouponData;
 import jp.co.jokerpiece.piecebase.data.GetCouponData;
+import jp.co.jokerpiece.piecebase.data.SaveData;
 import jp.co.jokerpiece.piecebase.util.App;
 import jp.co.jokerpiece.piecebase.util.AppUtil;
+import jp.co.jokerpiece.piecebase.util.BitmapCache;
+import jp.co.jokerpiece.piecebase.util.BitmapDownloader;
 import jp.co.jokerpiece.piecebase.util.ViewPagerIndicator;
 import android.app.Activity;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.Context;
 import android.content.Loader;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.LoaderManager;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.Log;
@@ -31,7 +37,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class CouponFragment extends Fragment implements OnPageChangeListener {
+public class CouponFragment extends BaseFragment implements OnPageChangeListener {
 	Context context;
 
 	final static int GET_COUPON = 100;
@@ -49,6 +55,7 @@ public class CouponFragment extends Fragment implements OnPageChangeListener {
 
 //	private ArrayList<DownloadImageView> alImageViewList = new ArrayList<DownloadImageView>();
 	private CouponListData couponData = null;
+
 //	private static int loderCount = 0;
 
 	private String couponCode = "";
@@ -81,8 +88,11 @@ public class CouponFragment extends Fragment implements OnPageChangeListener {
 
         Log.d(TAG, "uuid: " + Common.getUUID(context));
 
-        getCouponList();
-
+        if (SaveData.Cdata != null){
+            displayCouponAfterGetData();
+        }else {
+            getCouponList();
+        }
 
         return rootView;
 	}
@@ -156,7 +166,7 @@ public class CouponFragment extends Fragment implements OnPageChangeListener {
 		return true;
 	}
 
-	private void getCouponList(){
+	public void getCouponList(){
         ((Activity)context).getLoaderManager().initLoader(Config.loaderCnt++, null, new LoaderCallbacks<CouponListData>(){
 			@Override
 			public Loader<CouponListData> onCreateLoader(int id, Bundle args) {
@@ -188,7 +198,9 @@ public class CouponFragment extends Fragment implements OnPageChangeListener {
 	 */
 	public void displayCouponAfterGetData() {
 		if (couponData == null) { return; }
-
+        if(SaveData.Cdata != null){
+            couponData = SaveData.Cdata;
+        }
 		ArrayList<CouponData> couponList = couponData.data_list;
 
 		if (couponList == null || couponList.size() == 0) {
@@ -228,7 +240,6 @@ public class CouponFragment extends Fragment implements OnPageChangeListener {
 
 		viewPager.setAdapter(pageFlagment);
 		viewPagerIndicator.setCount(pageFlagment.getCount());
-
 		viewPager.setVisibility(View.VISIBLE);
 		viewPagerIndicator.setVisibility(View.VISIBLE);
 		tvNoCoupon.setVisibility(View.GONE);
@@ -237,5 +248,49 @@ public class CouponFragment extends Fragment implements OnPageChangeListener {
 			viewPager.setCurrentItem(initPos, true);
 		}
 	}
+
+    @Override
+    public void doInSplash(final Activity activity) {
+        super.doInSplash(activity);
+
+        activity.getLoaderManager().initLoader(Config.loaderCnt++, null, new LoaderCallbacks<CouponListData>() {
+            @Override
+            public Loader<CouponListData> onCreateLoader(int id, Bundle args) {
+                CouponListAPI couponAPI = new CouponListAPI(activity, CouponListData.COUPON_DATA_TYPE_NOT_GIVE);
+                couponAPI.forceLoad();
+                return couponAPI;
+            }
+
+            @Override
+            public void onLoadFinished(Loader<CouponListData> loader, CouponListData data) {
+                if (data == null) {
+                    Common.serverErrorMessage(activity);
+                    return;
+                }
+                SaveData.Cdata = data;
+                for (final CouponData c : data.data_list) {
+                    ((MainBaseActivity) activity).getSupportLoaderManager().initLoader(Config.loaderCnt++, null, new LoaderManager.LoaderCallbacks<Bitmap>() {
+                        @Override
+                        public android.support.v4.content.Loader<Bitmap> onCreateLoader(int id, Bundle args) {
+                            BitmapDownloader bmDownloader = new BitmapDownloader(activity, c.img_url);
+                            bmDownloader.forceLoad();
+                            return bmDownloader;
+                        }
+                        @Override
+                        public void onLoadFinished(android.support.v4.content.Loader<Bitmap> loader, Bitmap data) {
+                            BitmapCache.newInstance().putBitmap(c.img_url, data);
+                        }
+                        @Override
+                        public void onLoaderReset(android.support.v4.content.Loader<Bitmap> loader) {
+                        }
+                    });
+                }
+            }
+            @Override
+            public void onLoaderReset(Loader<CouponListData> loader) {
+            }
+        });
+
+    }
 
 }
