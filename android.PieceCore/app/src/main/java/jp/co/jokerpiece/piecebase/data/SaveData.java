@@ -12,7 +12,12 @@ public class SaveData {
     public static CategoryListData Categorydata;
     public static FlyerData Flyerdata;
     public static WebView Wb;
+    public static WebView Wb2;
+
+    public static boolean ConnectFlg;
     public static boolean ConnectFailed;
+    public static boolean ConnectFailed2;
+
     public static boolean SplashIsFinished = false;
     public static int ErrorCode;
 }

@@ -105,6 +105,7 @@ public class Config {
     public static int BarcodeFragmentNum;
     public static int StampFragmentNum;
     public static int SnsFragmentNum;
+    public static int WebViewFragmentNum;
 
     public static List Savelist = new ArrayList<>();
 
@@ -116,7 +117,7 @@ public class Config {
     public static String CONSUMER_SECRET = "uQqLoh6lV9KQn6F7o6JyRiQkDueNNPIlrR8GwsmW7P95Q8OZ8d";
     public static String ACCESS_TOKEN = "3245559282-ncb4SSrwITCEPkgFscWpewRopIBRMQWE2cbj0eU";
     public static String ACCESS_SECRET = "CpcWqrWVR3E0fbDPxLJs5GRpGM2HUg7i6iDYruH1L9HXX";
-    public static String URL = "http://jokerpiece.co.jp/";
+    public static String URL;
 
 
     // ImageBackとnextの位置をどこに配置する設定

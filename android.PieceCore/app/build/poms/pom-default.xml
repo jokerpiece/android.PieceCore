@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>jp.co.jokerpiece.android.piececore</groupId>
   <artifactId>android.piececore</artifactId>
-  <version>0.0.40</version>
+  <version>0.0.41</version>
   <packaging>aar</packaging>
   <dependencies>
     <dependency>

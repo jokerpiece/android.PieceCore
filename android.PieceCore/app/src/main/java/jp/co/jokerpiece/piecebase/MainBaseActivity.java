@@ -322,11 +322,6 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
                     { put("tabTitle", getString(R.string.sns1)); }
                     { put("tabIcon", R.drawable.icon_sns); }
                     { put("cls", SnsFragment.class); }
-                },
-                new HashMap<String, Object>() {
-                    { put("tabTitle", getString(R.string.sns1)); }
-                    { put("tabIcon", R.drawable.icon_sns); }
-                    { put("cls", jp.co.jokerpiece.piecebase.WebViewFragment.class); }
                 }
         ));
     }
@@ -349,8 +344,6 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
             { put(BarcodeFragment.class.getSimpleName(), R.string.barcode0); }
             { put(StampFragment.class.getSimpleName(), R.string.stamp0); }
             { put(SnsFragment.class.getSimpleName(), R.string.sns0); }
-            { put(jp.co.jokerpiece.piecebase.WebViewFragment.class.getSimpleName(), R.string.sns0); }
-
 
         };
     }
@@ -367,6 +360,7 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
         Config.BarcodeFragmentNum = 6;
         Config.StampFragmentNum = 7;
         Config.SnsFragmentNum = 8;
+        Config.WebViewFragmentNum = 9;
 
     }
 

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.UUID;
 
 import jp.co.jokerpiece.piecebase.MainBaseActivity;
+import jp.co.jokerpiece.piecebase.WebViewFragment;
 import jp.co.jokerpiece.piecebase.api.DeviceTokenAPI;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -14,6 +15,8 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -241,6 +244,22 @@ public class Common {
         }
 	}
     // プッシュ通知で必要なメソッド(ここまで)
+
+    public static boolean CheckNetWork(Activity activity){
+        ConnectivityManager conMan = (ConnectivityManager) activity.getSystemService(Context.CONNECTIVITY_SERVICE);
+        // モバイル回線（３G）の接続状態を取得
+        NetworkInfo.State mobile = conMan.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState();
+        // wifiの接続状態を取得
+        NetworkInfo.State wifi = conMan.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState();
+        // 3Gデータ通信／wifi共に接続状態じゃない場合
+        if ( (mobile != NetworkInfo.State.CONNECTED) && (wifi != NetworkInfo.State.CONNECTED) ) {
+            // ネットワーク未接続
+            return false;
+        }
+        // ネットワークに接続している
+        return true;
+    }
+
 
     //フラグメントを記録するため
     public static void setCurrentFragment(int FragmentNum){

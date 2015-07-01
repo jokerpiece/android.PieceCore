@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Loader;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.webkit.WebView;
 
 import jp.co.jokerpiece.piecebase.config.Config;
 import jp.co.jokerpiece.piecebase.data.CouponListData;
@@ -20,5 +21,4 @@ public class BaseFragment extends Fragment {
     public void doInSplash(Activity activity){
 
     }
-
 }
