@@ -1,6 +1,9 @@
 package jp.co.jokerpiece.piecebase;
 
+import java.io.UnsupportedEncodingException;
+import java.net.MalformedURLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -20,6 +23,7 @@ import jp.co.jokerpiece.piecebase.util.AppUtil;
 import jp.co.jokerpiece.piecebase.util.BitmapCache;
 import jp.co.jokerpiece.piecebase.util.BitmapDownloader;
 import jp.co.jokerpiece.piecebase.util.DownloadImageView;
+import jp.co.jokerpiece.piecebase.util.HttpClient;
 import jp.co.jokerpiece.piecebase.util.ViewPagerIndicator;
 
 import android.app.Activity;
@@ -70,7 +74,8 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener{
 	public Button btnSendOtherGoods;
 
 	FlyerData flyerData;
-	int flyer_ID = -1;
+    int flyer_ID = -1;
+
 
 	int headerNowPage = 0;
 	private FlyerImagePageAdapter pageFlagment;
@@ -79,7 +84,6 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener{
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
         context = getActivity();
-
         Common.setCurrentFragment(Config.FlyerFragmentNum);
 
 		View rootView = inflater.inflate(R.layout.fragment_flyer, container, false);
@@ -110,7 +114,6 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener{
 //        }else{
 //        	getFlyerWithID(flyer_ID);
 //        }
-
         pageFlagment = new FlyerImagePageAdapter(getChildFragmentManager(),
         		context,
         		new ArrayList<FlyerHeaderData>());
@@ -131,6 +134,7 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener{
 		}
         if(SaveData.Flyerdata != null){
             flyerData = SaveData.Flyerdata;
+            SaveData.Flyerdata = null;
         }
 		alImageViewList.clear();
 		pageFlagment.refresh();
@@ -203,11 +207,14 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener{
 //		}else{
 //			getHomeFlyerID();
 //		}
-        if(flyer_ID < 0){
-            getHomeFlyerID();
+
+        if(AppUtil.getPrefString(context, "FLYERID", "").equals("0") ) {
+            getFlyerWithID(0);
         }else{
+            flyer_ID = Integer.parseInt((AppUtil.getPrefString(context, "FLYERID", "")));
             getFlyerWithID(flyer_ID);
         }
+
 	}
 
 	@Override
@@ -242,43 +249,6 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener{
 //			ft.replace(R.id.fragment, fragment);
 //			ft.commit();
 		}
-	}
-
-	public  void getHomeFlyerID(){
-        ((Activity)context).getLoaderManager().initLoader(Config.loaderCnt++, null, new LoaderCallbacks<NewsListData>() {
-			@Override
-			public Loader<NewsListData> onCreateLoader(int id, Bundle args) {
-				 NewsListAPI newsAPI = new NewsListAPI(context);
-				 newsAPI.forceLoad();
-				 return newsAPI;
-			}
-			@Override
-			public void onLoadFinished(Loader<NewsListData> loader, NewsListData data) {
-				if(data == null){
-					Common.serverErrorMessage(context);
-					return;
-				}
-				int flyerID = -1;
-				ArrayList<NewsData> data_list = data.data_list;
-				for (int i = 0; i < data_list.size(); i++) {
-					NewsListData.NewsData newsData = data_list.get(i);
-					try{
-						if(Integer.parseInt(newsData.type) == NewsListData.NEWS_DATA_TYPE_FLYER){
-							if(flyerID < Integer.parseInt(newsData.id)){
-								flyerID = Integer.parseInt(newsData.id);
-							}
-						}
-					}catch(NumberFormatException e){
-						e.printStackTrace();
-					}
-				}
-				getFlyerWithID(flyerID);
-			}
-			@Override
-			public void onLoaderReset(Loader<NewsListData> loader) {
-
-			}
-		});
 	}
 
 	private void getFlyerWithID(final int flyerID){
@@ -370,102 +340,67 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener{
         if (l != null){
             return;
         }
-        activity.getLoaderManager().initLoader(Config.loaderCnt++, null, new LoaderCallbacks<NewsListData>() {
+        activity.getLoaderManager().initLoader(Config.loaderCnt++, null, new LoaderCallbacks<FlyerData>() {
             @Override
-            public Loader<NewsListData> onCreateLoader(int id, Bundle args) {
-                NewsListAPI newsAPI = new NewsListAPI(activity);
-                newsAPI.forceLoad();
-                return newsAPI;
+            public Loader<FlyerData> onCreateLoader(int id, Bundle args) {
+                FlyerListAPI flyerAPI = new FlyerListAPI(activity, 0);
+                flyerAPI.forceLoad();
+                return flyerAPI;
             }
+
             @Override
-            public void onLoadFinished(Loader<NewsListData> loader, NewsListData data) {
+            public void onLoadFinished(Loader<FlyerData> loader, FlyerData data) {
                 if (data == null) {
                     Common.serverErrorMessage(activity);
                     return;
                 }
-                int flyerID = -1;
-                ArrayList<NewsData> data_list = data.data_list;
-                for (int i = 0; i < data_list.size(); i++) {
-                    NewsListData.NewsData newsData = data_list.get(i);
-                    try {
-                        if (Integer.parseInt(newsData.type) == NewsListData.NEWS_DATA_TYPE_FLYER) {
-                            if (flyerID < Integer.parseInt(newsData.id)) {
-                                flyerID = Integer.parseInt(newsData.id);
-                            }
-                        }
-                    } catch (NumberFormatException e) {
-                        e.printStackTrace();
-                    }
-                }
-                final int finalFlyerID = flyerID;
-                if(finalFlyerID > 0) {
-                    activity.getLoaderManager().initLoader(Config.loaderCnt++, null, new LoaderCallbacks<FlyerData>() {
+
+                SaveData.Flyerdata = data;
+                for (final FlyerHeaderData c : data.header_list) {
+                    ((MainBaseActivity) activity).getSupportLoaderManager().initLoader(Config.loaderCnt++, null, new LoaderManager.LoaderCallbacks<Bitmap>() {
                         @Override
-                        public Loader<FlyerData> onCreateLoader(int id, Bundle args) {
-                            FlyerListAPI flyerAPI = new FlyerListAPI(activity, finalFlyerID);
-                            flyerAPI.forceLoad();
-                            return flyerAPI;
+                        public android.support.v4.content.Loader<Bitmap> onCreateLoader(int id, Bundle args) {
+                            BitmapDownloader bmDownloader = new BitmapDownloader(activity, c.img_url);
+                            bmDownloader.forceLoad();
+                            return bmDownloader;
                         }
 
                         @Override
-                        public void onLoadFinished(Loader<FlyerData> loader, FlyerData data) {
-                            if (data == null) {
-                                Common.serverErrorMessage(context);
-                                return;
-                            }
-                            SaveData.Flyerdata = data;
-                            for (final FlyerHeaderData c : data.header_list) {
-                                ((MainBaseActivity) activity).getSupportLoaderManager().initLoader(Config.loaderCnt++, null, new LoaderManager.LoaderCallbacks<Bitmap>() {
-                                    @Override
-                                    public android.support.v4.content.Loader<Bitmap> onCreateLoader(int id, Bundle args) {
-                                        BitmapDownloader bmDownloader = new BitmapDownloader(activity, c.img_url);
-                                        bmDownloader.forceLoad();
-                                        return bmDownloader;
-                                    }
-
-                                    @Override
-                                    public void onLoadFinished(android.support.v4.content.Loader<Bitmap> loader, Bitmap data) {
-                                        if(data != null) {
-                                            BitmapCache.newInstance().putBitmap(c.img_url, data);
-                                        }
-                                    }
-                                    @Override
-                                    public void onLoaderReset(android.support.v4.content.Loader<Bitmap> loader) {
-                                    }
-                                });
-                            }
-                            for (final FlyerData.FlyerBodyData c : data.body_list) {
-                                ((MainBaseActivity) activity).getSupportLoaderManager().initLoader(Config.loaderCnt++, null, new LoaderManager.LoaderCallbacks<Bitmap>() {
-                                    @Override
-                                    public android.support.v4.content.Loader<Bitmap> onCreateLoader(int id, Bundle args) {
-                                        BitmapDownloader bmDownloader = new BitmapDownloader(activity, c.img_url);
-                                        bmDownloader.forceLoad();
-                                        return bmDownloader;
-                                    }
-                                    @Override
-                                    public void onLoadFinished(android.support.v4.content.Loader<Bitmap> loader, Bitmap data) {
-                                        if(data != null) {
-                                            BitmapCache.newInstance().putBitmap(c.img_url, data);
-                                        }
-                                    }
-                                    @Override
-                                    public void onLoaderReset(android.support.v4.content.Loader<Bitmap> loader) {
-                                    }
-                                });
+                        public void onLoadFinished(android.support.v4.content.Loader<Bitmap> loader, Bitmap data) {
+                            if(data != null) {
+                                BitmapCache.newInstance().putBitmap(c.img_url, data);
                             }
                         }
-
                         @Override
-                        public void onLoaderReset(Loader<FlyerData> loader) {
+                        public void onLoaderReset(android.support.v4.content.Loader<Bitmap> loader) {
                         }
                     });
                 }
-
+                for (final FlyerData.FlyerBodyData c : data.body_list) {
+                    ((MainBaseActivity) activity).getSupportLoaderManager().initLoader(Config.loaderCnt++, null, new LoaderManager.LoaderCallbacks<Bitmap>() {
+                        @Override
+                        public android.support.v4.content.Loader<Bitmap> onCreateLoader(int id, Bundle args) {
+                            BitmapDownloader bmDownloader = new BitmapDownloader(activity, c.img_url);
+                            bmDownloader.forceLoad();
+                            return bmDownloader;
+                        }
+                        @Override
+                        public void onLoadFinished(android.support.v4.content.Loader<Bitmap> loader, Bitmap data) {
+                            if(data != null) {
+                                BitmapCache.newInstance().putBitmap(c.img_url, data);
+                            }
+                        }
+                        @Override
+                        public void onLoaderReset(android.support.v4.content.Loader<Bitmap> loader) {
+                        }
+                    });
+                }
             }
-            @Override
-            public void onLoaderReset(Loader<NewsListData> loader) {
 
+            @Override
+            public void onLoaderReset(Loader<FlyerData> loader) {
             }
         });
     }
+
 }

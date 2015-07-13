@@ -205,7 +205,9 @@ public class ShoppingFragment extends BaseFragment implements OnItemClickListene
 
                         @Override
                         public void onLoadFinished(android.support.v4.content.Loader<Bitmap> loader, Bitmap data) {
-                            BitmapCache.newInstance().putBitmap(c.img_url, data);
+                            if(data != null) {
+                                BitmapCache.newInstance().putBitmap(c.img_url, data);
+                            }
                         }
 
                         @Override

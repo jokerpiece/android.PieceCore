@@ -120,6 +120,9 @@ public class Config {
     public static String URL;
 
 
+    public static final String PREF_KEY = "SETTINGS";
+    public static final String PREF_URL = "url";
+
     // ImageBackとnextの位置をどこに配置する設定
     public static int PositionForWebView;
     final public static int Top = 0;

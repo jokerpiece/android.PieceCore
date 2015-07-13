@@ -32,10 +32,14 @@ public class FlyerListAPI extends AsyncTaskLoader<FlyerData> implements HttpClie
 			return null;
 		}
 		FlyerData flyerData = new FlyerData();
-
     	HashMap<String, String> parameter = new HashMap<String, String>();
     	parameter.put("app_id", Config.APP_ID);
-    	parameter.put("flyer_id", String.valueOf(flyerID));
+        if(flyerID > 0) {
+            parameter.put("flyer_id", String.valueOf(flyerID));
+        }
+        else{
+            parameter.put("flyer_id", "");
+        }
         String result = null;
         try {
             byte[] resData = HttpClient.getByteArrayFromUrlPost(Config.SENDID_FLIYER_LIST, parameter,this);

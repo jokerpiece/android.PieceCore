@@ -2,10 +2,15 @@ package jp.co.jokerpiece.piecebase.util;
 
 import jp.co.jokerpiece.piecebase.MainBaseActivity;
 import jp.co.jokerpiece.piecebase.MainBaseActivity.TabInfo;
+import jp.co.jokerpiece.piecebase.config.Config;
+
 import android.app.ActionBar;
+import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Point;
+import android.util.Log;
 import android.view.Display;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -67,6 +72,30 @@ public class AppUtil {
         float scale = context.getResources().getDisplayMetrics().density;
         pixel = (int) (dp * scale + 0.5f);
         return pixel;
+    }
+
+
+    public static String getPrefString(Context context, String key, String initValue) {
+        SharedPreferences pref = context.getSharedPreferences(Config.PREF_KEY, Activity.MODE_PRIVATE | Activity.MODE_MULTI_PROCESS);
+        String value = pref.getString(key, initValue);
+        return value;
+    }
+
+    /**
+     * 指定キーとバリューをプリファレンスに設定する。(valueはString)
+     * @param context コンテキスト
+     * @param key キー
+     * @param value バリュー
+     */
+    public static void setPrefString(Context context, String key, String value) {
+        SharedPreferences pref = context.getSharedPreferences(Config.PREF_KEY, Activity.MODE_PRIVATE | Activity.MODE_MULTI_PROCESS);
+        SharedPreferences.Editor editor = pref.edit();
+//        Log.d(TAG, "**********");
+//        Log.d(TAG, "プリファレンスに設定します。");
+//        Log.d(TAG, "(key, value) = (" + key + ", " + value + ")");
+//        Log.d(TAG, "**********");
+        editor.putString(key, value);
+        editor.commit();
     }
 
 }

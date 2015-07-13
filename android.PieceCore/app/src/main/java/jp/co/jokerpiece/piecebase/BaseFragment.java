@@ -18,6 +18,7 @@ import jp.co.jokerpiece.piecebase.data.CouponListData;
  */
 public class BaseFragment extends Fragment {
 
+
     public void doInSplash(Activity activity){
 
     }

@@ -16,7 +16,7 @@ public class BitmapCache {
     }
     BitmapCache(){
         int maxMemory = (int) (Runtime.getRuntime().maxMemory() / 1024);
-        int cacheSize = maxMemory / 8;       // 最大メモリに依存した実装
+        int cacheSize = maxMemory / 4;       // 最大メモリに依存した実装
 
         mMemoryCache = new LruCache<String, Bitmap>(cacheSize) {
             @Override

@@ -18,6 +18,7 @@ public class SaveData {
     public static boolean ConnectFailed;
     public static boolean ConnectFailed2;
 
+
     public static boolean SplashIsFinished = false;
     public static int ErrorCode;
 }

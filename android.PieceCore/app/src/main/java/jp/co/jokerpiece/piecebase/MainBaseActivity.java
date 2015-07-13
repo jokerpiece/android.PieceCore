@@ -79,6 +79,7 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
         setTheme();
         getActionBar().hide();
         setContentView(R.layout.activity_main);
+        AppUtil.setPrefString(context, "FLYERID" ,"0");
         splashView = (ImageView)findViewById(R.id.splashView);
         timer = Config.SPLASH_TIME * 1000;
         list.add(Fy);
@@ -123,8 +124,8 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
                     Config.Backflg = false;
-                    if (event.getAction() == MotionEvent.ACTION_DOWN
-                            ) {
+                    if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                        AppUtil.setPrefString(context, "FLYERID" ,"0");
 //                        getCurrentRootFragment().getChildFragmentManager()
 //                                .popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                         int backStackCount = getSupportFragmentManager().getBackStackEntryCount();
