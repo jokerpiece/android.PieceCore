@@ -73,7 +73,7 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener{
 
 	public Button btnSendOtherGoods;
 
-	FlyerData flyerData;
+	protected FlyerData flyerData;
     int flyer_ID = -1;
 
 
