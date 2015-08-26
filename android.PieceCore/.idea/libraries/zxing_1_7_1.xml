@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="zxing-1.7.1">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/me.dm7.barcodescanner/zxing/1.7.1/classes.jar!/" />
+      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/me.dm7.barcodescanner/zxing/1.7.1/jars/classes.jar!/" />
       <root url="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/me.dm7.barcodescanner/zxing/1.7.1/res" />
     </CLASSES>
     <JAVADOC />

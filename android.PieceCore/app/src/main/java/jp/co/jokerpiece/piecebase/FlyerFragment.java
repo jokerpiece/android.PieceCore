@@ -224,7 +224,7 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener{
         super.onCreateOptionsMenu(menu, inflater);
 	}
 
-	private void onClickFlyer(String url) {
+	public void onClickFlyer(String url) {
         if (url != null && !url.equals("") && !url.equals("null")) {
             FragmentManager fm = ((MainBaseActivity)context).getSupportFragmentManager();
             FragmentTransaction ft = fm.beginTransaction();

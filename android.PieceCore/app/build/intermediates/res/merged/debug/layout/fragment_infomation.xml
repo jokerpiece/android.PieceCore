@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_fragment"
+    android:orientation="vertical" >
+
+		<android.support.v4.view.ViewPager
+		  xmlns:android="http://schemas.android.com/apk/res/android"
+		  android:id="@+id/pager"
+		  android:layout_width="match_parent"
+		  android:layout_height="match_parent">
+		  <android.support.v4.view.PagerTabStrip
+		    android:id="@+id/tab"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:layout_gravity="top"
+		    android:background="@color/info_all_color"
+		    android:textColor="#ffffff"/>
+		</android.support.v4.view.ViewPager>
+</LinearLayout>
+<!-- From: file:/C:/Users/kaku/AndroidStudioProjects/work/android.PieceCore/android.PieceCore/app/src/main/res/layout/fragment_infomation.xml -->

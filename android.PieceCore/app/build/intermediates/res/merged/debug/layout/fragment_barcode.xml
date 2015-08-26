@@ -1,0 +1,6 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" />
+<!-- From: file:/C:/Users/kaku/AndroidStudioProjects/work/android.PieceCore/android.PieceCore/app/src/main/res/layout/fragment_barcode.xml -->

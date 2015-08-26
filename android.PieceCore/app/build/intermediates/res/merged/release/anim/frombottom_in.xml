@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    <translate
+        android:duration="2000"
+        android:fromXDelta="0%p"
+        android:fromYDelta="100%p"
+        android:repeatCount="0"
+        android:toXDelta="0%p"
+        android:toYDelta="0%p" />
+</set>
+<!-- From: file:/C:/Users/kaku/AndroidStudioProjects/work/android.PieceCore/android.PieceCore/app/src/main/res/anim/frombottom_in.xml -->
