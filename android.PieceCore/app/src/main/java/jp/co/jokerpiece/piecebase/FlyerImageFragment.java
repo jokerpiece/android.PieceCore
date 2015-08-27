@@ -88,7 +88,9 @@ public class FlyerImageFragment extends Fragment implements DownloadImageSyncCal
 
 	@Override
 	public void onDestroyView() {
-		view.removeAllViews();
+		if(view != null) {
+			view.removeAllViews();
+		}
 		super.onDestroyView();
 	}
 	@Override
