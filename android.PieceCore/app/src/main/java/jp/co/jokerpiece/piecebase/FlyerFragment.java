@@ -37,6 +37,7 @@ import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.view.ViewPager;
@@ -78,14 +79,18 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener{
 
 
 	int headerNowPage = 0;
-	private FlyerImagePageAdapter pageFlagment;
+	public FlyerImagePageAdapter pageFlagment;
 
+	public void setFragmentPagerAdapter(){
+		pageFlagment = new FlyerImagePageAdapter(getChildFragmentManager(),
+				context,
+				new ArrayList<FlyerHeaderData>());
+	}
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
         context = getActivity();
         Common.setCurrentFragment(Config.FlyerFragmentNum);
-
 		View rootView = inflater.inflate(R.layout.fragment_flyer, container, false);
 
 		if(pageFlagment != null){
@@ -114,9 +119,10 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener{
 //        }else{
 //        	getFlyerWithID(flyer_ID);
 //        }
-        pageFlagment = new FlyerImagePageAdapter(getChildFragmentManager(),
-        		context,
-        		new ArrayList<FlyerHeaderData>());
+//        pageFlagment = new FlyerImagePageAdapter(getChildFragmentManager(),
+//        		context,
+//        		new ArrayList<FlyerHeaderData>());
+		setFragmentPagerAdapter();
 
         return rootView;
 	}

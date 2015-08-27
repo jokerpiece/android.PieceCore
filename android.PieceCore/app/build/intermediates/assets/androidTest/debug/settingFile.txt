@@ -1,4 +1,4 @@
-app_id=e-cha
+app_id=OtokomaeKetai
 app_key=jokerpiece_appKey
 splash_time=3
 project_id=

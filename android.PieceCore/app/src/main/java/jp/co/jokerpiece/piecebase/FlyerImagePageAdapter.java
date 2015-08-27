@@ -25,6 +25,7 @@ public class FlyerImagePageAdapter extends FragmentPagerAdapter{
 
 	@Override
 	public Fragment getItem(int i) {
+
 		return new FlyerImageFragment(dataList.get(i));
 	}
 
