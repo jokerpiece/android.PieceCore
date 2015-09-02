@@ -142,6 +142,10 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener{
             flyerData = SaveData.Flyerdata;
             SaveData.Flyerdata = null;
         }
+		if(llFlyerBase != null){
+			llFlyerBase.removeAllViews();
+		}
+
 		alImageViewList.clear();
 		pageFlagment.refresh();
 		pageFlagment.destroyAllItem(viewPagerScroll);
