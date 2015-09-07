@@ -18,6 +18,7 @@ import org.json.JSONObject;
 
 import android.content.AsyncTaskLoader;
 import android.content.Context;
+import android.util.Log;
 
 public class FlyerListAPI extends AsyncTaskLoader<FlyerData> implements HttpClientInterface {
 	int flyerID = -1;
@@ -42,12 +43,13 @@ public class FlyerListAPI extends AsyncTaskLoader<FlyerData> implements HttpClie
         }
         String result = null;
         try {
+//			Log.d("Parameter",parameter.toString());
             byte[] resData = HttpClient.getByteArrayFromUrlPost(Config.SENDID_FLIYER_LIST, parameter,this);
             if(resData == null){
             	return null;
             }
             result = new String(resData, "UTF-8");
-            //Log.d("RESULT",result);        	
+//            Log.d("RESULT", result);
         } catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 			return null;
@@ -57,7 +59,7 @@ public class FlyerListAPI extends AsyncTaskLoader<FlyerData> implements HttpClie
 		}
         try {
 			JSONObject rootObject = new JSONObject(result);
-			//Log.d("JSON", rootObject.toString());
+//			Log.d("JSON", rootObject.toString());
 
 			int error_code = rootObject.getInt("error_code");
 			if(error_code != 0){

@@ -6,6 +6,8 @@ import jp.co.jokerpiece.piecebase.config.Config;
 import jp.co.jokerpiece.piecebase.data.NewsInfoData;
 import jp.co.jokerpiece.piecebase.util.App;
 import jp.co.jokerpiece.piecebase.util.AppUtil;
+import jp.co.jokerpiece.piecebase.util.DownloadImageView;
+
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.Context;
 import android.content.Loader;
@@ -16,6 +18,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class InfomationSyosaiFragment extends Fragment {
@@ -23,7 +26,8 @@ public class InfomationSyosaiFragment extends Fragment {
 
 	private TextView tvTitle;
 	private TextView tvText;
-
+	private TextView tvUrl;
+	private DownloadImageView dlIv;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -33,6 +37,8 @@ public class InfomationSyosaiFragment extends Fragment {
 		// findViews
 		tvTitle = (TextView) rootView.findViewById(R.id.tv_title);
 		tvText = (TextView) rootView.findViewById(R.id.tv_text);
+		tvUrl = (TextView) rootView.findViewById(R.id.InfoUrlTv);
+		dlIv = (DownloadImageView) rootView.findViewById(R.id.InfoImgView);
 
 		// データの取得
 		getInfoSyosai();
@@ -89,6 +95,7 @@ public class InfomationSyosaiFragment extends Fragment {
 				if (data.text != null) {
 					tvText.setText(data.text);
 				}
+
 			}
 			@Override
 			public void onLoaderReset(Loader<NewsInfoData> loader) {

@@ -76,7 +76,8 @@ public class InfomationListFragment extends Fragment implements OnItemClickListe
 		if (data == null) { return; }
 
 		ArrayList<NewsData> newsList = getDataWithType(data.data_list);
-		NewsData newsData = newsList.get(position);
+		//　表示順番を逆にするため
+		NewsData newsData = newsList.get(data.data_list.size() - 1 - position);
 
 		switch (newsData.type) {
 		case NewsListData.NEWS_DATA_TYPE_INFOMATION + "":
@@ -93,7 +94,7 @@ public class InfomationListFragment extends Fragment implements OnItemClickListe
 			break;
 		case NewsListData.NEWS_DATA_TYPE_FLYER + "":
 			// フライヤー画面に遷移
-            AppUtil.setPrefString(getActivity(), "FLYERID" ,newsData.news_id);
+            AppUtil.setPrefString(getActivity(), "FLYERID" ,newsData.id);
 			MainBaseActivity.tabHost.setCurrentTab(AppUtil.getPosition("Flyer"));
 
 //			FragmentManager fmFlyer = getParentFragment().getFragmentManager();
@@ -201,14 +202,15 @@ public class InfomationListFragment extends Fragment implements OnItemClickListe
 			TextView tvTitle;
 			ImageView ivInfo;
 			View v = convertView;
-
 			if (v == null) {
 				LayoutInflater inflater =
 						(LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 				v = inflater.inflate(R.layout.row_informationlist, null);
 			}
 
-			NewsData data = (NewsData)getItem(position);
+			//NewsData data = (NewsData)getItem(position);
+			//　表示順番を逆にするため
+			NewsData data = (NewsData)getItem(getCount() - 1 - position);
 			if (data != null) {
 				tvTitle = (TextView) v.findViewById(R.id.tv_title);
 				ivInfo = (ImageView) v.findViewById(R.id.iv_info);
