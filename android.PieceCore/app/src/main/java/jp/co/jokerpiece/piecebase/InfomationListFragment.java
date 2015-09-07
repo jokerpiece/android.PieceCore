@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -94,9 +95,11 @@ public class InfomationListFragment extends Fragment implements OnItemClickListe
 			break;
 		case NewsListData.NEWS_DATA_TYPE_FLYER + "":
 			// フライヤー画面に遷移
-            AppUtil.setPrefString(getActivity(), "FLYERID" ,newsData.id);
-			MainBaseActivity.tabHost.setCurrentTab(AppUtil.getPosition("Flyer"));
-
+			Log.d("newsData.id",newsData.id);
+			if(newsData.id != "null") {
+				AppUtil.setPrefString(getActivity(), "FLYERID", newsData.id);
+				MainBaseActivity.tabHost.setCurrentTab(AppUtil.getPosition("Flyer"));
+			}
 //			FragmentManager fmFlyer = getParentFragment().getFragmentManager();
 //			FragmentTransaction ftFlyer = fmFlyer.beginTransaction();
 //			ftFlyer.addToBackStack(null);
