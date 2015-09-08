@@ -263,7 +263,7 @@ public class CouponFragment extends BaseFragment implements OnPageChangeListener
 
             @Override
             public void onLoadFinished(Loader<CouponListData> loader, CouponListData data) {
-                if (data == null) {
+                if (data == null || data.data_list == null) {
                     Common.serverErrorMessage(activity);
                     return;
                 }

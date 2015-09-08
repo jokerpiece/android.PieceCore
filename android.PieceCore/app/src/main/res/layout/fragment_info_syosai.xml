@@ -7,7 +7,14 @@
     android:gravity="top"
     android:background="@color/background_fragment"
     android:orientation="vertical" >
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:descendantFocusability="blocksDescendants">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,8 +27,7 @@
 		    android:layout_height="wrap_content"
 		    android:textSize="18sp"
 		    android:textColor="#000000" />
-	</LinearLayout>
-
+    </LinearLayout>
     <View
         android:layout_width="match_parent"
         android:layout_height="8dp"
@@ -32,7 +38,7 @@
         android:layout_height="wrap_content"
         android:padding="24dp"
         android:gravity="start"
-        android:orientation="horizontal" >
+        android:orientation="vertical" >
 
 	   	<TextView
 		    android:id="@+id/tv_text"
@@ -40,15 +46,23 @@
 		    android:layout_height="wrap_content"
 		    android:textSize="16sp"
 		    android:textColor="#000000" />
-        <jp.co.jokerpiece.piecebase.util.DownloadImageView
-            android:layout_width="wrap_content"
+        <ImageView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
             android:id="@+id/InfoImgView"/>
-        <TextView
-            android:layout_width="wrap_content"
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/InfoUrlTv"/>
+            android:padding="24dp"
+            android:gravity="start"
+            android:id="@+id/LinkListView"
+            android:orientation="vertical" />
 
 	</LinearLayout>
+    </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>

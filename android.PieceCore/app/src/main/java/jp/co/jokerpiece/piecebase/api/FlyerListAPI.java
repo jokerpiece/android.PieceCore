@@ -49,7 +49,7 @@ public class FlyerListAPI extends AsyncTaskLoader<FlyerData> implements HttpClie
             	return null;
             }
             result = new String(resData, "UTF-8");
-//            Log.d("RESULT", result);
+            //Log.d("RESULT", result);
         } catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 			return null;
@@ -59,7 +59,7 @@ public class FlyerListAPI extends AsyncTaskLoader<FlyerData> implements HttpClie
 		}
         try {
 			JSONObject rootObject = new JSONObject(result);
-//			Log.d("JSON", rootObject.toString());
+			//Log.d("JSON", rootObject.toString());
 
 			int error_code = rootObject.getInt("error_code");
 			if(error_code != 0){

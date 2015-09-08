@@ -2,6 +2,7 @@ package jp.co.jokerpiece.piecebase.api;
 
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import jp.co.jokerpiece.piecebase.config.Common;
@@ -10,6 +11,7 @@ import jp.co.jokerpiece.piecebase.data.NewsInfoData;
 import jp.co.jokerpiece.piecebase.util.HttpClient;
 import jp.co.jokerpiece.piecebase.util.HttpClient.HttpClientInterface;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -59,6 +61,24 @@ public class NewsInfoAPI extends AsyncTaskLoader<NewsInfoData> implements HttpCl
 			newsInfoData.newsId = rootObject.getString("news_id");
 			newsInfoData.title = rootObject.getString("title");
 			newsInfoData.text = rootObject.getString("text");
+			if(!rootObject.isNull("img_url")){
+				newsInfoData.img_url = rootObject.getString("img_url");
+			}
+			newsInfoData.data_list = new ArrayList<NewsInfoData.LinkListData>();
+			JSONArray dataArray = rootObject.getJSONArray("link_list");
+			for (int i = 0; i < dataArray.length(); i++) {
+				JSONObject jsonObject = dataArray.getJSONObject(i);
+
+				NewsInfoData.LinkListData data = newsInfoData.new LinkListData();
+
+				if (!jsonObject.isNull("link_title")) {
+					data.link_title = jsonObject.getString("link_title");
+				}
+				if (!jsonObject.isNull("link_url")) {
+					data.link_url = jsonObject.getString("link_url");
+				}
+				newsInfoData.data_list.add(data);
+			}
 			//Log.d("newsInfoData", newsInfoData.toString());
 		} catch (JSONException e) {
 			e.printStackTrace();

@@ -38,6 +38,8 @@ public class Config {
 	//新大人ゴコロ本番
 	public static final String SERVER_URL = "http://jokapi.jp/manager/html/xml/";
 
+    //public  static final String SERVER_URL = "http://192.168.77.200/piece_dev/manager/html/xml/";
+
 	//大人ゴコロ本番
 	//public static final String SERVER_URL = "http://jokapi.jp/PieceProxy/service/api/shop/kodomogokoro/";
 	//大人ゴコロステージング

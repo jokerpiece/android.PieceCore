@@ -3,12 +3,14 @@ package jp.co.jokerpiece.piecebase.util;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.LoaderManager.LoaderCallbacks;
 import android.support.v4.content.Loader;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
+import jp.co.jokerpiece.piecebase.InfomationSyosaiFragment;
 
 
 public class DownloadImageSync implements LoaderCallbacks<Bitmap>{
@@ -29,6 +31,8 @@ public class DownloadImageSync implements LoaderCallbacks<Bitmap>{
         }
         this.callback = callback;
     }
+
+
 
     public boolean loadImageView(){
         if(this.imageURL == null){
