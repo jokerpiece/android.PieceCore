@@ -21,11 +21,11 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class InfomationFragment extends Fragment implements OnPageChangeListener {
+public class InfomationFragment extends Fragment  {
 	Context context;
 
 	ViewPager viewPager;
-	PagerTabStrip viewPagerTab;
+//	PagerTabStrip viewPagerTab;
 	NewsListData infoListData;
 
     Handler handler = new Handler();
@@ -39,9 +39,9 @@ public class InfomationFragment extends Fragment implements OnPageChangeListener
 		View rootView = inflater.inflate(R.layout.fragment_infomation, container, false);
 
         viewPager = (ViewPager) rootView.findViewById(R.id.pager);
-        viewPagerTab = (PagerTabStrip) rootView.findViewById(R.id.tab);
+//        viewPagerTab = (PagerTabStrip) rootView.findViewById(R.id.tab);
 
-        viewPager.setOnPageChangeListener(this);
+        //viewPager.setOnPageChangeListener(this);
 
         getInfomation();
 
@@ -73,31 +73,31 @@ public class InfomationFragment extends Fragment implements OnPageChangeListener
 		super.onCreateOptionsMenu(menu, inflater);
 	}
 
-	@Override
-	public void onPageScrollStateChanged(int arg0) {
-	}
-	@Override
-	public void onPageScrolled(int arg0, float arg1, int arg2) {
-	}
-	@Override
-	public void onPageSelected(int arg0) {
-		switch (arg0) {
-		case 0:
-			viewPagerTab.setBackgroundColor(getResources().getColor(R.color.info_all_color));
-			break;
-		case 1:
-			viewPagerTab.setBackgroundColor(getResources().getColor(R.color.info_notice_color));
-			break;
-		case 2:
-			viewPagerTab.setBackgroundColor(getResources().getColor(R.color.info_flyer_color));
-			break;
-		case 3:
-			viewPagerTab.setBackgroundColor(getResources().getColor(R.color.info_coupon_color));
-			break;
-		default:
-			break;
-		}
-	}
+//	@Override
+//	public void onPageScrollStateChanged(int arg0) {
+//	}
+//	@Override
+//	public void onPageScrolled(int arg0, float arg1, int arg2) {
+//	}
+//	@Override
+//	public void onPageSelected(int arg0) {
+//		switch (arg0) {
+//		case 0:
+//			viewPagerTab.setBackgroundColor(getResources().getColor(R.color.info_all_color));
+//			break;
+//		case 1:
+//			viewPagerTab.setBackgroundColor(getResources().getColor(R.color.info_notice_color));
+//			break;
+//		case 2:
+//			viewPagerTab.setBackgroundColor(getResources().getColor(R.color.info_flyer_color));
+//			break;
+//		case 3:
+//			viewPagerTab.setBackgroundColor(getResources().getColor(R.color.info_coupon_color));
+//			break;
+//		default:
+//			break;
+//		}
+//	}
 
 	public void getInfomation(){
         viewPager.setVisibility(View.INVISIBLE);

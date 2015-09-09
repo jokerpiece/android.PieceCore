@@ -1,4 +1,4 @@
-app_id=kodomogokoro
+app_id=pieceDemo
 app_key=jokerpiece_appKey
 splash_time=3
 project_id=

@@ -19,45 +19,45 @@ public class InfomationListPageAdapter extends FragmentPagerAdapter {
 	@Override
 	  public Fragment getItem(int i) {
 
-	    switch(i){
-	    case 0:
+//	    switch(i){
+//	    case 0:
 	    	return new InfomationListFragment(data, NewsListData.NEWS_DATE_TYPE_ALL);
-	    case 1:
-	    	return new InfomationListFragment(data, NewsListData.NEWS_DATA_TYPE_INFOMATION);
-	    case 2:
-	    	return new InfomationListFragment(data, NewsListData.NEWS_DATA_TYPE_FLYER);
-	    case 3:
-	    	return new InfomationListFragment(data, NewsListData.NEWS_DATA_TYPE_COUPON);
-	    default:
-	    	return new InfomationListFragment();
-	    }
+//	    case 1:
+//	    	return new InfomationListFragment(data, NewsListData.NEWS_DATA_TYPE_INFOMATION);
+//	    case 2:
+//	    	return new InfomationListFragment(data, NewsListData.NEWS_DATA_TYPE_FLYER);
+//	    case 3:
+//	    	return new InfomationListFragment(data, NewsListData.NEWS_DATA_TYPE_COUPON);
+//	    default:
+//	    	return new InfomationListFragment();
+//	    }
 
 	  }
 
 	  @Override
 	  public int getCount() {
-	    return 4;
+	    return 1;
 	  }
 
-	  @Override
-	  public CharSequence getPageTitle(int position) {
-		  String title = "";
-		  switch (position) {
-		case 0:
-			title = context.getResources().getString(R.string.all);
-			break;
-		case 1:
-			title = context.getResources().getString(R.string.info);
-			break;
-		case 2:
-			title = context.getResources().getString(R.string.flyer);
-			break;
-		case 3:
-			title = context.getResources().getString(R.string.coupon);
-			break;
-		default:
-			break;
-		}
-	    return title;
-	  }
+//	  @Override
+//	  public CharSequence getPageTitle(int position) {
+//		  String title = "";
+//		  switch (position) {
+//		case 0:
+//			title = context.getResources().getString(R.string.all);
+//			break;
+//		case 1:
+//			title = context.getResources().getString(R.string.info);
+//			break;
+//		case 2:
+//			title = context.getResources().getString(R.string.flyer);
+//			break;
+//		case 3:
+//			title = context.getResources().getString(R.string.coupon);
+//			break;
+//		default:
+//			break;
+//		}
+//	    return title;
+//	  }
 }
