@@ -67,15 +67,14 @@ public class SnsFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
-
+        Log.d("mAdapter","5");
         Common.setCurrentFragment(Config.SnsFragmentNum);
         context = getActivity();
-        rootView = inflater.inflate(R.layout.snsfragment,container,false);
+        rootView = inflater.inflate(R.layout.snsfragment, container, false);
 
         Snsbtn = (Button)rootView.findViewById(R.id.snsButton);
         imageButton = (ImageButton)rootView.findViewById(R.id.Photo);
         mTwitter = TwitterUtils.getTwitterInstance(context);
-
         final ButtonDialogFragment cdf =
                 ButtonDialogFragment.newInstance(null);
         cdf.setCancelable(false);

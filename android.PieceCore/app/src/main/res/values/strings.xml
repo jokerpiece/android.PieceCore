@@ -102,6 +102,8 @@
     <string name="twitter_consumer_key">N1qd3k7y8mT73CZ2hAVxh4JTr</string>
     <string name="twitter_consumer_secret">uQqLoh6lV9KQn6F7o6JyRiQkDueNNPIlrR8GwsmW7P95Q8OZ8d</string>
     <string name="twitter_callback_url">gabu://twitter</string>
+    <string name="screenName">KuoWenHsin</string>
+    <string name="repliseName">KuoWenHsin</string>
 
     <string name="gmail">gmail</string>
 

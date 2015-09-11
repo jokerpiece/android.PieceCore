@@ -67,6 +67,7 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
     public static ArrayList<TabInfo> tabInfoList;
     public static HashMap<String, Integer> titleOfActionBar;
     ImageView splashView;
+    boolean onTabChange;
     long timer;
     public ArrayList<BaseFragment> list = new ArrayList<BaseFragment>();
 
@@ -126,6 +127,10 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
                     Config.Backflg = false;
                     if (event.getAction() == MotionEvent.ACTION_DOWN) {
                         AppUtil.setPrefString(context, "FLYERID" ,"0");
+                        if (v.equals(tabHost.getCurrentTabView())){
+                            onTabChange = false;
+                        }
+
 //                        getCurrentRootFragment().getChildFragmentManager()
 //                                .popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                         int backStackCount = getSupportFragmentManager().getBackStackEntryCount();
@@ -134,7 +139,7 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
                         }
                         if(!Config.haveUrlFlg) {
                             if (tabHost.getCurrentTab() != Config.CouponFragmentNum) {
-                                if (v.equals(tabHost.getCurrentTabView())) {
+                                if (v.equals(tabHost.getCurrentTabView())&&!onTabChange) {
                                     FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
                                     ft.replace(R.id.fragment, Fragment.instantiate(
                                             context,
@@ -144,7 +149,7 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
                                 }
                             }
                         }else{
-                            if (v.equals(tabHost.getCurrentTabView())) {
+                            if (v.equals(tabHost.getCurrentTabView()) && !onTabChange) {
                                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
                                 ft.replace(R.id.fragment, Fragment.instantiate(
                                         context,
@@ -154,7 +159,7 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
                             }
                         }
                     }
-                       return false;
+                    return false;
                 }
             });
         }
@@ -192,7 +197,6 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
         menu.clear();
         return super.onCreateOptionsMenu(menu);
     }
-
 
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         super.onKeyDown(keyCode, event);
@@ -323,7 +327,13 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
                     { put("tabTitle", getString(R.string.sns1)); }
                     { put("tabIcon", R.drawable.icon_sns); }
                     { put("cls", SnsFragment.class); }
+                },
+                new HashMap<String, Object>() {
+                    { put("tabTitle", getString(R.string.sns1)); }
+                    { put("tabIcon", R.drawable.icon_sns); }
+                    { put("cls", TwitterFragment.class); }
                 }
+
         ));
     }
 
@@ -345,6 +355,7 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
             { put(BarcodeFragment.class.getSimpleName(), R.string.barcode0); }
             { put(StampFragment.class.getSimpleName(), R.string.stamp0); }
             { put(SnsFragment.class.getSimpleName(), R.string.sns0); }
+            { put(TwitterFragment.class.getSimpleName(), R.string.sns0); }
 
         };
     }
@@ -361,7 +372,8 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
         Config.BarcodeFragmentNum = 6;
         Config.StampFragmentNum = 7;
         Config.SnsFragmentNum = 8;
-        Config.WebViewFragmentNum = 9;
+        Config.TwitterFragmentNum = 9;
+        Config.WebViewFragmentNum = 10;
 
     }
 
@@ -445,10 +457,10 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
 
         @Override
         public void onTabChanged(String tabId) {
-            Log.d("tag", "" + tabId);
-            Log.d("t",""+Config.Savelist);
-
-                String s = String.valueOf(Config.CouponFragmentNum);
+//            Log.d("tag", "" + tabId);
+            Log.d("mAdapter","0.5");
+            onTabChange = true;
+            String s = String.valueOf(Config.CouponFragmentNum);
                 if (!tabId.equals("TAB" + s)) {    //couponFragmentだけは初期化しない
 //                getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                     // 初期化するため

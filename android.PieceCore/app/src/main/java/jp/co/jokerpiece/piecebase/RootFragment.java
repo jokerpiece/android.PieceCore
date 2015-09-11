@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 
 public class RootFragment extends Fragment {
 
+    private static boolean StartActivity = true;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -43,10 +44,12 @@ public class RootFragment extends Fragment {
         if(fm.findFragmentById(R.id.fragment) != null){
             return;
         }
-
-        FragmentTransaction ft = fm.beginTransaction();
-        Fragment fragment = Fragment.instantiate(getActivity(), fragmentClassName);
-        ft.replace(R.id.fragment, fragment);
-        ft.commit();
+        if(StartActivity) {
+            StartActivity = false;
+            FragmentTransaction ft = fm.beginTransaction();
+            Fragment fragment = Fragment.instantiate(getActivity(), fragmentClassName);
+            ft.replace(R.id.fragment, fragment);
+            ft.commit();
+        }
     }
 }

@@ -36,9 +36,9 @@ public class Config {
     public static final boolean IS_BEACON_ENABLED;
 
 	//新大人ゴコロ本番
-	public static final String SERVER_URL = "http://jokapi.jp/manager/html/xml/";
+	//public static final String SERVER_URL = "http://jokapi.jp/manager/html/xml/";
 
-    //public  static final String SERVER_URL = "http://192.168.77.200/piece_dev/manager/html/xml/";
+    public  static final String SERVER_URL = "http://192.168.77.200/piece_dev/manager/html/xml/";
 
 	//大人ゴコロ本番
 	//public static final String SERVER_URL = "http://jokapi.jp/PieceProxy/service/api/shop/kodomogokoro/";
@@ -108,6 +108,7 @@ public class Config {
     public static int StampFragmentNum;
     public static int SnsFragmentNum;
     public static int WebViewFragmentNum;
+    public static int TwitterFragmentNum;
 
     public static List Savelist = new ArrayList<>();
 

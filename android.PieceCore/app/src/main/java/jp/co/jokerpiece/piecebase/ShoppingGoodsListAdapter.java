@@ -46,7 +46,7 @@ public class ShoppingGoodsListAdapter extends ArrayAdapter<ItemData> implements 
 		tv2.setText(list.get(position).price + getContext().getResources().getString(R.string.yen));
 		ImageView iv = (ImageView) convertView.findViewById(R.id.ivItemImage);
 		iv.setVisibility(View.INVISIBLE);
-		iv.setScaleType(ScaleType.CENTER_INSIDE);
+		iv.setScaleType(ScaleType.CENTER_CROP);
 		iv.setTag(list.get(position).img_url);
 
 		boolean exist = false;

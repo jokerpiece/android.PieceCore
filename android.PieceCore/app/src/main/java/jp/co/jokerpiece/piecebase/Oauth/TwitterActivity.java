@@ -42,12 +42,12 @@ public class TwitterActivity extends Activity {
     private RequestToken mRequestToken;
     String contribute;
 
-
     FrameLayout tweetpop;
     EditText tweetText;
     ImageView imageView1;
     TextView tweetTextCount;
     Button button3;
+    String replies;
 //    String sUrl;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +55,7 @@ public class TwitterActivity extends Activity {
 
         mCallbackURL = getString(R.string.twitter_callback_url);
         mTwitter = TwitterUtils.getTwitterInstance(this);
+//        mTwitter.setOAuthConsumer(Config.CONSUMER_KEY,Config.CONSUMER_SECRET);
 
         if (!TwitterUtils.hasAccessToken(this)) {
             startAuthorize();
@@ -72,7 +73,13 @@ public class TwitterActivity extends Activity {
             // ツイート可能文字数を表示
             int length = 140 - tweetText.length();
             tweetTextCount.setTextColor(Color.GRAY);
-            tweetTextCount.setText(String.valueOf(length));
+            if(SnsFragment.filePath == null){
+                replies = "@KuoWenHsin";
+                length -= replies.length();
+                tweetTextCount.setText( String.valueOf(length));
+            }else{
+                tweetTextCount.setText(String.valueOf(length));
+            }
 
             // ツイート文字にフォーカスをセット
             tweetText.requestFocus();
@@ -80,21 +87,26 @@ public class TwitterActivity extends Activity {
             tweetText.setSelection(tweetText.length());
             InputMethodManager inputMethodManager = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
             inputMethodManager.showSoftInput(tweetText, 0);
-
+            if(SnsFragment.filePath == null) {
+                replies = "@KuoWenHsin";
+                tweetText.setText(replies);
+            }
             // ツイート文字列の編集リスナー登録
-            tweetText.addTextChangedListener(new TextWatcher(){
+            tweetText.addTextChangedListener(new TextWatcher() {
                 // 編集前の処理
-                public void beforeTextChanged(CharSequence s, int start, int count,int after) {
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
                 }
+
                 // 値が変わったときの処理
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
                     final int textColor;
                     int length = 140 - s.length();
-                    if(length < 0){
+                    if (length < 0) {
                         textColor = Color.RED;
                         button3.setEnabled(false);
                         button3.setTextColor(Color.GRAY);
-                    }else{
+                    } else {
                         textColor = Color.GRAY;
                         button3.setEnabled(true);
                         button3.setTextColor(Color.rgb(0, 153, 255));
@@ -102,6 +114,7 @@ public class TwitterActivity extends Activity {
                     tweetTextCount.setTextColor(textColor);
                     tweetTextCount.setText(String.valueOf(length));
                 }
+
                 // 編集後の処理
                 public void afterTextChanged(Editable s) {
                 }
@@ -201,15 +214,19 @@ public class TwitterActivity extends Activity {
                     // 本文セット
                     StatusUpdate status = new StatusUpdate(contribute);
                     // 画像セット
-                    File file= new File(SnsFragment.filePath);
-                    if(file.exists()){
-                        status.media(file);
-                    }else{
-                        status.media(null);
-                    }
+                    if(SnsFragment.filePath != null) {
+                        File file = new File(SnsFragment.filePath);
+                        if (file.exists()) {
+                            status.media(file);
+                        } else {
+                            status.media(null);
+                        }
 
-                    // ツイート
-                    mTwitter.updateStatus(status);
+                        // ツイート
+                        mTwitter.updateStatus(status);
+                    }else{
+                        mTwitter.updateStatus(status);
+                    }
                     return true;
                 } catch (TwitterException e) {
                     e.printStackTrace();

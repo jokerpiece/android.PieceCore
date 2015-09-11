@@ -141,18 +141,15 @@ public class InfomationSyosaiFragment extends Fragment implements DownloadImageS
 				llBase = new LinearLayout(context);
 				View listView = inflater.inflate(R.layout.infomationsyosai_list_view, container, false);
 				tvUrlTitle = (TextView) listView.findViewById(R.id.InfoUrlTitleTv);
-				tvUrl = (TextView) listView.findViewById(R.id.InfoUrlTv);
-
 				tvUrlTitle.setText(linkListData.link_title);
-				tvUrl.setText(linkListData.link_url);
-				Pattern pattern = Pattern.compile(linkListData.link_url);
+				Pattern pattern = Pattern.compile(linkListData.link_title);
 				Linkify.TransformFilter filter = new Linkify.TransformFilter() {
 					@Override
 					public String transformUrl(Matcher match, String url) {
 						return linkListData.link_url;
 					}
 				};
-				Linkify.addLinks(tvUrl, pattern, linkListData.link_url, null, filter);
+				Linkify.addLinks(tvUrlTitle, pattern, linkListData.link_url, null, filter);
 				llBase.addView(listView);
 				llListView.addView(llBase);
 

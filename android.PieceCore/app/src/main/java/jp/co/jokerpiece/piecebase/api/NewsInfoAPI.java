@@ -52,7 +52,7 @@ public class NewsInfoAPI extends AsyncTaskLoader<NewsInfoData> implements HttpCl
 		}
         try {
 			JSONObject rootObject = new JSONObject(result);
-			//Log.d("JSON", rootObject.toString());
+			Log.d("JSON", rootObject.toString());
 			int error_code = rootObject.getInt("error_code");
 			if(error_code != 0){
 				return null;

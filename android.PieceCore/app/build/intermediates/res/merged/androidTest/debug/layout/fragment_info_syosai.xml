@@ -20,7 +20,8 @@
         android:layout_height="wrap_content"
         android:padding="24dp"
         android:gravity="start"
-        android:orientation="horizontal" >
+        android:orientation="horizontal"
+        android:background="#d3d3d3">
 	   	<TextView
 		    android:id="@+id/tv_title"
 		    android:layout_width="wrap_content"
@@ -28,10 +29,10 @@
 		    android:textSize="18sp"
 		    android:textColor="#000000" />
     </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="8dp"
-        android:background="#FFCC66" />
+    <!--<View-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="8dp"-->
+        <!--android:background="#FFCC66" />-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -40,17 +41,17 @@
         android:gravity="start"
         android:orientation="vertical" >
 
-	   	<TextView
-		    android:id="@+id/tv_text"
-		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-		    android:textSize="16sp"
-		    android:textColor="#000000" />
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
             android:id="@+id/InfoImgView"/>
+        <TextView
+            android:id="@+id/tv_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="#000000" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -66,4 +67,4 @@
     </ScrollView>
 
 </LinearLayout>
-<!-- From: file:/C:/Users/kaku/AndroidStudioProjects/work/android.PieceCore/android.PieceCore/app/src/main/res/layout/fragment_info_syosai.xml --><!-- From: file:/C:/Users/kaku/AndroidStudioProjects/work/android.PieceCore/android.PieceCore/app/build/intermediates/bundles/debug/res/layout/fragment_info_syosai.xml -->
+<!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/BaseLib/android.PieceCore/android.PieceCore/app/src/main/res/layout/fragment_info_syosai.xml --><!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/BaseLib/android.PieceCore/android.PieceCore/app/build/intermediates/bundles/debug/res/layout/fragment_info_syosai.xml -->

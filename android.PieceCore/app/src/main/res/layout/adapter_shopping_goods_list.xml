@@ -11,6 +11,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="10dp"
+        android:adjustViewBounds="true"
         android:contentDescription="@string/goods_list"/>
     <LinearLayout 
         android:layout_width="0dip"
