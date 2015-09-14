@@ -9,7 +9,7 @@
 
         <TableRow android:id="@+id/tableRow1" android:layout_width="wrap_content" android:layout_height="wrap_content">
             <ImageView
-                android:src="@drawable/icon_twitter"
+                android:src="@drawable/logo_twitter"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
              />

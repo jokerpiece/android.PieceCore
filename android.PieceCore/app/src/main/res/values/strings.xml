@@ -50,6 +50,8 @@
     <string name="stamp1">Stamp</string>
     <string name="sns0">SNS</string>
     <string name="sns1">Sns</string>
+    <string name="twitter0">TWITTER</string>
+    <string name="twitter1">Twitter</string>
 
     <!-- default theme -->
     <drawable name="actionbar_background">#FFFFFF</drawable>

@@ -70,7 +70,7 @@
                     android:background="@null"
                     android:scaleType="centerCrop"
                     android:contentDescription="@string/twitter"
-                    android:src="@drawable/icon_twitter" />
+                    android:src="@drawable/logo_twitter" />
 
             </LinearLayout>
 

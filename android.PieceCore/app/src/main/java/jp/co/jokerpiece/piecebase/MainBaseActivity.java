@@ -68,6 +68,7 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
     public static HashMap<String, Integer> titleOfActionBar;
     ImageView splashView;
     boolean onTabChange;
+    boolean onTab = false;
     long timer;
     public ArrayList<BaseFragment> list = new ArrayList<BaseFragment>();
 
@@ -93,7 +94,7 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
             }
         }
         // 10秒カウントダウンする
-        CountDownTimer start = new CountDownTimer(timer, 1000) {
+        new CountDownTimer(timer, 1000) {
             // カウントダウン処理
             public void onTick(long millisUntilFinished) {
             }
@@ -119,27 +120,50 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
 
         tabHost.setOnTabChangedListener(this);
 
-        // クリックイベントを設定する
-        for (int i = 0; i < tabHost.getTabWidget().getChildCount(); i++) {
-            tabHost.getTabWidget().getChildAt(i).setOnTouchListener(new OnTouchListener() {
-                @Override
-                public boolean onTouch(View v, MotionEvent event) {
-                    Config.Backflg = false;
-                    if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                        AppUtil.setPrefString(context, "FLYERID" ,"0");
-                        if (v.equals(tabHost.getCurrentTabView())){
-                            onTabChange = false;
-                        }
+            // クリックイベントを設定する
+            for (int i = 0; i < tabHost.getTabWidget().getChildCount(); i++) {
+                tabHost.getTabWidget().getChildAt(i).setOnTouchListener(new OnTouchListener() {
+                    @Override
+                    public boolean onTouch(View v, MotionEvent event) {
+                        Config.Backflg = false;
+                        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                            if(onTab){
+                                return false;
+                            }
+                            onTab = true;
+                            new CountDownTimer(1000, 1000) {
+                                // カウントダウン処理
+                                public void onTick(long millisUntilFinished) {
+                                }
 
+                                // カウントが0になった時の処理
+                                public void onFinish() {
+                                    onTab = false;
+                                }
+                            }.start();
+                            AppUtil.setPrefString(context, "FLYERID", "0");
+                            if (v.equals(tabHost.getCurrentTabView())) {
+                                onTabChange = false;
+                            }
 //                        getCurrentRootFragment().getChildFragmentManager()
 //                                .popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                        int backStackCount = getSupportFragmentManager().getBackStackEntryCount();
-                        for (int i = 0; i < backStackCount; i++) {
-                            getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                        }
-                        if(!Config.haveUrlFlg) {
-                            if (tabHost.getCurrentTab() != Config.CouponFragmentNum) {
-                                if (v.equals(tabHost.getCurrentTabView())&&!onTabChange) {
+                            int backStackCount = getSupportFragmentManager().getBackStackEntryCount();
+                            for (int i = 0; i < backStackCount; i++) {
+                                getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                            }
+                            if (!Config.haveUrlFlg) {
+                                if (tabHost.getCurrentTab() != Config.CouponFragmentNum) {
+                                    if (v.equals(tabHost.getCurrentTabView()) && !onTabChange) {
+                                        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                                        ft.replace(R.id.fragment, Fragment.instantiate(
+                                                context,
+                                                tabInfoList.get(tabHost.getCurrentTab()).cls.getName()));
+                                        ft.commit();
+                                        return true;
+                                    }
+                                }
+                            } else {
+                                if (v.equals(tabHost.getCurrentTabView()) && !onTabChange) {
                                     FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
                                     ft.replace(R.id.fragment, Fragment.instantiate(
                                             context,
@@ -148,21 +172,11 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
                                     return true;
                                 }
                             }
-                        }else{
-                            if (v.equals(tabHost.getCurrentTabView()) && !onTabChange) {
-                                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                                ft.replace(R.id.fragment, Fragment.instantiate(
-                                        context,
-                                        tabInfoList.get(tabHost.getCurrentTab()).cls.getName()));
-                                ft.commit();
-                                return true;
-                            }
                         }
+                        return false;
                     }
-                    return false;
-                }
-            });
-        }
+                });
+            }
 
         /**
          * IS_BEACON_ENABLEDがtrueの場合はビーコン処理を実行する
@@ -329,8 +343,8 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
                     { put("cls", SnsFragment.class); }
                 },
                 new HashMap<String, Object>() {
-                    { put("tabTitle", getString(R.string.sns1)); }
-                    { put("tabIcon", R.drawable.icon_sns); }
+                    { put("tabTitle", getString(R.string.twitter1)); }
+                    { put("tabIcon", R.drawable.i_twitter); }
                     { put("cls", TwitterFragment.class); }
                 }
 
@@ -355,7 +369,7 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
             { put(BarcodeFragment.class.getSimpleName(), R.string.barcode0); }
             { put(StampFragment.class.getSimpleName(), R.string.stamp0); }
             { put(SnsFragment.class.getSimpleName(), R.string.sns0); }
-            { put(TwitterFragment.class.getSimpleName(), R.string.sns0); }
+            { put(TwitterFragment.class.getSimpleName(), R.string.twitter0); }
 
         };
     }
@@ -374,7 +388,6 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
         Config.SnsFragmentNum = 8;
         Config.TwitterFragmentNum = 9;
         Config.WebViewFragmentNum = 10;
-
     }
 
     /**
@@ -542,7 +555,6 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
                     tv.setTextColor(c);
                 }
             }
-
             addView(childview);
         }
     }

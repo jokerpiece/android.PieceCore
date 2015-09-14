@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
@@ -45,6 +46,8 @@ public class TwitterFragment extends Fragment {
     ListView listView;
     Context context;
     View headerView;
+    TextView connectErrorView;
+    TextView twitterErrorView;
     boolean performAuthentication = false;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
@@ -52,11 +55,11 @@ public class TwitterFragment extends Fragment {
         Common.setCurrentFragment(Config.TwitterFragmentNum);
         rootView = inflater.inflate(R.layout.fragment_twitter, container, false);
         listView = (ListView)rootView.findViewById(R.id.twitterListView);
-       // headerView = inflater.inflate(R.layout.twitter_list_headerview, container, false);
+        connectErrorView = (TextView)rootView.findViewById(R.id.ConnectErrorTv);
+        twitterErrorView = (TextView)rootView.findViewById(R.id.TwitterErrorTv);
         headerView = ((LayoutInflater) getActivity().getSystemService(
                 Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.twitter_list_headerview,
                 null, false);
-        //listView.setAdapter(null);
         Btn = (Button)headerView.findViewById(R.id.TwitterButton);
         Btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,15 +69,21 @@ public class TwitterFragment extends Fragment {
                 context.startActivity(intent);
             }
         });
+        if(Common.CheckNetWork(getActivity())) {
+            connectErrorView.setVisibility(View.GONE);
+            twitterErrorView.setVisibility(View.GONE);
+            if (!TwitterUtils.hasAccessToken(context)) {
+                Intent intent = new Intent(context, TwitterActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
+                performAuthentication = true;
+            } else {
+                mTwitter = TwitterUtils.getTwitterInstance(context);
+                reloadTimeLine();
 
-        if (!TwitterUtils.hasAccessToken(context)) {
-            Intent intent = new Intent(context, TwitterActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            context.startActivity(intent);
-            performAuthentication = true;
-        } else {
-            mTwitter = TwitterUtils.getTwitterInstance(context);
-            reloadTimeLine();
+            }
+        }else{
+            connectErrorView.setVisibility(View.VISIBLE);
         }
         return rootView;
     }
@@ -150,6 +159,9 @@ public class TwitterFragment extends Fragment {
                     }
                     //listView.setSelection(0);
                 } else {
+                    if(Common.CheckNetWork(getActivity())) {
+                        twitterErrorView.setVisibility(View.VISIBLE);
+                    }
                     showToast("タイムラインの取得に失敗しました。。。");
                 }
             }

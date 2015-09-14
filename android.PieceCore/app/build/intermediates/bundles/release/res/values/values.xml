@@ -96,6 +96,8 @@
     <string name="success">success</string>
     <string name="successfully_posted_post">successfully_posted_post</string>
     <string name="twitter">twitter</string>
+    <string name="twitter0">TWITTER</string>
+    <string name="twitter1">Twitter</string>
     <string name="twitter_callback_url">gabu://twitter</string>
     <string name="twitter_consumer_key">N1qd3k7y8mT73CZ2hAVxh4JTr</string>
     <string name="twitter_consumer_secret">uQqLoh6lV9KQn6F7o6JyRiQkDueNNPIlrR8GwsmW7P95Q8OZ8d</string>
