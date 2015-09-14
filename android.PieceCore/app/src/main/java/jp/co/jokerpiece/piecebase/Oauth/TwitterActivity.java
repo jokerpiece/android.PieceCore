@@ -26,6 +26,7 @@ import java.io.File;
 import jp.co.jokerpiece.piecebase.MainBaseActivity;
 import jp.co.jokerpiece.piecebase.R;
 import jp.co.jokerpiece.piecebase.SnsFragment;
+import jp.co.jokerpiece.piecebase.config.Config;
 import jp.co.jokerpiece.piecebase.util.TwitterUtils;
 import twitter4j.StatusUpdate;
 import twitter4j.Twitter;
@@ -199,7 +200,7 @@ public class TwitterActivity extends Activity {
         BackToMainActivity();
     }
     public void BackToMainActivity(){
-        Intent intent = new Intent(this, MainBaseActivity.class);
+        Intent intent = new Intent(this, Config.TwitterBackToMain);
         startActivity(intent);
         finish();
     }

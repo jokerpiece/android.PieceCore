@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import jp.co.jokerpiece.piecebase.MainBaseActivity;
 import jp.co.jokerpiece.piecebase.R;
 import jp.co.jokerpiece.piecebase.ShoppingListAdapter;
 import jp.co.jokerpiece.piecebase.data.CategoryListData;
@@ -111,6 +112,7 @@ public class Config {
     public static int TwitterFragmentNum;
 
     public static List Savelist = new ArrayList<>();
+    public static  Class<?> TwitterBackToMain = MainBaseActivity.class;
 
     public static boolean Backflg = false;
     //クーポンURLを持ってるかどうかのフラグ

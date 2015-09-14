@@ -45,6 +45,7 @@ public class TwitterFragment extends Fragment {
     ListView listView;
     Context context;
     View headerView;
+    boolean performAuthentication = false;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         context = getActivity();
@@ -70,6 +71,7 @@ public class TwitterFragment extends Fragment {
             Intent intent = new Intent(context, TwitterActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);
+            performAuthentication = true;
         } else {
             mTwitter = TwitterUtils.getTwitterInstance(context);
             reloadTimeLine();
@@ -83,6 +85,13 @@ public class TwitterFragment extends Fragment {
                 getActivity().getActionBar(),
                 MainBaseActivity.titleOfActionBar.get(TwitterFragment.class.getSimpleName()));
         getActivity().invalidateOptionsMenu();
+        if(performAuthentication) {
+            if (TwitterUtils.hasAccessToken(context)) {
+                performAuthentication = false;
+                mTwitter = TwitterUtils.getTwitterInstance(context);
+                reloadTimeLine();
+            }
+        }
     }
 
     private class TweetAdapter extends ArrayAdapter<Status> {
@@ -99,6 +108,7 @@ public class TwitterFragment extends Fragment {
             if (convertView == null) {
                 convertView = mInflater.inflate(R.layout.list_item_tweet, null);
             }
+
             Status item = getItem(position);
             TextView name = (TextView) convertView.findViewById(R.id.name);
             name.setText(item.getUser().getName());
@@ -138,8 +148,6 @@ public class TwitterFragment extends Fragment {
                     for (twitter4j.Status status : result) {
                         mAdapter.add(status);
                     }
-
-
                     //listView.setSelection(0);
                 } else {
                     showToast("タイムラインの取得に失敗しました。。。");
