@@ -460,8 +460,8 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
 //            Log.d("tag", "" + tabId);
             Log.d("mAdapter","0.5");
             onTabChange = true;
-            String s = String.valueOf(Config.CouponFragmentNum);
-                if (!tabId.equals("TAB" + s)) {    //couponFragmentだけは初期化しない
+//            String s = String.valueOf(Config.CouponFragmentNum);
+//                if (!tabId.equals("TAB" + s)) {    //couponFragmentだけは初期化しない
 //                getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                     // 初期化するため
                     FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
@@ -469,7 +469,7 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
                             context,
                             tabInfoList.get(tabHost.getCurrentTab()).cls.getName()));
                     ft.commit();
-                }
+//                }
 
         }
 

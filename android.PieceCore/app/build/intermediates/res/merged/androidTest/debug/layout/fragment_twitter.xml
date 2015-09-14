@@ -4,15 +4,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <!--<Button-->
-        <!--android:id="@+id/TwitterButton"-->
-        <!--android:layout_width="300dp"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginTop="200dp"-->
-        <!--android:layout_gravity="center"-->
-        <!--android:background="#191970"-->
-        <!--android:textColor="#FFFFFF"-->
-        <!--android:text="投稿する"/>-->
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

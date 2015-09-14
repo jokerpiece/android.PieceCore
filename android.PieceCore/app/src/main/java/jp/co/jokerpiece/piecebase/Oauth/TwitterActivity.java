@@ -196,10 +196,12 @@ public class TwitterActivity extends Activity {
             // 認証成功時は認証情報を保管
             TwitterUtils.storeAccessToken(this, accessToken);
         }
+        BackToMainActivity();
+    }
+    public void BackToMainActivity(){
         Intent intent = new Intent(this, MainBaseActivity.class);
         startActivity(intent);
         finish();
-
     }
     private void showToast(String text) {
         Toast.makeText(this, text, Toast.LENGTH_SHORT).show();

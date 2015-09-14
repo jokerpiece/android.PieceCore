@@ -45,18 +45,17 @@ public class TwitterFragment extends Fragment {
     ListView listView;
     Context context;
     View headerView;
-    public LayoutInflater inflater;
-    public ViewGroup container;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         context = getActivity();
-        this.inflater = inflater;
-        this.container = container;
         Common.setCurrentFragment(Config.TwitterFragmentNum);
         rootView = inflater.inflate(R.layout.fragment_twitter, container, false);
         listView = (ListView)rootView.findViewById(R.id.twitterListView);
-        headerView = inflater.inflate(R.layout.twitter_list_headerview, container, false);
-
+       // headerView = inflater.inflate(R.layout.twitter_list_headerview, container, false);
+        headerView = ((LayoutInflater) getActivity().getSystemService(
+                Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.twitter_list_headerview,
+                null, false);
+        //listView.setAdapter(null);
         Btn = (Button)headerView.findViewById(R.id.TwitterButton);
         Btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -133,12 +132,13 @@ public class TwitterFragment extends Fragment {
                 if (result != null) {
                     if(mAdapter == null) {
                         mAdapter = new TweetAdapter(context);
+                        listView.addHeaderView(headerView);
                         listView.setAdapter(mAdapter);
                     }
                     for (twitter4j.Status status : result) {
                         mAdapter.add(status);
                     }
-                    listView.addHeaderView(headerView);
+
 
                     //listView.setSelection(0);
                 } else {
@@ -149,7 +149,8 @@ public class TwitterFragment extends Fragment {
         task.execute();
     }
 
-    private void showToast(String text) {
+
+    private void showToast(String text){
         Toast.makeText(context, text, Toast.LENGTH_SHORT).show();
     }
 }
