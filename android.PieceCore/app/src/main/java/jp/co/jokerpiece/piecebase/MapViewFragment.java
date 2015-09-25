@@ -268,12 +268,13 @@ public class MapViewFragment extends Fragment implements OnItemClickListener ,Lo
         } else {
             onLocationChanged(location);
         }
-
-        CameraPosition cameraPos = new CameraPosition.Builder()
-                .target(new LatLng(location.getLatitude(), location.getLongitude()))
-                .zoom(zoom)
-                .bearing(0).build();
-        aMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPos));
+        if(location != null) {
+            CameraPosition cameraPos = new CameraPosition.Builder()
+                    .target(new LatLng(location.getLatitude(), location.getLongitude()))
+                    .zoom(zoom)
+                    .bearing(0).build();
+            aMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPos));
+        }
 //        if (mLocationManager != null) {
 //            // ネットワークから取得を開始する
 //            mLocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
@@ -386,18 +387,22 @@ public class MapViewFragment extends Fragment implements OnItemClickListener ,Lo
     }
 
     private Location getLocationByGPS() {
-        if(mLocationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-            mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
-            return mLocationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        if(mLocationManager != null) {
+            if (mLocationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+                mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
+                return mLocationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            }
         }
         return null;
     }
 
 
     private Location getLocationByNetwork() {
-        if(mLocationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
-            mLocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, this);
-            return mLocationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+        if(mLocationManager != null) {
+            if (mLocationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
+                mLocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, this);
+                return mLocationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+            }
         }
         return null;
     }

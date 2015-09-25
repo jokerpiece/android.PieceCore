@@ -116,7 +116,7 @@ public class Config {
 
     public static boolean Backflg = false;
     //クーポンURLを持ってるかどうかのフラグ
-    public static boolean haveUrlFlg = true;
+    public static boolean haveUrlFlg = false;
 
     public static String CONSUMER_KEY = "N1qd3k7y8mT73CZ2hAVxh4JTr";
     public static String CONSUMER_SECRET = "uQqLoh6lV9KQn6F7o6JyRiQkDueNNPIlrR8GwsmW7P95Q8OZ8d";
