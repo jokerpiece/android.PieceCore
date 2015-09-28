@@ -48,11 +48,13 @@ public class TwitterFragment extends Fragment {
     View headerView;
     TextView connectErrorView;
     TextView twitterErrorView;
+    String screenName;
     boolean performAuthentication = false;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         context = getActivity();
         Common.setCurrentFragment(Config.TwitterFragmentNum);
+        screenName = getString(R.string.screenName);
         rootView = inflater.inflate(R.layout.fragment_twitter, container, false);
         listView = (ListView)rootView.findViewById(R.id.twitterListView);
         connectErrorView = (TextView)rootView.findViewById(R.id.ConnectErrorTv);
@@ -66,6 +68,11 @@ public class TwitterFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(context, TwitterActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                if (screenName.startsWith("@")){
+                    intent.putExtra("screenName", screenName);
+                }else{
+                    intent.putExtra("screenName", "@"+screenName);
+                }
                 context.startActivity(intent);
             }
         });

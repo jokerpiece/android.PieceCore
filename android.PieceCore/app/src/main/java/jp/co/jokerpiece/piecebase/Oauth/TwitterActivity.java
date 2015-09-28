@@ -12,6 +12,7 @@ import android.os.Bundle;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -49,6 +50,7 @@ public class TwitterActivity extends Activity {
     TextView tweetTextCount;
     Button button3;
     String replies;
+    protected  String screenName;
 //    String sUrl;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,12 +72,13 @@ public class TwitterActivity extends Activity {
 
             Bitmap imgBitmap = BitmapFactory.decodeFile(SnsFragment.filePath);
             imageView1.setImageBitmap(imgBitmap);
-
+            Intent intent = getIntent();
+            screenName = intent.getExtras().getString("screenName");
             // ツイート可能文字数を表示
             int length = 140 - tweetText.length();
             tweetTextCount.setTextColor(Color.GRAY);
             if(SnsFragment.filePath == null){
-                replies = "@KuoWenHsin";
+                replies = screenName;
                 length -= replies.length();
                 tweetTextCount.setText( String.valueOf(length));
             }else{
@@ -89,7 +92,7 @@ public class TwitterActivity extends Activity {
             InputMethodManager inputMethodManager = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
             inputMethodManager.showSoftInput(tweetText, 0);
             if(SnsFragment.filePath == null) {
-                replies = "@KuoWenHsin";
+                replies = screenName;
                 tweetText.setText(replies);
             }
             // ツイート文字列の編集リスナー登録
@@ -124,7 +127,7 @@ public class TwitterActivity extends Activity {
 
     }
 
-    private void startAuthorize() {
+    protected void startAuthorize() {
         AsyncTask<Void, Void, String> task = new AsyncTask<Void, Void, String>() {
             @Override
             protected String doInBackground(Void... params) {
@@ -204,11 +207,11 @@ public class TwitterActivity extends Activity {
         startActivity(intent);
         finish();
     }
-    private void showToast(String text) {
+    protected void showToast(String text) {
         Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
     }
 
-    private void tweet() {
+    protected void tweet() {
         AsyncTask<String, Void, Boolean> task = new AsyncTask<String, Void, Boolean>() {
             @Override
             protected Boolean doInBackground(String... params) {
