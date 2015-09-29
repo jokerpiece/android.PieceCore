@@ -50,7 +50,7 @@ public class TwitterActivity extends Activity {
     TextView tweetTextCount;
     Button button3;
     String replies;
-    protected  String screenName;
+    protected  String screenName = "";
 //    String sUrl;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +73,9 @@ public class TwitterActivity extends Activity {
             Bitmap imgBitmap = BitmapFactory.decodeFile(SnsFragment.filePath);
             imageView1.setImageBitmap(imgBitmap);
             Intent intent = getIntent();
-            screenName = intent.getExtras().getString("screenName");
+            if(intent.getStringExtra("screenName") != null) {
+                screenName = intent.getExtras().getString("screenName");
+            }
             // ツイート可能文字数を表示
             int length = 140 - tweetText.length();
             tweetTextCount.setTextColor(Color.GRAY);
