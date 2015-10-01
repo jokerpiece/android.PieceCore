@@ -1,7 +1,9 @@
 package jp.co.jokerpiece.piecebase;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import jp.co.jokerpiece.piecebase.config.Config;
 import jp.co.jokerpiece.piecebase.data.ItemListData.ItemData;
@@ -18,6 +20,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class ShoppingGoodsListAdapter extends ArrayAdapter<ItemData> implements DownloadImageSyncCallback  {
@@ -41,17 +44,23 @@ public class ShoppingGoodsListAdapter extends ArrayAdapter<ItemData> implements 
 		if(convertView == null){
 			convertView = inflater.inflate(R.layout.adapter_shopping_goods_list, null);
 		}
+		LinearLayout Bg = (LinearLayout)convertView.findViewById(R.id.stocksBg);
 		TextView tv1 = (TextView) convertView.findViewById(R.id.tvTitle);
 		tv1.setText(list.get(position).item_title);
 		TextView tv2 = (TextView) convertView.findViewById(R.id.tvPrice);
-		tv2.setText(list.get(position).price + getContext().getResources().getString(R.string.yen));
+		int price = Integer.parseInt(list.get(position).price);
+		NumberFormat currencyFormat = NumberFormat.getNumberInstance();
+		tv2.setText(currencyFormat.format(price) + getContext().getResources().getString(R.string.yen));
 		TextView tv3 = (TextView) convertView.findViewById(R.id.tvStocks);
 		tv3.setText(list.get(position).stocks);
 		if(list.get(position).stocks != null) {
 			if (list.get(position).stocks.startsWith("売り切れ")) {
-				tv3.setTextColor(Color.RED);
+				tv3.setTextColor(Color.WHITE);
+				Bg.setVisibility(View.VISIBLE);
+				Bg.setBackgroundColor(Color.GRAY);
 			}else{
 				tv3.setTextColor(Color.GRAY);
+				Bg.setVisibility(View.GONE);
 			}
 		}
 		ImageView iv = (ImageView) convertView.findViewById(R.id.ivItemImage);
