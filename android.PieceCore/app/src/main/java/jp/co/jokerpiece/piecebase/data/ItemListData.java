@@ -18,5 +18,6 @@ public class ItemListData {
 		public String text;
 		public String price;
 		public String item_url;
+		public String stocks;
 	}
 }

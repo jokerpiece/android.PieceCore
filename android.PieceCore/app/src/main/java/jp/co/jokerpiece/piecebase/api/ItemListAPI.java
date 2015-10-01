@@ -17,6 +17,7 @@ import org.json.JSONObject;
 
 import android.content.AsyncTaskLoader;
 import android.content.Context;
+import android.util.Log;
 
 public class ItemListAPI extends AsyncTaskLoader<ItemListData> implements HttpClientInterface {
 	//int category_id = -1;
@@ -63,7 +64,7 @@ public class ItemListAPI extends AsyncTaskLoader<ItemListData> implements HttpCl
             	return null;
             }
             result = new String(resData, "UTF-8");
-            //Log.d("RESULT",result);
+            Log.d("RESULT", result);
         } catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 			return null;
@@ -73,7 +74,7 @@ public class ItemListAPI extends AsyncTaskLoader<ItemListData> implements HttpCl
 		}
         try {
 			JSONObject rootObject = new JSONObject(result);
-			//Log.d("JSON", rootObject.toString());
+			Log.d("JSON", rootObject.toString());
 
 			int error_code = rootObject.getInt("error_code");
 			if(error_code != 0){
@@ -97,6 +98,9 @@ public class ItemListAPI extends AsyncTaskLoader<ItemListData> implements HttpCl
 				ItemData data = itemListData.new ItemData();
 				data.item_id = jsonObject.getString("item_id");
 			    data.img_url = jsonObject.getString("img_url");
+				if(!jsonObject.isNull("stocks")){
+					data.stocks = jsonObject.getString("stocks");
+				}
 			    if(!jsonObject.isNull("item_name")){
 			    	data.item_title = jsonObject.getString("item_name");
 			    }

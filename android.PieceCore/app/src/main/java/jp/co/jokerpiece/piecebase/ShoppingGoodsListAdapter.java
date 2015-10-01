@@ -10,6 +10,7 @@ import jp.co.jokerpiece.piecebase.util.DownloadImageSync.DownloadImageSyncCallba
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.support.v4.app.LoaderManager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,6 +45,15 @@ public class ShoppingGoodsListAdapter extends ArrayAdapter<ItemData> implements 
 		tv1.setText(list.get(position).item_title);
 		TextView tv2 = (TextView) convertView.findViewById(R.id.tvPrice);
 		tv2.setText(list.get(position).price + getContext().getResources().getString(R.string.yen));
+		TextView tv3 = (TextView) convertView.findViewById(R.id.tvStocks);
+		tv3.setText(list.get(position).stocks);
+		if(list.get(position).stocks != null) {
+			if (list.get(position).stocks.startsWith("売り切れ")) {
+				tv3.setTextColor(Color.RED);
+			}else{
+				tv3.setTextColor(Color.GRAY);
+			}
+		}
 		ImageView iv = (ImageView) convertView.findViewById(R.id.ivItemImage);
 		iv.setVisibility(View.INVISIBLE);
 		iv.setScaleType(ScaleType.CENTER_CROP);

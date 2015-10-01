@@ -17,6 +17,7 @@ import org.json.JSONObject;
 
 import android.content.AsyncTaskLoader;
 import android.content.Context;
+import android.util.Log;
 
 public class CategoryListAPI extends AsyncTaskLoader<CategoryListData> implements HttpClientInterface {
 	public CategoryListAPI(Context context) {
@@ -47,7 +48,7 @@ public class CategoryListAPI extends AsyncTaskLoader<CategoryListData> implement
 		}
         try {
 			JSONObject rootObject = new JSONObject(result);
-			//Log.d("JSON", rootObject.toString());
+			Log.d("JSON", rootObject.toString());
 
 			int error_code = rootObject.getInt("error_code");
 			if(error_code != 0){

@@ -2,242 +2,242 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\jars\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="f8efd0096475e0daf054267b61544e10dc776503">
-        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-df348a4dfd020b13d2caea2e2241506c278dbbe7.jar" />
-    </item>
-    <item
-        jar="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-panorama\7.8.0\jars\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="6e85edfc9b5346d216e50ccef1f8e825504144a3">
-        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-b488cf157c243116e9fab4d69b478bb4c0ff3c5c.jar" />
-    </item>
-    <item
         jar="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-gcm\7.8.0\jars\classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="c756d14e99d39471e99013a1e8fd2f3813ed42bf">
-        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-d815eee2ffe158e9f5dbabd542987cd1f77dfcf0.jar" />
+        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\release\classes-d815eee2ffe158e9f5dbabd542987cd1f77dfcf0.jar" />
     </item>
     <item
-        jar="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appinvite\7.8.0\jars\classes.jar"
+        jar="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\jars\classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="98137c4d12c50923f5809852b1ef4d1c4e162081">
-        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-7b6f21f058cfc8d6b15cf1f7ef16a83b1ddbf79d.jar" />
-    </item>
-    <item
-        jar="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wallet\7.8.0\jars\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="c2ac04c5b232f6f0658ee4f1c13be09cd76406e2">
-        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-90fde901255a28c321e3be8e01e64ed44aa35e7e.jar" />
-    </item>
-    <item
-        jar="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\jars\libs\internal_impl-22.2.1.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="c471eaaba13ff64f6e0383d1c30a9cdc9a97efeb">
-        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\debug\internal_impl-22.2.1-88e6c884f1a4aa22c95b516fb5d099782d96f539.jar" />
-    </item>
-    <item
-        jar="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\exploded-aar\me.dm7.barcodescanner\zxing\1.7.1\jars\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="f99635e21d9740054988409eebf88f30dcdc8b0c">
-        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-a764c8a83752dc397caf60b6dcc1cc0f2762854a.jar" />
+        sha1="f8efd0096475e0daf054267b61544e10dc776503">
+        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\release\classes-df348a4dfd020b13d2caea2e2241506c278dbbe7.jar" />
     </item>
     <item
         jar="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-cast\7.8.0\jars\classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="130b32ed466fa0f63efd4c7d6250ccd2ed506790">
-        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-bf8fbec99837ca5c4843a4f5806c6783cb37df19.jar" />
+        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\release\classes-bf8fbec99837ca5c4843a4f5806c6783cb37df19.jar" />
     </item>
     <item
-        jar="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appstate\7.8.0\jars\classes.jar"
+        jar="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\jars\libs\internal_impl-22.2.1.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="edea92852b40eee716e910af8dad9eeaa58fb0e1">
-        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-f64331061df3e71194e4e928abb263abf9e9fac0.jar" />
+        sha1="c471eaaba13ff64f6e0383d1c30a9cdc9a97efeb">
+        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\release\internal_impl-22.2.1-88e6c884f1a4aa22c95b516fb5d099782d96f539.jar" />
     </item>
     <item
-        jar="C:\Users\wenHsin\.gradle\caches\modules-2\files-2.1\com.parse.bolts\bolts-android\1.2.0\6ee2953ccf51ce72b6d548c30c4633b99eb4f9dd\bolts-android-1.2.0.jar"
+        jar="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-panorama\7.8.0\jars\classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="6ee2953ccf51ce72b6d548c30c4633b99eb4f9dd">
-        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\debug\bolts-android-1.2.0-f6d4225aab2ef20d9545f797aadb59eb9c424955.jar" />
+        sha1="6e85edfc9b5346d216e50ccef1f8e825504144a3">
+        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\release\classes-b488cf157c243116e9fab4d69b478bb4c0ff3c5c.jar" />
     </item>
     <item
-        jar="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\7.8.0\jars\classes.jar"
+        jar="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\exploded-aar\me.dm7.barcodescanner\zxing\1.7.1\jars\classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="e23ea11124bb700eeddd4ab7aa848c615f493850">
-        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-a2daa5d99a56c41d278875e3ce25dcc302d4eb10.jar" />
+        sha1="f99635e21d9740054988409eebf88f30dcdc8b0c">
+        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\release\classes-a764c8a83752dc397caf60b6dcc1cc0f2762854a.jar" />
     </item>
     <item
-        jar="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-fitness\7.8.0\jars\classes.jar"
+        jar="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appinvite\7.8.0\jars\classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="77a9dcb5f8b1dba36aacaa9c150eb0942dbea158">
-        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-d6138ec51e7288c425f94b8eb543da9a4a5b0279.jar" />
-    </item>
-    <item
-        jar="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-maps\7.8.0\jars\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="cb6fab7a71fa9ec1f483d44c5fca65ab469d8aca">
-        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-f04dd762c7c6cf32723d2074dfd00472f1627ba7.jar" />
-    </item>
-    <item
-        jar="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-location\7.8.0\jars\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="4a135d56554069e5d0ff80e3220e887e57146ee5">
-        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-bb7da6ac237fb2cea0d01975287c7f4e6ef1ca6c.jar" />
-    </item>
-    <item
-        jar="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-identity\7.8.0\jars\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="d11330ea68c0d964d30d5caed1f27e6b1488b189">
-        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-eb7a17c1dcff527667b3cd4fb8fb492bcf137484.jar" />
-    </item>
-    <item
-        jar="C:\Users\wenHsin\.gradle\caches\modules-2\files-2.1\com.google.zxing\core\3.2.0\e019d15a13a9786f881141d2df6654b8510bce8b\core-3.2.0.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="e019d15a13a9786f881141d2df6654b8510bce8b">
-        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\debug\core-3.2.0-9462e5b65e702599872b77d805e10fb73d6c9035.jar" />
-    </item>
-    <item
-        jar="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\7.8.0\jars\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="c0c912d58c9468b1f9d9769c8975afdf2c85d681">
-        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-400b4e6d2bf957f5e843edfa25d83315f8686cde.jar" />
-    </item>
-    <item
-        jar="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads\7.8.0\jars\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="1ff30fa49c07a08c3035d7218a3efebf5680d522">
-        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-c1c100ed493c9b729c5a83641827308be1a59548.jar" />
-    </item>
-    <item
-        jar="C:\Users\wenHsin\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\22.2.1\support-annotations-22.2.1.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="61a0ff5c29295ec56d7e0bd3d25d95dbf71b4b2b">
-        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\debug\support-annotations-22.2.1-3b7979040e4003d8be7c69a688b0497aec806108.jar" />
-    </item>
-    <item
-        jar="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-drive\7.8.0\jars\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="42a1ee578b62fd1bd28b3307a679dc9ba0791587">
-        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-875cb84e97e7b1c14127c38ec505c1f058a05ab7.jar" />
-    </item>
-    <item
-        jar="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wearable\7.8.0\jars\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="c5cafb324568d954780abb858c25db7ce675ab3c">
-        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-aea2e18dadd1a9927f8affae06300ab792835cf2.jar" />
-    </item>
-    <item
-        jar="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-safetynet\7.8.0\jars\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="166e458ee3b5fb5fcff0f936df3f3a788e6c54f3">
-        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-f1e4b0fdd1e807d43b5af7c33f746979682aea6d.jar" />
-    </item>
-    <item
-        jar="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-plus\7.8.0\jars\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="2491ae1b2a848af1f4f0c795f3117c1bd6a1989f">
-        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-3226676c601ac410d09346e32794ca18ac502936.jar" />
-    </item>
-    <item
-        jar="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\libs\zbar.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="7bbdf7ba57a8a157c0cad51e455609c70887812e">
-        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\debug\zbar-950ebed16f6b97e4058e93a21f25ddd9e2b894b9.jar" />
-    </item>
-    <item
-        jar="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-vision\7.8.0\jars\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="b99f0b78bbcb76b915bc6529a83b65d4d46990dd">
-        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-30ba0f81c0e52ee1a24b8e31eca182043404a9b4.jar" />
-    </item>
-    <item
-        jar="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.0\jars\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
-        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-03f93d0660d20fc40e60df32be22870142197b15.jar" />
-    </item>
-    <item
-        jar="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\22.2.0\jars\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="dcf8c83c3dead00a6c4fe313e95f7aaca20dc641">
-        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-dcebc62f3220361e9d5d86f0f2177a0e481ca63f.jar" />
-    </item>
-    <item
-        jar="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\exploded-aar\com.facebook.android\facebook-android-sdk\4.2.0\jars\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="40da745b1ae1f5b7562242e27dbc91a6b0fab3e9">
-        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-266d0738ef22736a8f6b45ec927549d104f336dc.jar" />
-    </item>
-    <item
-        jar="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-analytics\7.8.0\jars\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="0124ce31248c0e8acfa2b28283c6d1a4d76e73d2">
-        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-85f204fe0bc7e2dadf6207f64574e2efadfc3b2f.jar" />
-    </item>
-    <item
-        jar="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\22.2.0\jars\libs\internal_impl-22.2.0.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="0632f06970823b7e3436f649bfa65b47035c91d0">
-        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\debug\internal_impl-22.2.0-55d932e4e145dee603fbf03ca0282005a6043cee.jar" />
-    </item>
-    <item
-        jar="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\exploded-aar\me.dm7.barcodescanner\core\1.7.1\jars\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="cc14ad4b03b5c14529d264f5a8c042ca7a5cd607">
-        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-8336537c7adc181d5c7ba349132ff34832c4753d.jar" />
+        sha1="98137c4d12c50923f5809852b1ef4d1c4e162081">
+        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\release\classes-7b6f21f058cfc8d6b15cf1f7ef16a83b1ddbf79d.jar" />
     </item>
     <item
         jar="C:\Users\wenHsin\.gradle\caches\modules-2\files-2.1\org.twitter4j\twitter4j-core\4.0.2\6555e7c45f5db0006823731b2ddb536d481e11d1\twitter4j-core-4.0.2.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="6555e7c45f5db0006823731b2ddb536d481e11d1">
-        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\debug\twitter4j-core-4.0.2-6c771f7fec2488bc66b9103f4ffafb5af2cf7e1b.jar" />
+        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\release\twitter4j-core-4.0.2-6c771f7fec2488bc66b9103f4ffafb5af2cf7e1b.jar" />
+    </item>
+    <item
+        jar="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-maps\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="cb6fab7a71fa9ec1f483d44c5fca65ab469d8aca">
+        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\release\classes-f04dd762c7c6cf32723d2074dfd00472f1627ba7.jar" />
+    </item>
+    <item
+        jar="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-location\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4a135d56554069e5d0ff80e3220e887e57146ee5">
+        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\release\classes-bb7da6ac237fb2cea0d01975287c7f4e6ef1ca6c.jar" />
     </item>
     <item
         jar="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-nearby\7.8.0\jars\classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="adebe28e0c0c05d34a3bfd76f3275bf4d8ff87b6">
-        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-c5948848e7da94733b6e6db316957ff6f4e2b278.jar" />
+        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\release\classes-c5948848e7da94733b6e6db316957ff6f4e2b278.jar" />
+    </item>
+    <item
+        jar="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\exploded-aar\me.dm7.barcodescanner\core\1.7.1\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="cc14ad4b03b5c14529d264f5a8c042ca7a5cd607">
+        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\release\classes-8336537c7adc181d5c7ba349132ff34832c4753d.jar" />
     </item>
     <item
         jar="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-games\7.8.0\jars\classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="2e24e5f1b11170163028277de63f709e42525db4">
-        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\debug\classes-bbc7ec72b608d7a9e9a22f103fac3307b305ffe4.jar" />
+        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\release\classes-bbc7ec72b608d7a9e9a22f103fac3307b305ffe4.jar" />
+    </item>
+    <item
+        jar="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-analytics\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="0124ce31248c0e8acfa2b28283c6d1a4d76e73d2">
+        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\release\classes-85f204fe0bc7e2dadf6207f64574e2efadfc3b2f.jar" />
+    </item>
+    <item
+        jar="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\22.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="dcf8c83c3dead00a6c4fe313e95f7aaca20dc641">
+        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\release\classes-dcebc62f3220361e9d5d86f0f2177a0e481ca63f.jar" />
+    </item>
+    <item
+        jar="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="c0c912d58c9468b1f9d9769c8975afdf2c85d681">
+        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\release\classes-400b4e6d2bf957f5e843edfa25d83315f8686cde.jar" />
+    </item>
+    <item
+        jar="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-plus\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2491ae1b2a848af1f4f0c795f3117c1bd6a1989f">
+        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\release\classes-3226676c601ac410d09346e32794ca18ac502936.jar" />
+    </item>
+    <item
+        jar="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-identity\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="d11330ea68c0d964d30d5caed1f27e6b1488b189">
+        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\release\classes-eb7a17c1dcff527667b3cd4fb8fb492bcf137484.jar" />
+    </item>
+    <item
+        jar="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-vision\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="b99f0b78bbcb76b915bc6529a83b65d4d46990dd">
+        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\release\classes-30ba0f81c0e52ee1a24b8e31eca182043404a9b4.jar" />
+    </item>
+    <item
+        jar="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
+        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\release\classes-03f93d0660d20fc40e60df32be22870142197b15.jar" />
+    </item>
+    <item
+        jar="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="1ff30fa49c07a08c3035d7218a3efebf5680d522">
+        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\release\classes-c1c100ed493c9b729c5a83641827308be1a59548.jar" />
+    </item>
+    <item
+        jar="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-fitness\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="77a9dcb5f8b1dba36aacaa9c150eb0942dbea158">
+        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\release\classes-d6138ec51e7288c425f94b8eb543da9a4a5b0279.jar" />
+    </item>
+    <item
+        jar="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appstate\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="edea92852b40eee716e910af8dad9eeaa58fb0e1">
+        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\release\classes-f64331061df3e71194e4e928abb263abf9e9fac0.jar" />
+    </item>
+    <item
+        jar="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\exploded-aar\com.facebook.android\facebook-android-sdk\4.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="40da745b1ae1f5b7562242e27dbc91a6b0fab3e9">
+        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\release\classes-266d0738ef22736a8f6b45ec927549d104f336dc.jar" />
+    </item>
+    <item
+        jar="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\22.2.0\jars\libs\internal_impl-22.2.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="0632f06970823b7e3436f649bfa65b47035c91d0">
+        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\release\internal_impl-22.2.0-55d932e4e145dee603fbf03ca0282005a6043cee.jar" />
+    </item>
+    <item
+        jar="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wallet\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="c2ac04c5b232f6f0658ee4f1c13be09cd76406e2">
+        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\release\classes-90fde901255a28c321e3be8e01e64ed44aa35e7e.jar" />
+    </item>
+    <item
+        jar="C:\Users\wenHsin\.gradle\caches\modules-2\files-2.1\com.parse.bolts\bolts-android\1.2.0\6ee2953ccf51ce72b6d548c30c4633b99eb4f9dd\bolts-android-1.2.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="6ee2953ccf51ce72b6d548c30c4633b99eb4f9dd">
+        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\release\bolts-android-1.2.0-f6d4225aab2ef20d9545f797aadb59eb9c424955.jar" />
+    </item>
+    <item
+        jar="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wearable\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="c5cafb324568d954780abb858c25db7ce675ab3c">
+        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\release\classes-aea2e18dadd1a9927f8affae06300ab792835cf2.jar" />
+    </item>
+    <item
+        jar="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-drive\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="42a1ee578b62fd1bd28b3307a679dc9ba0791587">
+        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\release\classes-875cb84e97e7b1c14127c38ec505c1f058a05ab7.jar" />
+    </item>
+    <item
+        jar="C:\Users\wenHsin\.gradle\caches\modules-2\files-2.1\com.google.zxing\core\3.2.0\e019d15a13a9786f881141d2df6654b8510bce8b\core-3.2.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="e019d15a13a9786f881141d2df6654b8510bce8b">
+        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\release\core-3.2.0-9462e5b65e702599872b77d805e10fb73d6c9035.jar" />
+    </item>
+    <item
+        jar="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-safetynet\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="166e458ee3b5fb5fcff0f936df3f3a788e6c54f3">
+        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\release\classes-f1e4b0fdd1e807d43b5af7c33f746979682aea6d.jar" />
+    </item>
+    <item
+        jar="C:\Users\wenHsin\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\22.2.1\support-annotations-22.2.1.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="61a0ff5c29295ec56d7e0bd3d25d95dbf71b4b2b">
+        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\release\support-annotations-22.2.1-3b7979040e4003d8be7c69a688b0497aec806108.jar" />
+    </item>
+    <item
+        jar="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="e23ea11124bb700eeddd4ab7aa848c615f493850">
+        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\release\classes-a2daa5d99a56c41d278875e3ce25dcc302d4eb10.jar" />
+    </item>
+    <item
+        jar="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\libs\zbar.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="7bbdf7ba57a8a157c0cad51e455609c70887812e">
+        <dex dex="C:\Users\wenHsin\AndroidStudioProjects\BaseLib\android.PieceCore\android.PieceCore\app\build\intermediates\pre-dexed\release\zbar-950ebed16f6b97e4058e93a21f25ddd9e2b894b9.jar" />
     </item>
 
 </items>

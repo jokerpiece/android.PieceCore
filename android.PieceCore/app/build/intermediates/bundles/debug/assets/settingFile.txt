@@ -1,5 +1,5 @@
-app_id=pushColor
+app_id=asahi-foods
 app_key=jokerpiece_appKey
 splash_time=3
-project_id=
+project_id=160088826610
 beacon_isEnabled=false
