@@ -63,18 +63,7 @@
                 android:textSize="16sp"
                 android:textColor="@color/theme_text_color"
                 />
-        <!--<TextView-->
-            <!--android:id="@+id/tvPrice"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_gravity="bottom"-->
-            <!--android:gravity="end"-->
-            <!--android:layout_marginBottom="0dp"-->
-            <!--android:textSize="16sp"-->
-            <!--android:textColor="@color/theme_text_color"-->
-            <!--android:layout_marginLeft="15dp"-->
-            <!--android:layout_marginRight="15dp"-->
-            <!--/>-->
+
         </LinearLayout>
     </LinearLayout>
 
