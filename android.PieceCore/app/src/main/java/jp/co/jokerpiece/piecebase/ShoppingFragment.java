@@ -54,6 +54,7 @@ public class ShoppingFragment extends BaseFragment implements OnItemClickListene
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
         context = getActivity();
+        Log.d("mAdapter", "6");
         Common.setCurrentFragment(Config.ShoppingFragmentNum);
 		View rootView = inflater.inflate(R.layout.fragment_shopping, container, false);
 

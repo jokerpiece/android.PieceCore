@@ -3,7 +3,6 @@ package jp.co.jokerpiece.piecebase;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 import jp.co.jokerpiece.piecebase.config.Config;
 import jp.co.jokerpiece.piecebase.data.ItemListData.ItemData;

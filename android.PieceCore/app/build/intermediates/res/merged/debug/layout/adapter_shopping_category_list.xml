@@ -20,4 +20,4 @@
         android:contentDescription="@string/genre_list"
         />
 </FrameLayout>
-<!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/BaseLib/android.PieceCore/android.PieceCore/app/src/main/res/layout/adapter_shopping_category_list.xml -->
+<!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/src/main/res/layout/adapter_shopping_category_list.xml -->
