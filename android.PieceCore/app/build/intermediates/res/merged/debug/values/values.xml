@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values/values.xml -->
     <eat-comment/>
     <attr format="reference" name="drawerArrowStyle"/>
     <attr format="dimension" name="height"/>
     <attr format="boolean" name="isLightTheme"/>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.2.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.2.0/res/values/values.xml -->
     <eat-comment/>
     <attr format="reference" name="mediaRouteButtonStyle"/>
     <attr format="reference" name="mediaRouteConnectingDrawable"/>
@@ -14,7 +14,7 @@
     <attr format="reference" name="mediaRoutePauseDrawable"/>
     <attr format="reference" name="mediaRoutePlayDrawable"/>
     <attr format="reference" name="mediaRouteSettingsDrawable"/>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values/values.xml -->
     <eat-comment/>
     <attr format="string" name="title"/>
     <bool name="abc_action_bar_embed_tabs">true</bool>
@@ -30,25 +30,25 @@
     <color name="abc_search_url_text_selected">@android:color/black</color>
     <color name="accent_material_dark">@color/material_deep_teal_200</color>
     <color name="accent_material_light">@color/material_deep_teal_500</color>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <color name="actionbar_background">#FFFFFF</color>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values/values.xml -->
     <eat-comment/>
     <color name="background_floating_material_dark">#ff424242</color>
     <color name="background_floating_material_light">#ffeeeeee</color>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <color name="background_fragment">#fff</color>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values/values.xml -->
     <eat-comment/>
     <color name="background_material_dark">#ff303030</color>
     <color name="background_material_light">#ffeeeeee</color>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <color name="background_sub_theme">#402615</color>
     <color name="background_theme">#fff</color>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values/values.xml -->
     <eat-comment/>
     <color name="bright_foreground_disabled_material_dark">#80ffffff</color>
     <color name="bright_foreground_disabled_material_light">#80000000</color>
@@ -58,7 +58,7 @@
     <color name="bright_foreground_material_light">@android:color/black</color>
     <color name="button_material_dark">#ff5a595b</color>
     <color name="button_material_light">#ffd6d7d7</color>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.2.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.2.0/res/values/values.xml -->
     <eat-comment/>
     <color name="com_facebook_blue">#3B5998</color>
     <color name="com_facebook_button_background_color">#415dae</color>
@@ -73,7 +73,7 @@
     <color name="com_facebook_likeboxcountview_text_color">#6a7180</color>
     <color name="com_facebook_likeview_text_color">#6a7180</color>
     <color name="com_facebook_share_button_text_color">#FFFFFF</color>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.8.0/res/values/common_colors.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.1.0/res/values/common_colors.xml -->
     <eat-comment/>
     <color name="common_action_bar_splitter">#d2d2d2</color>
     <color name="common_signin_btn_dark_text_default">@android:color/white</color>
@@ -85,7 +85,7 @@
     <color name="common_signin_btn_light_text_disabled">#FFAAAAAA</color>
     <color name="common_signin_btn_light_text_focused">#FF737373</color>
     <color name="common_signin_btn_light_text_pressed">@android:color/white</color>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values/values.xml -->
     <eat-comment/>
     <color name="dim_foreground_disabled_material_dark">#80bebebe</color>
     <color name="dim_foreground_disabled_material_light">#80323232</color>
@@ -95,13 +95,13 @@
     <color name="highlighted_text_material_light">#66009688</color>
     <color name="hint_foreground_material_dark">@color/bright_foreground_disabled_material_dark</color>
     <color name="hint_foreground_material_light">@color/bright_foreground_disabled_material_light</color>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <color name="info_all_color">#ff6666</color>
     <color name="info_coupon_color">#008800</color>
     <color name="info_flyer_color">#8800ff</color>
     <color name="info_notice_color">#0080ff</color>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values/values.xml -->
     <eat-comment/>
     <color name="link_text_material_dark">@color/material_deep_teal_200</color>
     <color name="link_text_material_light">@color/material_deep_teal_500</color>
@@ -128,7 +128,7 @@
     <color name="switch_thumb_disabled_material_light">#ffbdbdbd</color>
     <color name="switch_thumb_normal_material_dark">#ffbdbdbd</color>
     <color name="switch_thumb_normal_material_light">#fff1f1f1</color>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <color name="tab_selected">#ccc</color>
     <color name="tab_selected_cute">#e02849</color>
@@ -138,12 +138,12 @@
     <color name="tab_unselected">#fff</color>
     <color name="tab_unselected_cute">#fff9f9</color>
     <color name="theme_text_color">#666</color>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/me.dm7.barcodescanner/core/1.7.1/res/values/values.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/me.dm7.barcodescanner/core/1.7.1/res/values/values.xml -->
     <eat-comment/>
     <color name="viewfinder_border">#ffafed44</color>
     <color name="viewfinder_laser">#ffcc0000</color>
     <color name="viewfinder_mask">#60000000</color>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wallet/7.8.0/res/values/wallet_colors.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wallet/8.1.0/res/values/wallet_colors.xml -->
     <eat-comment/>
     <color name="wallet_bright_foreground_disabled_holo_light">#ffb2b2b2</color>
     <color name="wallet_bright_foreground_holo_dark">#fff3f3f3</color>
@@ -173,7 +173,7 @@
     <declare-styleable name="LinearLayoutCompat_Layout"><attr name="android:layout_width"/><attr name="android:layout_height"/><attr name="android:layout_weight"/><attr name="android:layout_gravity"/></declare-styleable>
     <declare-styleable name="ListPopupWindow"><attr name="android:dropDownVerticalOffset"/><attr name="android:dropDownHorizontalOffset"/></declare-styleable>
     <declare-styleable name="LoadingImageView"><attr format="enum" name="imageAspectRatioAdjust"><enum name="none" value="0"/><enum name="adjust_width" value="1"/><enum name="adjust_height" value="2"/></attr><attr format="float" name="imageAspectRatio"/><attr format="boolean" name="circleCrop"/></declare-styleable>
-    <declare-styleable name="MapAttrs"><attr format="enum" name="mapType"><enum name="none" value="0"/><enum name="normal" value="1"/><enum name="satellite" value="2"/><enum name="terrain" value="3"/><enum name="hybrid" value="4"/></attr><attr format="float" name="cameraBearing"/><attr format="float" name="cameraTargetLat"/><attr format="float" name="cameraTargetLng"/><attr format="float" name="cameraTilt"/><attr format="float" name="cameraZoom"/><attr format="boolean" name="liteMode"/><attr format="boolean" name="uiCompass"/><attr format="boolean" name="uiRotateGestures"/><attr format="boolean" name="uiScrollGestures"/><attr format="boolean" name="uiTiltGestures"/><attr format="boolean" name="uiZoomControls"/><attr format="boolean" name="uiZoomGestures"/><attr format="boolean" name="useViewLifecycle"/><attr format="boolean" name="zOrderOnTop"/><attr format="boolean" name="uiMapToolbar"/></declare-styleable>
+    <declare-styleable name="MapAttrs"><attr format="enum" name="mapType"><enum name="none" value="0"/><enum name="normal" value="1"/><enum name="satellite" value="2"/><enum name="terrain" value="3"/><enum name="hybrid" value="4"/></attr><attr format="float" name="cameraBearing"/><attr format="float" name="cameraTargetLat"/><attr format="float" name="cameraTargetLng"/><attr format="float" name="cameraTilt"/><attr format="float" name="cameraZoom"/><attr format="boolean" name="liteMode"/><attr format="boolean" name="uiCompass"/><attr format="boolean" name="uiRotateGestures"/><attr format="boolean" name="uiScrollGestures"/><attr format="boolean" name="uiTiltGestures"/><attr format="boolean" name="uiZoomControls"/><attr format="boolean" name="uiZoomGestures"/><attr format="boolean" name="useViewLifecycle"/><attr format="boolean" name="zOrderOnTop"/><attr format="boolean" name="uiMapToolbar"/><attr format="boolean" name="ambientEnabled"/></declare-styleable>
     <declare-styleable name="MediaRouteButton"><attr format="reference" name="externalRouteEnabledDrawable"/><attr name="android:minWidth"/><attr name="android:minHeight"/></declare-styleable>
     <declare-styleable name="MenuGroup"><attr name="android:id"/><attr name="android:menuCategory"/><attr name="android:orderInCategory"/><attr name="android:checkableBehavior"/><attr name="android:visible"/><attr name="android:enabled"/></declare-styleable>
     <declare-styleable name="MenuItem"><attr name="android:id"/><attr name="android:menuCategory"/><attr name="android:orderInCategory"/><attr name="android:title"/><attr name="android:titleCondensed"/><attr name="android:icon"/><attr name="android:alphabeticShortcut"/><attr name="android:numericShortcut"/><attr name="android:checkable"/><attr name="android:checked"/><attr name="android:visible"/><attr name="android:enabled"/><attr name="android:onClick"/><attr name="showAsAction"><flag name="never" value="0"/><flag name="ifRoom" value="1"/><flag name="always" value="2"/><flag name="withText" value="4"/><flag name="collapseActionView" value="8"/></attr><attr format="reference" name="actionLayout"/><attr format="string" name="actionViewClass"/><attr format="string" name="actionProviderClass"/></declare-styleable>
@@ -193,7 +193,7 @@
     <declare-styleable name="com_facebook_like_view"><attr format="color" name="com_facebook_foreground_color"/><attr format="string" name="com_facebook_object_id"/><attr name="com_facebook_object_type"><enum name="unknown" value="0"/><enum name="open_graph" value="1"/><enum name="page" value="2"/></attr><attr name="com_facebook_style"><enum name="standard" value="0"/><enum name="button" value="1"/><enum name="box_count" value="2"/></attr><attr name="com_facebook_auxiliary_view_position"><enum name="bottom" value="0"/><enum name="inline" value="1"/><enum name="top" value="2"/></attr><attr name="com_facebook_horizontal_alignment"><enum name="center" value="0"/><enum name="left" value="1"/><enum name="right" value="2"/></attr></declare-styleable>
     <declare-styleable name="com_facebook_login_view"><attr format="boolean" name="com_facebook_confirm_logout"/><attr format="string" name="com_facebook_login_text"/><attr format="string" name="com_facebook_logout_text"/><attr name="com_facebook_tooltip_mode"><enum name="automatic" value="0"/><enum name="display_always" value="1"/><enum name="never_display" value="2"/></attr></declare-styleable>
     <declare-styleable name="com_facebook_profile_picture_view"><attr name="com_facebook_preset_size"><enum name="small" value="-2"/><enum name="normal" value="-3"/><enum name="large" value="-4"/></attr><attr format="boolean" name="com_facebook_is_cropped"/></declare-styleable>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values/values.xml -->
     <eat-comment/>
     <dimen name="abc_action_bar_content_inset_material">16dp</dimen>
     <dimen name="abc_action_bar_default_height_material">56dp</dimen>
@@ -255,11 +255,11 @@
     <dimen name="abc_text_size_subtitle_material_toolbar">16dp</dimen>
     <dimen name="abc_text_size_title_material">20sp</dimen>
     <dimen name="abc_text_size_title_material_toolbar">20dp</dimen>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/src/main/res/values/dimens.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/src/main/res/values/dimens.xml -->
     <eat-comment/>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.2.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.2.0/res/values/values.xml -->
     <eat-comment/>
     <dimen name="com_facebook_likeboxcountview_border_radius">3dp</dimen>
     <dimen name="com_facebook_likeboxcountview_border_width">1dp</dimen>
@@ -280,7 +280,7 @@
     <dimen name="com_facebook_share_button_padding_top">12dp</dimen>
     <dimen name="com_facebook_share_button_text_size">16.0sp</dimen>
     <dimen name="com_facebook_tooltip_horizontal_padding">10dp</dimen>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values/values.xml -->
     <eat-comment/>
     <item name="dialog_fixed_height_major" type="dimen">80%</item>
     <item name="dialog_fixed_height_minor" type="dimen">100%</item>
@@ -288,38 +288,38 @@
     <item name="dialog_fixed_width_minor" type="dimen">320dp</item>
     <item format="float" name="disabled_alpha_material_dark" type="dimen">0.30</item>
     <item format="float" name="disabled_alpha_material_light" type="dimen">0.26</item>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.2.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.2.0/res/values/values.xml -->
     <eat-comment/>
     <dimen name="mr_media_route_controller_art_max_height">320dp</dimen>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/src/main/res/values/dimens.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/src/main/res/values/dimens.xml -->
     <eat-comment/>
     <dimen name="navigation_drawer_width">240dp</dimen>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values/values.xml -->
     <eat-comment/>
     <dimen name="notification_large_icon_height">64dp</dimen>
     <dimen name="notification_large_icon_width">64dp</dimen>
     <dimen name="notification_subtext_size">12dp</dimen>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <drawable name="actionbar_background">#FFFFFF</drawable>
     <drawable name="actionbar_background_cute">#FFF9F9</drawable>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values/values.xml -->
     <eat-comment/>
     <drawable name="notification_template_icon_bg">#3333B5E5</drawable>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <drawable name="theme_text_color">#666</drawable>
     <drawable name="theme_text_color_cute">#e02849</drawable>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values/values.xml -->
     <eat-comment/>
     <item name="action_bar_activity_content" type="id"/>
     <item name="action_bar_spinner" type="id"/>
     <item name="action_menu_divider" type="id"/>
     <item name="action_menu_presenter" type="id"/>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast/7.8.0/res/values/cast_ids.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast/8.1.0/res/values/cast_ids.xml -->
     <eat-comment/>
     <item name="cast_notification_id" type="id"/>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values/values.xml -->
     <eat-comment/>
     <item name="home" type="id"/>
     <item name="progress_circular" type="id"/>
@@ -330,21 +330,21 @@
     <integer name="abc_config_activityShortDur">150</integer>
     <integer name="abc_max_action_buttons">2</integer>
     <integer name="cancel_button_image_alpha">127</integer>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.8.0/res/values/version.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.1.0/res/values/version.xml -->
     <eat-comment/>
-    <integer name="google_play_services_version">7895000</integer>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values/values.xml -->
+    <integer name="google_play_services_version">8115000</integer>
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values/values.xml -->
     <eat-comment/>
     <integer name="status_bar_notification_info_maxnum">999</integer>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/me.dm7.barcodescanner/core/1.7.1/res/values/values.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/me.dm7.barcodescanner/core/1.7.1/res/values/values.xml -->
     <eat-comment/>
     <integer name="viewfinder_border_length">60</integer>
     <integer name="viewfinder_border_width">4</integer>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="Facebook_msg">ログインボタンをタップして認証を続行して下さい。</string>
     <string name="Facebook_title">Facebook_Title</string>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values/values.xml -->
     <eat-comment/>
     <string name="abc_action_bar_home_description">Navigate home</string>
     <string name="abc_action_bar_home_description_format">%1$s, %2$s</string>
@@ -363,32 +363,32 @@
     <string name="abc_shareactionprovider_share_with">Share with</string>
     <string name="abc_shareactionprovider_share_with_application">Share with %s</string>
     <string name="abc_toolbar_collapse_description">Collapse</string>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/7.8.0/res/values/admob_strings.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/8.1.0/res/values/admob_strings.xml -->
     <eat-comment/>
     <string name="accept">Accept</string>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="action_settings">設定</string>
     <string name="all">新着情報</string>
     <string name="app_id">1716893145204841</string>
     <string name="app_name">大人ゴコロ</string>
     <string name="app_nameForTwitter">MyTwitter</string>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.8.0/res/values/auth_strings.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.1.0/res/values/auth_strings.xml -->
     <eat-comment/>
     <string name="auth_google_play_services_client_facebook_display_name">Facebook</string>
     <string name="auth_google_play_services_client_google_display_name">Google</string>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="barcode0">BARCODE</string>
     <string name="barcode1">Barcode</string>
     <string name="cancel">cancel</string>
     <string name="cancelled">cancelled</string>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast/7.8.0/res/values/cast_strings.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast/8.1.0/res/values/cast_strings.xml -->
     <eat-comment/>
     <string name="cast_notification_connected_message">Connected to <ns1:g id="name">%1$s</ns1:g></string>
     <string name="cast_notification_connecting_message">Connecting to <ns1:g id="name">%1$s</ns1:g></string>
     <string name="cast_notification_disconnect">Disconnect</string>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.2.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.2.0/res/values/values.xml -->
     <eat-comment/>
     <string name="com_facebook_image_download_unknown_error">Unexpected error while downloading an image.</string>
     <string name="com_facebook_internet_permission_error_message">WebView login requires INTERNET permission</string>
@@ -406,7 +406,7 @@
     <string name="com_facebook_send_button_text">Send</string>
     <string name="com_facebook_share_button_text">Share</string>
     <string name="com_facebook_tooltip_default">New! You\'re in control - choose what info you want to share with apps.</string>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.8.0/res/values/common_strings.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.1.0/res/values/common_strings.xml -->
     <eat-comment/>
     <string name="common_android_wear_notification_needs_update_text"><ns1:g id="app_name">%1$s</ns1:g> requires an update to the Android Wear app.</string>
     <string name="common_android_wear_update_text"><ns1:g id="app_name">%1$s</ns1:g> won\'t run unless you update the Android Wear app.</string>
@@ -438,9 +438,11 @@
     <string name="common_google_play_services_updating_text"><ns1:g id="app_name">%1$s</ns1:g> won\'t run without Google Play services, which are currently updating.</string>
     <string name="common_google_play_services_updating_title">Google Play services are updating</string>
     <string name="common_open_on_phone">Open on phone</string>
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.1.0/res/values/base_strings.xml -->
+    <eat-comment/>
     <string name="common_signin_button_text">Sign in</string>
     <string name="common_signin_button_text_long">Sign in with Google</string>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="coupon">クーポン</string>
     <string name="coupon0">COUPON</string>
@@ -452,12 +454,12 @@
     <string name="coupon_tojiru">閉じる</string>
     <string name="coupon_use">クーポン使用</string>
     <string name="coupon_use0">USE COUPON</string>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/7.8.0/res/values/admob_strings.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/8.1.0/res/values/admob_strings.xml -->
     <eat-comment/>
     <string name="create_calendar_message">Allow Ad to create a calendar event?</string>
     <string name="create_calendar_title">Create calendar event</string>
     <string name="decline">Decline</string>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="empty"/>
     <string name="error">error</string>
@@ -485,10 +487,10 @@
     <string name="map1">Map</string>
     <string name="map_key">AIzaSyAxg51n6Chqa6KkE2xtuyV0Xn59zbLPPy8</string>
     <string name="menu_settings">Settings</string>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.2.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.2.0/res/values/values.xml -->
     <eat-comment/>
     <string name="messenger_send_button_text">Send</string>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.2.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.2.0/res/values/values.xml -->
     <eat-comment/>
     <string name="mr_media_route_button_content_description">Cast</string>
     <string name="mr_media_route_chooser_searching">Searching for devices\u2026</string>
@@ -500,7 +502,7 @@
     <string name="mr_media_route_controller_stop">Stop casting</string>
     <string name="mr_system_route_name">System</string>
     <string name="mr_user_route_category_name">Devices</string>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -519,14 +521,14 @@
     <string name="sns1">Sns</string>
     <string name="stamp0">STAMP</string>
     <string name="stamp1">Stamp</string>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values/values.xml -->
     <eat-comment/>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/7.8.0/res/values/admob_strings.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/8.1.0/res/values/admob_strings.xml -->
     <eat-comment/>
     <string name="store_picture_message">"Allow Ad to store image in Picture gallery?"</string>
     <string name="store_picture_title">Save image</string>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="success">success</string>
     <string name="successfully_posted_post">successfully_posted_post</string>
@@ -536,20 +538,20 @@
     <string name="twitter_callback_url">gabu://twitter</string>
     <string name="twitter_consumer_key">N1qd3k7y8mT73CZ2hAVxh4JTr</string>
     <string name="twitter_consumer_secret">uQqLoh6lV9KQn6F7o6JyRiQkDueNNPIlrR8GwsmW7P95Q8OZ8d</string>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wallet/7.8.0/res/values/wallet_strings.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wallet/8.1.0/res/values/wallet_strings.xml -->
     <eat-comment/>
     <string name="wallet_buy_button_place_holder">Buy with Google</string>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="webview">ITEM</string>
     <string name="yen">円</string>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values/values.xml -->
     <eat-comment/>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
     <style name="AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat.Light"/>
     <style name="Animation.AppCompat.Dialog" parent="Base.Animation.AppCompat.Dialog"/>
     <style name="Animation.AppCompat.DropDownUp" parent="Base.Animation.AppCompat.DropDownUp"/>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/src/main/res/values/styles.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/src/main/res/values/styles.xml -->
     <eat-comment/>
     <style name="AppBaseTheme" parent="android:Theme.Light">
         <!--
@@ -567,7 +569,7 @@
     </style>
     <style name="AppTheme_cute" parent="AppBaseTheme_cute">
     </style>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values/values.xml -->
     <eat-comment/>
     <style name="Base.AlertDialog.AppCompat" parent="android:Widget">
         <item name="android:layout">@layout/abc_alert_dialog_material</item>
@@ -1483,7 +1485,7 @@
         <item name="android:scaleType">center</item>
         <item name="android:background">?attr/selectableItemBackground</item>
     </style>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.2.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.2.0/res/values/values.xml -->
     <eat-comment/>
     <style name="MessengerButton">
     <item name="android:clickable">true</item>
@@ -1543,7 +1545,7 @@
     <style name="MessengerButtonText.White.Small">
     <item name="android:drawableLeft">@drawable/messenger_bubble_small_blue</item>
   </style>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values/values.xml -->
     <eat-comment/>
     <style name="Platform.AppCompat" parent="android:Theme">
         <item name="android:windowNoTitle">true</item>
@@ -1775,7 +1777,7 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/7.8.0/res/values/admob_iap_style.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/8.1.0/res/values/admob_iap_style.xml -->
     <eat-comment/>
     <style name="Theme.IAPTheme" parent="android:Theme">
     <item name="android:windowIsTranslucent">true</item>
@@ -1785,7 +1787,7 @@
     <item name="android:windowIsFloating">true</item>
     <item name="android:backgroundDimEnabled">false</item>
   </style>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.2.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.2.0/res/values/values.xml -->
     <eat-comment/>
     <style name="Theme.MediaRouter" parent="">
         <item name="mediaRouteButtonStyle">@style/Widget.MediaRouter.MediaRouteButton</item>
@@ -1807,14 +1809,14 @@
         <item name="mediaRoutePlayDrawable">@drawable/mr_ic_play_light</item>
         <item name="mediaRoutePauseDrawable">@drawable/mr_ic_pause_light</item>
     </style>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values/values.xml -->
     <eat-comment/>
     <style name="ThemeOverlay.AppCompat" parent="Base.ThemeOverlay.AppCompat"/>
     <style name="ThemeOverlay.AppCompat.ActionBar" parent="Base.ThemeOverlay.AppCompat.ActionBar"/>
     <style name="ThemeOverlay.AppCompat.Dark" parent="Base.ThemeOverlay.AppCompat.Dark"/>
     <style name="ThemeOverlay.AppCompat.Dark.ActionBar" parent="Base.ThemeOverlay.AppCompat.Dark.ActionBar"/>
     <style name="ThemeOverlay.AppCompat.Light" parent="Base.ThemeOverlay.AppCompat.Light"/>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wallet/7.8.0/res/values/wallet_styles.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wallet/8.1.0/res/values/wallet_styles.xml -->
     <eat-comment/>
     <style name="WalletFragmentDefaultButtonTextAppearance">
         <item name="android:textColor">@color/wallet_primary_text_holo_light</item>
@@ -1848,7 +1850,7 @@
         <item name="maskedWalletDetailsLogoTextColor">@color/wallet_bright_foreground_holo_dark</item>
         <item name="maskedWalletDetailsLogoImageType">google_wallet_classic</item>
     </style>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values/values.xml -->
     <eat-comment/>
     <style name="Widget.AppCompat.ActionBar" parent="Base.Widget.AppCompat.ActionBar">
     </style>
@@ -1941,7 +1943,7 @@
     <style name="Widget.AppCompat.TextView.SpinnerItem" parent="Base.Widget.AppCompat.TextView.SpinnerItem"/>
     <style name="Widget.AppCompat.Toolbar" parent="Base.Widget.AppCompat.Toolbar"/>
     <style name="Widget.AppCompat.Toolbar.Button.Navigation" parent="RtlOverlay.Widget.AppCompat.Toolbar.Button.Navigation"/>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.2.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.2.0/res/values/values.xml -->
     <eat-comment/>
     <style name="Widget.MediaRouter.Light.MediaRouteButton" parent="Widget.AppCompat.Light.ActionButton">
         <item name="android:minWidth">56dp</item>
@@ -1959,7 +1961,7 @@
         <item name="android:contentDescription">@string/mr_media_route_button_content_description</item>
         <item name="externalRouteEnabledDrawable">@drawable/mr_ic_media_route_mono_dark</item>
     </style>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/src/main/res/values/styles.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/src/main/res/values/styles.xml -->
     <eat-comment/>
     <style name="actionBarWidgetTheme">
         <item name="android:textColor">@drawable/theme_text_color</item>
@@ -1969,7 +1971,7 @@
         <item name="android:textColor">@drawable/theme_text_color_cute</item>
         <item name="android:textColorHint">@drawable/theme_text_color_cute</item>
     </style>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.2.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.2.0/res/values/values.xml -->
     <eat-comment/>
     <style name="com_facebook_button" parent="@android:style/Widget.Button">
         <item name="android:background">@drawable/com_facebook_button_background</item>
@@ -2002,7 +2004,7 @@
         <item name="android:drawableLeft">@null</item>
         <item name="android:textColor">#4b5164</item>
     </style>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/src/main/res/values/styles.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/src/main/res/values/styles.xml -->
     <eat-comment/>
     <style name="dropDownListViewStyle" parent="android:style/Widget.ListView.DropDown">
         <item name="android:background">@drawable/actionbar_background</item>
@@ -2028,7 +2030,7 @@
         <item name="android:actionBarWidgetTheme">@style/actionBarWidgetTheme_cute</item>
         <item name="android:dropDownListViewStyle">@style/dropDownListViewStyle_cute</item>
     </style>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.2.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.2.0/res/values/values.xml -->
     <eat-comment/>
     <style name="tooltip_bubble_text">
 	    <item name="android:textColor">@android:color/white</item>

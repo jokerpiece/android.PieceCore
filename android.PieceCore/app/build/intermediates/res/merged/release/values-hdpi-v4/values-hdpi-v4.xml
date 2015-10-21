@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/me.dm7.barcodescanner/core/1.7.1/res/values-hdpi-v4/values.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/me.dm7.barcodescanner/core/1.7.1/res/values-hdpi-v4/values.xml -->
     <eat-comment/>
     <integer name="viewfinder_border_length">60</integer>
     <integer name="viewfinder_border_width">4</integer>

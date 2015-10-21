@@ -35,9 +35,10 @@ public class Config {
      * (true:有効、false:無効)
      */
     public static final boolean IS_BEACON_ENABLED;
+    public static boolean changeToDevFlg = false;
 
 	//新大人ゴコロ本番
-	public static final String SERVER_URL = "http://jokapi.jp/manager/html/xml/";
+	public static String SERVER_URL = "http://jokapi.jp/manager/html/xml/";
 
     //public  static final String SERVER_URL = "http://192.168.77.200/piece_dev/manager/html/xml/";
 

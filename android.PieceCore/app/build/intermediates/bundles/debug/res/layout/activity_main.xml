@@ -35,4 +35,4 @@
             android:layout_weight="1" />
     </LinearLayout>
 </android.support.v4.app.FragmentTabHost>
-<!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/pieceLib/android.PieceCore/android.PieceCore/app/src/main/res/layout/activity_main.xml -->
+<!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/src/main/res/layout/activity_main.xml -->
