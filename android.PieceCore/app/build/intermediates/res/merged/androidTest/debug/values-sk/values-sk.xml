@@ -33,7 +33,7 @@
     <string name="com_facebook_send_button_text">Odoslať</string>
     <string name="com_facebook_share_button_text">Zdieľať</string>
     <string name="com_facebook_tooltip_default">Novinka! Máte to pod kontrolou: vyberte, ktoré informácie chcete zdieľať s aplikáciami.</string>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.1.0/res/values-sk/common_strings.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values-sk/common_strings.xml -->
     <eat-comment/>
     <string msgid="6428604800157361567" name="common_android_wear_notification_needs_update_text">"Aplikácia <ns1:g id="APP_NAME">%1$s</ns1:g> vyžaduje aktualizáciu aplikácie Android Wear."</string>
     <string msgid="2453027084525739603" name="common_android_wear_update_text">"Aplikácia <ns1:g id="APP_NAME">%1$s</ns1:g> bude fungovať až po aktualizácii aplikácie Android Wear."</string>
@@ -65,6 +65,10 @@
     <string msgid="2201289642219771610" name="common_google_play_services_updating_text">"Na spustenie aplikácie <ns1:g id="APP_NAME">%1$s</ns1:g> sa vyžadujú služby Google Play, ktoré sa momentálne aktualizujú."</string>
     <string msgid="815008177440683245" name="common_google_play_services_updating_title">"Služby Google Play sa aktualizujú"</string>
     <string msgid="411506735369601515" name="common_open_on_phone">"Otvoriť na telefóne"</string>
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.3.0/res/values-sk/base_strings.xml -->
+    <eat-comment/>
+    <string msgid="3156914698180786012" name="common_signin_button_text">"Prihlásiť sa"</string>
+    <string msgid="1483290677806110088" name="common_signin_button_text_long">"Prihlásiť sa do účtu Google"</string>
     <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.2.0/res/values-sk/values-sk.xml -->
     <eat-comment/>
     <string msgid="4271159405637008602" name="mr_media_route_button_content_description">"Výstup médií"</string>
@@ -73,7 +77,7 @@
     <string msgid="109793632378378069" name="mr_media_route_controller_disconnect">"Odpojiť"</string>
     <string msgid="5441529851481176817" name="mr_system_route_name">"Systém"</string>
     <string msgid="7498112907524977311" name="mr_user_route_category_name">"Zariadenia"</string>
-    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wallet/8.1.0/res/values-sk/wallet_strings.xml -->
+    <!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wallet/8.3.0/res/values-sk/wallet_strings.xml -->
     <eat-comment/>
     <string msgid="4184147110658930238" name="wallet_buy_button_place_holder">"Kúpiť cez Google"</string>
 </resources>

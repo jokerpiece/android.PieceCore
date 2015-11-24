@@ -51,7 +51,9 @@
     <string name="sns0">SNS</string>
     <string name="sns1">Sns</string>
     <string name="twitter0">TWITTER</string>
-    <string name="twitter1">Twitter</string>
+    <string name="twitter1">Twitter</string>ogin
+    <string name="login0">LOGIN</string>
+    <string name="login1">LOGIN</string>
 
     <!-- default theme -->
     <drawable name="actionbar_background">#FFFFFF</drawable>

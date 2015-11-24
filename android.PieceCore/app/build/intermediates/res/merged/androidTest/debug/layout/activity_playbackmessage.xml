@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_material_light">
+
+    <TextView
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="90dp"
+        android:textColor="#000000"
+        android:id="@+id/playbackMessage"
+        android:layout_gravity="center_horizontal|top" />
+
+    <Button
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:id="@+id/closeBtn"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/btn_close"
+        android:layout_gravity="right|top" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:src="@drawable/illust1344"
+        android:layout_gravity="center" />
+
+</FrameLayout><!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/src/main/res/layout/activity_playbackmessage.xml --><!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/build/intermediates/bundles/debug/res/layout/activity_playbackmessage.xml -->

@@ -32,7 +32,7 @@ public class GetCouponAPI extends AsyncTaskLoader<Boolean> implements HttpClient
     	parameter.put("app_id", Config.APP_ID);
     	parameter.put("uuid", Common.getUUID(getContext()));
     	parameter.put("coupon_id", couponID);
-    	
+
         String result = null;
         try {
             byte[] resData = HttpClient.getByteArrayFromUrlPost(Config.SENDID_GET_CPN, parameter,this);

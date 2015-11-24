@@ -40,7 +40,7 @@ public class Config {
 	//新大人ゴコロ本番
 	public static String SERVER_URL = "http://jokapi.jp/manager/html/xml/";
 
-    //public  static final String SERVER_URL = "http://192.168.77.200/piece_dev/manager/html/xml/";
+//    public  static final String SERVER_URL = "http://192.168.77.200/piece_dev/manager/html/xml/";
 
 	//大人ゴコロ本番
 	//public static final String SERVER_URL = "http://jokapi.jp/PieceProxy/service/api/shop/kodomogokoro/";
@@ -91,7 +91,10 @@ public class Config {
 	public static final String PUSHSERVER_URL = SERVER_URL + "device_token/";
     public static final String SENDID_MAP_LIST = SERVER_URL + "shop/";
     public static final String SENDID_STAMP_LIST = SERVER_URL + "stamp/";
+    public static final String SENDID_CHECKDATA = SERVER_URL + "order/?Action=check";
+    public static final String SENDID_GETFILEDATA = SERVER_URL + "order/?Action=getFileData";
 
+    public static final String YOUTUBE_APIV3 = "https://www.googleapis.com/upload/youtube/v3/videos?part=snippet,status";
 
 
 	public static final String PASS_WORD = null;

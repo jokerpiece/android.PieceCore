@@ -45,8 +45,6 @@
         android:glEsVersion="0x00020000"
         android:required="true" />
 
-    <android:uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
     <uses-permission android:name="android.permission.USE_CREDENTIALS" />
  <!-- カメラの設定(ここまで) -->
     <!-- ライブラリのアプリケーションを使用するため -->
@@ -54,6 +52,7 @@
     <application
         android:name="jp.co.jokerpiece.piecebase.util.App"
         android:allowBackup="true"
+        android:hardwareAccelerated="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:largeHeap="true"
@@ -76,6 +75,16 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="videoupload"
+                    android:scheme="otonagokoro" />
             </intent-filter>
         </activity>
 
@@ -143,6 +152,57 @@
                     android:scheme="gabu" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="jp.co.jokerpiece.piecebase.LogingActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.VIEW"/> -->
+            <!-- <category android:name="android.intent.category.DEFAULT"/> -->
+            <!-- <category android:name="android.intent.category.BROWSABLE"/> -->
+            <!-- <data android:scheme="otonagokoro" android:host="videoupload"/> -->
+            <!-- </intent-filter> -->
+
+        </activity>
+        <activity
+            android:name="jp.co.jokerpiece.piecebase.PlayBackActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="rapping"
+                    android:scheme="foryou" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="jp.co.jokerpiece.piecebase.PlayBackMessageActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="jp.co.jokerpiece.piecebase.PlayBackMovieActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="jp.co.jokerpiece.piecebase.PlayBackHologramActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="jp.co.jokerpiece.piecebase.YoutubePlayerTwo"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
         <!-- Include the AdActivity and InAppPurchaseActivity configChanges and themes. -->
         <activity
             android:name="com.google.android.gms.ads.AdActivity"
@@ -151,6 +211,29 @@
         <activity
             android:name="com.google.android.gms.ads.purchase.InAppPurchaseActivity"
             android:theme="@style/Theme.IAPTheme" />
+        <activity
+            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <provider
+            android:name="com.google.android.gms.measurement.AppMeasurementContentProvider"
+            android:authorities="com.google.android.gms.measurement.google_measurement_service"
+            android:exported="false" />
+
+        <receiver
+            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
+            android:enabled="true" >
+            <intent-filter>
+                <action android:name="com.google.android.gms.measurement.UPLOAD" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name="com.google.android.gms.measurement.AppMeasurementService"
+            android:enabled="true"
+            android:exported="false" />
     </application>
 
 </manifest>

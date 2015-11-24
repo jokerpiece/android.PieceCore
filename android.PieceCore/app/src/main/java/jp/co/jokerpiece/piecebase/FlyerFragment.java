@@ -29,9 +29,11 @@ import jp.co.jokerpiece.piecebase.util.ViewPagerIndicator;
 import android.app.Activity;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.Context;
+import android.content.Intent;
 import android.content.Loader;
 import android.graphics.Bitmap;
 import android.graphics.Point;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -208,7 +210,31 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener{
 				getActivity().getActionBar(),
 				MainBaseActivity.titleOfActionBar.get(FlyerFragment.class.getSimpleName()));
 		getActivity().invalidateOptionsMenu();
-//		if(alImageViewList != null && alImageViewList.size() >= 1){
+
+//		Intent i = new Intent(context,PlayBackHologramActivity.class);
+//		i.putExtra("file_data","");
+//		context.startActivity(i);
+		if(!MainBaseActivity.startFromSchemeFlg){
+			Intent intent = getActivity().getIntent();
+			String action = intent.getAction();
+			if (Intent.ACTION_VIEW.equals(action)) {
+				Uri uri = intent.getData();
+				if (uri != null) {
+					String order_num = "1";
+					order_num = uri.getQueryParameter("order_num");
+					FragmentManager fm = ((MainBaseActivity)context).getSupportFragmentManager();
+					FragmentTransaction ft = fm.beginTransaction();
+					LoginFragment fragment = new LoginFragment();
+					Bundle bundle = new Bundle();
+					bundle.putString("order_num", order_num);
+					fragment.setArguments(bundle);
+					ft.replace(R.id.fragment, fragment);
+					ft.addToBackStack(null);
+					ft.commit();
+				}
+			}
+		}
+		//		if(alImageViewList != null && alImageViewList.size() >= 1){
 //			for(DownloadImageView iv : alImageViewList){
 //				if(!iv.loadImageView()){
 //					getActivity().getSupportLoaderManager().initLoader(Config.loaderCnt++,null,iv);
@@ -279,6 +305,7 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener{
 				}
 				flyerData = data;
 				ShowFlyerView();
+
 			}
 
 			@Override
@@ -366,6 +393,7 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener{
                 }
 
                 SaveData.Flyerdata = data;
+
                 for (final FlyerHeaderData c : data.header_list) {
                     ((MainBaseActivity) activity).getSupportLoaderManager().initLoader(Config.loaderCnt++, null, new LoaderManager.LoaderCallbacks<Bitmap>() {
                         @Override

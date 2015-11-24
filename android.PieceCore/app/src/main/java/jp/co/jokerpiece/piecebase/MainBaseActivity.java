@@ -66,6 +66,7 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
     public ArrayList<HashMap<String, Object>> settingData = new ArrayList<HashMap<String,Object>>();
     public static ArrayList<TabInfo> tabInfoList;
     public static HashMap<String, Integer> titleOfActionBar;
+    public static boolean startFromSchemeFlg = false;
     ImageView splashView;
     boolean onTabChange;
     boolean onTab = false;
@@ -370,6 +371,8 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
             { put(StampFragment.class.getSimpleName(), R.string.stamp0); }
             { put(SnsFragment.class.getSimpleName(), R.string.sns0); }
             { put(TwitterFragment.class.getSimpleName(), R.string.twitter0); }
+            { put(LoginFragment.class.getSimpleName(),R.string.login0);}
+            { put(LoginFragment.FailedViewFragment.class.getSimpleName(),R.string.login0);}
 
         };
     }

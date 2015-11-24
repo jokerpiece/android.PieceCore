@@ -1,6 +1,10 @@
 package jp.co.jokerpiece.piecebase.util;
 
 import java.io.ByteArrayOutputStream;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
@@ -99,6 +103,133 @@ public class HttpClient {
 		return result;
 	}
 
+	public static byte[] getByteArrayFromUrlYoutube(String strUrl, HashMap<String, String> parameter,HttpClientInterface receiver,String token,String file_path,String uploadFileName)
+			throws MalformedURLException {
+
+		HCInterFace = receiver;
+
+		byte[] byteArray = new byte[1024];
+		byte[] result = null;
+		int size = 0;
+
+		HttpURLConnection con = null;
+		InputStream in = null;
+		ByteArrayOutputStream out = null;
+		DataOutputStream dos = null;
+		DataInputStream inputStream = null;
+		String lineEnd = "\r\n";
+		String twoHyphens = "--";
+		String boundary = "*****";
+
+		int bytesRead,bytesAvailable,bufferSize;
+		byte[] buffer;
+		int maxBufferSize = 1*1024*1024;
+		try {
+			FileInputStream fileInputStream = new FileInputStream(new File(file_path));
+			Log.d("response", "" + fileInputStream);
+			Log.d("response", "" + file_path);
+			Log.d("response", "" + token);
+
+			URL url = new URL(strUrl);
+			final String username = Config.USER_NAME;
+			final String password = Config.PASS_WORD;
+			if (username != null && password != null) {
+				Authenticator.setDefault(new Authenticator() {
+					@Override
+					protected PasswordAuthentication getPasswordAuthentication() {
+						return new PasswordAuthentication(username, password.toCharArray());
+					}
+				});
+			}
+			con = (HttpURLConnection) url.openConnection();
+			con.setConnectTimeout(Config.connectionTimeOut);
+			con.setReadTimeout(Config.readTimeOut);
+
+			con.setRequestMethod("POST");
+//			con.setRequestProperty("Connection","Keep-Alive");
+//			con.setRequestProperty("Content-Type","multipart/form-data;boundary="+boundary);
+//			con.setRequestProperty("Content-Type","video/*");
+//			con.setRequestProperty("ENCTYPE","multipart/form-data");
+			con.setRequestProperty("Authorization", "Bearer " + token);
+			con.setRequestProperty("Content-Type", "application/octet-stream");
+			con.setRequestProperty("Accept-Language", "ja");
+			con.setDoOutput(true);
+			con.setDoInput(true);
+			con.setUseCaches(false);
+
+			dos = new DataOutputStream(con.getOutputStream());
+			dos.writeBytes(twoHyphens + boundary + lineEnd);
+			dos.writeBytes("Content-Disposition: form-data;name=\"uploadedfile\";filename=\"" + uploadFileName + "\" " + lineEnd );
+//			dos.writeBytes("Content-Type:video/*" + lineEnd);
+			dos.writeBytes(lineEnd);
+
+			bytesAvailable = fileInputStream.available();
+			bufferSize = Math.min(bytesAvailable, maxBufferSize);
+			buffer = new byte[bufferSize];
+			bytesRead = fileInputStream.read(buffer, 0, bufferSize);
+			while (bytesRead > 0) {
+				dos.write(buffer, 0, bufferSize);
+				bytesAvailable = fileInputStream.available();
+				bufferSize = Math.min(bytesAvailable, maxBufferSize);
+				bytesRead = fileInputStream.read(buffer, 0, bufferSize);
+			}
+			dos.writeBytes(lineEnd);
+			dos.writeBytes(twoHyphens + boundary + twoHyphens + lineEnd);
+			fileInputStream.close();
+			dos.flush();
+			dos.close();
+
+			// Post値の設定
+			String postdata = parseRequestData(parameter, POST);
+			String parameterString = new String(postdata);
+
+			PrintWriter printWriter = new PrintWriter(con.getOutputStream());
+			printWriter.print(parameterString);
+			printWriter.close();
+
+			//con.connect();
+			Log.d("response", "" + con.getResponseCode());
+
+
+			in = con.getInputStream();
+			//dos.close();
+
+
+			out = new ByteArrayOutputStream();
+			long total = 0;
+			int fileLength = con.getContentLength();
+			while ((size = in.read(byteArray)) != -1) {
+				total += size;
+				out.write(byteArray, 0, size);
+				if(HCInterFace != null){
+					HCInterFace.HttpClientProgress((float)total/(float)fileLength);
+				}
+				Log.d("DOWNLOAD", total+"/"+fileLength);
+			}
+
+			result = out.toByteArray();
+			Log.v(TAG_SUCCESS, strUrl);
+		}catch (MalformedURLException ex){
+
+		} catch (IOException e) {
+			e.printStackTrace();
+			Log.v(TAG_FAILURE, strUrl);
+		}
+
+//		try{
+//			inputStream = new DataInputStream(con.getInputStream());
+//			Log.d("response",""+inputStream);
+//			String str;
+//			while((str = inputStream.readLine()) != null){
+//				Log.d("response",str);
+//			}
+//			inputStream.close();
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+		return result;
+
+	}
 	/**
 	 * HTTPでPOSTパラメータを発行するメソッド
 	 * @author kimura_kouki
@@ -118,6 +249,8 @@ public class HttpClient {
 		HttpURLConnection con = null;
 		InputStream in = null;
 		ByteArrayOutputStream out = null;
+
+
 
 		try {
 			URL url = new URL(strUrl);

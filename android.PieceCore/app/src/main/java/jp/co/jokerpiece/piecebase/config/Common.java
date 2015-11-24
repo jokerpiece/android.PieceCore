@@ -136,7 +136,7 @@ public class Common {
     }
 
 
-    private static String getRegistrationId(Context context) {
+    public static String getRegistrationId(Context context) {
         final SharedPreferences prefs = getGCMPreferences(context);
         String registrationId = prefs.getString(Config.PROPERTY_REG_ID, "");
         if (regid.equals("")) {

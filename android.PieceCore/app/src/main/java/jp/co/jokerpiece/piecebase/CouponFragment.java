@@ -278,7 +278,9 @@ public class CouponFragment extends BaseFragment implements OnPageChangeListener
                         }
                         @Override
                         public void onLoadFinished(android.support.v4.content.Loader<Bitmap> loader, Bitmap data) {
-                            BitmapCache.newInstance().putBitmap(c.img_url, data);
+							if(data != null) {
+								BitmapCache.newInstance().putBitmap(c.img_url, data);
+							}
                         }
                         @Override
                         public void onLoaderReset(android.support.v4.content.Loader<Bitmap> loader) {

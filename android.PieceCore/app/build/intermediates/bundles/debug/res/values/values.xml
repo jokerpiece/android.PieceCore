@@ -72,6 +72,8 @@
     <string name="info_list">お知らせ一覧</string>
     <string name="item_count">アイテム数：</string>
     <string name="item_list">ITEM LIST</string>
+    <string name="login0">LOGIN</string>
+    <string name="login1">LOGIN</string>
     <string name="map0">MAP</string>
     <string name="map1">Map</string>
     <string name="map_key">AIzaSyAxg51n6Chqa6KkE2xtuyV0Xn59zbLPPy8</string>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@color/background_material_light"
+    android:clickable="true"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="50dp"
+        android:text="入力された注文番号に\n一致する注文情報が\nありません"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:text="戻る"
+        android:textColor="#ffffff"
+        android:background="@drawable/shape_button"
+        android:id="@+id/loginfailed_back"/>
+</LinearLayout><!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/src/main/res/layout/activity_loginfailed.xml --><!-- From: file:/C:/Users/wenHsin/AndroidStudioProjects/PieceBase/android.PieceCore/android.PieceCore/app/build/intermediates/bundles/debug/res/layout/activity_loginfailed.xml -->

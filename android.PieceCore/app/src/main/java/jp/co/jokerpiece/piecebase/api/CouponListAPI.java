@@ -37,6 +37,8 @@ public class CouponListAPI extends AsyncTaskLoader<CouponListData> implements Ht
     	HashMap<String, String> parameter = new HashMap<String, String>();
     	parameter.put("app_id", Config.APP_ID);
     	parameter.put("uuid", Common.getUUID(getContext()));
+//		parameter.put("device_token",Common.getRegistrationId(getContext()));
+
 
         String result = null;
         String url = null;
