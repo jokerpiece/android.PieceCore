@@ -1,2 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="C:\Users\wenHsin\AndroidStudioProjects\PieceBase\android.PieceCore\android.PieceCore\app\src\main\assets"><file name="settingFile.txt" path="C:\Users\wenHsin\AndroidStudioProjects\PieceBase\android.PieceCore\android.PieceCore\app\src\main\assets\settingFile.txt"/></source></dataSet><dataSet config="release"><source path="C:\Users\wenHsin\AndroidStudioProjects\PieceBase\android.PieceCore\android.PieceCore\app\src\release\assets"/></dataSet></merger>
