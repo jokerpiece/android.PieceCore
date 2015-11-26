@@ -4,9 +4,6 @@
     android:versionCode="1"
     android:versionName="1.0" >
 
-    <uses-sdk
-        android:minSdkVersion="14"
-        android:targetSdkVersion="21" />
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
@@ -164,6 +161,14 @@
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:screenOrientation="portrait"/>
 
+        <activity
+            android:name=".RadarActivity"
+            android:label="@string/title_activity_radar">
+        </activity>
+        <activity
+            android:name=".GPSLocationActivity"
+            android:label="@string/title_activity_gpslocation">
+        </activity>
     </application>
 
 </manifest>

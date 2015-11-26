@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">大人ゴコロ</string>
-    <string name="map_key">AIzaSyAxg51n6Chqa6KkE2xtuyV0Xn59zbLPPy8</string>
+    <string name="map_key">AIzaSyC6hA1bcLw8K6k7QRwtxER78IURjEsYs-8</string>
     <string name="empty"></string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -97,6 +97,7 @@
     <string name="hello_user">Hello!!</string>
     <string name="cancelled">cancelled</string>
     <string name="permission_not_granted">permission_not_granted</string>
+    <string name="treasure">宝物</string>
 
     <!--Twitter-->
     <string name="twitter">twitter</string>
@@ -110,6 +111,7 @@
     <string name="repliseName">KuoWenHsin</string>
 
     <string name="gmail">gmail</string>
-
+    <string name="title_activity_radar">RadarActivity</string>
+    <string name="title_activity_gpslocation">GPSLocationActivity</string>
     
 </resources>

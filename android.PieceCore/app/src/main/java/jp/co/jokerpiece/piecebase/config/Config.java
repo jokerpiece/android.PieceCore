@@ -94,6 +94,7 @@ public class Config {
     public static final String SENDID_CHECKDATA = SERVER_URL + "order/?Action=check";
     public static final String SENDID_GETFILEDATA = SERVER_URL + "order/?Action=getFileData";
 
+    public static final String SENDID_GET_LOCATION = SERVER_URL + "order/?Action=getLocation";
     public static final String YOUTUBE_APIV3 = "https://www.googleapis.com/upload/youtube/v3/videos?part=snippet,status";
 
 
