@@ -1,17 +1,17 @@
 package jp.co.jokerpiece.piecebase;
 
-import android.os.Bundle;
 import android.app.Activity;
+import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.widget.ImageView;
-import android.widget.TextView;
 
-import java.math.BigDecimal;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.Timer;
 import java.util.TimerTask;
 
-import jp.co.jokerpiece.piecebase.util.BeaconUtil;
 import jp.co.jokerpiece.piecebase.util.RadarUtil;
 
 public class RadarActivity extends Activity {
@@ -20,9 +20,9 @@ public class RadarActivity extends Activity {
     Timer mTimer   = null;
 
     // 検索するビーコンの情報
-    private String uuid;
-    private String major;
-    private String minor;
+    private String uuid = null;
+    private int major = -1;
+    private int minor = -1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,8 +35,16 @@ public class RadarActivity extends Activity {
         mTimer = new Timer(true);
         mTimer.schedule( timerTask, 0, 20);
 
-        uuid="00000000-5668-1001-B000-000000000009";
-
+        String data = getIntent().getStringExtra("file_data");
+        JSONObject rootObject;
+        try {
+            rootObject = new JSONObject(data);
+            uuid = rootObject.getString("uuid");
+            major = rootObject.getInt("major_id");
+            minor = rootObject.getInt("minor_id");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -51,7 +59,7 @@ public class RadarActivity extends Activity {
             mHandler.post( new Runnable() {
                 public void run() {
                     beaconScan();
-                    RadarUtil.BeaconData beaconData = RadarUtil.getBeaconWithUUID(uuid);
+                    RadarUtil.BeaconData beaconData = RadarUtil.getBeaconWithUUID(uuid,major,minor);
                     if(beaconData != null){
                         Log.d("BeaconData", beaconData.getMajor());
                         ImageView treasure = (ImageView)findViewById(R.id.ivTreasure);

@@ -290,14 +290,14 @@ public class RadarUtil {
      * @param UUID 検索UUID
      * @return ビーコンデータ、ビーコンリストが空の場合はnullを返す。
      */
-    public static BeaconData getBeaconWithUUID(String UUID){
+    public static BeaconData getBeaconWithUUID(String UUID,int major,int  minor){
         BeaconData ret = null;
 
         if(UUID == null || beaconList == null){
             return null;
         }
         for (BeaconData bd : beaconList) {
-            if(bd.getUuid().equals(UUID)){
+            if(bd.getUuid().equals(UUID) && bd.getMajorInt() == major && bd.getMinorInt() == minor){
                 ret = bd;
                 break;
             }
@@ -400,7 +400,32 @@ public class RadarUtil {
         // ゲッター、セッター
         public String getUuid() { return uuid; }
         public String getMajor() { return major; }
+        public int getMajorInt() {
+            int num = -1;
+            if(major != null) {
+                try {
+                    num = Integer.valueOf(major);
+                } catch (NumberFormatException e) {
+                    e.printStackTrace();
+                }
+            }
+            return num;
+        }
+
         public String getMinor() { return minor; }
+        public int getMinorInt() {
+
+            int num = -1;
+            if(minor != null) {
+                try {
+                    num = Integer.valueOf(minor);
+                } catch (NumberFormatException e) {
+                    e.printStackTrace();
+                }
+            }
+            return num;
+        }
+
         public String getSerial() { return serial; }
         public int getRssi() {
             if(rssiList != null && rssiList.size() >= 1) {

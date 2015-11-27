@@ -40,9 +40,7 @@ public class GetFileDataAPI extends AsyncTaskLoader<GetFileData> implements Http
             if(resData == null) return null;
             result = new String(resData,"UTF-8");
             Log.d("playback",result);
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        } catch (MalformedURLException e) {
+        } catch (UnsupportedEncodingException | MalformedURLException e) {
             e.printStackTrace();
         }
 

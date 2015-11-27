@@ -9,15 +9,10 @@ import java.util.List;
 
 import jp.co.jokerpiece.piecebase.MainBaseActivity;
 import jp.co.jokerpiece.piecebase.R;
-import jp.co.jokerpiece.piecebase.ShoppingListAdapter;
-import jp.co.jokerpiece.piecebase.data.CategoryListData;
-import jp.co.jokerpiece.piecebase.data.CouponListData;
-import jp.co.jokerpiece.piecebase.data.FlyerData;
 import jp.co.jokerpiece.piecebase.data.MenuData;
 import jp.co.jokerpiece.piecebase.util.App;
 
 import android.content.Context;
-import android.webkit.WebView;
 
 public class Config {
     // --- staticイニシャライザで定数を設定(ここから) --- //
@@ -38,19 +33,19 @@ public class Config {
     public static boolean changeToDevFlg = false;
 
 	//新大人ゴコロ本番
-	public static String SERVER_URL = "http://jokapi.jp/manager/html/xml/";
+	//public static String SERVER_API_URL = "http://jokapi.jp/";
 
-//    public  static final String SERVER_URL = "http://192.168.77.200/piece_dev/manager/html/xml/";
+    public  static final String SERVER_URL = "http://192.168.77.200/piece_dev/";
 
 	//大人ゴコロ本番
-	//public static final String SERVER_URL = "http://jokapi.jp/PieceProxy/service/api/shop/kodomogokoro/";
+	//public static final String SERVER_API_URL = "http://jokapi.jp/PieceProxy/service/api/shop/kodomogokoro/";
 	//大人ゴコロステージング
-	//public static final String SERVER_URL = "http://home.noumin.net/PieceProxy/service/api/shop/kodomogokoro/";
-	//public static final String SERVER_URL = "http://192.168.77.68/piece/html/xml/";
+	//public static final String SERVER_API_URL = "http://home.noumin.net/PieceProxy/service/api/shop/kodomogokoro/";
+	//public static final String SERVER_API_URL = "http://192.168.77.68/piece/html/xml/";
 
 	//http://192.168.77.68/piece/html/xml/device_token/index.php
 	//スタブ
-	//public static final String SERVER_URL = "http://192.168.77.83:8888/pieceSever/";
+	//public static final String SERVER_API_URL = "http://192.168.77.83:8888/pieceSever/";
 
 	//デバッグ用UUID デバッグではない場合nullに;
 	//public static final String getDebugUUID = "jokerpiece-test-uuid";
@@ -76,25 +71,32 @@ public class Config {
     // プッシュ通知で必要なフィールド(ここまで)
 	//検索機能対応
 	public static final boolean SEARCH_PERMISSION = true;
-	public static final String USER_NAME = SERVER_URL + "home_list/";
-	public static final String SENDID_NEWS_LIST = SERVER_URL + "news/";
-	public static final String SENDID_NEWS_INFO = SERVER_URL + "news/index.php?Action=newsDetail";
-	public static final String SENDID_FLIYER_LIST = SERVER_URL + "flyer/";
-	public static final String SENDID_CTGRY = SERVER_URL + "category/";
-	public static final String SENDID_ITEM = SERVER_URL + "item/index.php?Action=itemList";
-	public static final String SENDID_ITEM_COUPON = SERVER_URL + "item/index.php?Action=itemList";
-	public static final String SENDID_ITEM_BARCODE = SERVER_URL + "item/index.php?Action=itemListBarcode";
-	public static final String SENDID_CPN_GIVE = SERVER_URL + "coupon/index.php?Action=giveList";
-	public static final String SENDID_CPN_TAKE = SERVER_URL + "coupon/index.php?Action=takedList";
-	public static final String SENDID_GET_CPN  = SERVER_URL + "coupon/index.php?Action=get";
-    public static final String SENDID_GET_QUES  = SERVER_URL + "fitting/";
-	public static final String PUSHSERVER_URL = SERVER_URL + "device_token/";
-    public static final String SENDID_MAP_LIST = SERVER_URL + "shop/";
-    public static final String SENDID_STAMP_LIST = SERVER_URL + "stamp/";
-    public static final String SENDID_CHECKDATA = SERVER_URL + "order/?Action=check";
-    public static final String SENDID_GETFILEDATA = SERVER_URL + "order/?Action=getFileData";
 
-    public static final String SENDID_GET_LOCATION = SERVER_URL + "order/?Action=getLocation";
+    public  static final String SERVER_API_URL = SERVER_URL + "manager/html/xml/";
+	public static final String USER_NAME = SERVER_API_URL + "home_list/";
+	public static final String SENDID_NEWS_LIST = SERVER_API_URL + "news/";
+	public static final String SENDID_NEWS_INFO = SERVER_API_URL + "news/index.php?Action=newsDetail";
+	public static final String SENDID_FLIYER_LIST = SERVER_API_URL + "flyer/";
+	public static final String SENDID_CTGRY = SERVER_API_URL + "category/";
+	public static final String SENDID_ITEM = SERVER_API_URL + "item/index.php?Action=itemList";
+	public static final String SENDID_ITEM_COUPON = SERVER_API_URL + "item/index.php?Action=itemList";
+	public static final String SENDID_ITEM_BARCODE = SERVER_API_URL + "item/index.php?Action=itemListBarcode";
+	public static final String SENDID_CPN_GIVE = SERVER_API_URL + "coupon/index.php?Action=giveList";
+	public static final String SENDID_CPN_TAKE = SERVER_API_URL + "coupon/index.php?Action=takedList";
+	public static final String SENDID_GET_CPN  = SERVER_API_URL + "coupon/index.php?Action=get";
+    public static final String SENDID_GET_QUES  = SERVER_API_URL + "fitting/";
+	public static final String PUSHSERVER_URL = SERVER_API_URL + "device_token/";
+    public static final String SENDID_MAP_LIST = SERVER_API_URL + "shop/";
+    public static final String SENDID_STAMP_LIST = SERVER_API_URL + "stamp/";
+    public static final String SENDID_CHECKDATA = SERVER_API_URL + "order/?Action=check";
+    public static final String SENDID_GETFILEDATA = SERVER_API_URL + "order/?Action=getFileData";
+
+    public static final String SENDID_GET_LOCATION = SERVER_API_URL + "order/?Action=getLocation";
+
+    public static final String SENDID_REGIST_QUESTION = SERVER_URL + "manager/html/webview/padlock_regist.html";
+    public static final String SENDID_GET_QUESTION = SERVER_URL + "manager/html/webview/padlock_answer.html";
+    public static final String QUESTION_FINISH = "/manager/html/webview/padlock_finish.html";
+
     public static final String YOUTUBE_APIV3 = "https://www.googleapis.com/upload/youtube/v3/videos?part=snippet,status";
 
 

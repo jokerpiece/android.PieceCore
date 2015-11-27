@@ -38,7 +38,8 @@ public class GetLocationAPI extends AsyncTaskLoader<GetLocationAPI.LocationData>
     public LocationData loadInBackground() {
         LocationData data = null;
         HashMap<String, String> parameter = new HashMap<String, String>();
-        parameter.put("order_id", Config.APP_ID);
+        parameter.put("app_id", Config.APP_ID);
+        parameter.put("order_id", order_id);
         parameter.put("uuid", Common.getUUID(getContext()));
         parameter.put("lat", String.valueOf(latitude));
         parameter.put("long", String.valueOf(longitude));
@@ -53,24 +54,25 @@ public class GetLocationAPI extends AsyncTaskLoader<GetLocationAPI.LocationData>
             }
             result = new String(resData, "UTF-8");
             //Log.d("RESULT",result);
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-            return null;
-        } catch (MalformedURLException e) {
+        } catch (MalformedURLException | UnsupportedEncodingException e) {
             e.printStackTrace();
             return null;
         }
         try {
+            data = new LocationData();
+
             JSONObject rootObject = new JSONObject(result);
             //Log.d("JSON", rootObject.toString());
 
-            int error_code = rootObject.getInt("error_code");
+            int error_code = rootObject.getInt("status_code");
             if(error_code != 0){
                 Log.d("error",rootObject.getString("error_message"));
-                return null;
+                if(!rootObject.isNull("error_message")) {
+                    data.error_msg = rootObject.getString("error_message");
+                }
+                return data;
             }
 
-            data = new LocationData();
             data.lat = rootObject.getDouble("lat");
             data.lng = rootObject.getDouble("long");
             data.updated = rootObject.getString("updated");
@@ -85,9 +87,11 @@ public class GetLocationAPI extends AsyncTaskLoader<GetLocationAPI.LocationData>
 
     }
 
+
     static public class LocationData{
         public double lat;
         public double lng;
         public String updated;
+        public String error_msg;
     }
 }

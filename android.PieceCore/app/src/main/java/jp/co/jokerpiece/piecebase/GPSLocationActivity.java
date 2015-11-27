@@ -37,6 +37,9 @@ import jp.co.jokerpiece.piecebase.api.GetLocationAPI;
 public class GPSLocationActivity extends Activity implements LocationListener {
     private Handler handler = new Handler();
     int loderCount = 0;
+
+    String order_id;
+    int type = -1;
     private GoogleMap aMap = null;
     private float zoom;
     LocationManager mLocationManager;
@@ -57,6 +60,10 @@ public class GPSLocationActivity extends Activity implements LocationListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gpslocation);
         mLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+
+        order_id = getIntent().getStringExtra("order_id");
+        type = getIntent().getIntExtra("type", -1);
+
         if (aMap == null) {
             aMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
 
@@ -186,7 +193,7 @@ public class GPSLocationActivity extends Activity implements LocationListener {
             getLoaderManager().initLoader(loderCount++, null, new LoaderManager.LoaderCallbacks<GetLocationAPI.LocationData>() {
                 @Override
                 public Loader<GetLocationAPI.LocationData> onCreateLoader(int id, Bundle args) {
-                    GetLocationAPI getLocationAPI = new GetLocationAPI(GPSLocationActivity.this, "", location.getLatitude(), location.getLongitude(), 0);
+                    GetLocationAPI getLocationAPI = new GetLocationAPI(GPSLocationActivity.this, order_id, location.getLatitude(), location.getLongitude(), type);
                     getLocationAPI.forceLoad();
                     return getLocationAPI;
                 }
@@ -197,7 +204,7 @@ public class GPSLocationActivity extends Activity implements LocationListener {
 //                    data.lat = 35.53133414;
 //                    data.lng = 134.69262857;
 //                    data.updated = "2015:11:21 12:00:00";
-                    if (data != null) {
+                    if (data != null && data.updated != null) {
                         if (senderMarker != null) {
                             senderMarker.remove();
                             senderMarker = null;
@@ -216,7 +223,11 @@ public class GPSLocationActivity extends Activity implements LocationListener {
                         senderMarker.showInfoWindow();
                         senderPositionButton.setVisibility(View.VISIBLE);
                     } else {
-                        Toast.makeText(GPSLocationActivity.this, "相手の位置情報を取得できませんでした。", Toast.LENGTH_SHORT).show();
+                        if(data != null && data.error_msg != null){
+                            Toast.makeText(GPSLocationActivity.this, data.error_msg, Toast.LENGTH_SHORT).show();
+                        }else {
+                            Toast.makeText(GPSLocationActivity.this, "相手の位置情報を取得できませんでした。", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }
 
@@ -233,6 +244,10 @@ public class GPSLocationActivity extends Activity implements LocationListener {
     private Location getLocationByGPS() {
         if (mLocationManager != null) {
             if (mLocationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                        && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                    return null;
+                }
                 mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
                 return mLocationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
             }

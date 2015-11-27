@@ -113,5 +113,6 @@
     <string name="gmail">gmail</string>
     <string name="title_activity_radar">RadarActivity</string>
     <string name="title_activity_gpslocation">GPSLocationActivity</string>
-    
+    <string name="title_activity_get_question">GetQuestionActivity</string>
+
 </resources>
