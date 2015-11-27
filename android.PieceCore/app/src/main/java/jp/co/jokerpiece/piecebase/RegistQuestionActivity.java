@@ -1,4 +1,4 @@
-package jp.co.jokerpiece.piecebase.api;
+package jp.co.jokerpiece.piecebase;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;

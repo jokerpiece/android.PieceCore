@@ -10,7 +10,6 @@ import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 
 import jp.co.jokerpiece.piecebase.api.GetFileDataAPI;
-import jp.co.jokerpiece.piecebase.api.GetQuestionActivity;
 import jp.co.jokerpiece.piecebase.config.Config;
 import jp.co.jokerpiece.piecebase.data.GetFileData;
 
@@ -26,7 +25,7 @@ public class PlayBackActivity extends FragmentActivity {
     String PLAYBACK_HOLOGRAM = "2";
     String PLAYBACK_MESSAGE = "3";
     String PADLOCK_MESSAGE = "4";
-    String TRESURE_HUNT = "5";
+    String TREASURE_HUNT = "5";
     String GPS_TRACKING = "6";
 
     @Override
@@ -49,20 +48,27 @@ public class PlayBackActivity extends FragmentActivity {
         if (Intent.ACTION_VIEW.equals(action)) {
             Uri uri = intent.getData();
             if (uri != null) {
-                order_id = uri.getQueryParameter("order_id");
+                if(uri.getHost().equals("rapping")) {
+                    order_id = uri.getQueryParameter("order_id");
 
-                String strType = uri.getQueryParameter("type");
-                if(strType != null) {
-                    try {
-                        gps_type = Integer.valueOf(strType);
-                    }catch (NumberFormatException e){
-                        e.printStackTrace();
+                    String strType = uri.getQueryParameter("type");
+                    if (strType != null) {
+                        try {
+                            gps_type = Integer.valueOf(strType);
+                        } catch (NumberFormatException e) {
+                            e.printStackTrace();
+                        }
                     }
+
+                    Log.d("playback", order_id);
+                    getData();
+                }else if(uri.getHost().equals("padlock")){
+                    order_id = uri.getQueryParameter("order_num");
+                    Intent i = new Intent(this, RegistQuestionActivity.class);
+                    i.putExtra("order_id", decodeCD(order_id));
+                    this.startActivity(i);
+                    finish();
                 }
-
-                Log.d("playback",order_id);
-                getData();
-
             }
         }
     }
@@ -82,11 +88,10 @@ public class PlayBackActivity extends FragmentActivity {
             i.putExtra("file_data",data);
             this.startActivity(i);
         }else if(type.equals(PADLOCK_MESSAGE)){
-            // TODO:南京錠画面への遷移を作成
             Intent i = new Intent(this,GetQuestionActivity.class);
             i.putExtra("order_id", decodeCD(order_id));
             this.startActivity(i);
-        }else if(type.equals(TRESURE_HUNT)){
+        }else if(type.equals(TREASURE_HUNT)){
             Intent i = new Intent(this,RadarActivity.class);
             i.putExtra("file_data",data);
             this.startActivity(i);
