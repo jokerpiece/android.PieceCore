@@ -497,15 +497,6 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
             {
                 put(TwitterFragment.class.getSimpleName(), R.string.twitter0);
             }
-
-            {
-                put(LoginFragment.class.getSimpleName(), R.string.login0);
-            }
-
-            {
-                put(LoginFragment.FailedViewFragment.class.getSimpleName(), R.string.login0);
-            }
-
         };
     }
 

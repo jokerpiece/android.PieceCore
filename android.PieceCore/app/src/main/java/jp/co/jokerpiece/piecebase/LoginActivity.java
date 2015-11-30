@@ -102,6 +102,17 @@ public class LoginActivity extends Activity {
                     checkData = data;
                     if(!data.status_code.equals("") && data.status_code != null) {
                         if (data.status_code.equals("01")) {
+
+//                            setContentView(R.layout.activity_loginfailed);
+//                            Button backBtn = (Button) findViewById(R.id.loginfailed_back);
+//                            backBtn.setOnClickListener(new View.OnClickListener() {
+//                                @Override
+//                                public void onClick(View v) {
+//                                    setContentView(R.layout.activity_login);
+//                                }
+//                            });
+                            Intent i = new Intent(context,LoginFailedActivity.class);
+                            context.startActivity(i);
                             setContentView(R.layout.activity_login);
                             etMailAddress = (EditText)findViewById(R.id.login_address);
                             etOrderNum = (EditText)findViewById(R.id.login_ordernum);
@@ -113,25 +124,15 @@ public class LoginActivity extends Activity {
                                 @Override
                                 public void onClick(View v) {
                                     Log.d("checkData", "decied");
-                                    sbMail = (SpannableStringBuilder)etMailAddress.getText();
-                                    sbOrderNum = (SpannableStringBuilder)etOrderNum.getText();
+                                    sbMail = (SpannableStringBuilder) etMailAddress.getText();
+                                    sbOrderNum = (SpannableStringBuilder) etOrderNum.getText();
                                     mailAddress = sbMail.toString();
                                     order_num = sbOrderNum.toString();
                                     Log.d("checkData", "order" + order_num);
-                                    Log.d("checkData","mail"+mailAddress);
-                                    if(!mailAddress.equals("") && !order_num.equals("")) getData();
+                                    Log.d("checkData", "mail" + mailAddress);
+                                    if (!mailAddress.equals("") && !order_num.equals("")) getData();
                                 }
                             });
-//                            setContentView(R.layout.activity_loginfailed);
-//                            Button backBtn = (Button) findViewById(R.id.loginfailed_back);
-//                            backBtn.setOnClickListener(new View.OnClickListener() {
-//                                @Override
-//                                public void onClick(View v) {
-//                                    setContentView(R.layout.activity_login);
-//                                }
-//                            });
-                            Intent i = new Intent(context,LoginFailedActivity.class);
-                            context.startActivity(i);
                         } else {
                             Intent i = new Intent(context,UploadVideoActivity.class);
                             i.putExtra("account_id", data.account_id);

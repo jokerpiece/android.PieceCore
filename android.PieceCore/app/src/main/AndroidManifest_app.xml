@@ -66,16 +66,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="videoupload"
-                    android:scheme="otonagokoro" />
-            </intent-filter>
         </activity>
 
         <!-- プッシュ通知に必要なアクティビティ(ここから) -->
@@ -161,7 +152,18 @@
         <activity android:name=".LoginActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="videoupload"
+                    android:scheme="otonagokoro" />
+            </intent-filter>
+        </activity>
         <activity android:name=".LoginFailedActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
@@ -184,7 +186,9 @@
         <activity android:name=".UploadVideoActivity"
             android:launchMode="singleTask"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait">
+
+        </activity>
         <activity android:name=".UploadMessageActivity"
             android:launchMode="singleTask"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"

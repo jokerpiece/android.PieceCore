@@ -33,7 +33,7 @@ public class Config {
     public static boolean changeToDevFlg = false;
 
 	//新大人ゴコロ本番
-	public static String SERVER_URL = "http://jokapi.jp/";
+        public static String SERVER_URL = "http://jokapi.jp/";
 
    // public  static final String SERVER_URL = "http://192.168.77.200/piece_dev/";
 
