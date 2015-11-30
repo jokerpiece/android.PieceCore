@@ -3,6 +3,7 @@ package jp.co.jokerpiece.piecebase;
 import android.app.Activity;
 import android.app.LoaderManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.Loader;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -114,18 +115,12 @@ public class LoginFragment extends Fragment {
                 Log.d("token","status"+data.account_id);
                 if(!data.status_code.equals("") && data.status_code != null) {
                     if (data.status_code.equals("00")) {
-                        FragmentManager fm =((MainBaseActivity)context).getSupportFragmentManager();
-                        FragmentTransaction ft = fm.beginTransaction();
-                        UploadVideoFragment fragment = new UploadVideoFragment();
-                        Bundle bundle = new Bundle();
-                        bundle.putString("account_id", data.account_id);
-                        bundle.putString("order_id", data.order_id);
-                        bundle.putString("token", data.token);
-                        bundle.putString("upload_token", data.upload_token);
-                        fragment.setArguments(bundle);
-                        ft.replace(R.id.fragment, fragment);
-                        ft.addToBackStack(null);
-                        ft.commit();
+                        Intent i = new Intent(context,UploadVideoActivity.class);
+                        i.putExtra("account_id", data.account_id);
+                        i.putExtra("order_id", data.order_id);
+                        i.putExtra("token", data.token);
+                        i.putExtra("upload_token", data.upload_token);
+                        context.startActivity(i);
                     } else {
                         FragmentManager fm = ((MainBaseActivity)context).getSupportFragmentManager();
                         FragmentTransaction ft = fm.beginTransaction();

@@ -33,9 +33,9 @@ public class Config {
     public static boolean changeToDevFlg = false;
 
 	//新大人ゴコロ本番
-	//public static String SERVER_API_URL = "http://jokapi.jp/";
+	public static String SERVER_URL = "http://jokapi.jp/";
 
-    public  static final String SERVER_URL = "http://192.168.77.200/piece_dev/";
+   // public  static final String SERVER_URL = "http://192.168.77.200/piece_dev/";
 
 	//大人ゴコロ本番
 	//public static final String SERVER_API_URL = "http://jokapi.jp/PieceProxy/service/api/shop/kodomogokoro/";
@@ -96,6 +96,13 @@ public class Config {
     public static final String SENDID_REGIST_QUESTION = SERVER_URL + "manager/html/webview/padlock_regist.html";
     public static final String SENDID_GET_QUESTION = SERVER_URL + "manager/html/webview/padlock_answer.html";
     public static final String QUESTION_FINISH = "/manager/html/webview/padlock_finish.html";
+
+    public static final String SENDID_YOUTUBE_UPLOAD = SERVER_URL +"manager/html/webview/youtube_upload/index.php";
+    public static final String SENDID_YOUTUBE_UPLOAD_DONE = SERVER_URL + "manager/html/webview/youtube_upload/done.html";
+
+    public static final String SENDID_MESSAGE_UPLOAD = SERVER_URL + "manager/html/webview/message/index.php";
+    public static final String SENDID_MESSAGE_UPLOAD_DONE = SERVER_URL +"manager/html/webview/message/done.html";
+
 
     public static final String YOUTUBE_APIV3 = "https://www.googleapis.com/upload/youtube/v3/videos?part=snippet,status";
 

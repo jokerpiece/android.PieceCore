@@ -140,20 +140,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LogingActivity"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.VIEW"/> -->
-            <!-- <category android:name="android.intent.category.DEFAULT"/> -->
-            <!-- <category android:name="android.intent.category.BROWSABLE"/> -->
-            <!-- <data android:scheme="otonagokoro" android:host="videoupload"/> -->
-            <!-- </intent-filter> -->
-
-        </activity>
-        <activity
             android:name=".PlayBackActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
@@ -172,6 +158,14 @@
                     android:scheme="otonagokoro" />
             </intent-filter>
         </activity>
+        <activity android:name=".LoginActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity android:name=".LoginFailedActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
             android:name=".PlayBackMessageActivity"
             android:launchMode="singleTask"
@@ -187,6 +181,25 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity android:name=".UploadVideoActivity"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".UploadMessageActivity"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="rapping"
+                    android:scheme="otonagokoro" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".RadarActivity"
             android:label="@string/title_activity_radar"/>

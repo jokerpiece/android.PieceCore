@@ -11,6 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
+        android:textColor="#000000"
         android:text="注文番号"/>
     <EditText
         android:layout_width="match_parent"
@@ -26,6 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
+        android:textColor="#000000"
         android:text="メールアドレス"/>
     <EditText
         android:layout_width="match_parent"
@@ -43,6 +45,7 @@
         android:layout_gravity="center"
         android:background="@drawable/shape_button"
         android:id="@+id/login_decide"
+        android:textSize="30dp"
         android:text="決定"/>
 
 </LinearLayout>

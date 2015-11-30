@@ -2,7 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_material_light">
+    android:background="#000000">
 
     <!--<WebView-->
         <!--android:layout_width="150dp"-->
@@ -28,32 +28,88 @@
         <!--android:id="@+id/webYoutube3"-->
         <!--android:layout_gravity="center_horizontal|bottom"></WebView>-->
 
-    <VideoView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/hologram"/>
-    <!--<com.google.android.youtube.player.YouTubePlayerView-->
-        <!--android:layout_width="200dp"-->
-        <!--android:layout_height="120dp"-->
-        <!--android:id="@+id/hologram_view4"-->
-        <!--android:layout_gravity="right|center_vertical" />-->
+    <TextureView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/playback_video4"
+        android:layout_centerInParent="true"
+        android:rotation="90"
+        android:layout_marginRight="40dp"
+        android:layout_gravity="right|center_vertical" />
 
-    <!--<com.google.android.youtube.player.YouTubePlayerView-->
-        <!--android:layout_width="200dp"-->
-        <!--android:layout_height="120dp"-->
-        <!--android:id="@+id/hologram_view3"-->
-        <!--android:layout_gravity="center_horizontal|bottom" />-->
+    <TextureView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/playback_video3"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="110dp"
+        android:rotation="90"
+        android:layout_gravity="center_horizontal|bottom" />
 
-    <!--<com.google.android.youtube.player.YouTubePlayerView-->
-        <!--android:layout_width="200dp"-->
-        <!--android:layout_height="120dp"-->
-        <!--android:id="@+id/hologram_view2"-->
-        <!--android:layout_gravity="left|center_vertical" />-->
+    <TextureView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/playback_video2"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="40dp"
+        android:rotation="90"
+        android:layout_gravity="left|center_vertical" />
 
-    <!--<com.google.android.youtube.player.YouTubePlayerView-->
-        <!--android:layout_width="200dp"-->
-        <!--android:layout_height="120dp"-->
-        <!--android:id="@+id/hologram_view1"-->
-        <!--android:layout_gravity="center_horizontal|top" />-->
+    <TextureView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/playback_video1"
+        android:layout_marginTop="110dp"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center_horizontal|top" />
+
+    <Button
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:text="再生する"
+        android:textColor="#ffffff"
+        android:background="#000000"
+        android:id="@+id/replay_btn"
+        android:visibility="invisible"
+        android:layout_gravity="center" />
+
+
+    <Button
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:id="@+id/holo_closeBtn"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/btn_close"
+        android:visibility="invisible"
+        android:layout_gravity="right|top" />
+
+    <!--<VideoView-->
+    <!--android:layout_width="100dp"-->
+    <!--android:layout_height="100dp"-->
+    <!--android:id="@+id/hologram4"-->
+    <!--android:layout_gravity="left|center_vertical" />-->
+
+    <!--<VideoView-->
+    <!--android:layout_width="100dp"-->
+    <!--android:layout_height="100dp"-->
+    <!--android:id="@+id/hologram3"-->
+    <!--android:layout_gravity="center_horizontal|bottom" />-->
+
+    <!--<jp.co.jokerpiece.piecebase.util.RotateLayout-->
+        <!--android:layout_width="100dp"-->
+        <!--android:layout_height="100dp"-->
+        <!--android:id="@+id/hologram2_rotate"></jp.co.jokerpiece.piecebase.util.RotateLayout>-->
+    <!--<VideoView-->
+    <!--android:layout_width="100dp"-->
+    <!--android:layout_height="100dp"-->
+    <!--android:id="@+id/hologram1"-->
+    <!--android:layout_gravity="center_horizontal|top" />-->
+
+    <!--<VideoView-->
+    <!--android:layout_width="100dp"-->
+    <!--android:layout_height="100dp"-->
+    <!--android:id="@+id/hologram2"-->
+    <!--android:layout_gravity="right|center_vertical" />-->
 
 </FrameLayout>

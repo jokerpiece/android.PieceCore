@@ -37,7 +37,6 @@ public class CheckDataAPI extends AsyncTaskLoader<CheckData> implements HttpClie
 //        parameter.put("uuid", "2321");
         parameter.put("order_num",orderNum);
         parameter.put("mail_address", mailAddress);
-        Log.d("checkData", "APIorder" + orderNum);
         parameter.put("app_id", Config.APP_ID);
 
 //        Log.d("checkData", "APImail"+mailAddress);
@@ -46,7 +45,7 @@ public class CheckDataAPI extends AsyncTaskLoader<CheckData> implements HttpClie
              byte[] resData = HttpClient.getByteArrayFromUrlPost(Config.SENDID_CHECKDATA,parameter,this);
             if(resData == null) return null;
             result = new String(resData,"UTF-8");
-            Log.d("checkdata",result);
+           // Log.d("checkdata",result);
 
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();

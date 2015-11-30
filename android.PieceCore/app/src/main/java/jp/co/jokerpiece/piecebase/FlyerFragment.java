@@ -211,9 +211,6 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener{
 				MainBaseActivity.titleOfActionBar.get(FlyerFragment.class.getSimpleName()));
 		getActivity().invalidateOptionsMenu();
 
-//		Intent i = new Intent(context,PlayBackHologramActivity.class);
-//		i.putExtra("file_data","");
-//		context.startActivity(i);
 		if(!MainBaseActivity.startFromSchemeFlg){
 			Intent intent = getActivity().getIntent();
 			String action = intent.getAction();
@@ -222,15 +219,18 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener{
 				if (uri != null) {
 					String order_num = "1";
 					order_num = uri.getQueryParameter("order_num");
-					FragmentManager fm = ((MainBaseActivity)context).getSupportFragmentManager();
-					FragmentTransaction ft = fm.beginTransaction();
-					LoginFragment fragment = new LoginFragment();
-					Bundle bundle = new Bundle();
-					bundle.putString("order_num", order_num);
-					fragment.setArguments(bundle);
-					ft.replace(R.id.fragment, fragment);
-					ft.addToBackStack(null);
-					ft.commit();
+					Intent i = new Intent(context,LoginActivity.class);
+					i.putExtra("order_num",order_num);
+					context.startActivity(i);
+//					FragmentManager fm = ((MainBaseActivity)context).getSupportFragmentManager();
+//					FragmentTransaction ft = fm.beginTransaction();
+//					LoginFragment fragment = new LoginFragment();
+//					Bundle bundle = new Bundle();
+//					bundle.putString("order_num", order_num);
+//					fragment.setArguments(bundle);
+//					ft.replace(R.id.fragment, fragment);
+//					ft.addToBackStack(null);
+//					ft.commit();
 				}
 			}
 		}

@@ -22,9 +22,6 @@ android {
         versionName "1.0.0"
     }
 
-    lintOptions {
-        abortOnError false
-    }
     buildTypes {
         release {
             minifyEnabled false
@@ -51,7 +48,7 @@ uploadArchives {
             repository url: "file://${projectDir}/repository"
             pom.groupId = 'jp.co.jokerpiece.android.piececore'
             pom.artifactId = 'android.piececore'
-            pom.version = '0.0.65'
+            pom.version = '0.0.69'
         }
     }
 }

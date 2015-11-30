@@ -31,15 +31,15 @@ public class GetFileDataAPI extends AsyncTaskLoader<GetFileData> implements Http
         GetFileData getFileData = new GetFileData();
         HashMap<String,String> parameter = new HashMap<String,String>();
         parameter.put("app_id", Config.APP_ID);
-        Log.d("playback", "1"+order_id);
         parameter.put("order_id",order_id);
+        parameter.put("os_type","1");
 
         String result = null;
         try{
             byte[] resData = HttpClient.getByteArrayFromUrlPost(Config.SENDID_GETFILEDATA,parameter,this);
             if(resData == null) return null;
             result = new String(resData,"UTF-8");
-            Log.d("playback",result);
+ //           Log.d("playback",result);
         } catch (UnsupportedEncodingException | MalformedURLException e) {
             e.printStackTrace();
         }
