@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Point;
+import android.util.Log;
 import android.view.Display;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -25,7 +26,7 @@ public class AppUtil {
      */
     public static void debugLog(String tag, String message) {
         if (BuildConfig.DEBUG && tag != null && message != null) {
-            AppUtil.debugLog(tag, message);
+            Log.d(tag, message);
         }
     }
 
