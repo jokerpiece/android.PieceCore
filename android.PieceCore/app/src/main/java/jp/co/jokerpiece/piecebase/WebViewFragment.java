@@ -1,18 +1,10 @@
 package jp.co.jokerpiece.piecebase;
 
 
-import jp.co.jokerpiece.piecebase.config.Common;
-import jp.co.jokerpiece.piecebase.config.Config;
-import jp.co.jokerpiece.piecebase.data.SaveData;
-import jp.co.jokerpiece.piecebase.util.AppUtil;
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.Context;
 import android.graphics.Bitmap;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -25,6 +17,10 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import jp.co.jokerpiece.piecebase.config.Config;
+import jp.co.jokerpiece.piecebase.data.SaveData;
+import jp.co.jokerpiece.piecebase.util.AppUtil;
 
 @SuppressLint("SetJavaScriptEnabled")
 public class WebViewFragment extends BaseFragment implements View.OnClickListener {
@@ -487,7 +483,7 @@ public class WebViewFragment extends BaseFragment implements View.OnClickListene
             @Override
             public void onReceivedError(final WebView webview, int errorCode, String description, String failingUrl) {
                 SaveData.ConnectFailed = true;
-                Log.d("t", "test");
+                AppUtil.debugLog("t", "test");
             }
         });
         WebSettings webSettings = SaveData.Wb.getSettings();

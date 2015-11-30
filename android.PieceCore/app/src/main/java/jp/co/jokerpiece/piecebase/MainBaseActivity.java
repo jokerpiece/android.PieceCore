@@ -18,7 +18,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTabHost;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -33,9 +32,6 @@ import android.widget.LinearLayout;
 import android.widget.TabHost.OnTabChangeListener;
 import android.widget.TabHost.TabSpec;
 import android.widget.TextView;
-
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.common.api.GoogleApiClient;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -72,10 +68,6 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
     boolean onTab = false;
     long timer;
     public ArrayList<BaseFragment> list = new ArrayList<BaseFragment>();
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -271,7 +263,7 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
             case BeaconUtil.REQUEST_ENABLE_BT:
                 if (resultCode == Activity.RESULT_OK) {
                     // Bluetoothの自動ONが成功した場合呼ばれる
-                    Log.d(TAG, "Bluetoothの自動ONに成功しました。");
+                    AppUtil.debugLog(TAG, "Bluetoothの自動ONに成功しました。");
                     BeaconUtil.isGetBluetoothAdapter = true;
                     BeaconUtil.startScan();
                 }
@@ -597,8 +589,8 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
 
     @Override
     public void onTabChanged(String tabId) {
-//            Log.d("tag", "" + tabId);
-        Log.d("mAdapter", "0.5");
+//            AppUtil.debugLog("tag", "" + tabId);
+        AppUtil.debugLog("mAdapter", "0.5");
         onTabChange = true;
 //            String s = String.valueOf(Config.CouponFragmentNum);
 //                if (!tabId.equals("TAB" + s)) {    //couponFragmentだけは初期化しない

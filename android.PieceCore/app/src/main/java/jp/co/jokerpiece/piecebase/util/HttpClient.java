@@ -19,7 +19,6 @@ import java.util.Iterator;
 import java.util.Set;
 
 import jp.co.jokerpiece.piecebase.config.Config;
-import android.util.Log;
 
 public class HttpClient {
 
@@ -83,7 +82,7 @@ public class HttpClient {
 				if(HCInterFace != null){
 					HCInterFace.HttpClientProgress((float)total/(float)fileLength);
 				}
-				Log.d("DOWNLOAD", total+"/"+fileLength);
+				AppUtil.debugLog("DOWNLOAD", total + "/" + fileLength);
 			}
 			result = out.toByteArray();
 		} catch (Exception e) {
@@ -126,9 +125,9 @@ public class HttpClient {
 		int maxBufferSize = 1*1024*1024;
 		try {
 			FileInputStream fileInputStream = new FileInputStream(new File(file_path));
-			Log.d("response", "" + fileInputStream);
-			Log.d("response", "" + file_path);
-			Log.d("response", "" + token);
+			AppUtil.debugLog("response", "" + fileInputStream);
+			AppUtil.debugLog("response", "" + file_path);
+			AppUtil.debugLog("response", "" + token);
 
 			URL url = new URL(strUrl);
 			final String username = Config.USER_NAME;
@@ -188,7 +187,7 @@ public class HttpClient {
 			printWriter.close();
 
 			//con.connect();
-			Log.d("response", "" + con.getResponseCode());
+			AppUtil.debugLog("response", "" + con.getResponseCode());
 
 
 			in = con.getInputStream();
@@ -204,24 +203,24 @@ public class HttpClient {
 				if(HCInterFace != null){
 					HCInterFace.HttpClientProgress((float)total/(float)fileLength);
 				}
-				Log.d("DOWNLOAD", total+"/"+fileLength);
+				AppUtil.debugLog("DOWNLOAD", total + "/" + fileLength);
 			}
 
 			result = out.toByteArray();
-			Log.v(TAG_SUCCESS, strUrl);
+			AppUtil.debugLog(TAG_SUCCESS, strUrl);
 		}catch (MalformedURLException ex){
 
 		} catch (IOException e) {
 			e.printStackTrace();
-			Log.v(TAG_FAILURE, strUrl);
+			AppUtil.debugLog(TAG_FAILURE, strUrl);
 		}
 
 //		try{
 //			inputStream = new DataInputStream(con.getInputStream());
-//			Log.d("response",""+inputStream);
+//			AppUtil.debugLog("response",""+inputStream);
 //			String str;
 //			while((str = inputStream.readLine()) != null){
-//				Log.d("response",str);
+//				AppUtil.debugLog("response",str);
 //			}
 //			inputStream.close();
 //		} catch (IOException e) {
@@ -292,15 +291,15 @@ public class HttpClient {
 				if(HCInterFace != null){
 					HCInterFace.HttpClientProgress((float)total/(float)fileLength);
 				}
-				Log.d("DOWNLOAD", total+"/"+fileLength);
+				AppUtil.debugLog("DOWNLOAD", total + "/" + fileLength);
 			}
 
 			result = out.toByteArray();
-			Log.v(TAG_SUCCESS, strUrl);
+			AppUtil.debugLog(TAG_SUCCESS, strUrl);
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			Log.v(TAG_FAILURE, strUrl);
+			AppUtil.debugLog(TAG_FAILURE, strUrl);
 		} finally {
 			try {
 				if (con != null)

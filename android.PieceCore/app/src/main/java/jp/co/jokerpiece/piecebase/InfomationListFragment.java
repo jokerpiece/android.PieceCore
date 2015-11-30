@@ -1,17 +1,11 @@
 package jp.co.jokerpiece.piecebase;
 
-import java.util.ArrayList;
-
-import jp.co.jokerpiece.piecebase.data.NewsListData;
-import jp.co.jokerpiece.piecebase.data.NewsListData.NewsData;
-import jp.co.jokerpiece.piecebase.util.AppUtil;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +15,12 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+
+import jp.co.jokerpiece.piecebase.data.NewsListData;
+import jp.co.jokerpiece.piecebase.data.NewsListData.NewsData;
+import jp.co.jokerpiece.piecebase.util.AppUtil;
 
 public class InfomationListFragment extends Fragment implements OnItemClickListener {
 	public static final String TAG = "InfomationListFragment";
@@ -95,7 +95,7 @@ public class InfomationListFragment extends Fragment implements OnItemClickListe
 			break;
 		case NewsListData.NEWS_DATA_TYPE_FLYER + "":
 			// フライヤー画面に遷移
-			Log.d("newsData.id",newsData.id);
+			AppUtil.debugLog("newsData.id",newsData.id);
 			if(newsData.id != "null") {
 				AppUtil.setPrefString(getActivity(), "FLYERID", newsData.id);
 				MainBaseActivity.tabHost.setCurrentTab(AppUtil.getPosition("Flyer"));

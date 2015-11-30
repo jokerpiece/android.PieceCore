@@ -1,21 +1,13 @@
 package jp.co.jokerpiece.piecebase;
 
-import android.app.LoaderManager;
+import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.content.Loader;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.util.Log;
-import android.view.MotionEvent;
-import android.view.View;
-import android.webkit.JsResult;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
-import android.widget.EditText;
 
 import jp.co.jokerpiece.piecebase.config.Config;
 
@@ -26,6 +18,7 @@ public class UploadMessageActivity extends FragmentActivity {
     WebView webView;
     String order_num;
 
+    @SuppressLint("SetJavaScriptEnabled")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

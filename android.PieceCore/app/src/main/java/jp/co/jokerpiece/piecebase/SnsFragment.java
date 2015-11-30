@@ -11,8 +11,6 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,13 +20,11 @@ import android.widget.Toast;
 
 import com.facebook.FacebookSdk;
 
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Calendar;
-
 
 import jp.co.jokerpiece.piecebase.Oauth.FacebookActivity;
 import jp.co.jokerpiece.piecebase.Oauth.TwitterActivity;
@@ -38,8 +34,6 @@ import jp.co.jokerpiece.piecebase.util.AppUtil;
 import jp.co.jokerpiece.piecebase.util.ButtonDialogFragment;
 import jp.co.jokerpiece.piecebase.util.TwitterUtils;
 import twitter4j.Twitter;
-import twitter4j.auth.OAuthAuthorization;
-import twitter4j.auth.RequestToken;
 
 /**
  * Created by kaku on 2015/06/01.
@@ -67,7 +61,7 @@ public class SnsFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
-        Log.d("mAdapter","5");
+        AppUtil.debugLog("mAdapter","5");
         Common.setCurrentFragment(Config.SnsFragmentNum);
         context = getActivity();
         rootView = inflater.inflate(R.layout.snsfragment, container, false);
@@ -173,7 +167,7 @@ public class SnsFragment extends Fragment {
             try {
                 if(data.getExtras() != null&&data.getExtras().get("data")!= null){
                         Bitmap capturedImage = (Bitmap) data.getExtras().get("data");
-                        Log.d("bit",""+capturedImage);
+                        AppUtil.debugLog("bit",""+capturedImage);
 
                         imageButton.setImageBitmap(capturedImage);
                 } else{

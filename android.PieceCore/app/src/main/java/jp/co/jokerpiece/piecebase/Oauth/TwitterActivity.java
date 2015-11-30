@@ -9,10 +9,8 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -24,7 +22,6 @@ import android.widget.Toast;
 
 import java.io.File;
 
-import jp.co.jokerpiece.piecebase.MainBaseActivity;
 import jp.co.jokerpiece.piecebase.R;
 import jp.co.jokerpiece.piecebase.SnsFragment;
 import jp.co.jokerpiece.piecebase.config.Config;

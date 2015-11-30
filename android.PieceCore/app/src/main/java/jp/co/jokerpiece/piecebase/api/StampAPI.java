@@ -2,22 +2,18 @@ package jp.co.jokerpiece.piecebase.api;
 
 import android.content.AsyncTaskLoader;
 import android.content.Context;
-import android.util.Log;
-import android.widget.Toast;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import jp.co.jokerpiece.piecebase.config.Common;
 import jp.co.jokerpiece.piecebase.config.Config;
-import jp.co.jokerpiece.piecebase.data.ShopListData;
 import jp.co.jokerpiece.piecebase.data.StampListData;
+import jp.co.jokerpiece.piecebase.util.AppUtil;
 import jp.co.jokerpiece.piecebase.util.HttpClient;
 
 /**
@@ -47,7 +43,7 @@ public class StampAPI extends AsyncTaskLoader<StampListData> implements HttpClie
             return null;
         }
         result = new String(resData, "UTF-8");
-        Log.d("RESULT", result);
+        AppUtil.debugLog("RESULT", result);
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
             return null;
@@ -73,10 +69,10 @@ public class StampAPI extends AsyncTaskLoader<StampListData> implements HttpClie
                 stampListData.total_point = rootObject.getString("total_point");
                 stampListData.title = rootObject.getString("title");
                 stampListData.message = rootObject.getString("message");
-                Log.d("test","startday:"+stampListData.start_date);
-                Log.d("test","endday:"+stampListData.end_date);
-                Log.d("test","point:"+stampListData.get_point);
-                Log.d("test","stampId:"+stampListData.stamp_id);
+                AppUtil.debugLog("test","startday:"+stampListData.start_date);
+                AppUtil.debugLog("test","endday:"+stampListData.end_date);
+                AppUtil.debugLog("test","point:"+stampListData.get_point);
+                AppUtil.debugLog("test","stampId:"+stampListData.stamp_id);
 
             } catch (JSONException e) {
                 e.printStackTrace();

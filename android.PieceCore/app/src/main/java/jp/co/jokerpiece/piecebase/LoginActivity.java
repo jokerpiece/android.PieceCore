@@ -5,18 +5,10 @@ import android.app.LoaderManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.Loader;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.text.SpannableStringBuilder;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -24,6 +16,7 @@ import jp.co.jokerpiece.piecebase.api.CheckDataAPI;
 import jp.co.jokerpiece.piecebase.config.Common;
 import jp.co.jokerpiece.piecebase.config.Config;
 import jp.co.jokerpiece.piecebase.data.CheckData;
+import jp.co.jokerpiece.piecebase.util.AppUtil;
 
 
 /**
@@ -66,7 +59,7 @@ public class LoginActivity extends Activity {
 //                if (uri != null) {
 //                    order_num = uri.getQueryParameter("order_num");
 //                    mailAddress = "";
-//                    Log.d("checkData",order_num);
+//                    AppUtil.debugLog("checkData",order_num);
 //                    getData();
 //                }
 //            }else{
@@ -86,8 +79,8 @@ public class LoginActivity extends Activity {
             ((Activity)context).getLoaderManager().initLoader(Config.loaderCnt, null, new LoaderManager.LoaderCallbacks<CheckData>() {
                 @Override
                 public Loader<CheckData> onCreateLoader(int id, Bundle args) {
-                    Log.d("checkData","order"+order_num);
-                    Log.d("checkData","mail"+mailAddress);
+                    AppUtil.debugLog("checkData", "order" + order_num);
+                    AppUtil.debugLog("checkData", "mail" + mailAddress);
                     CheckDataAPI checkDataAPI = new CheckDataAPI(context,mailAddress,order_num);
                     checkDataAPI.forceLoad();
                     return checkDataAPI;
@@ -123,13 +116,13 @@ public class LoginActivity extends Activity {
                             deciedBtn.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
-                                    Log.d("checkData", "decied");
+                                    AppUtil.debugLog("checkData", "decied");
                                     sbMail = (SpannableStringBuilder) etMailAddress.getText();
                                     sbOrderNum = (SpannableStringBuilder) etOrderNum.getText();
                                     mailAddress = sbMail.toString();
                                     order_num = sbOrderNum.toString();
-                                    Log.d("checkData", "order" + order_num);
-                                    Log.d("checkData", "mail" + mailAddress);
+                                    AppUtil.debugLog("checkData", "order" + order_num);
+                                    AppUtil.debugLog("checkData", "mail" + mailAddress);
                                     if (!mailAddress.equals("") && !order_num.equals("")) getData();
                                 }
                             });

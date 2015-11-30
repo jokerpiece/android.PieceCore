@@ -2,15 +2,14 @@ package jp.co.jokerpiece.piecebase.api;
 
 import android.content.AsyncTaskLoader;
 import android.content.Context;
-import android.util.Log;
 
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.util.HashMap;
 
-import jp.co.jokerpiece.piecebase.config.Common;
 import jp.co.jokerpiece.piecebase.config.Config;
 import jp.co.jokerpiece.piecebase.data.YoutubeData;
+import jp.co.jokerpiece.piecebase.util.AppUtil;
 import jp.co.jokerpiece.piecebase.util.HttpClient;
 
 /**
@@ -34,13 +33,13 @@ public class YoutubeAPI extends AsyncTaskLoader<YoutubeData> implements HttpClie
         String result = null;
         try {
             byte[] resData = HttpClient.getByteArrayFromUrlYoutube(Config.YOUTUBE_APIV3, parameter, this, token, file_path,fileName);
-            Log.d("RESULT", ""+resData);
+            AppUtil.debugLog("RESULT", ""+resData);
 
             if(resData == null){
                 return null;
             }
             result = new String(resData, "UTF-8");
-            Log.d("RESULT", result);
+            AppUtil.debugLog("RESULT", result);
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
             return null;

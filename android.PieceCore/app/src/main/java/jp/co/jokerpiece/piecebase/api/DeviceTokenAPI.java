@@ -43,7 +43,7 @@ public class DeviceTokenAPI extends AsyncTaskLoader<Boolean> implements HttpClie
             	return stat;
             }
             result = new String(resData, "UTF-8");
-            //Log.d("RESULT",result);
+            //AppUtil.debugLog("RESULT",result);
         } catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 			return stat;
@@ -53,7 +53,7 @@ public class DeviceTokenAPI extends AsyncTaskLoader<Boolean> implements HttpClie
 		}
         try {
 			JSONObject rootObject = new JSONObject(result);
-			//Log.d("JSON", rootObject.toString());
+			//AppUtil.debugLog("JSON", rootObject.toString());
 
 			int error_code = rootObject.getInt("error_code");
 			if(error_code == 0){

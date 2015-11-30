@@ -5,15 +5,10 @@ import android.app.LoaderManager;
 import android.content.Context;
 import android.content.Loader;
 import android.graphics.Bitmap;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
-import android.location.LocationProvider;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -26,11 +21,8 @@ import jp.co.jokerpiece.piecebase.api.QuestionInfoAPI;
 import jp.co.jokerpiece.piecebase.config.Common;
 import jp.co.jokerpiece.piecebase.config.Config;
 import jp.co.jokerpiece.piecebase.data.QuestionInfoData;
-import jp.co.jokerpiece.piecebase.util.App;
 import jp.co.jokerpiece.piecebase.util.AppUtil;
-import jp.co.jokerpiece.piecebase.util.BeaconUtil;
 import jp.co.jokerpiece.piecebase.util.DownloadImageSync;
-import jp.co.jokerpiece.piecebase.util.DownloadImageView;
 
 public class FittingFragment extends Fragment implements DownloadImageSync.DownloadImageSyncCallback, View.OnClickListener {
     private Context context;

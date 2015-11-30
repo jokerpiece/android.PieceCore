@@ -3,7 +3,6 @@ package jp.co.jokerpiece.piecebase;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.widget.ImageView;
 
 import org.json.JSONException;
@@ -12,6 +11,7 @@ import org.json.JSONObject;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import jp.co.jokerpiece.piecebase.util.AppUtil;
 import jp.co.jokerpiece.piecebase.util.RadarUtil;
 
 public class RadarActivity extends Activity {
@@ -61,7 +61,7 @@ public class RadarActivity extends Activity {
                     beaconScan();
                     RadarUtil.BeaconData beaconData = RadarUtil.getBeaconWithUUID(uuid,major,minor);
                     if(beaconData != null){
-                        Log.d("BeaconData", beaconData.getMajor());
+                        AppUtil.debugLog("BeaconData", beaconData.getMajor());
                         ImageView treasure = (ImageView)findViewById(R.id.ivTreasure);
                         int rssi = beaconData.getRssiAverage();
                         if(rssi > -65){

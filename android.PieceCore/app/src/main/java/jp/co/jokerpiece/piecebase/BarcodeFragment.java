@@ -5,9 +5,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.InflateException;
 import android.view.LayoutInflater;
@@ -39,7 +37,7 @@ public class BarcodeFragment extends Fragment {
                 @Override
                 public void getBarcodeNum(String barcodeNum) {
                     // バーコード番号を取得できた場合の処理
-                    Log.d(TAG, "barcodeNum: " + barcodeNum);
+                    AppUtil.debugLog(TAG, "barcodeNum: " + barcodeNum);
                     MainBaseActivity.tabHost.setCurrentTab(AppUtil.getPosition("Shopping"));
                     // TODO:バーコード番号を商品一覧画面に設定する処理を追加する必要があります
 
@@ -51,7 +49,7 @@ public class BarcodeFragment extends Fragment {
                 @Override
                 public void getBarcodeNum(String barcodeNum) {
                     // バーコード番号を取得できた場合の処理
-                    Log.d(TAG, "barcodeNum: " + barcodeNum);
+                    AppUtil.debugLog(TAG, "barcodeNum: " + barcodeNum);
                     ((Activity) context).runOnUiThread(new Runnable() {
                         @Override
                         public void run() {

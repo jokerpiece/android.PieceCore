@@ -1,14 +1,5 @@
 package jp.co.jokerpiece.piecebase;
 
-import jp.co.jokerpiece.piecebase.api.GetCouponAPI;
-import jp.co.jokerpiece.piecebase.config.Config;
-import jp.co.jokerpiece.piecebase.data.CouponListData;
-import jp.co.jokerpiece.piecebase.data.CouponListData.CouponData;
-import jp.co.jokerpiece.piecebase.data.GetCouponData;
-import jp.co.jokerpiece.piecebase.util.AppUtil;
-import jp.co.jokerpiece.piecebase.util.DownloadImageSync;
-import jp.co.jokerpiece.piecebase.util.DownloadImageSync.DownloadImageSyncCallback;
-import jp.co.jokerpiece.piecebase.util.ViewPagerIndicator;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.LoaderManager.LoaderCallbacks;
@@ -25,7 +16,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,6 +27,15 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
+
+import jp.co.jokerpiece.piecebase.api.GetCouponAPI;
+import jp.co.jokerpiece.piecebase.data.CouponListData;
+import jp.co.jokerpiece.piecebase.data.CouponListData.CouponData;
+import jp.co.jokerpiece.piecebase.data.GetCouponData;
+import jp.co.jokerpiece.piecebase.util.AppUtil;
+import jp.co.jokerpiece.piecebase.util.DownloadImageSync;
+import jp.co.jokerpiece.piecebase.util.DownloadImageSync.DownloadImageSyncCallback;
+import jp.co.jokerpiece.piecebase.util.ViewPagerIndicator;
 
 public class CouponImageFragment extends Fragment implements OnClickListener, DownloadImageSyncCallback {
 	public static final String TAG = "CouponImageFragment";
@@ -223,7 +222,7 @@ public class CouponImageFragment extends Fragment implements OnClickListener, Do
 					handler.postDelayed(new Runnable() {
 						@Override
 						public void run() {
-							Log.d(TAG, "CouponUseActivityにintentを投げます。(couponId: " + couponData.data_list.get(viewPager.getCurrentItem()).coupon_id + ")");
+							AppUtil.debugLog(TAG, "CouponUseActivityにintentを投げます。(couponId: " + couponData.data_list.get(viewPager.getCurrentItem()).coupon_id + ")");
 
                             viewPager.setVisibility(View.GONE);
                             viewPagerIndicator.setVisibility(View.GONE);

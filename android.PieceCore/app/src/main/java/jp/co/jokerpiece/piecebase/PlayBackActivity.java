@@ -7,11 +7,11 @@ import android.content.Loader;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.util.Log;
 
 import jp.co.jokerpiece.piecebase.api.GetFileDataAPI;
 import jp.co.jokerpiece.piecebase.config.Config;
 import jp.co.jokerpiece.piecebase.data.GetFileData;
+import jp.co.jokerpiece.piecebase.util.AppUtil;
 
 /**
  * Created by wenHsin on 2015/11/19.
@@ -60,7 +60,7 @@ public class PlayBackActivity extends FragmentActivity {
                         }
                     }
 
-                    Log.d("playback", order_id);
+                    AppUtil.debugLog("playback", order_id);
                     getData();
                 }else if(uri.getHost().equals("padlock")){
                     order_id = uri.getQueryParameter("order_num");

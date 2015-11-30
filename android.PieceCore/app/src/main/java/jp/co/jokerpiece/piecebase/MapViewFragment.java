@@ -3,51 +3,37 @@ package jp.co.jokerpiece.piecebase;
 import android.app.LoaderManager;
 import android.content.Context;
 import android.content.Loader;
-import android.location.Criteria;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
+import android.location.LocationProvider;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.PagerTabStrip;
-import android.support.v4.view.ViewPager;
 import android.view.InflateException;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-
-import java.util.ArrayList;
-import java.util.List;
 import android.widget.ListView;
 
-import com.google.android.gms.maps.MapFragment;
-import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
-import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-
-
+import java.util.ArrayList;
 
 import jp.co.jokerpiece.piecebase.api.MapPositionListAPI;
 import jp.co.jokerpiece.piecebase.config.Common;
 import jp.co.jokerpiece.piecebase.config.Config;
-import jp.co.jokerpiece.piecebase.data.ShopListData.ShopData;
 import jp.co.jokerpiece.piecebase.data.ShopListData;
+import jp.co.jokerpiece.piecebase.data.ShopListData.ShopData;
 import jp.co.jokerpiece.piecebase.util.AppUtil;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
-import android.location.LocationProvider;
-import android.util.Log;
 
 /**
  * Created by kaku on 2015/04/13.
@@ -81,8 +67,8 @@ public class MapViewFragment extends Fragment implements OnItemClickListener ,Lo
 //    private LocationListener locationListener = new LocationListener() {
 //        @Override
 //        public void onLocationChanged(Location location) {
-//            Log.d(TAG, "latitude: " + location.getLatitude());
-//            Log.d(TAG, "longitude: " + location.getLongitude());
+//            AppUtil.debugLog(TAG, "latitude: " + location.getLatitude());
+//            AppUtil.debugLog(TAG, "longitude: " + location.getLongitude());
 //        }
 //
 //        @Override
@@ -155,8 +141,8 @@ public class MapViewFragment extends Fragment implements OnItemClickListener ,Lo
 //
 //            old_latitude=location.getLatitude();
 //            old_longitude=location.getLongitude();
-//            Log.d("old","lat :  "+old_latitude);
-//            Log.d("old","long :  "+old_longitude);
+//            AppUtil.debugLog("old","lat :  "+old_latitude);
+//            AppUtil.debugLog("old","long :  "+old_longitude);
 //
 //            this.onLocationChanged(location);
 //        }
@@ -332,14 +318,14 @@ public class MapViewFragment extends Fragment implements OnItemClickListener ,Lo
 
     @Override
     public void onLocationChanged(Location location) {
-        Log.v("----------", "----------");
-        Log.v("Latitude", String.valueOf(location.getLatitude()));
-        Log.v("Longitude", String.valueOf(location.getLongitude()));
-        Log.v("Accuracy", String.valueOf(location.getAccuracy()));
-        Log.v("Altitude", String.valueOf(location.getAltitude()));
-        Log.v("Time", String.valueOf(location.getTime()));
-        Log.v("Speed", String.valueOf(location.getSpeed()));
-        Log.v("Bearing", String.valueOf(location.getBearing()));
+        AppUtil.debugLog("----------", "----------");
+        AppUtil.debugLog("Latitude", String.valueOf(location.getLatitude()));
+        AppUtil.debugLog("Longitude", String.valueOf(location.getLongitude()));
+        AppUtil.debugLog("Accuracy", String.valueOf(location.getAccuracy()));
+        AppUtil.debugLog("Altitude", String.valueOf(location.getAltitude()));
+        AppUtil.debugLog("Time", String.valueOf(location.getTime()));
+        AppUtil.debugLog("Speed", String.valueOf(location.getSpeed()));
+        AppUtil.debugLog("Bearing", String.valueOf(location.getBearing()));
 
 
         LatLng lat = new LatLng(location.getLatitude(), location.getLongitude());
@@ -357,13 +343,13 @@ public class MapViewFragment extends Fragment implements OnItemClickListener ,Lo
     public void onStatusChanged(String provider, int status, Bundle extras) {
         switch (status) {
             case LocationProvider.AVAILABLE:
-                Log.v("Status", "AVAILABLE");
+                AppUtil.debugLog("Status", "AVAILABLE");
                 break;
             case LocationProvider.OUT_OF_SERVICE:
-                Log.v("Status", "OUT_OF_SERVICE");
+                AppUtil.debugLog("Status", "OUT_OF_SERVICE");
                 break;
             case LocationProvider.TEMPORARILY_UNAVAILABLE:
-                Log.v("Status", "TEMPORARILY_UNAVAILABLE");
+                AppUtil.debugLog("Status", "TEMPORARILY_UNAVAILABLE");
                 break;
         }
 

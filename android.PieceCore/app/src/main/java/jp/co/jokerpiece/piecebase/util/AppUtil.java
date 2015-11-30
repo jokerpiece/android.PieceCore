@@ -1,23 +1,33 @@
 package jp.co.jokerpiece.piecebase.util;
 
-import jp.co.jokerpiece.piecebase.MainBaseActivity;
-import jp.co.jokerpiece.piecebase.MainBaseActivity.TabInfo;
-import jp.co.jokerpiece.piecebase.config.Config;
-
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Point;
-import android.util.Log;
 import android.view.Display;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 
+import jp.co.jokerpiece.piecebase.BuildConfig;
+import jp.co.jokerpiece.piecebase.MainBaseActivity;
+import jp.co.jokerpiece.piecebase.MainBaseActivity.TabInfo;
+import jp.co.jokerpiece.piecebase.config.Config;
+
 public class AppUtil {
+    /**
+     * デバッグログ出力
+     *
+     * @param tag
+     * @param message
+     */
+    public static void debugLog(String tag, String message) {
+        if (BuildConfig.DEBUG && tag != null && message != null) {
+            AppUtil.debugLog(tag, message);
+        }
+    }
 
 	public static void setTitleOfActionBar(ActionBar actionBar, int resId) {
 		actionBar.setTitle(resId);
@@ -90,12 +100,11 @@ public class AppUtil {
     public static void setPrefString(Context context, String key, String value) {
         SharedPreferences pref = context.getSharedPreferences(Config.PREF_KEY, Activity.MODE_PRIVATE | Activity.MODE_MULTI_PROCESS);
         SharedPreferences.Editor editor = pref.edit();
-//        Log.d(TAG, "**********");
-//        Log.d(TAG, "プリファレンスに設定します。");
-//        Log.d(TAG, "(key, value) = (" + key + ", " + value + ")");
-//        Log.d(TAG, "**********");
+//        AppUtil.debugLog(TAG, "**********");
+//        AppUtil.debugLog(TAG, "プリファレンスに設定します。");
+//        AppUtil.debugLog(TAG, "(key, value) = (" + key + ", " + value + ")");
+//        AppUtil.debugLog(TAG, "**********");
         editor.putString(key, value);
         editor.commit();
     }
-
 }

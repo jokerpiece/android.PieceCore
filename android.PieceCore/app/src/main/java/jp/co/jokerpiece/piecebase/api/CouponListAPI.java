@@ -1,5 +1,12 @@
 package jp.co.jokerpiece.piecebase.api;
 
+import android.content.AsyncTaskLoader;
+import android.content.Context;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
@@ -11,14 +18,6 @@ import jp.co.jokerpiece.piecebase.data.CouponListData;
 import jp.co.jokerpiece.piecebase.data.CouponListData.CouponData;
 import jp.co.jokerpiece.piecebase.util.HttpClient;
 import jp.co.jokerpiece.piecebase.util.HttpClient.HttpClientInterface;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import android.content.AsyncTaskLoader;
-import android.content.Context;
-import android.util.Log;
 
 public class CouponListAPI extends AsyncTaskLoader<CouponListData> implements HttpClientInterface {
 	int mode = -1;
@@ -58,7 +57,7 @@ public class CouponListAPI extends AsyncTaskLoader<CouponListData> implements Ht
             	return null;
             }
             result = new String(resData, "UTF-8");
-            //Log.d("RESULT",result);        	
+            //AppUtil.debugLog("RESULT",result);
         } catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 			return null;
@@ -68,7 +67,7 @@ public class CouponListAPI extends AsyncTaskLoader<CouponListData> implements Ht
 		}
         try {
 			JSONObject rootObject = new JSONObject(result);
-			//Log.d("JSON", rootObject.toString());
+			//AppUtil.debugLog("JSON", rootObject.toString());
 
 			int error_code = rootObject.getInt("error_code");
 			if(error_code != 0){

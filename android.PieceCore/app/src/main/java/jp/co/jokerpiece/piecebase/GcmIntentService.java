@@ -1,13 +1,5 @@
 package jp.co.jokerpiece.piecebase;
 
-import java.util.HashMap;
-import java.util.Iterator;
-
-import jp.co.jokerpiece.piecebase.data.NewsListData;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.app.IntentService;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -15,9 +7,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
-import android.util.Log;
 
 import com.google.android.gms.gcm.GoogleCloudMessaging;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Iterator;
+
+import jp.co.jokerpiece.piecebase.data.NewsListData;
+import jp.co.jokerpiece.piecebase.util.AppUtil;
 
 public class GcmIntentService extends IntentService {
     public static final String TAG = "GcmIntentService";
@@ -37,11 +37,11 @@ public class GcmIntentService extends IntentService {
 
         if (!extras.isEmpty()) {
             if (GoogleCloudMessaging.MESSAGE_TYPE_SEND_ERROR.equals(messageType)) {
-                Log.d("LOG","messageType(error): " + messageType + ",body:" + extras.toString());
+                AppUtil.debugLog("LOG", "messageType(error): " + messageType + ",body:" + extras.toString());
             } else if (GoogleCloudMessaging.MESSAGE_TYPE_DELETED.equals(messageType)) {
-                Log.d("LOG","messageType(deleted): " + messageType + ",body:" + extras.toString());
+                AppUtil.debugLog("LOG", "messageType(deleted): " + messageType + ",body:" + extras.toString());
             } else if (GoogleCloudMessaging.MESSAGE_TYPE_MESSAGE.equals(messageType)) {
-                Log.d("LOG","messageType(message): " + messageType + ",body:" + extras.toString());
+                AppUtil.debugLog("LOG", "messageType(message): " + messageType + ",body:" + extras.toString());
 
                 Iterator<String> it = extras.keySet().iterator();
                 String result = "";
@@ -64,7 +64,7 @@ public class GcmIntentService extends IntentService {
     }
 
     public HashMap<String, String> parseJSON(String result) {
-        //Log.d(TAG, "result= " + result);
+        //AppUtil.debugLog(TAG, "result= " + result);
         HashMap<String, String> map = new HashMap<String, String>();
 
         try {
@@ -79,14 +79,14 @@ public class GcmIntentService extends IntentService {
             e.printStackTrace();
         }
 
-        Log.d(TAG, "map= " + map);
+        AppUtil.debugLog(TAG, "map= " + map);
         return map;
     }
 
     private void sendNotification(HashMap<String, String> map) {
         String title = getBlankIfNull(map.get("title"));
         String msg = getBlankIfNull(map.get("alert"));
-        Log.d("sendNotification", "title= " + title + "\nmsg= " + msg);
+        AppUtil.debugLog("sendNotification", "title= " + title + "\nmsg= " + msg);
         mNotificationManager = (NotificationManager)
                 this.getSystemService(Context.NOTIFICATION_SERVICE);
 
@@ -113,19 +113,19 @@ public class GcmIntentService extends IntentService {
                 intent = new Intent(this, MainBaseActivity.class);
                 intent.putExtra("type", getBlankIfNull(map.get("type")));
                 intent.putExtra("newsId", getBlankIfNull(map.get("id")));
-                Log.d(TAG, "type: Infomation, newsId: " + getBlankIfNull(map.get("id")));
+                AppUtil.debugLog(TAG, "type: Infomation, newsId: " + getBlankIfNull(map.get("id")));
                 break;
             case NewsListData.NEWS_DATA_TYPE_FLYER + "":
                 intent = new Intent(this, MainBaseActivity.class);
                 intent.putExtra("type", getBlankIfNull(map.get("type")));
                 intent.putExtra("flyer_ID", getBlankIfNull(map.get("id")));
-                Log.d(TAG, "type: Flyer, flyer_ID: " + getBlankIfNull(map.get("id")));
+                AppUtil.debugLog(TAG, "type: Flyer, flyer_ID: " + getBlankIfNull(map.get("id")));
                 break;
             case NewsListData.NEWS_DATA_TYPE_COUPON + "":
                 intent = new Intent(this, MainBaseActivity.class);
                 intent.putExtra("type", getBlankIfNull(map.get("type")));
                 intent.putExtra("coupon_code", getBlankIfNull(map.get("id")));
-                Log.d(TAG, "type: Coupon, coupon_ID: " + getBlankIfNull(map.get("id")));
+                AppUtil.debugLog(TAG, "type: Coupon, coupon_ID: " + getBlankIfNull(map.get("id")));
                 break;
             default:
                 intent = new Intent(this, MainBaseActivity.class);

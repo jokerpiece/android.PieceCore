@@ -1,5 +1,12 @@
 package jp.co.jokerpiece.piecebase.api;
 
+import android.content.AsyncTaskLoader;
+import android.content.Context;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
@@ -8,16 +15,9 @@ import java.util.HashMap;
 import jp.co.jokerpiece.piecebase.config.Common;
 import jp.co.jokerpiece.piecebase.config.Config;
 import jp.co.jokerpiece.piecebase.data.NewsInfoData;
+import jp.co.jokerpiece.piecebase.util.AppUtil;
 import jp.co.jokerpiece.piecebase.util.HttpClient;
 import jp.co.jokerpiece.piecebase.util.HttpClient.HttpClientInterface;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import android.content.AsyncTaskLoader;
-import android.content.Context;
-import android.util.Log;
 
 public class NewsInfoAPI extends AsyncTaskLoader<NewsInfoData> implements HttpClientInterface {
 	private String newsId;
@@ -42,7 +42,7 @@ public class NewsInfoAPI extends AsyncTaskLoader<NewsInfoData> implements HttpCl
             	return null;
             }
             result = new String(resData, "UTF-8");
-            Log.d("RESULT",result);
+            AppUtil.debugLog("RESULT", result);
         } catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 			return null;
@@ -52,7 +52,7 @@ public class NewsInfoAPI extends AsyncTaskLoader<NewsInfoData> implements HttpCl
 		}
         try {
 			JSONObject rootObject = new JSONObject(result);
-			Log.d("JSON", rootObject.toString());
+			AppUtil.debugLog("JSON", rootObject.toString());
 			int error_code = rootObject.getInt("error_code");
 			if(error_code != 0){
 				return null;
@@ -79,7 +79,7 @@ public class NewsInfoAPI extends AsyncTaskLoader<NewsInfoData> implements HttpCl
 				}
 				newsInfoData.data_list.add(data);
 			}
-			//Log.d("newsInfoData", newsInfoData.toString());
+			//AppUtil.debugLog("newsInfoData", newsInfoData.toString());
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}

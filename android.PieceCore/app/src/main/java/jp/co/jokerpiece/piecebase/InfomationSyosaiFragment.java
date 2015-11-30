@@ -1,23 +1,12 @@
 package jp.co.jokerpiece.piecebase;
 
-import jp.co.jokerpiece.piecebase.api.NewsInfoAPI;
-import jp.co.jokerpiece.piecebase.config.Common;
-import jp.co.jokerpiece.piecebase.config.Config;
-import jp.co.jokerpiece.piecebase.data.NewsInfoData;
-import jp.co.jokerpiece.piecebase.util.App;
-import jp.co.jokerpiece.piecebase.util.AppUtil;
-import jp.co.jokerpiece.piecebase.util.DownloadImageSync;
-import jp.co.jokerpiece.piecebase.util.DownloadImageView;
-
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.Context;
 import android.content.Loader;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.text.util.Linkify;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -29,6 +18,13 @@ import android.widget.TextView;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import jp.co.jokerpiece.piecebase.api.NewsInfoAPI;
+import jp.co.jokerpiece.piecebase.config.Common;
+import jp.co.jokerpiece.piecebase.config.Config;
+import jp.co.jokerpiece.piecebase.data.NewsInfoData;
+import jp.co.jokerpiece.piecebase.util.AppUtil;
+import jp.co.jokerpiece.piecebase.util.DownloadImageSync;
 
 public class InfomationSyosaiFragment extends Fragment implements DownloadImageSync.DownloadImageSyncCallback {
 	Context context;

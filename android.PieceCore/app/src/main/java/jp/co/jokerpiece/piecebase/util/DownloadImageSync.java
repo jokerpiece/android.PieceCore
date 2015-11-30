@@ -3,14 +3,10 @@ package jp.co.jokerpiece.piecebase.util;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.LoaderManager.LoaderCallbacks;
 import android.support.v4.content.Loader;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-
-import jp.co.jokerpiece.piecebase.InfomationSyosaiFragment;
 
 
 public class DownloadImageSync implements LoaderCallbacks<Bitmap>{
@@ -45,7 +41,7 @@ public class DownloadImageSync implements LoaderCallbacks<Bitmap>{
                     imageView.setImageBitmap(data);
                 }
             }else{
-                //Log.d("TAG", imageView.getTag().toString()+":"+tag);
+                //AppUtil.debugLog("TAG", imageView.getTag().toString()+":"+tag);
                 callback.setImageCallbackWithURL(data, tag);
                 if(imageView.getTag().toString().equals(tag)){
                     imageView.setImageBitmap(data);
@@ -72,7 +68,7 @@ public class DownloadImageSync implements LoaderCallbacks<Bitmap>{
                 }
                 BitmapCache.newInstance().putBitmap(imageURL, data);
             }else{
-                //Log.d("TAG", imageView.getTag().toString() + ":" + tag);
+                //AppUtil.debugLog("TAG", imageView.getTag().toString() + ":" + tag);
                 callback.setImageCallbackWithURL(data, tag);
                 if(imageView.getTag().toString().equals(tag)){
                     imageView.setImageBitmap(data);

@@ -1,31 +1,5 @@
 package jp.co.jokerpiece.piecebase;
 
-import java.io.UnsupportedEncodingException;
-import java.net.MalformedURLException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Timer;
-import java.util.TimerTask;
-
-import jp.co.jokerpiece.piecebase.api.CouponListAPI;
-import jp.co.jokerpiece.piecebase.api.FlyerListAPI;
-import jp.co.jokerpiece.piecebase.api.NewsListAPI;
-import jp.co.jokerpiece.piecebase.config.Common;
-import jp.co.jokerpiece.piecebase.config.Config;
-import jp.co.jokerpiece.piecebase.data.CouponListData;
-import jp.co.jokerpiece.piecebase.data.FlyerData;
-import jp.co.jokerpiece.piecebase.data.FlyerData.FlyerHeaderData;
-import jp.co.jokerpiece.piecebase.data.NewsListData;
-import jp.co.jokerpiece.piecebase.data.NewsListData.NewsData;
-import jp.co.jokerpiece.piecebase.data.SaveData;
-import jp.co.jokerpiece.piecebase.util.App;
-import jp.co.jokerpiece.piecebase.util.AppUtil;
-import jp.co.jokerpiece.piecebase.util.BitmapCache;
-import jp.co.jokerpiece.piecebase.util.BitmapDownloader;
-import jp.co.jokerpiece.piecebase.util.DownloadImageView;
-import jp.co.jokerpiece.piecebase.util.HttpClient;
-import jp.co.jokerpiece.piecebase.util.ViewPagerIndicator;
-
 import android.app.Activity;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.Context;
@@ -36,15 +10,12 @@ import android.graphics.Point;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.util.Log;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -58,6 +29,22 @@ import android.widget.Button;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+
+import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import jp.co.jokerpiece.piecebase.api.FlyerListAPI;
+import jp.co.jokerpiece.piecebase.config.Common;
+import jp.co.jokerpiece.piecebase.config.Config;
+import jp.co.jokerpiece.piecebase.data.FlyerData;
+import jp.co.jokerpiece.piecebase.data.FlyerData.FlyerHeaderData;
+import jp.co.jokerpiece.piecebase.data.SaveData;
+import jp.co.jokerpiece.piecebase.util.AppUtil;
+import jp.co.jokerpiece.piecebase.util.BitmapCache;
+import jp.co.jokerpiece.piecebase.util.BitmapDownloader;
+import jp.co.jokerpiece.piecebase.util.DownloadImageView;
+import jp.co.jokerpiece.piecebase.util.ViewPagerIndicator;
 
 public class FlyerFragment extends BaseFragment implements OnPageChangeListener{
 	Context context;
@@ -367,7 +354,7 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener{
 	public void onDestroy() {
 		// TODO 自動生成されたメソッド・スタブ
 		super.onDestroy();
-		Log.d("FlyerActivity", "onDestroy");
+		AppUtil.debugLog("FlyerActivity", "onDestroy");
 	}
 
     @Override

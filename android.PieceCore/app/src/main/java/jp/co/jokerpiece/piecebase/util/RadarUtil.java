@@ -14,13 +14,10 @@ import android.bluetooth.le.ScanSettings;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
-import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-
-import jp.co.jokerpiece.piecebase.config.Common;
 
 /**
  * iBeacon受信用メソッド群
@@ -51,7 +48,7 @@ public class RadarUtil {
      */
     public static void init(Activity context) {
         if (!isGraterThanJellyBeanMr1()) {
-            Log.d(TAG, "ビーコン検索を行うにはandroid4.3以上が必要です。");
+            AppUtil.debugLog(TAG, "ビーコン検索を行うにはandroid4.3以上が必要です。");
             return;
         }
 
@@ -120,7 +117,7 @@ public class RadarUtil {
         if(BeaconUtilScanActive) { return; }
         BeaconUtilScanActive = true;
         // ビーコン検索中ダイアログの表示
-        Log.d(TAG, "チェックインを探しています...");
+        AppUtil.debugLog(TAG, "チェックインを探しています...");
         pd = new ProgressDialog(context);
         pd.setTitle("チェックインを探しています...");
 //        pd.setCancelable(false);
@@ -210,14 +207,14 @@ public class RadarUtil {
                 String uuid = convertToUuid(getScanData(9, 24, scanRecord));
                 String major = getScanData(25, 26, scanRecord);
                 String minor = getScanData(27, 28, scanRecord);
-                Log.d("iBeaconSample", "-------------------------------------");
-//							Log.d("iBeaconSample", "device found::" + device.getName());
-//							Log.d("iBeaconSample", "uuid::" + device.getUuids());
-//							Log.d("iBeaconSample", "address::" + device.getAddress());
-                Log.d("iBeaconSample", "uuid::" + uuid);
-                Log.d("iBeaconSample", "major::" + major);
-                Log.d("iBeaconSample", "minor::" + minor);
-                Log.d("iBeaconSample", "rssi::" + rssi);
+                AppUtil.debugLog("iBeaconSample", "-------------------------------------");
+//							AppUtil.debugLog("iBeaconSample", "device found::" + device.getName());
+//							AppUtil.debugLog("iBeaconSample", "uuid::" + device.getUuids());
+//							AppUtil.debugLog("iBeaconSample", "address::" + device.getAddress());
+                AppUtil.debugLog("iBeaconSample", "uuid::" + uuid);
+                AppUtil.debugLog("iBeaconSample", "major::" + major);
+                AppUtil.debugLog("iBeaconSample", "minor::" + minor);
+                AppUtil.debugLog("iBeaconSample", "rssi::" + rssi);
 
                 BeaconData bd = new BeaconData(uuid, major, minor, rssi);
                 int x = containInBeaconList(bd);
@@ -255,14 +252,14 @@ public class RadarUtil {
         }
         if (ret != null) {
             // ログの出力
-            Log.d("NearestBeacon", "-------------------------------------");
-            Log.d("NearestBeacon", "検知できたビーコンの数: " + beaconList.size());
-            Log.d("NearestBeacon", "検知できたビーコンの中で一番近いものは以下の通り:");
-            Log.d("NearestBeacon", "uuid::" + ret.getUuid());
-            Log.d("NearestBeacon", "major::" + ret.getMajor());
-            Log.d("NearestBeacon", "minor::" + ret.getMinor());
-            Log.d("NearestBeacon", "rssi::" + ret.getRssiAverage());
-            Log.d("NearestBeacon", "-------------------------------------");
+            AppUtil.debugLog("NearestBeacon", "-------------------------------------");
+            AppUtil.debugLog("NearestBeacon", "検知できたビーコンの数: " + beaconList.size());
+            AppUtil.debugLog("NearestBeacon", "検知できたビーコンの中で一番近いものは以下の通り:");
+            AppUtil.debugLog("NearestBeacon", "uuid::" + ret.getUuid());
+            AppUtil.debugLog("NearestBeacon", "major::" + ret.getMajor());
+            AppUtil.debugLog("NearestBeacon", "minor::" + ret.getMinor());
+            AppUtil.debugLog("NearestBeacon", "rssi::" + ret.getRssiAverage());
+            AppUtil.debugLog("NearestBeacon", "-------------------------------------");
         }
         return ret;
     }
@@ -304,14 +301,14 @@ public class RadarUtil {
         }
         if (ret != null) {
             // ログの出力
-            Log.d("NearestBeacon", "-------------------------------------");
-            Log.d("NearestBeacon", "検知できたビーコンの数: " + beaconList.size());
-            Log.d("NearestBeacon", "検知できたビーコンの中で一番近いものは以下の通り:");
-            Log.d("NearestBeacon", "uuid::" + ret.getUuid());
-            Log.d("NearestBeacon", "major::" + ret.getMajor());
-            Log.d("NearestBeacon", "minor::" + ret.getMinor());
-            Log.d("NearestBeacon", "rssi::" + ret.getRssiAverage());
-            Log.d("NearestBeacon", "-------------------------------------");
+            AppUtil.debugLog("NearestBeacon", "-------------------------------------");
+            AppUtil.debugLog("NearestBeacon", "検知できたビーコンの数: " + beaconList.size());
+            AppUtil.debugLog("NearestBeacon", "検知できたビーコンの中で一番近いものは以下の通り:");
+            AppUtil.debugLog("NearestBeacon", "uuid::" + ret.getUuid());
+            AppUtil.debugLog("NearestBeacon", "major::" + ret.getMajor());
+            AppUtil.debugLog("NearestBeacon", "minor::" + ret.getMinor());
+            AppUtil.debugLog("NearestBeacon", "rssi::" + ret.getRssiAverage());
+            AppUtil.debugLog("NearestBeacon", "-------------------------------------");
         }
         return ret;
     }
@@ -478,13 +475,13 @@ public class RadarUtil {
         // メソッド
         public String getMajorByDecimalDigit() {
             int decimal = hexa2Decimal(major);
-            Log.d("BeaconData", "(major:" + major + ") => (decimal:" + decimal + ")");
+            AppUtil.debugLog("BeaconData", "(major:" + major + ") => (decimal:" + decimal + ")");
             return decimal + "";
         }
 
         public String getMinorByDecimalDigit() {
             int decimal = hexa2Decimal(minor);
-            Log.d("BeaconData", "(minor:" + minor + ") => (decimal:" + decimal + ")");
+            AppUtil.debugLog("BeaconData", "(minor:" + minor + ") => (decimal:" + decimal + ")");
             return decimal + "";
         }
 

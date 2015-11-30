@@ -1,7 +1,6 @@
 package jp.co.jokerpiece.piecebase.util;
 
 import android.graphics.Bitmap;
-import android.util.Log;
 import android.util.LruCache;
 
 public class BitmapCache {

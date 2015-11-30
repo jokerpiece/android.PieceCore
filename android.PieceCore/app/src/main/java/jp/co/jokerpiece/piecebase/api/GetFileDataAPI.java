@@ -2,7 +2,6 @@ package jp.co.jokerpiece.piecebase.api;
 
 import android.content.AsyncTaskLoader;
 import android.content.Context;
-import android.util.Log;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -39,7 +38,7 @@ public class GetFileDataAPI extends AsyncTaskLoader<GetFileData> implements Http
             byte[] resData = HttpClient.getByteArrayFromUrlPost(Config.SENDID_GETFILEDATA,parameter,this);
             if(resData == null) return null;
             result = new String(resData,"UTF-8");
- //           Log.d("playback",result);
+ //           AppUtil.debugLog("playback",result);
         } catch (UnsupportedEncodingException | MalformedURLException e) {
             e.printStackTrace();
         }

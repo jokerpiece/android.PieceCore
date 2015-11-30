@@ -3,7 +3,6 @@ package jp.co.jokerpiece.piecebase.util;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.hardware.Camera;
-import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
@@ -78,7 +77,7 @@ public class CameraSurfaceView extends SurfaceView implements SurfaceHolder.Call
 
             if (facing == Camera.CameraInfo.CAMERA_FACING_BACK) {
                 // 後部についているカメラの場合
-                Log.d(TAG, "cameraId: " + Integer.toString(i)
+                AppUtil.debugLog(TAG, "cameraId: " + Integer.toString(i)
                         + ", this is a back-facing camera");
                 ret = i;
                 break;
@@ -143,7 +142,7 @@ public class CameraSurfaceView extends SurfaceView implements SurfaceHolder.Call
 
     @Override
     public void onAutoFocus(boolean success, final Camera camera) {
-        Log.d(TAG, "focus");
+        AppUtil.debugLog(TAG, "focus");
 
         if (success) {
             camera.autoFocus(null);
@@ -164,19 +163,19 @@ public class CameraSurfaceView extends SurfaceView implements SurfaceHolder.Call
             int result = scanner.scanImage(barcode);
 
             if (result != 0) {
-                Log.d(TAG, "バーコードスキャンに成功しました。");
+                AppUtil.debugLog(TAG, "バーコードスキャンに成功しました。");
                 SymbolSet syms = scanner.getResults();
                 for (Symbol sym : syms) {
                     String x = sym.getData();
 //                    Common.showToast(getContext(), "sym.getData(): " + x);
-                    Log.d(TAG, "sym.getData(): " + x);
+                    AppUtil.debugLog(TAG, "sym.getData(): " + x);
                     if (x != null && !x.contains("http")) {
                         // Fragmentにバーコード番号を返す
                         callback.getBarcodeNum(x);
                     }
                 }
             } else {
-                Log.d(TAG, "バーコードスキャンに失敗しました。");
+                AppUtil.debugLog(TAG, "バーコードスキャンに失敗しました。");
             }
         } catch (Exception e) {
             e.printStackTrace();

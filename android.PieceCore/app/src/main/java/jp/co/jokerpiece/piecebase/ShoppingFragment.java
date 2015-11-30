@@ -1,5 +1,24 @@
 package jp.co.jokerpiece.piecebase;
 
+import android.app.Activity;
+import android.app.LoaderManager.LoaderCallbacks;
+import android.content.Context;
+import android.content.Loader;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.LoaderManager;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ListView;
+
 import java.util.ArrayList;
 
 import jp.co.jokerpiece.piecebase.api.CategoryListAPI;
@@ -8,35 +27,10 @@ import jp.co.jokerpiece.piecebase.config.Config;
 import jp.co.jokerpiece.piecebase.data.CategoryListData;
 import jp.co.jokerpiece.piecebase.data.CategoryListData.CategoryData;
 import jp.co.jokerpiece.piecebase.data.SaveData;
-import jp.co.jokerpiece.piecebase.util.App;
 import jp.co.jokerpiece.piecebase.util.AppUtil;
 import jp.co.jokerpiece.piecebase.util.BitmapCache;
 import jp.co.jokerpiece.piecebase.util.BitmapDownloader;
-import jp.co.jokerpiece.piecebase.util.DownloadImageSync;
 import jp.co.jokerpiece.piecebase.util.DownloadImageView;
-
-import android.app.Activity;
-import android.app.LoaderManager.LoaderCallbacks;
-import android.content.Context;
-import android.content.Loader;
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.app.LoaderManager;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Adapter;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 
 public class ShoppingFragment extends BaseFragment implements OnItemClickListener {
 	Context context;
@@ -54,7 +48,7 @@ public class ShoppingFragment extends BaseFragment implements OnItemClickListene
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
         context = getActivity();
-        Log.d("mAdapter", "6");
+        AppUtil.debugLog("mAdapter", "6");
         Common.setCurrentFragment(Config.ShoppingFragmentNum);
 		View rootView = inflater.inflate(R.layout.fragment_shopping, container, false);
 

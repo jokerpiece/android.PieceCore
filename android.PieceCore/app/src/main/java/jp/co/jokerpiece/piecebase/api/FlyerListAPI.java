@@ -1,5 +1,12 @@
 package jp.co.jokerpiece.piecebase.api;
 
+import android.content.AsyncTaskLoader;
+import android.content.Context;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
@@ -11,14 +18,6 @@ import jp.co.jokerpiece.piecebase.data.FlyerData.FlyerBodyData;
 import jp.co.jokerpiece.piecebase.data.FlyerData.FlyerHeaderData;
 import jp.co.jokerpiece.piecebase.util.HttpClient;
 import jp.co.jokerpiece.piecebase.util.HttpClient.HttpClientInterface;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import android.content.AsyncTaskLoader;
-import android.content.Context;
-import android.util.Log;
 
 public class FlyerListAPI extends AsyncTaskLoader<FlyerData> implements HttpClientInterface {
 	int flyerID = -1;
@@ -43,13 +42,13 @@ public class FlyerListAPI extends AsyncTaskLoader<FlyerData> implements HttpClie
         }
         String result = null;
         try {
-//			Log.d("Parameter",parameter.toString());
+//			AppUtil.debugLog("Parameter",parameter.toString());
             byte[] resData = HttpClient.getByteArrayFromUrlPost(Config.SENDID_FLIYER_LIST, parameter,this);
             if(resData == null){
             	return null;
             }
             result = new String(resData, "UTF-8");
-            //Log.d("RESULT", result);
+            //AppUtil.debugLog("RESULT", result);
         } catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 			return null;
@@ -59,7 +58,7 @@ public class FlyerListAPI extends AsyncTaskLoader<FlyerData> implements HttpClie
 		}
         try {
 			JSONObject rootObject = new JSONObject(result);
-			//Log.d("JSON", rootObject.toString());
+			//AppUtil.debugLog("JSON", rootObject.toString());
 
 			int error_code = rootObject.getInt("error_code");
 			if(error_code != 0){

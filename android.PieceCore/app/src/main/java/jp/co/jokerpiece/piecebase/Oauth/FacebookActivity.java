@@ -7,7 +7,6 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -68,12 +67,12 @@ public class FacebookActivity extends FragmentActivity {
     private FacebookCallback<Sharer.Result> shareCallback = new FacebookCallback<Sharer.Result>() {
         @Override
         public void onCancel() {
-            //Log.d("HelloFacebook", "Canceled");
+            //AppUtil.debugLog("HelloFacebook", "Canceled");
         }
 
         @Override
         public void onError(FacebookException error) {
-         //   Log.d("HelloFacebook", String.format("Error: %s", error.toString()));
+         //   AppUtil.debugLog("HelloFacebook", String.format("Error: %s", error.toString()));
 //            String title = getString(R.string.error);
 //            String alertMessage = error.getMessage();
 //            showResult(title, alertMessage);
@@ -81,7 +80,7 @@ public class FacebookActivity extends FragmentActivity {
 
         @Override
         public void onSuccess(Sharer.Result result) {
-           // Log.d("HelloFacebook", "Success!");
+           // AppUtil.debugLog("HelloFacebook", "Success!");
 //            if (result.getPostId() != null) {
 //                String title = getString(R.string.success);
 //                String id = result.getPostId();

@@ -1,20 +1,5 @@
 package jp.co.jokerpiece.piecebase;
 
-import java.util.ArrayList;
-
-import jp.co.jokerpiece.piecebase.api.CouponListAPI;
-import jp.co.jokerpiece.piecebase.config.Common;
-import jp.co.jokerpiece.piecebase.config.Config;
-import jp.co.jokerpiece.piecebase.data.CategoryListData;
-import jp.co.jokerpiece.piecebase.data.CouponListData;
-import jp.co.jokerpiece.piecebase.data.CouponListData.CouponData;
-import jp.co.jokerpiece.piecebase.data.GetCouponData;
-import jp.co.jokerpiece.piecebase.data.SaveData;
-import jp.co.jokerpiece.piecebase.util.App;
-import jp.co.jokerpiece.piecebase.util.AppUtil;
-import jp.co.jokerpiece.piecebase.util.BitmapCache;
-import jp.co.jokerpiece.piecebase.util.BitmapDownloader;
-import jp.co.jokerpiece.piecebase.util.ViewPagerIndicator;
 import android.app.Activity;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.Context;
@@ -22,13 +7,11 @@ import android.content.Loader;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -36,6 +19,20 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+
+import jp.co.jokerpiece.piecebase.api.CouponListAPI;
+import jp.co.jokerpiece.piecebase.config.Common;
+import jp.co.jokerpiece.piecebase.config.Config;
+import jp.co.jokerpiece.piecebase.data.CouponListData;
+import jp.co.jokerpiece.piecebase.data.CouponListData.CouponData;
+import jp.co.jokerpiece.piecebase.data.GetCouponData;
+import jp.co.jokerpiece.piecebase.data.SaveData;
+import jp.co.jokerpiece.piecebase.util.AppUtil;
+import jp.co.jokerpiece.piecebase.util.BitmapCache;
+import jp.co.jokerpiece.piecebase.util.BitmapDownloader;
+import jp.co.jokerpiece.piecebase.util.ViewPagerIndicator;
 
 public class CouponFragment extends BaseFragment implements OnPageChangeListener {
 	Context context;
@@ -86,7 +83,7 @@ public class CouponFragment extends BaseFragment implements OnPageChangeListener
         	couponCode = bundle.getString("coupon_code");
         }
 
-        Log.d(TAG, "uuid: " + Common.getUUID(context));
+        AppUtil.debugLog(TAG, "uuid: " + Common.getUUID(context));
 
         if (SaveData.Cdata != null){
             displayCouponAfterGetData();
@@ -153,7 +150,7 @@ public class CouponFragment extends BaseFragment implements OnPageChangeListener
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		super.onOptionsItemSelected(item);
-		Log.d("itemID", "itemID"+item.getItemId());
+		AppUtil.debugLog("itemID", "itemID"+item.getItemId());
 		int itemId = item.getItemId();
 		if (itemId == R.id.action_coupon) {
 			FragmentManager fm = getFragmentManager();

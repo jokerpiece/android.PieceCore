@@ -2,7 +2,6 @@ package jp.co.jokerpiece.piecebase.api;
 
 import android.content.AsyncTaskLoader;
 import android.content.Context;
-import android.util.Log;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -39,13 +38,13 @@ public class CheckDataAPI extends AsyncTaskLoader<CheckData> implements HttpClie
         parameter.put("mail_address", mailAddress);
         parameter.put("app_id", Config.APP_ID);
 
-//        Log.d("checkData", "APImail"+mailAddress);
+//        AppUtil.debugLog("checkData", "APImail"+mailAddress);
 
         try{
              byte[] resData = HttpClient.getByteArrayFromUrlPost(Config.SENDID_CHECKDATA,parameter,this);
             if(resData == null) return null;
             result = new String(resData,"UTF-8");
-           // Log.d("checkdata",result);
+           // AppUtil.debugLog("checkdata",result);
 
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();

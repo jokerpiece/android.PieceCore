@@ -2,21 +2,17 @@ package jp.co.jokerpiece.piecebase.api;
 
 import android.content.AsyncTaskLoader;
 import android.content.Context;
-import android.util.Log;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
-import java.util.Locale;
 
 import jp.co.jokerpiece.piecebase.config.Common;
 import jp.co.jokerpiece.piecebase.config.Config;
+import jp.co.jokerpiece.piecebase.util.AppUtil;
 import jp.co.jokerpiece.piecebase.util.HttpClient;
 import jp.co.jokerpiece.piecebase.util.HttpClient.HttpClientInterface;
 
@@ -53,7 +49,7 @@ public class GetLocationAPI extends AsyncTaskLoader<GetLocationAPI.LocationData>
                 return null;
             }
             result = new String(resData, "UTF-8");
-            //Log.d("RESULT",result);
+            //AppUtil.debugLog("RESULT",result);
         } catch (MalformedURLException | UnsupportedEncodingException e) {
             e.printStackTrace();
             return null;
@@ -62,11 +58,11 @@ public class GetLocationAPI extends AsyncTaskLoader<GetLocationAPI.LocationData>
             data = new LocationData();
 
             JSONObject rootObject = new JSONObject(result);
-            //Log.d("JSON", rootObject.toString());
+            //AppUtil.debugLog("JSON", rootObject.toString());
 
             int error_code = rootObject.getInt("status_code");
             if(error_code != 0){
-                Log.d("error",rootObject.getString("error_message"));
+                AppUtil.debugLog("error", rootObject.getString("error_message"));
                 if(!rootObject.isNull("error_message")) {
                     data.error_msg = rootObject.getString("error_message");
                 }

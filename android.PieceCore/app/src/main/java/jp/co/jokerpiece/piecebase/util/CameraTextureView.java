@@ -105,7 +105,7 @@ public class CameraTextureView extends TextureView {
             @Override
             public void onClick(View v) {
                 if (v.getTag().toString().equals(TAG)) {
-                    Log.d(TAG, "TextureView clicked");
+                    AppUtil.debugLog(TAG, "TextureView clicked");
                     if (!isTakingPicture) {
                         isTakingPicture = true;
                         takePicture();
@@ -993,18 +993,18 @@ public class CameraTextureView extends TextureView {
             decodeFormats.addAll(this.ALL_FORMATS);
             decodeHints.put(DecodeHintType.POSSIBLE_FORMATS, decodeFormats);
             reader.setHints(decodeHints);
-            Log.d(TAG, "decode");
+            AppUtil.debugLog(TAG, "decode");
             Result result = reader.decodeWithState(bitmap);
             String text = result.getText();
 
             Common.showToast(getContext(), text);
-            Log.d(TAG, "バーコードスキャンに成功しました。");
-            Log.i(TAG, "result:" + text);
+            AppUtil.debugLog(TAG, "バーコードスキャンに成功しました。");
+            AppUtil.debugLog(TAG, "result:" + text);
 
             callback.getBarcodeNum(text);
         } catch (Exception e) {
             Common.showToast(getContext(), "バーコードスキャンに失敗しました。");
-            Log.d(TAG, "バーコードスキャンに失敗しました。");
+            AppUtil.debugLog(TAG, "バーコードスキャンに失敗しました。");
             e.printStackTrace();
         } finally {
             reader.reset();
@@ -1040,8 +1040,8 @@ public class CameraTextureView extends TextureView {
         MediaScannerConnection.OnScanCompletedListener mScanCompletedListener = new MediaScannerConnection.OnScanCompletedListener() {
             @Override
             public void onScanCompleted(String path, Uri uri) {
-                Log.d("MediaScannerConnection", "Scanned " + path + ":");
-                Log.d("MediaScannerConnection", "-> uri=" + uri);
+                AppUtil.debugLog("MediaScannerConnection", "Scanned " + path + ":");
+                AppUtil.debugLog("MediaScannerConnection", "-> uri=" + uri);
             }
         };
 

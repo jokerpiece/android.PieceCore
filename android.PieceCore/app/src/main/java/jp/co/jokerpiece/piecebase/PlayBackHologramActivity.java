@@ -6,29 +6,18 @@ import android.content.Intent;
 import android.graphics.Point;
 import android.graphics.SurfaceTexture;
 import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.util.Log;
 import android.view.Display;
 import android.view.Surface;
 import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebChromeClient;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.Button;
-import android.widget.MediaController;
-import android.widget.VideoView;
-
-import com.google.android.youtube.player.YouTubeBaseActivity;
-import com.google.android.youtube.player.YouTubeInitializationResult;
-import com.google.android.youtube.player.YouTubePlayer;
-import com.google.android.youtube.player.YouTubePlayerView;
 
 import java.io.IOException;
+
+import jp.co.jokerpiece.piecebase.util.AppUtil;
 
 
 /**
@@ -71,7 +60,7 @@ public class PlayBackHologramActivity extends Activity{
         setContentView(R.layout.activity_playbackhologram);
         Intent intent = getIntent();
         file_data = intent.getStringExtra("file_data");
-        Log.d("movie", file_data);
+        AppUtil.debugLog("movie", file_data);
         mediaPlayer = new MediaPlayer();
         mediaPlayer2 = new MediaPlayer();
         mediaPlayer3 = new MediaPlayer();
