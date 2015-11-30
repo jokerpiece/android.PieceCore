@@ -19,6 +19,8 @@ public class Config {
     public static final String APP_ID;
     public static final String APP_KEY;
     public static final int SPLASH_TIME;
+    public static final String SERVER_URL;
+
 //  public static String APP_ID = "pieceSample";
 //  public static final String APP_ID = "pushColor";
 //	public static final String APP_ID = "otonagokoro";
@@ -33,7 +35,6 @@ public class Config {
     public static boolean changeToDevFlg = false;
 
 	//新大人ゴコロ本番
-        public static String SERVER_URL = "http://jokapi.jp/";
 
    // public  static final String SERVER_URL = "http://192.168.77.200/piece_dev/";
 
@@ -72,36 +73,36 @@ public class Config {
 	//検索機能対応
 	public static final boolean SEARCH_PERMISSION = true;
 
-    public  static final String SERVER_API_URL = SERVER_URL + "manager/html/xml/";
-	public static final String USER_NAME = SERVER_API_URL + "home_list/";
-	public static final String SENDID_NEWS_LIST = SERVER_API_URL + "news/";
-	public static final String SENDID_NEWS_INFO = SERVER_API_URL + "news/index.php?Action=newsDetail";
-	public static final String SENDID_FLIYER_LIST = SERVER_API_URL + "flyer/";
-	public static final String SENDID_CTGRY = SERVER_API_URL + "category/";
-	public static final String SENDID_ITEM = SERVER_API_URL + "item/index.php?Action=itemList";
-	public static final String SENDID_ITEM_COUPON = SERVER_API_URL + "item/index.php?Action=itemList";
-	public static final String SENDID_ITEM_BARCODE = SERVER_API_URL + "item/index.php?Action=itemListBarcode";
-	public static final String SENDID_CPN_GIVE = SERVER_API_URL + "coupon/index.php?Action=giveList";
-	public static final String SENDID_CPN_TAKE = SERVER_API_URL + "coupon/index.php?Action=takedList";
-	public static final String SENDID_GET_CPN  = SERVER_API_URL + "coupon/index.php?Action=get";
-    public static final String SENDID_GET_QUES  = SERVER_API_URL + "fitting/";
-	public static final String PUSHSERVER_URL = SERVER_API_URL + "device_token/";
-    public static final String SENDID_MAP_LIST = SERVER_API_URL + "shop/";
-    public static final String SENDID_STAMP_LIST = SERVER_API_URL + "stamp/";
-    public static final String SENDID_CHECKDATA = SERVER_API_URL + "order/?Action=check";
-    public static final String SENDID_GETFILEDATA = SERVER_API_URL + "order/?Action=getFileData";
+    public  static final String SERVER_API_URL;
+	public static final String USER_NAME;
+	public static final String SENDID_NEWS_LIST;
+	public static final String SENDID_NEWS_INFO;
+	public static final String SENDID_FLIYER_LIST;
+	public static final String SENDID_CTGRY;
+	public static final String SENDID_ITEM;
+	public static final String SENDID_ITEM_COUPON;
+	public static final String SENDID_ITEM_BARCODE;
+	public static final String SENDID_CPN_GIVE;
+	public static final String SENDID_CPN_TAKE;
+	public static final String SENDID_GET_CPN;
+    public static final String SENDID_GET_QUES;
+	public static final String PUSHSERVER_URL;
+    public static final String SENDID_MAP_LIST;
+    public static final String SENDID_STAMP_LIST;
+    public static final String SENDID_CHECKDATA;
+    public static final String SENDID_GETFILEDATA;
 
-    public static final String SENDID_GET_LOCATION = SERVER_API_URL + "order/?Action=getLocation";
+    public static final String SENDID_GET_LOCATION;
 
-    public static final String SENDID_REGIST_QUESTION = SERVER_URL + "manager/html/webview/padlock_regist.html";
-    public static final String SENDID_GET_QUESTION = SERVER_URL + "manager/html/webview/padlock_answer.html";
-    public static final String QUESTION_FINISH = "/manager/html/webview/padlock_finish.html";
+    public static final String SENDID_REGIST_QUESTION;
+    public static final String SENDID_GET_QUESTION;
+    public static final String QUESTION_FINISH;
 
-    public static final String SENDID_YOUTUBE_UPLOAD = SERVER_URL +"manager/html/webview/youtube_upload/index.php";
-    public static final String SENDID_YOUTUBE_UPLOAD_DONE = SERVER_URL + "manager/html/webview/youtube_upload/done.html";
+    public static final String SENDID_YOUTUBE_UPLOAD;
+    public static final String SENDID_YOUTUBE_UPLOAD_DONE;
 
-    public static final String SENDID_MESSAGE_UPLOAD = SERVER_URL + "manager/html/webview/message/index.php";
-    public static final String SENDID_MESSAGE_UPLOAD_DONE = SERVER_URL +"manager/html/webview/message/done.html";
+    public static final String SENDID_MESSAGE_UPLOAD;
+    public static final String SENDID_MESSAGE_UPLOAD_DONE;
 
 
     public static final String YOUTUBE_APIV3 = "https://www.googleapis.com/upload/youtube/v3/videos?part=snippet,status";
@@ -193,6 +194,13 @@ public class Config {
 
         }
         if (isSuccess) {
+            String serverUrl = map.get("server_url");
+            if (serverUrl != null && !serverUrl.equals("")) {
+                SERVER_URL = serverUrl;
+            } else {
+                SERVER_URL = "http://jokapi.jp/";
+            }
+
             String appId = map.get("app_id");
             if (appId != null && !appId.equals("")) {
                 APP_ID = appId;
@@ -230,12 +238,44 @@ public class Config {
                 IS_BEACON_ENABLED = false;
             }
         } else {
+            SERVER_URL = "http://jokapi.jp/";
             APP_ID = "pieceSample";
             APP_KEY = "jokerpiece_appKey";
             SPLASH_TIME = 2;
             PROJECT_ID = "367759414941";
             IS_BEACON_ENABLED = false;
         }
+
+        SERVER_API_URL = SERVER_URL + "manager/html/xml/";
+        USER_NAME = SERVER_API_URL + "home_list/";
+        SENDID_NEWS_LIST = SERVER_API_URL + "news/";
+        SENDID_NEWS_INFO = SERVER_API_URL + "news/index.php?Action=newsDetail";
+        SENDID_FLIYER_LIST = SERVER_API_URL + "flyer/";
+        SENDID_CTGRY = SERVER_API_URL + "category/";
+        SENDID_ITEM = SERVER_API_URL + "item/index.php?Action=itemList";
+        SENDID_ITEM_COUPON = SERVER_API_URL + "item/index.php?Action=itemList";
+        SENDID_ITEM_BARCODE = SERVER_API_URL + "item/index.php?Action=itemListBarcode";
+        SENDID_CPN_GIVE = SERVER_API_URL + "coupon/index.php?Action=giveList";
+        SENDID_CPN_TAKE = SERVER_API_URL + "coupon/index.php?Action=takedList";
+        SENDID_GET_CPN  = SERVER_API_URL + "coupon/index.php?Action=get";
+        SENDID_GET_QUES  = SERVER_API_URL + "fitting/";
+        PUSHSERVER_URL = SERVER_API_URL + "device_token/";
+        SENDID_MAP_LIST = SERVER_API_URL + "shop/";
+        SENDID_STAMP_LIST = SERVER_API_URL + "stamp/";
+        SENDID_CHECKDATA = SERVER_API_URL + "order/?Action=check";
+        SENDID_GETFILEDATA = SERVER_API_URL + "order/?Action=getFileData";
+
+        SENDID_GET_LOCATION = SERVER_API_URL + "order/?Action=getLocation";
+
+        SENDID_REGIST_QUESTION = SERVER_URL + "manager/html/webview/padlock_regist.html";
+        SENDID_GET_QUESTION = SERVER_URL + "manager/html/webview/padlock_answer.html";
+        QUESTION_FINISH = "/manager/html/webview/padlock_finish.html";
+
+        SENDID_YOUTUBE_UPLOAD = SERVER_URL +"manager/html/webview/youtube_upload/index.php";
+        SENDID_YOUTUBE_UPLOAD_DONE = SERVER_URL + "manager/html/webview/youtube_upload/done.html";
+
+        SENDID_MESSAGE_UPLOAD = SERVER_URL + "manager/html/webview/message/index.php";
+        SENDID_MESSAGE_UPLOAD_DONE = SERVER_URL +"manager/html/webview/message/done.html";
     }
 
 }
