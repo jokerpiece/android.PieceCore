@@ -1,19 +1,6 @@
 package jp.co.jokerpiece.piecebase;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Timer;
-
-import jp.co.jokerpiece.piecebase.config.Common;
-import jp.co.jokerpiece.piecebase.config.Config;
-import jp.co.jokerpiece.piecebase.data.NewsListData;
-import jp.co.jokerpiece.piecebase.data.SaveData;
-import jp.co.jokerpiece.piecebase.util.AppUtil;
-import jp.co.jokerpiece.piecebase.util.BeaconUtil;
-
 import android.annotation.TargetApi;
-import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -22,8 +9,6 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.StateListDrawable;
-import android.media.Image;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -47,12 +32,21 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TabHost.OnTabChangeListener;
 import android.widget.TabHost.TabSpec;
-import android.widget.TabWidget;
 import android.widget.TextView;
 
-import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+
+import jp.co.jokerpiece.piecebase.config.Common;
+import jp.co.jokerpiece.piecebase.config.Config;
+import jp.co.jokerpiece.piecebase.data.NewsListData;
+import jp.co.jokerpiece.piecebase.data.SaveData;
+import jp.co.jokerpiece.piecebase.util.AppUtil;
+import jp.co.jokerpiece.piecebase.util.BeaconUtil;
 
 /**
  * (注意)
@@ -82,7 +76,6 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
-    private GoogleApiClient client;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -203,9 +196,6 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
         //最初のフラグメントを記録
         Config.Savelist.add(0);
         setFragmentNum();
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
     @Override
@@ -588,46 +578,6 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
         Bundle args = new Bundle();
         args.putString("root", tabInfo.cls.getName());
         tabHost.addTab(tabSpec, RootFragment.class, args);
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client.connect();
-        Action viewAction = Action.newAction(
-                Action.TYPE_VIEW, // TODO: choose an action type.
-                "MainBase Page", // TODO: Define a title for the content shown.
-                // TODO: If you have web page content that matches this app activity's content,
-                // make sure this auto-generated web page URL is correct.
-                // Otherwise, set the URL to null.
-                Uri.parse("http://videoupload/path"),
-                // TODO: Make sure this auto-generated app deep link URI is correct.
-                Uri.parse("android-app://jp.co.jokerpiece.piecebase/otonagokoro/videoupload/path")
-        );
-        AppIndex.AppIndexApi.start(client, viewAction);
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        Action viewAction = Action.newAction(
-                Action.TYPE_VIEW, // TODO: choose an action type.
-                "MainBase Page", // TODO: Define a title for the content shown.
-                // TODO: If you have web page content that matches this app activity's content,
-                // make sure this auto-generated web page URL is correct.
-                // Otherwise, set the URL to null.
-                Uri.parse("http://videoupload/path"),
-                // TODO: Make sure this auto-generated app deep link URI is correct.
-                Uri.parse("android-app://jp.co.jokerpiece.piecebase/otonagokoro/videoupload/path")
-        );
-        AppIndex.AppIndexApi.end(client, viewAction);
-        client.disconnect();
     }
 
     /**
