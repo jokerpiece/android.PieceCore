@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.CookieManager;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -18,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import jp.co.jokerpiece.piecebase.config.Common;
 import jp.co.jokerpiece.piecebase.config.Config;
 import jp.co.jokerpiece.piecebase.data.SaveData;
 import jp.co.jokerpiece.piecebase.util.AppUtil;
@@ -53,6 +55,7 @@ public class WebViewFragment extends BaseFragment implements View.OnClickListene
             setMode();
             findViews(rootView);
             webView = (WebView) rootView.findViewById(R.id.webview);
+            CookieManager cookieManager = CookieManager.getInstance();
             Bundle bundle = getArguments();
             if (bundle != null) {
                 webView.setWebViewClient(new WebViewClient() {
@@ -116,6 +119,9 @@ public class WebViewFragment extends BaseFragment implements View.OnClickListene
                 WebSettings webSettings = webView.getSettings();
                 webSettings.setJavaScriptEnabled(true);
                 String strUrl = bundle.getString("send_url");
+                String cookieString = "uuid="+ Common.getUUID(getContext())+";Domain=t.otonagokoro.com";
+                cookieManager.setAcceptCookie(true);
+                cookieManager.setCookie(strUrl, cookieString);
                 if (strUrl != null && !strUrl.equals("")) {
                     webView.loadUrl(strUrl);
                 }
