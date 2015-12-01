@@ -119,7 +119,7 @@ public class WebViewFragment extends BaseFragment implements View.OnClickListene
                 WebSettings webSettings = webView.getSettings();
                 webSettings.setJavaScriptEnabled(true);
                 String strUrl = bundle.getString("send_url");
-                String cookieString = "uuid="+ Common.getUUID(getContext())+";Domain=t.otonagokoro.com";
+                String cookieString = "uuid="+ Common.getUUID(getContext())+";Domain="+Config.cookieDomain;
                 cookieManager.setAcceptCookie(true);
                 cookieManager.setCookie(strUrl, cookieString);
                 if (strUrl != null && !strUrl.equals("")) {
