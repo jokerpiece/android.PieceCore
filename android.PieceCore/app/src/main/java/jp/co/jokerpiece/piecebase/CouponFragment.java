@@ -195,9 +195,12 @@ public class CouponFragment extends BaseFragment implements OnPageChangeListener
 	 */
 	public void displayCouponAfterGetData() {
 		if (couponData == null) { return; }
-        if(SaveData.Cdata != null){
-            couponData = SaveData.Cdata;
-        }
+		if(MainBaseActivity.firstTimeStart) {
+			if (SaveData.Cdata != null) {
+				couponData = SaveData.Cdata;
+			}
+			MainBaseActivity.firstTimeStart = false;
+		}
 		ArrayList<CouponData> couponList = couponData.data_list;
 
 		if (couponList == null || couponList.size() == 0) {

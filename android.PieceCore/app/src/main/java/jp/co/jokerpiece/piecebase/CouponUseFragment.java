@@ -102,12 +102,13 @@ public class CouponUseFragment extends Fragment implements OnPageChangeListener 
 		super.onOptionsItemSelected(item);
 		int itemId = item.getItemId();
 		if (itemId == R.id.action_coupon_use) {
-			FragmentManager fm = getFragmentManager();
-			FragmentTransaction ft = fm.beginTransaction();
-			CouponFragment fragment = new CouponFragment();
-			ft.replace(R.id.fragment, fragment);
-            ft.addToBackStack(null);
-			ft.commit();
+			getActivity().getSupportFragmentManager().popBackStack();
+//			FragmentManager fm = getFragmentManager();
+//			FragmentTransaction ft = fm.beginTransaction();
+//			CouponFragment fragment = new CouponFragment();
+//			ft.replace(R.id.fragment, fragment);
+//            ft.addToBackStack(null);
+//			ft.commit();
 		}
 		return true;
 	}

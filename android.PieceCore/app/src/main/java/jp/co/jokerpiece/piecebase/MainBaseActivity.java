@@ -63,6 +63,7 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
     public static ArrayList<TabInfo> tabInfoList;
     public static HashMap<String, Integer> titleOfActionBar;
     public static boolean startFromSchemeFlg = false;
+    public static boolean firstTimeStart = true;
     ImageView splashView;
     boolean onTabChange;
     boolean onTab = false;
