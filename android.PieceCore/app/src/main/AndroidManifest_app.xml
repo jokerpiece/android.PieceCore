@@ -200,7 +200,7 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
-                    android:host="rapping"
+                    android:host="message"
                     android:scheme="otonagokoro" />
             </intent-filter>
         </activity>

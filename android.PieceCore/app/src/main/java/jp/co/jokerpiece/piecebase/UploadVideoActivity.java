@@ -1,5 +1,6 @@
 package jp.co.jokerpiece.piecebase;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -26,6 +27,7 @@ public class UploadVideoActivity extends Activity {
     final private int INTENT_CODE = 101;
     Context context;
     WebView webView;
+    @SuppressLint("SetJavaScriptEnabled")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

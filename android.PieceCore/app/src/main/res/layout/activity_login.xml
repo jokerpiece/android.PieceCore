@@ -20,6 +20,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:background="@drawable/edit_text"
+        android:inputType="number"
         android:id="@+id/login_ordernum"/>
 
     <TextView
@@ -36,6 +37,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:id="@+id/login_address"
+        android:inputType="textEmailAddress"
         android:background="@drawable/edit_text"/>
 
     <Button
