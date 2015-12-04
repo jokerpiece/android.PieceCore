@@ -46,7 +46,9 @@ public class UploadVideoActivity extends Activity {
         webSettings.setUseWideViewPort(true);
         webSettings.setBuiltInZoomControls(true);
         webSettings.setAllowFileAccess(true);
+        webSettings.setAllowContentAccess(true);
         webSettings.setJavaScriptEnabled(true);
+
         webView.loadUrl(Config.SENDID_YOUTUBE_UPLOAD + "?order_id=" + order_id + "&app_id=" + Config.APP_ID + "&app_key=" + Config.APP_KEY + "&token=" + token);
 
         webView.setWebChromeClient(new WebChromeClient() {
@@ -56,13 +58,6 @@ public class UploadVideoActivity extends Activity {
                 i.addCategory(Intent.CATEGORY_OPENABLE);
                 i.setType("video/*");
                 startActivityForResult(Intent.createChooser(i, "video"), INTENT_CODE);
-            }
-        });
-        webView.setWebViewClient(new WebViewClient(){
-            @Override
-            public void onPageFinished(WebView view, String url) {
-                super.onPageFinished(view, url);
-                webView.loadUrl(Config.SENDID_YOUTUBE_UPLOAD_DONE);
             }
         });
     }

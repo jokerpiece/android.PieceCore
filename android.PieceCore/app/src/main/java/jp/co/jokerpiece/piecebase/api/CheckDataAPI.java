@@ -13,6 +13,7 @@ import java.util.HashMap;
 import jp.co.jokerpiece.piecebase.config.Common;
 import jp.co.jokerpiece.piecebase.config.Config;
 import jp.co.jokerpiece.piecebase.data.CheckData;
+import jp.co.jokerpiece.piecebase.util.AppUtil;
 import jp.co.jokerpiece.piecebase.util.HttpClient;
 
 /**
@@ -38,13 +39,13 @@ public class CheckDataAPI extends AsyncTaskLoader<CheckData> implements HttpClie
         parameter.put("mail_address", mailAddress);
         parameter.put("app_id", Config.APP_ID);
 
-//        AppUtil.debugLog("checkData", "APImail"+mailAddress);
+//      AppUtil.debugLog("checkData", "APImail" + mailAddress);
 
         try{
              byte[] resData = HttpClient.getByteArrayFromUrlPost(Config.SENDID_CHECKDATA,parameter,this);
             if(resData == null) return null;
             result = new String(resData,"UTF-8");
-           // AppUtil.debugLog("checkdata",result);
+            AppUtil.debugLog("checkdata",result);
 
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
