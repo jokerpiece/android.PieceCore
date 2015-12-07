@@ -1,16 +1,18 @@
 package jp.co.jokerpiece.piecebase;
 
 import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
 
 import jp.co.jokerpiece.piecebase.config.Config;
 
@@ -19,10 +21,13 @@ import jp.co.jokerpiece.piecebase.config.Config;
  */
 public class UploadVideoActivity extends Activity {
 
+    private final static int FILECHOOSER_RESULTCODE = 1;
+
     private String account_id;
     private String token;
     private String upload_token;
     private String order_id;
+    private ValueCallback<Uri[]> uploadMessages;
     private ValueCallback<Uri> mUploadMessage;
     final private int INTENT_CODE = 101;
     Context context;
@@ -59,16 +64,52 @@ public class UploadVideoActivity extends Activity {
                 i.setType("video/*");
                 startActivityForResult(Intent.createChooser(i, "video"), INTENT_CODE);
             }
+
+
+            public boolean onShowFileChooser(WebView webView,
+                                             ValueCallback<Uri[]> filePathCallback,
+                                             WebChromeClient.FileChooserParams fileChooserParams)
+            {
+                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    if (uploadMessages != null) {
+                        uploadMessages.onReceiveValue(null);
+                        uploadMessages = null;
+                    }
+                    uploadMessages = filePathCallback;
+                    Intent intent = fileChooserParams.createIntent();
+                    try {
+                        UploadVideoActivity.this.startActivityForResult(intent,
+                                FILECHOOSER_RESULTCODE);
+                    } catch (ActivityNotFoundException e) {
+                        uploadMessages = null;
+                        return false;
+                    }
+                }
+                return true;
+            }
         });
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(requestCode == INTENT_CODE){
-            if(null == mUploadMessage)return;
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 
-            Uri result = (data == null || resultCode != RESULT_OK) ? null : data.getData();
-            mUploadMessage.onReceiveValue(result);
-            mUploadMessage = null;
+            if (requestCode == FILECHOOSER_RESULTCODE) {
+                if (uploadMessages == null) {
+                    return;
+                }
+                uploadMessages.onReceiveValue(
+                        WebChromeClient.FileChooserParams.parseResult(resultCode, data));
+                uploadMessages = null;
+            }
+        }else {
+            if (requestCode == INTENT_CODE) {
+                if (null == mUploadMessage) return;
+
+                Uri result = (data == null || resultCode != RESULT_OK) ? null : data.getData();
+                mUploadMessage.onReceiveValue(result);
+                mUploadMessage = null;
+            }
         }
     }
+
 }
