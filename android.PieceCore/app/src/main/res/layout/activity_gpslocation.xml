@@ -20,7 +20,6 @@
             android:id="@+id/SenderPosition"
             android:layout_width="32dp"
             android:layout_height="32dp"
-            android:background="#88FFFFFF"
             android:src="@drawable/other_point" />
         <Space
             android:layout_width="wrap_content"
@@ -29,7 +28,6 @@
             android:id="@+id/MyPosition"
             android:layout_width="32dp"
             android:layout_height="32dp"
-            android:background="#88FFFFFF"
             android:src="@drawable/my_point"
             />
     </LinearLayout>

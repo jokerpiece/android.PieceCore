@@ -29,6 +29,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import jp.co.jokerpiece.piecebase.api.GetLocationAPI;
+import jp.co.jokerpiece.piecebase.util.AppUtil;
 
 public class GPSLocationActivity extends Activity implements LocationListener {
     private Handler handler = new Handler();
@@ -43,6 +44,8 @@ public class GPSLocationActivity extends Activity implements LocationListener {
     Location senderLocation = null;
     Timer mTimer = null;
     Marker senderMarker;
+
+    boolean getStartPositon;
 
     View senderPositionButton;
     @Override
@@ -68,14 +71,6 @@ public class GPSLocationActivity extends Activity implements LocationListener {
         });
         zoom = 18.0f;
 
-        Location location = getLocationByGPS();
-        if (location != null) {
-            CameraPosition cameraPos = new CameraPosition.Builder()
-                    .target(new LatLng(location.getLatitude(), location.getLongitude()))
-                    .zoom(zoom)
-                    .bearing(0).build();
-            aMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPos));
-        }
         findViewById(R.id.MyPosition).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -91,6 +86,16 @@ public class GPSLocationActivity extends Activity implements LocationListener {
             }
         });
         senderPositionButton.setVisibility(View.INVISIBLE);
+
+        Location location = getLocationByGPS();
+        if (location != null) {
+            CameraPosition cameraPos = new CameraPosition.Builder()
+                    .target(new LatLng(location.getLatitude(), location.getLongitude()))
+                    .zoom(zoom)
+                    .bearing(0).build();
+            aMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPos));
+            getStartPositon = true;
+        }
     }
 
     private void onClickMyPosition() {
@@ -198,36 +203,51 @@ public class GPSLocationActivity extends Activity implements LocationListener {
 
 
     private Location getLocationByGPS() {
-        if (mLocationManager != null) {
+        Location result = null;
+        if(aMap != null) {
+            result = aMap.getMyLocation();
+        }
+        if (result == null && mLocationManager != null) {
             if (mLocationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
-                        && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                    return null;
+                if (!(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                        && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)) {
+                    mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
+                    result = mLocationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                    if (result == null) {
+                        mLocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, this);
+                        result = mLocationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+                    }
                 }
-                mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
-                return mLocationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
             }
         }
-        return null;
+        return result;
     }
 
     @Override
     public void onLocationChanged(Location location) {
-
+        AppUtil.debugLog("onLocationChanged",location.getLatitude()+":" + location.getLongitude());
+        if (!getStartPositon) {
+            CameraPosition cameraPos = new CameraPosition.Builder()
+                    .target(new LatLng(location.getLatitude(), location.getLongitude()))
+                    .zoom(zoom)
+                    .bearing(0).build();
+            aMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPos));
+            getStartPositon = true;
+        }
     }
 
     @Override
     public void onStatusChanged(String provider, int status, Bundle extras) {
-
+        AppUtil.debugLog("onStatusChanged",provider + ":" + status);
     }
 
     @Override
     public void onProviderEnabled(String provider) {
-
+        AppUtil.debugLog("onProviderEnabled",provider);
     }
 
     @Override
     public void onProviderDisabled(String provider) {
-
+        AppUtil.debugLog("onProviderDisabled",provider);
     }
 }

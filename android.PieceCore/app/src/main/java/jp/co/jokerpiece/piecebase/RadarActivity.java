@@ -31,10 +31,6 @@ public class RadarActivity extends Activity {
         RadarUtil.init(this);
         beaconScan();
 
-        timerTask = new RadarTimerTask();
-        mTimer = new Timer(true);
-        mTimer.schedule( timerTask, 0, 20);
-
         String data = getIntent().getStringExtra("file_data");
         JSONObject rootObject;
         try {
@@ -48,6 +44,21 @@ public class RadarActivity extends Activity {
 
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        timerTask = new RadarTimerTask();
+        mTimer = new Timer(true);
+        mTimer.schedule(timerTask, 0, 20);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (mTimer != null) {
+            mTimer.cancel();
+        }
+    }
 
     private void  beaconScan(){
         RadarUtil.startScan();
@@ -60,9 +71,10 @@ public class RadarActivity extends Activity {
                 public void run() {
                     beaconScan();
                     RadarUtil.BeaconData beaconData = RadarUtil.getBeaconWithUUID(uuid,major,minor);
+                    ImageView treasure = (ImageView)findViewById(R.id.ivTreasure);
+
                     if(beaconData != null){
                         AppUtil.debugLog("BeaconData", beaconData.getMajor());
-                        ImageView treasure = (ImageView)findViewById(R.id.ivTreasure);
                         int rssi = beaconData.getRssiAverage();
                         if(rssi > -65){
                             treasure.setImageResource(R.drawable.treasure1);
@@ -75,6 +87,8 @@ public class RadarActivity extends Activity {
                         }else{
                             treasure.setImageResource(R.drawable.treasure5);
                         }
+                    }else{
+                        treasure.setImageResource(R.drawable.treasure5);
                     }
                 }
             });

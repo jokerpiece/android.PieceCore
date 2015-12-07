@@ -108,4 +108,20 @@ public class AppUtil {
         editor.putString(key, value);
         editor.commit();
     }
+
+    /**
+     * チェックデジットを解除する。(cdIDはString)
+     * @param cdID コンテキスト
+     * @return デコード後の値
+     */
+    public static String decodeCD(String cdID){
+        String result;
+        if(cdID != null && cdID.length() >= 7){
+            int intNum = Integer.parseInt(cdID.substring(0,6));
+            result = String.valueOf(intNum);
+        }else {
+            result = cdID;
+        }
+        return result;
+    }
 }

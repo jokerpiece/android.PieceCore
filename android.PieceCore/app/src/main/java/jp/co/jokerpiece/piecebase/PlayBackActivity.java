@@ -63,9 +63,9 @@ public class PlayBackActivity extends FragmentActivity {
                     AppUtil.debugLog("playback", order_id);
                     getData();
                 }else if(uri.getHost().equals("padlock")){
-                    order_id = uri.getQueryParameter("order_num");
+                    order_id = uri.getQueryParameter("order_id");
                     Intent i = new Intent(this, RegistQuestionActivity.class);
-                    i.putExtra("order_id", decodeCD(order_id));
+                    i.putExtra("order_id", AppUtil.decodeCD(order_id));
                     this.startActivity(i);
                     finish();
                 }
@@ -89,7 +89,7 @@ public class PlayBackActivity extends FragmentActivity {
             this.startActivity(i);
         }else if(type.equals(PADLOCK_MESSAGE)){
             Intent i = new Intent(this,GetQuestionActivity.class);
-            i.putExtra("order_id", decodeCD(order_id));
+            i.putExtra("order_id", AppUtil.decodeCD(order_id));
             this.startActivity(i);
         }else if(type.equals(TREASURE_HUNT)){
             Intent i = new Intent(this,RadarActivity.class);
@@ -99,7 +99,7 @@ public class PlayBackActivity extends FragmentActivity {
             Intent i = new Intent(this,GPSLocationActivity.class);
             i.putExtra("file_data", data);
             i.putExtra("type", gps_type);
-            i.putExtra("order_id", decodeCD(order_id));
+            i.putExtra("order_id", AppUtil.decodeCD(order_id));
 
             this.startActivity(i);
         }
@@ -127,15 +127,5 @@ public class PlayBackActivity extends FragmentActivity {
 
             }
         });
-    }
-    private String decodeCD(String cdID){
-        String result;
-        if(cdID != null && cdID.length() >= 7){
-            int intNum = Integer.parseInt(cdID.substring(0,6));
-            result = String.valueOf(intNum);
-        }else {
-            result = cdID;
-        }
-        return result;
     }
 }
