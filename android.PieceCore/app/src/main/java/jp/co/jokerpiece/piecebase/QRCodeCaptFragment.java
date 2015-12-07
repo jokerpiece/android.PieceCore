@@ -52,6 +52,14 @@ public class QRCodeCaptFragment extends Fragment {
 
         mBarcodeView = (CompoundBarcodeView)rootView.findViewById(R.id.barcodeView);
         mBarcodeView.getStatusView().setVisibility(View.INVISIBLE);
+
+        return rootView;
+
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
         bCallback = new BarcodeCallback() {
             @Override
             public void barcodeResult(BarcodeResult barcodeResult) {
@@ -79,11 +87,7 @@ public class QRCodeCaptFragment extends Fragment {
             @Override
             public void possibleResultPoints(List<ResultPoint> list) {}
         };
-
-        return rootView;
-
     }
-
 
     @Override
     public void onAttach(Context context) {
