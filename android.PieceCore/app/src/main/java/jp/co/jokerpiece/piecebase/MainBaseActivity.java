@@ -33,6 +33,7 @@ import android.widget.TabHost.OnTabChangeListener;
 import android.widget.TabHost.TabSpec;
 import android.widget.TextView;
 
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -384,7 +385,7 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
                     }
 
                     {
-                        put("cls", BarcodeFragment.class);
+                        put("cls", QRCodeCaptFragment.class);
                     }
                 },
                 new HashMap<String, Object>() {
@@ -476,7 +477,7 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
             }
 
             {
-                put(BarcodeFragment.class.getSimpleName(), R.string.barcode0);
+                put(QRCodeCaptFragment.class.getSimpleName(), R.string.barcode0);
             }
 
             {
