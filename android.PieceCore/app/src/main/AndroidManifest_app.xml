@@ -205,17 +205,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".RadarActivity"
-            android:label="@string/title_activity_radar"/>
+            android:name=".RadarActivity"/>
         <activity
-            android:name=".GPSLocationActivity"
-            android:label="@string/title_activity_gpslocation"/>
+            android:name=".GPSLocationActivity"/>
         <activity
-            android:name=".GetQuestionActivity"
-            android:label="@string/title_activity_get_question"/>
+            android:name=".GetQuestionActivity"/>
         <activity
-            android:name=".RegistQuestionActivity"
-            android:label="@string/title_activity_get_question"/>
+            android:name=".RegistQuestionActivity"/>
     </application>
 
 </manifest>
