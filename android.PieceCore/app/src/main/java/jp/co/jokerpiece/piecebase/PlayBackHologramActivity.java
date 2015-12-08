@@ -1,23 +1,35 @@
 package jp.co.jokerpiece.piecebase;
 
 import android.app.Activity;
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Point;
 import android.graphics.SurfaceTexture;
 import android.media.MediaPlayer;
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
 import android.view.Display;
 import android.view.Surface;
 import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
+import java.io.File;
 import java.io.IOException;
 
 import jp.co.jokerpiece.piecebase.util.AppUtil;
+import jp.co.jokerpiece.piecebase.util.AsyncFileDownload;
+import jp.co.jokerpiece.piecebase.util.ProgressHandler;
 
 
 /**
@@ -28,14 +40,15 @@ public class PlayBackHologramActivity extends Activity{
     String file_data;
 
     Context context;
-
     private String pathToVideo = "rtsp://r2---sn-a5m7zu76.c.youtube.com/Ck0LENy73wIaRAnTmlo5oUgpQhMYESARFEgGUg5yZWNvbW1lbmRhdGlvbnIhAWL2kyn64K6aQtkZVJdTxRoO88HsQjpE1a8d1GxQnGDmDA==/0/0/0/video.3gp";
+    private String videoPath = "";
     private TextureView textureView;
     private TextureView textureView2;
     private TextureView textureView3;
     private TextureView textureView4;
     Button button;
     Button closeBtn;
+
 
     MediaPlayer mediaPlayer = null;
     MediaPlayer mediaPlayer2 = null;
@@ -52,33 +65,79 @@ public class PlayBackHologramActivity extends Activity{
     boolean video4IsFinished = false;
 
     boolean mediaPlayerIsStart = false;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         context = this;
         setContentView(R.layout.activity_playbackhologram);
-        Intent intent = getIntent();
-        file_data = intent.getStringExtra("file_data");
-        AppUtil.debugLog("movie", file_data);
-        mediaPlayer = new MediaPlayer();
-        mediaPlayer2 = new MediaPlayer();
-        mediaPlayer3 = new MediaPlayer();
-        mediaPlayer4 = new MediaPlayer();
+
         button = (Button)findViewById(R.id.replay_btn);
         closeBtn = (Button)findViewById(R.id.holo_closeBtn);
+
+        Intent intent = getIntent();
+        videoPath = intent.getStringExtra("videoPath");
+
+        init();
+
+
+        closeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PlayBackMessageActivity.backFromMsg = true;
+                finish();
+            }
+        });
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mediaPlayer.reset();
+                mediaPlayer.release();
+                mediaPlayer = null;
+                mediaPlayer2.reset();
+                mediaPlayer2.release();
+                mediaPlayer2 = null;
+                mediaPlayer3.reset();
+                mediaPlayer3.release();
+                mediaPlayer3 = null;
+                mediaPlayer4.reset();
+                mediaPlayer4.release();
+                mediaPlayer4 = null;
+                mediaPlayerIsStart = true;
+                button.setVisibility(View.INVISIBLE);
+                closeBtn.setVisibility(View.INVISIBLE);
+                video1IsFinished = false;
+                video2IsFinished = false;
+                video3IsFinished = false;
+                video4IsFinished = false;
+            }
+        });
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    public void init(){
         textureView = (TextureView)findViewById(R.id.playback_video1);
         textureView2 = (TextureView)findViewById(R.id.playback_video2);
         textureView3 = (TextureView)findViewById(R.id.playback_video3);
         textureView4 = (TextureView)findViewById(R.id.playback_video4);
+
+        mediaPlayer = new MediaPlayer();
+        mediaPlayer2 = new MediaPlayer();
+        mediaPlayer3 = new MediaPlayer();
+        mediaPlayer4 = new MediaPlayer();
         try {
-            mediaPlayer.setDataSource(file_data);
+            mediaPlayer.setDataSource(this, Uri.parse(videoPath));
             mediaPlayer.prepare();
-            mediaPlayer2.setDataSource(file_data);
+            mediaPlayer2.setDataSource(this, Uri.parse(videoPath));
             mediaPlayer2.prepare();
-            mediaPlayer3.setDataSource(file_data);
+            mediaPlayer3.setDataSource(this, Uri.parse(videoPath));
             mediaPlayer3.prepare();
-            mediaPlayer4.setDataSource(file_data);
+            mediaPlayer4.setDataSource(this, Uri.parse(videoPath));
             mediaPlayer4.prepare();
 
         } catch (IOException e) {
@@ -214,76 +273,11 @@ public class PlayBackHologramActivity extends Activity{
             }
         });
 
-//        mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-//            @Override
-//            public void onPrepared(MediaPlayer mp) {
-//                mediaPlayer1isPrepared = true;
-//                startPlay();
-//            }
-//        });
-//        mediaPlayer2.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-//            @Override
-//            public void onPrepared(MediaPlayer mp) {
-//                mediaPlayer2isPrepared = true;
-//                startPlay();
-//            }
-//        });
-//        mediaPlayer3.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-//            @Override
-//            public void onPrepared(MediaPlayer mp) {
-//                mediaPlayer3isPrepared = true;
-//                startPlay();
-//            }
-//        });
-//        mediaPlayer4.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-//            @Override
-//            public void onPrepared(MediaPlayer mp) {
-//                mediaPlayer4isPrepared = true;
-//                startPlay();
-//            }
-//        });
-
-
         textureView.setRotation(0.0f);
-        textureView2.setRotation(270.0f);
+        textureView2.setRotation(90.0f);
         textureView3.setRotation(180.0f);
-        textureView4.setRotation(90.0f);
-
-
-        closeBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                PlayBackMessageActivity.backFromMsg = true;
-                finish();
-            }
-        });
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mediaPlayer.reset();
-                mediaPlayer.release();
-                mediaPlayer = null;
-                mediaPlayer2.reset();
-                mediaPlayer2.release();
-                mediaPlayer2 = null;
-                mediaPlayer3.reset();
-                mediaPlayer3.release();
-                mediaPlayer3 = null;
-                mediaPlayer4.reset();
-                mediaPlayer4.release();
-                mediaPlayer4 = null;
-                mediaPlayerIsStart = true;
-                button.setVisibility(View.INVISIBLE);
-                closeBtn.setVisibility(View.INVISIBLE);
-                video1IsFinished = false;
-                video2IsFinished = false;
-                video3IsFinished = false;
-                video4IsFinished = false;
-            }
-        });
-
+        textureView4.setRotation(270.0f);
     }
-
     @Override
     protected void onResume() {
         super.onResume();
@@ -306,8 +300,7 @@ public class PlayBackHologramActivity extends Activity{
                         public void onCompletion(MediaPlayer mp) {
                             video1IsFinished = true;
                             mediaPlayerIsStart = false;
-                           // mediaPlayer.stop();
-                           // button.setVisibility(View.VISIBLE);
+                            // button.setVisibility(View.VISIBLE);
                             closeBtn.setVisibility(View.VISIBLE);
                         }
                     });
@@ -316,7 +309,6 @@ public class PlayBackHologramActivity extends Activity{
                         public void onCompletion(MediaPlayer mp) {
                             video2IsFinished = true;
                             mediaPlayerIsStart = false;
-                          //  mediaPlayer2.stop();
                         }
                     });
                     mediaPlayer3.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
@@ -324,7 +316,6 @@ public class PlayBackHologramActivity extends Activity{
                         public void onCompletion(MediaPlayer mp) {
                             video3IsFinished = true;
                             mediaPlayerIsStart = false;
-                           // mediaPlayer3.stop();
                         }
                     });
                     mediaPlayer4.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
@@ -332,12 +323,10 @@ public class PlayBackHologramActivity extends Activity{
                         public void onCompletion(MediaPlayer mp) {
                             video4IsFinished = true;
                             mediaPlayerIsStart = false;
-                            //mediaPlayer4.stop();
                         }
                     });
                 }
             }.start();
         }
     }
-
 }

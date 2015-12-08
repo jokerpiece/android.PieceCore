@@ -84,7 +84,7 @@ public class PlayBackActivity extends FragmentActivity {
             i.putExtra("file_data",data);
             this.startActivity(i);
         }else if(type.equals(PLAYBACK_HOLOGRAM)){
-            Intent i = new Intent(this,PlayBackHologramActivity.class);
+            Intent i = new Intent(this,MovieDownloadActivity.class);
             i.putExtra("file_data",data);
             this.startActivity(i);
         }else if(type.equals(PADLOCK_MESSAGE)){
