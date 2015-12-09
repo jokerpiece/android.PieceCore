@@ -227,8 +227,8 @@ public class CouponImageFragment extends Fragment implements OnClickListener, Do
                             viewPager.setVisibility(View.GONE);
                             viewPagerIndicator.setVisibility(View.GONE);
 
-//                            FragmentManager fm = getParentFragment().getFragmentManager();
-							FragmentManager fm = getActivity().getSupportFragmentManager();
+                            FragmentManager fm = getParentFragment().getFragmentManager();
+//							FragmentManager fm = getActivity().getSupportFragmentManager();
 							FragmentTransaction ft = fm.beginTransaction();
 
 							CouponUseFragment fragment = new CouponUseFragment();
