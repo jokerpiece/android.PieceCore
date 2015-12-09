@@ -201,7 +201,10 @@ public class CouponUseFragment extends Fragment implements OnPageChangeListener 
 			}
 
 		}
-		pageFlagment.setGetCouponData(new GetCouponData(getActivity(), handler, viewPager, viewPagerIndicator, couponData));
+		if(getActivity() == null){
+			return;
+		}
+		pageFlagment.setGetCouponData(new GetCouponData(activity, handler, viewPager, viewPagerIndicator, couponData));
 
 		viewPager.setAdapter(pageFlagment);
 		viewPagerIndicator.setCount(pageFlagment.getCount());

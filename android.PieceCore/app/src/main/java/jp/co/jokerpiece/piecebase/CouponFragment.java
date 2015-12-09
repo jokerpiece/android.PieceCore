@@ -74,12 +74,12 @@ public class CouponFragment extends BaseFragment implements OnPageChangeListener
         tvNoCoupon = (TextView) rootView.findViewById(R.id.tv_nocoupon);
         viewPager.setOnPageChangeListener(this);
 
-//		pageFlagment = new CouponImagePageAdapter(getChildFragmentManager(),
-//				new GetCouponData(activity, handler, viewPager, viewPagerIndicator, couponData),
-//				new ArrayList<String>(),Config.haveUrlFlg);
-        pageFlagment = new CouponImagePageAdapter(getActivity().getSupportFragmentManager(),
-        		new GetCouponData(activity, handler, viewPager, viewPagerIndicator, couponData),
-        		new ArrayList<String>(),Config.haveUrlFlg);
+		pageFlagment = new CouponImagePageAdapter(getChildFragmentManager(),
+				new GetCouponData(activity, handler, viewPager, viewPagerIndicator, couponData),
+				new ArrayList<String>(),Config.haveUrlFlg);
+//        pageFlagment = new CouponImagePageAdapter(getActivity().getSupportFragmentManager(),
+//        		new GetCouponData(activity, handler, viewPager, viewPagerIndicator, couponData),
+//        		new ArrayList<String>(),Config.haveUrlFlg);
 
         Bundle bundle = getArguments();
         if (bundle != null) {
@@ -167,6 +167,7 @@ public class CouponFragment extends BaseFragment implements OnPageChangeListener
 	}
 
 	public void getCouponList(){
+		if(getActivity() == null) return;
         ((Activity)context).getLoaderManager().initLoader(Config.loaderCnt++, null, new LoaderCallbacks<CouponListData>(){
 			@Override
 			public Loader<CouponListData> onCreateLoader(int id, Bundle args) {
@@ -198,6 +199,7 @@ public class CouponFragment extends BaseFragment implements OnPageChangeListener
 	 */
 	public void displayCouponAfterGetData() {
 		if (couponData == null) { return; }
+		if(getActivity() == null) return;
 		if(MainBaseActivity.firstTimeStart) {
 			if (SaveData.Cdata != null) {
 				couponData = SaveData.Cdata;
