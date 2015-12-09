@@ -74,7 +74,10 @@ public class CouponFragment extends BaseFragment implements OnPageChangeListener
         tvNoCoupon = (TextView) rootView.findViewById(R.id.tv_nocoupon);
         viewPager.setOnPageChangeListener(this);
 
-        pageFlagment = new CouponImagePageAdapter(getChildFragmentManager(),
+//		pageFlagment = new CouponImagePageAdapter(getChildFragmentManager(),
+//				new GetCouponData(activity, handler, viewPager, viewPagerIndicator, couponData),
+//				new ArrayList<String>(),Config.haveUrlFlg);
+        pageFlagment = new CouponImagePageAdapter(getActivity().getSupportFragmentManager(),
         		new GetCouponData(activity, handler, viewPager, viewPagerIndicator, couponData),
         		new ArrayList<String>(),Config.haveUrlFlg);
 
