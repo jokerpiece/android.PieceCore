@@ -18,7 +18,7 @@ import android.widget.Toast;
 
 import java.util.List;
 
-import jp.co.jokerpiece.piecebase.Oauth.TwitterActivity;
+import jp.co.jokerpiece.piecebase.oauth.TwitterActivity;
 import jp.co.jokerpiece.piecebase.config.Common;
 import jp.co.jokerpiece.piecebase.config.Config;
 import jp.co.jokerpiece.piecebase.util.AppUtil;
