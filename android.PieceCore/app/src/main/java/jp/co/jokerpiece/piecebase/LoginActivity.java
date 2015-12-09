@@ -149,12 +149,19 @@ public class LoginActivity extends Activity {
                             context.startActivity(i);
                         }
                     } else {
-                        Intent i = new Intent(context,UploadVideoActivity.class);
-                        i.putExtra("account_id", data.account_id);
-                        i.putExtra("order_id", data.order_id);
-                        i.putExtra("token", data.token);
-                        i.putExtra("upload_token", data.upload_token);
-                        context.startActivity(i);
+                        Intent i = null;
+                        if(data.type_code.equals("1") || data.type_code.equals("2")) {
+                            i = new Intent(context, UploadVideoActivity.class);
+                            i.putExtra("upload_token", data.upload_token);
+                        }else if(data.type_code.equals("3")){
+                            i = new Intent(context, UploadMessageActivity.class);
+                        }
+                        if(i != null) {
+                            i.putExtra("account_id", data.account_id);
+                            i.putExtra("order_id", data.order_id);
+                            i.putExtra("token", data.token);
+                            context.startActivity(i);
+                        }
                         finish();
                     }
                 }

@@ -2,7 +2,6 @@ package jp.co.jokerpiece.piecebase;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.webkit.WebChromeClient;
@@ -26,13 +25,8 @@ public class UploadMessageActivity extends FragmentActivity {
         setContentView(R.layout.activity_upload_message);
         webView = (WebView)findViewById(R.id.upload_message);
         Intent i = getIntent();
-        String action = i.getAction();
-        if (Intent.ACTION_VIEW.equals(action)) {
-            Uri uri = i.getData();
-            if (uri != null) {
-                order_id = uri.getQueryParameter("order_id");
-            }
-        }
+        order_id = i.getStringExtra("order_id");
+
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
 

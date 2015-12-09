@@ -32,11 +32,13 @@ public class CheckDataAPI extends AsyncTaskLoader<CheckData> implements HttpClie
     public CheckData loadInBackground() {
         CheckData checkData = new CheckData();
         String result = null;
-        HashMap<String,String> parameter = new HashMap<String, String>();
+        HashMap<String,String> parameter = new HashMap<>();
         parameter.put("uuid", Common.getUUID(getContext()));
 //        parameter.put("uuid", "2321");
         parameter.put("order_num",orderNum);
-        parameter.put("mail_address", mailAddress);
+        if(mailAddress != null) {
+            parameter.put("mail_address", mailAddress);
+        }
         parameter.put("app_id", Config.APP_ID);
 
 //      AppUtil.debugLog("checkData", "APImail" + mailAddress);

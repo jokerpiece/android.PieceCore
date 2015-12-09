@@ -156,7 +156,9 @@
 
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-
+                <data
+                    android:host="message"
+                    android:scheme="otonagokoro" />
                 <data
                     android:host="videoupload"
                     android:scheme="otonagokoro" />
@@ -196,16 +198,6 @@
             android:launchMode="singleTask"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="message"
-                    android:scheme="otonagokoro" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".RadarActivity"/>
