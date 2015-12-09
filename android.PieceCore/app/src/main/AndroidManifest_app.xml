@@ -92,19 +92,19 @@
         <activity
             android:name=".RaitenActivity"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
         <!-- ビーコン受信時に表示する透明アクティビティ(ここまで) -->
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/app_id" />
 
         <activity
-            android:name=".Oauth.FacebookActivity"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
+            android:name=".oauth.FacebookActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
         <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
 
         <provider
             android:name="com.facebook.FacebookContentProvider"
@@ -112,7 +112,7 @@
             android:exported="true" />
 
         <activity
-            android:name=".Oauth.TwitterActivity"
+            android:name=".oauth.TwitterActivity"
             android:launchMode="singleInstance"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar">

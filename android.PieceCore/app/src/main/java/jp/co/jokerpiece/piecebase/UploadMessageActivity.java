@@ -10,13 +10,14 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 import jp.co.jokerpiece.piecebase.config.Config;
+import jp.co.jokerpiece.piecebase.util.AppUtil;
 
 /**
  * Created by wenHsin on 2015/11/25.
  */
 public class UploadMessageActivity extends FragmentActivity {
     WebView webView;
-    String order_num;
+    String order_id;
 
     @SuppressLint("SetJavaScriptEnabled")
     @Override
@@ -29,14 +30,15 @@ public class UploadMessageActivity extends FragmentActivity {
         if (Intent.ACTION_VIEW.equals(action)) {
             Uri uri = i.getData();
             if (uri != null) {
-                order_num = uri.getQueryParameter("order_num");
+                order_id = uri.getQueryParameter("order_id");
             }
         }
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
 
-        String Url = Config.SENDID_MESSAGE_UPLOAD + "?order_id=" + order_num + "&app_id=" + Config.APP_ID + "&app_key=" + Config.APP_KEY;
-        webView.loadUrl(Config.SENDID_MESSAGE_UPLOAD + "?order_id=" + order_num + "&app_id=" + Config.APP_ID + "&app_key=" + Config.APP_KEY );
+        String Url = Config.SENDID_MESSAGE_UPLOAD + "?order_id=" + order_id + "&app_id=" + Config.APP_ID + "&app_key=" + Config.APP_KEY;
+        AppUtil.debugLog("messageURL",Url);
+        webView.loadUrl(Url);
         webView.setWebChromeClient(new WebChromeClient(){
         });
 //        webView.setWebViewClient(new WebViewClient(){
