@@ -231,7 +231,7 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener{
 //			getHomeFlyerID();
 //		}
 
-        if(AppUtil.getPrefString(context, "FLYERID", "").equals("0") ) {
+        if(AppUtil.getPrefString(context, "FLYERID", "").equals("0") || AppUtil.getPrefString(context, "FLYERID", "").equals("") ) {
             getFlyerWithID(0);
         }else{
             flyer_ID = Integer.parseInt((AppUtil.getPrefString(context, "FLYERID", "")));
