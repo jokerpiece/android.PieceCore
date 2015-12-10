@@ -130,11 +130,10 @@ public class LoginActivity extends Activity {
             public void onLoadFinished(Loader<CheckData> loader, CheckData data) {
                 if(data == null){
                     Common.serverErrorMessage(context);
-                    return;
-                }
-                checkData = data;
-                if(data.status_code != null && !data.status_code.equals("") ) {
-                    if (data.status_code.equals("01")) {
+                }else{
+                    checkData = data;
+                    if(data.status_code != null && !data.status_code.equals("") ) {
+                        if (data.status_code.equals("01")) {
 
 //                            setContentView(R.layout.activity_loginfailed);
 //                            Button backBtn = (Button) findViewById(R.id.loginfailed_back);
@@ -144,29 +143,30 @@ public class LoginActivity extends Activity {
 //                                    setContentView(R.layout.activity_login);
 //                                }
 //                            });
-                        if(mailAddress != null && !mailAddress.isEmpty()) {
-                            Intent i = new Intent(context, LoginFailedActivity.class);
-                            context.startActivity(i);
+                            if (mailAddress != null && !mailAddress.isEmpty()) {
+                                Intent i = new Intent(context, LoginFailedActivity.class);
+                                context.startActivity(i);
+                            }
+                        } else {
+                            Intent i = null;
+                            if (data.type_code.equals("1") || data.type_code.equals("2")) {
+                                i = new Intent(context, UploadVideoActivity.class);
+                                i.putExtra("upload_token", data.upload_token);
+                            } else if (data.type_code.equals("3")) {
+                                i = new Intent(context, UploadMessageActivity.class);
+                            } else if (data.type_code.equals("4")) {
+                                i = new Intent(context, RegistQuestionActivity.class);
+                            }
+                            if (i != null) {
+                                i.putExtra("account_id", data.account_id);
+                                i.putExtra("order_id", data.order_id);
+                                i.putExtra("token", data.token);
+                                context.startActivity(i);
+                            }
                         }
-                    } else {
-                        Intent i = null;
-                        if(data.type_code.equals("1") || data.type_code.equals("2")) {
-                            i = new Intent(context, UploadVideoActivity.class);
-                            i.putExtra("upload_token", data.upload_token);
-                        }else if(data.type_code.equals("3")){
-                            i = new Intent(context, UploadMessageActivity.class);
-                        }else if(data.type_code.equals("4")){
-                            i = new Intent(context, RegistQuestionActivity.class);
-                        }
-                        if(i != null) {
-                            i.putExtra("account_id", data.account_id);
-                            i.putExtra("order_id", data.order_id);
-                            i.putExtra("token", data.token);
-                            context.startActivity(i);
-                        }
-                        finish();
                     }
                 }
+                finish();
             }
 
             @Override

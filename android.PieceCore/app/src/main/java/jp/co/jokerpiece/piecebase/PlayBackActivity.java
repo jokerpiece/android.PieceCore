@@ -109,9 +109,7 @@ public class PlayBackActivity extends FragmentActivity {
             public void onLoadFinished(Loader<GetFileData> loader, GetFileData data) {
                 if(data == null){
                     Common.serverErrorMessage(context);
-                    return;
-                }
-                if(data.status_code.equals("00")) {
+                }else if(data.status_code.equals("00")) {
                     modeChoice(data.type_code, data.file_data);
                 }
                 finish();
