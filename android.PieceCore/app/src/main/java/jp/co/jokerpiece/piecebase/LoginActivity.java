@@ -155,6 +155,8 @@ public class LoginActivity extends Activity {
                             i.putExtra("upload_token", data.upload_token);
                         }else if(data.type_code.equals("3")){
                             i = new Intent(context, UploadMessageActivity.class);
+                        }else if(data.type_code.equals("4")){
+                            i = new Intent(context, RegistQuestionActivity.class);
                         }
                         if(i != null) {
                             i.putExtra("account_id", data.account_id);

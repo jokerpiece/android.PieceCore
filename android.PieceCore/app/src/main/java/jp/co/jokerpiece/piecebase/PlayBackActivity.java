@@ -63,45 +63,36 @@ public class PlayBackActivity extends FragmentActivity {
 
                     AppUtil.debugLog("playback", order_id);
                     getData();
-                }else if(uri.getHost().equals("padlock")){
-                    order_id = uri.getQueryParameter("order_id");
-                    Intent i = new Intent(this, RegistQuestionActivity.class);
-                    i.putExtra("order_id", AppUtil.decodeCD(order_id));
-                    this.startActivity(i);
-                    finish();
                 }
             }
         }
     }
 
     public void modeChoice(String type,String data){
-
+        Intent i = null;
         if(type.equals(PLAYBACK_MESSAGE)) {
-            Intent i = new Intent(this, PlayBackMessageActivity.class);
+            i = new Intent(this, PlayBackMessageActivity.class);
             i.putExtra("file_data",data);
-            this.startActivity(i);
         }else if(type.equals(PLAYBACK_MOVIE)){
-            Intent i = new Intent(this,PlayBackMovieActivity.class);
+            i = new Intent(this,PlayBackMovieActivity.class);
             i.putExtra("file_data",data);
-            this.startActivity(i);
         }else if(type.equals(PLAYBACK_HOLOGRAM)){
-            Intent i = new Intent(this,MovieDownloadActivity.class);
+            i = new Intent(this,MovieDownloadActivity.class);
             i.putExtra("file_data",data);
-            this.startActivity(i);
         }else if(type.equals(PADLOCK_MESSAGE)){
-            Intent i = new Intent(this,GetQuestionActivity.class);
+            i = new Intent(this,GetQuestionActivity.class);
             i.putExtra("order_id", AppUtil.decodeCD(order_id));
-            this.startActivity(i);
         }else if(type.equals(TREASURE_HUNT)){
-            Intent i = new Intent(this,RadarActivity.class);
+            i = new Intent(this,RadarActivity.class);
             i.putExtra("file_data",data);
-            this.startActivity(i);
         }else if(type.equals(GPS_TRACKING)){
-            Intent i = new Intent(this,GPSLocationActivity.class);
+            i = new Intent(this,GPSLocationActivity.class);
             i.putExtra("file_data", data);
             i.putExtra("type", gps_type);
             i.putExtra("order_id", AppUtil.decodeCD(order_id));
 
+        }
+        if(i != null){
             this.startActivity(i);
         }
     }

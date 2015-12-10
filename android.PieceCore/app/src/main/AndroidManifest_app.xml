@@ -142,9 +142,6 @@
                 <data
                     android:host="rapping"
                     android:scheme="foryou" />
-                <data
-                    android:host="padlock"
-                    android:scheme="otonagokoro" />
             </intent-filter>
         </activity>
         <activity android:name=".LoginActivity"
@@ -161,6 +158,9 @@
                     android:scheme="otonagokoro" />
                 <data
                     android:host="videoupload"
+                    android:scheme="otonagokoro" />
+                <data
+                    android:host="padlock"
                     android:scheme="otonagokoro" />
             </intent-filter>
         </activity>
