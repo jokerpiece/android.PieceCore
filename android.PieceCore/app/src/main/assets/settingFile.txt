@@ -1,6 +1,7 @@
-server_url=http://192.168.77.200/piece_dev/
+server_url=http://jokapi.jp/
 app_id=kodomogokoro
 app_key=jokerpiece_appKey
+cookie_domain=http://t.otonagokoro.com
 splash_time=3
 project_id=
 beacon_isEnabled=false

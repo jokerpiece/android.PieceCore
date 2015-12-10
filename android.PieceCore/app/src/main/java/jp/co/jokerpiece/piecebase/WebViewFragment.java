@@ -4,6 +4,7 @@ package jp.co.jokerpiece.piecebase;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.graphics.Bitmap;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -11,6 +12,7 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.CookieManager;
+import android.webkit.CookieSyncManager;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -46,6 +48,16 @@ public class WebViewFragment extends BaseFragment implements View.OnClickListene
     public WebViewFragment(){
 
     }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+            CookieSyncManager.createInstance(getContext());
+        }
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -55,7 +67,6 @@ public class WebViewFragment extends BaseFragment implements View.OnClickListene
             setMode();
             findViews(rootView);
             webView = (WebView) rootView.findViewById(R.id.webview);
-            CookieManager cookieManager = CookieManager.getInstance();
             Bundle bundle = getArguments();
             if (bundle != null) {
                 webView.setWebViewClient(new WebViewClient() {
@@ -69,6 +80,7 @@ public class WebViewFragment extends BaseFragment implements View.OnClickListene
                         super.onPageStarted(view, url, favicon);
                         ConnectFailed = false;
                     }
+
                     @Override
                     public void onPageFinished(WebView view, String url) {
                         super.onPageFinished(view, url);
@@ -77,7 +89,7 @@ public class WebViewFragment extends BaseFragment implements View.OnClickListene
 //                            imgReload.setVisibility(View.VISIBLE);
 //                            tv.setVisibility(View.VISIBLE);
 //                        } else {
-                            //error_Msg.setVisibility(View.GONE);
+                        //error_Msg.setVisibility(View.GONE);
 //                            imgReload.setVisibility(View.GONE);
 //                            tv.setVisibility(View.GONE);
 //                        }
@@ -116,12 +128,22 @@ public class WebViewFragment extends BaseFragment implements View.OnClickListene
 //                        });
 //                    }
                 });
+
                 WebSettings webSettings = webView.getSettings();
                 webSettings.setJavaScriptEnabled(true);
                 String strUrl = bundle.getString("send_url");
-                String cookieString = "uuid="+ Common.getUUID(getContext())+";Domain="+Config.cookieDomain;
+                String cookieString = "uuid="+ Common.getUUID(getContext());
+
+                CookieManager cookieManager = CookieManager.getInstance();
                 cookieManager.setAcceptCookie(true);
-                cookieManager.setCookie(strUrl, cookieString);
+                cookieManager.setCookie(Config.COOKIE_DOMAIN, cookieString);
+
+                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    cookieManager.flush();
+                }else {
+                    CookieSyncManager.getInstance().sync();
+                }
+
                 if (strUrl != null && !strUrl.equals("")) {
                     webView.loadUrl(strUrl);
                 }
@@ -315,6 +337,18 @@ public class WebViewFragment extends BaseFragment implements View.OnClickListene
                 MainBaseActivity.titleOfActionBar.get(WebViewFragment.class.getSimpleName()));
         getActivity().invalidateOptionsMenu();
 
+        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+            CookieSyncManager.getInstance().startSync();
+        }
+
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+            CookieSyncManager.getInstance().stopSync();
+        }
     }
 
     @Override

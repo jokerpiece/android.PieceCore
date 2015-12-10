@@ -132,7 +132,7 @@ public class Config {
     public static boolean Backflg = false;
     //クーポンURLを持ってるかどうかのフラグ
     public static boolean haveUrlFlg = false;
-    public static String cookieDomain = "t.otonagokoro.com";
+    public static final String COOKIE_DOMAIN;
 
     public static String CONSUMER_KEY = "N1qd3k7y8mT73CZ2hAVxh4JTr";
     public static String CONSUMER_SECRET = "uQqLoh6lV9KQn6F7o6JyRiQkDueNNPIlrR8GwsmW7P95Q8OZ8d";
@@ -215,7 +215,12 @@ public class Config {
             } else {
                 APP_KEY = "jokerpiece_appKey";
             }
-
+            String cookieDomain = map.get("cookie_domain");
+            if (cookieDomain != null && !cookieDomain.equals("")) {
+                COOKIE_DOMAIN = cookieDomain;
+            } else {
+                COOKIE_DOMAIN = "t.otonagokoro.com";
+            }
             int splashTime;
             try {
                 splashTime = Integer.valueOf(map.get("splash_time"));
@@ -242,6 +247,7 @@ public class Config {
             SERVER_URL = "http://jokapi.jp/";
             APP_ID = "pieceSample";
             APP_KEY = "jokerpiece_appKey";
+            COOKIE_DOMAIN = "t.otonagokoro.com";
             SPLASH_TIME = 2;
             PROJECT_ID = "367759414941";
             IS_BEACON_ENABLED = false;
