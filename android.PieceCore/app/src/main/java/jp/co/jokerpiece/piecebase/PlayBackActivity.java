@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 
 import jp.co.jokerpiece.piecebase.api.GetFileDataAPI;
+import jp.co.jokerpiece.piecebase.config.Common;
 import jp.co.jokerpiece.piecebase.config.Config;
 import jp.co.jokerpiece.piecebase.data.GetFileData;
 import jp.co.jokerpiece.piecebase.util.AppUtil;
@@ -115,6 +116,10 @@ public class PlayBackActivity extends FragmentActivity {
 
             @Override
             public void onLoadFinished(Loader<GetFileData> loader, GetFileData data) {
+                if(data == null){
+                    Common.serverErrorMessage(context);
+                    return;
+                }
                 if(data.status_code.equals("00")) {
                     modeChoice(data.type_code, data.file_data);
                 }
