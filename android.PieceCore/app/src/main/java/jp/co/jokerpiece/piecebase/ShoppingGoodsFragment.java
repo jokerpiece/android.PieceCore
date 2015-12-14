@@ -124,6 +124,7 @@ public class ShoppingGoodsFragment extends Fragment implements OnItemClickListen
 	}
 
 	private void showItemView() {
+		if(getActivity() == null) return;
 		Display display = getActivity().getWindowManager().getDefaultDisplay();
 		Point point = new Point();
 		display.getSize(point);
