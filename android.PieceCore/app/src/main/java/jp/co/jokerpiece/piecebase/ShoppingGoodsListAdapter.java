@@ -47,9 +47,11 @@ public class ShoppingGoodsListAdapter extends ArrayAdapter<ItemData> implements 
 		TextView tv1 = (TextView) convertView.findViewById(R.id.tvTitle);
 		tv1.setText(list.get(position).item_title);
 		TextView tv2 = (TextView) convertView.findViewById(R.id.tvPrice);
-		int price = Integer.parseInt(list.get(position).price);
-		NumberFormat currencyFormat = NumberFormat.getNumberInstance();
-		tv2.setText(currencyFormat.format(price) + getContext().getResources().getString(R.string.yen));
+		if(!list.get(position).price.equals("") && list.get(position).price != null) {
+			int price = Integer.parseInt(list.get(position).price);
+			NumberFormat currencyFormat = NumberFormat.getNumberInstance();
+			tv2.setText(currencyFormat.format(price) + getContext().getResources().getString(R.string.yen));
+		}
 		TextView tv3 = (TextView) convertView.findViewById(R.id.tvStocks);
 		tv3.setText(list.get(position).stocks);
 		if(list.get(position).stocks != null) {
