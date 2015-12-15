@@ -101,6 +101,7 @@ public class InfomationFragment extends Fragment  {
 
 	public void getInfomation(){
         viewPager.setVisibility(View.INVISIBLE);
+
         getActivity().getLoaderManager().initLoader(Config.loaderCnt++, null, new LoaderCallbacks<NewsListData>() {
 			@Override
 			public Loader<NewsListData> onCreateLoader(int id, Bundle args) {
@@ -116,10 +117,11 @@ public class InfomationFragment extends Fragment  {
 					return;
 				}
 				infoListData = data;
+				if(getActivity() == null) return;
 				// ここにデータ取得時の処理を書く
 		        viewPager.setAdapter(
 		                new InfomationListPageAdapter(
-		                  getChildFragmentManager(), context, data));
+		                  getChildFragmentManager(), getActivity(), data));
                 viewPager.setVisibility(View.VISIBLE);
 			}
 			@Override
