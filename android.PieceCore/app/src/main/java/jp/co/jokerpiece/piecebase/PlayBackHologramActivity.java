@@ -40,7 +40,7 @@ public class PlayBackHologramActivity extends Activity{
     String file_data;
 
     Context context;
-    private String pathToVideo = "rtsp://r2---sn-a5m7zu76.c.youtube.com/Ck0LENy73wIaRAnTmlo5oUgpQhMYESARFEgGUg5yZWNvbW1lbmRhdGlvbnIhAWL2kyn64K6aQtkZVJdTxRoO88HsQjpE1a8d1GxQnGDmDA==/0/0/0/video.3gp";
+    //private String pathToVideo = "rtsp://r2---sn-a5m7zu76.c.youtube.com/Ck0LENy73wIaRAnTmlo5oUgpQhMYESARFEgGUg5yZWNvbW1lbmRhdGlvbnIhAWL2kyn64K6aQtkZVJdTxRoO88HsQjpE1a8d1GxQnGDmDA==/0/0/0/video.3gp";
     private String videoPath = "";
     private TextureView textureView;
     private TextureView textureView2;
@@ -155,8 +155,8 @@ public class PlayBackHologramActivity extends Activity{
                 display.getSize(size);
 
                 ViewGroup.LayoutParams params = textureView.getLayoutParams();
-                params.height = 300;
-                params.width = 300;
+//                params.height = 300;
+//                params.width = 300;
                 textureView.setLayoutParams(params);
                 mediaPlayer1isPrepared = true;
                 startPlay();
@@ -187,8 +187,8 @@ public class PlayBackHologramActivity extends Activity{
                 display.getSize(size);
 
                 ViewGroup.LayoutParams params = textureView2.getLayoutParams();
-                params.height = 300;
-                params.width = 300;
+//                params.height = 300;
+//                params.width = 300;
                 textureView2.setLayoutParams(params);
                 mediaPlayer2isPrepared = true;
                 startPlay();
@@ -219,8 +219,8 @@ public class PlayBackHologramActivity extends Activity{
                 display.getSize(size);
 
                 ViewGroup.LayoutParams params = textureView3.getLayoutParams();
-                params.height = 300;
-                params.width = 300;
+//                params.height = 300;
+//                params.width = 300;
                 textureView3.setLayoutParams(params);
                 mediaPlayer3isPrepared = true;
                 startPlay();
@@ -250,8 +250,8 @@ public class PlayBackHologramActivity extends Activity{
                 display.getSize(size);
 
                 ViewGroup.LayoutParams params = textureView4.getLayoutParams();
-                params.height = 300;
-                params.width = 300;
+//                params.height = 300;
+//                params.width = 300;
                 textureView4.setLayoutParams(params);
                 mediaPlayer4isPrepared = true;
                 startPlay();

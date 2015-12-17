@@ -112,9 +112,7 @@ public class LoginActivity extends Activity {
 //                }
 //            }
     }
-    public void makeView(){
 
-    }
     public void getData(){
         getLoaderManager().initLoader(loaderCnt++, null, new LoaderManager.LoaderCallbacks<CheckData>() {
             @Override

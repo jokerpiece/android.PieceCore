@@ -1,16 +1,23 @@
 package jp.co.jokerpiece.piecebase;
 
+import android.*;
+import android.Manifest;
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import java.io.File;
 
@@ -29,7 +36,7 @@ public class MovieDownloadActivity extends Activity {
     Context context;
     private String videoPath = "";
     private String url;
-    private String testUrl = "http://192.168.77.200/piece_dev/test.3gp";
+//    private String testUrl = "http://192.168.77.200/piece_dev/test.3gp";
     ImageView tutorialImg;
 
     @Override
@@ -55,10 +62,8 @@ public class MovieDownloadActivity extends Activity {
                     progressDialog.setProgress(0);
                     progressHandler.sendEmptyMessage(0);
                 }
-
             }
         });
-
     }
 
     private void initFileLoader(){
