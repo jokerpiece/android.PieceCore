@@ -1,30 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/relativeLayout"
     android:background="@color/background_material_light">
 
-    <TextView
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:id="@+id/spaceTop"/>
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/spaceBottom"/>
+
+    <ScrollView
         android:layout_width="220dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="90dp"
-        android:textColor="#000000"
-        android:id="@+id/playbackMessage"
-        android:layout_gravity="center_horizontal|top" />
-
-    <Button
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:id="@+id/closeBtn"
-        android:layout_marginTop="5dp"
-        android:layout_marginRight="5dp"
-        android:background="@drawable/btn_close"
-        android:layout_gravity="right|top" />
-
+        android:id="@+id/playbackMessage_scroll"
+        android:layout_below="@+id/spaceTop"
+        android:layout_above="@+id/spaceBottom"
+        android:layout_centerInParent="true"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:id="@+id/playbackMessage"
+            />
+    </ScrollView>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:id="@+id/ll_closeBtn">
+        <Button
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:id="@+id/closeBtn"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/btn_close"
+            />
+    </RelativeLayout>
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="match_parent"
         android:src="@drawable/illust1344"
-        android:layout_gravity="center" />
+        android:layout_below="@+id/ll_closeBtn" />
 
-</FrameLayout>
+</RelativeLayout>

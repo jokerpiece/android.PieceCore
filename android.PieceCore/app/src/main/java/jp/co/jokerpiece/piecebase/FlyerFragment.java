@@ -198,7 +198,6 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener{
 				MainBaseActivity.titleOfActionBar.get(FlyerFragment.class.getSimpleName()));
 		getActivity().invalidateOptionsMenu();
 
-
 		if(!MainBaseActivity.startFromSchemeFlg){
 			Intent intent = getActivity().getIntent();
 			String action = intent.getAction();

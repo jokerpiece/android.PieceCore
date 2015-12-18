@@ -6,11 +6,14 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Point;
+import android.os.Build;
 import android.util.Log;
 import android.view.Display;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ImageView;
+
+import java.lang.reflect.Method;
 
 import jp.co.jokerpiece.piecebase.BuildConfig;
 import jp.co.jokerpiece.piecebase.MainBaseActivity;
@@ -124,4 +127,24 @@ public class AppUtil {
         }
         return result;
     }
-}
+
+    public static Point getDisplaySize(Activity activity){
+        Display display = activity.getWindowManager().getDefaultDisplay();
+        Point real = new Point(0,0);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1){
+            display.getRealSize(real);
+            return real;
+        }else if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2){
+            try{
+                Method getRawWidth = Display.class.getMethod("getRawWidth");
+                Method getRawHeight = Display.class.getMethod("getRawHeight");
+                int width = (Integer) getRawWidth.invoke(display);
+                int height = (Integer) getRawHeight.invoke(display);
+                real.set(width,height);
+                return real;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return real;
+    }}
