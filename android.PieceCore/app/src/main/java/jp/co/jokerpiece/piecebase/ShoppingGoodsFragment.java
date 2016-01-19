@@ -1,5 +1,31 @@
 package jp.co.jokerpiece.piecebase;
 
+import android.app.LoaderManager.LoaderCallbacks;
+import android.content.Context;
+import android.content.Loader;
+import android.graphics.Point;
+import android.os.Bundle;
+import android.provider.SyncStateContract;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.view.Display;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.FrameLayout;
+import android.widget.ListView;
+import android.widget.SearchView.OnQueryTextListener;
+import android.widget.TextView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,34 +37,6 @@ import jp.co.jokerpiece.piecebase.data.ItemListData.ItemData;
 import jp.co.jokerpiece.piecebase.util.App;
 import jp.co.jokerpiece.piecebase.util.AppUtil;
 import jp.co.jokerpiece.piecebase.util.DownloadImageView;
-import android.app.LoaderManager.LoaderCallbacks;
-import android.content.Context;
-import android.content.Loader;
-import android.graphics.Point;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.view.Display;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.AbsListView;
-import android.widget.AbsListView.OnScrollListener;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.AutoCompleteTextView;
-import android.widget.FrameLayout;
-import android.widget.ListView;
-import android.widget.SearchView;
-import android.widget.SearchView.OnQueryTextListener;
-import android.widget.TextView;
 
 public class ShoppingGoodsFragment extends Fragment implements OnItemClickListener, OnScrollListener, OnQueryTextListener {
 	final Context context = App.getContext();
@@ -171,15 +169,40 @@ public class ShoppingGoodsFragment extends Fragment implements OnItemClickListen
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
 		ItemData data = itemData.data_list.get(position);
-		FragmentManager fm = getFragmentManager();
-		FragmentTransaction ft = fm.beginTransaction();
-		ft.addToBackStack(null);
-		WebViewFragment fragment = new WebViewFragment();
-		Bundle bundle = new Bundle();
-		bundle.putString("send_url", data.item_url);
-		fragment.setArguments(bundle);
-		ft.replace(R.id.fragment, fragment);
-		ft.commit();
+		//買い物をWeb画面でするか、Android内で実施するかの制御
+		if("0".equals(Config.PAY_SELECT_KBN)) {
+
+			FragmentManager fm = getFragmentManager();
+			FragmentTransaction ft = fm.beginTransaction();
+			ft.addToBackStack(null);
+			PayPalPieceFragment fragment = new PayPalPieceFragment();
+
+			Bundle bundle = new Bundle();
+
+			bundle.putString("item_id", data.item_id);
+			bundle.putString("price", data.price);
+			bundle.putString("stocks", data.stocks);
+			bundle.putString("img_url", data.img_url);
+			bundle.putString("item_title", data.item_title);
+			bundle.putString("text", data.text);
+			fragment.setArguments(bundle);
+			ft.replace(R.id.fragment, fragment);
+			ft.commit();
+			//Paypal決済できる詳細画面に遷移する。
+
+		}else{
+
+			FragmentManager fm = getFragmentManager();
+			FragmentTransaction ft = fm.beginTransaction();
+			ft.addToBackStack(null);
+			WebViewFragment fragment = new WebViewFragment();
+			Bundle bundle = new Bundle();
+			bundle.putString("send_url", data.item_url);
+			fragment.setArguments(bundle);
+			ft.replace(R.id.fragment, fragment);
+			ft.commit();
+		}
+
 	}
 	private void getItemList(){
 		connecting = true;

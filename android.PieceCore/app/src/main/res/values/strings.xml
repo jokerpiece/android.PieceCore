@@ -54,8 +54,10 @@
     <string name="twitter1">Twitter</string>ogin
     <string name="login0">LOGIN</string>
     <string name="login1">LOGIN</string>
+    <string name="paypal0">PAYPAL</string>
+    <string name="paypal1">PAYPAL</string>
 
-    <!-- default theme -->
+        <!-- default theme -->
     <drawable name="actionbar_background">#FFFFFF</drawable>
     <drawable name="theme_text_color">#666</drawable>
     <color name="tab_text_color">#666</color>

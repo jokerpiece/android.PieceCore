@@ -129,6 +129,9 @@ public class ShoppingFragment extends BaseFragment implements OnItemClickListene
 		//bundle.putInt("category_id", data.category_id);
         bundle.putString("category_id",data.category_id);
         bundle.putString("category_img_url", data.img_url);
+        bundle.putString("category_text", data.category_text);
+        bundle.putString("category_name", data.category_name);
+
 		fragment.setArguments(bundle);
 		ft.replace(R.id.fragment, fragment);
         ft.addToBackStack(null);

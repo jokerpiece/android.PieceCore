@@ -45,8 +45,7 @@ public class ShoppingGoodsListAdapter extends ArrayAdapter<ItemData> implements 
 		}
 		LinearLayout Bg = (LinearLayout)convertView.findViewById(R.id.stocksBg);
 		TextView tv1 = (TextView) convertView.findViewById(R.id.tvTitle);
-		tv1.setText(list.get(position).item_title);
-		TextView tv2 = (TextView) convertView.findViewById(R.id.tvPrice);
+		tv1.setText(list.get(position).item_title);		TextView tv2 = (TextView) convertView.findViewById(R.id.tvPrice);
 		if(!list.get(position).price.equals("") && list.get(position).price != null) {
 			int price = Integer.parseInt(list.get(position).price);
 			NumberFormat currencyFormat = NumberFormat.getNumberInstance();

@@ -427,7 +427,6 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
                         put("cls", TwitterFragment.class);
                     }
                 }
-
         ));
     }
 
@@ -491,6 +490,7 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
             {
                 put(TwitterFragment.class.getSimpleName(), R.string.twitter0);
             }
+
         };
     }
 

@@ -20,7 +20,11 @@ public class Config {
     public static final String APP_KEY;
     public static final int SPLASH_TIME;
     public static final String SERVER_URL;
-
+    public static final String PAYPAL_CLIENT_ID;
+    public static final String PAYPAL_ENVIRONMENT;
+    public static final String PAYPAL_BNCODE;
+    public static final String PAY_SELECT_KBN;
+    public static final String DELIVERY;
 //  public static String APP_ID = "pieceSample";
 //  public static final String APP_ID = "pushColor";
 //	public static final String APP_ID = "otonagokoro";
@@ -103,7 +107,7 @@ public class Config {
 
     public static final String SENDID_MESSAGE_UPLOAD;
     public static final String SENDID_MESSAGE_UPLOAD_DONE;
-
+    public static final String SENDID_REGUST_APP_PAYMENT;
 
     public static final String YOUTUBE_APIV3 = "https://www.googleapis.com/upload/youtube/v3/videos?part=snippet,status";
 
@@ -125,6 +129,8 @@ public class Config {
     public static int SnsFragmentNum;
     public static int WebViewFragmentNum;
     public static int TwitterFragmentNum;
+    public static int PaypalFragmentNum;
+    public static int ResoultFragmentNum;
 
     public static List Savelist = new ArrayList<>();
     public static  Class<?> TwitterBackToMain = MainBaseActivity.class;
@@ -243,6 +249,43 @@ public class Config {
             } else {
                 IS_BEACON_ENABLED = false;
             }
+
+            String paypalClientId = map.get("paypal_clientId");
+            if (paypalClientId != null && !paypalClientId.equals("")) {
+                PAYPAL_CLIENT_ID = paypalClientId;
+            } else {
+                PAYPAL_CLIENT_ID = "credential from developer.paypal.com";
+            }
+
+            String paypalEnvironment = map.get("paypal_environment");
+            if (paypalEnvironment != null && !paypalEnvironment.equals("")) {
+                PAYPAL_ENVIRONMENT = paypalEnvironment;
+            } else {
+                PAYPAL_ENVIRONMENT = "mock";
+            }
+
+            String paypalBncode = map.get("paypal_bncode");
+            if (paypalBncode != null && !paypalBncode.equals("")) {
+                PAYPAL_BNCODE = paypalEnvironment;
+            } else {
+                PAYPAL_BNCODE = "";
+            }
+
+            String pay_select_kbn = map.get("pay_select_kbn");
+            if (pay_select_kbn != null && !pay_select_kbn.equals("")) {
+                PAY_SELECT_KBN = pay_select_kbn;
+            } else {
+                PAY_SELECT_KBN = "";
+            }
+
+            String delivery = map.get("delivery");
+            if (delivery != null && !delivery.equals("") ) {
+                DELIVERY = delivery;
+            } else {
+                DELIVERY = "0";
+            }
+
+
         } else {
             SERVER_URL = "http://jokapi.jp/";
             APP_ID = "pieceSample";
@@ -251,6 +294,11 @@ public class Config {
             SPLASH_TIME = 2;
             PROJECT_ID = "367759414941";
             IS_BEACON_ENABLED = false;
+            PAYPAL_CLIENT_ID =  "credential from developer.paypal.com";
+            PAYPAL_ENVIRONMENT =  "mock";
+            PAYPAL_BNCODE = "";
+            PAY_SELECT_KBN = "";
+            DELIVERY = "0";
         }
 
         SERVER_API_URL = SERVER_URL + "manager/html/xml/";
@@ -283,6 +331,7 @@ public class Config {
 
         SENDID_MESSAGE_UPLOAD = SERVER_URL + "manager/html/webview/message/index.php";
         SENDID_MESSAGE_UPLOAD_DONE = SERVER_URL +"manager/html/webview/message/done.html";
+        SENDID_REGUST_APP_PAYMENT = SERVER_API_URL + "regist_app_payment";
     }
 
 }

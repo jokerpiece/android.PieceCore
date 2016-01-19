@@ -36,7 +36,7 @@
 
     <!-- カメラの設定(ここまで) -->
     <!-- ライブラリのアプリケーションを使用するため -->
-    <!-- "jp.co.jokerpiece.piecebase.util.App"を設定する必要があります -->
+    "jp.co.jokerpiece.piecebase.util.App"を設定する必要があります
     <application
         android:name=".util.App"
         android:allowBackup="true"
@@ -207,6 +207,18 @@
             android:name=".GetQuestionActivity"/>
         <activity
             android:name=".RegistQuestionActivity"/>
+
+        <service android:name="com.paypal.android.sdk.payments.PayPalService"
+            android:exported="false" />
+
+        <activity android:name="com.paypal.android.sdk.payments.PaymentActivity" />
+        <activity android:name="com.paypal.android.sdk.payments.LoginActivity" />
+        <activity android:name="com.paypal.android.sdk.payments.PaymentMethodActivity" />
+        <activity android:name="com.paypal.android.sdk.payments.PaymentConfirmActivity" />
+        <activity android:name="io.card.payment.CardIOActivity"
+            android:configChanges="keyboardHidden|orientation" />
+        <activity android:name="io.card.payment.DataEntryActivity" />
+
     </application>
 
 </manifest>
