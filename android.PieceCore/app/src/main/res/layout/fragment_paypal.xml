@@ -6,6 +6,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/background_fragment"
     tools:context=".PayPalFragment" >
 
    <LinearLayout
@@ -14,8 +15,7 @@
        android:layout_height="match_parent"
        android:layout_alignParentRight="true"
        android:layout_centerVertical="true"
-       android:orientation="vertical"
-       android:background="@color/background_fragment" >
+       android:orientation="vertical">
 
        <jp.co.jokerpiece.piecebase.util.DownloadImageView
            android:id="@+id/goodsView"
