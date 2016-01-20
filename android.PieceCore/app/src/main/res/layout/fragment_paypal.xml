@@ -14,7 +14,8 @@
        android:layout_height="match_parent"
        android:layout_alignParentRight="true"
        android:layout_centerVertical="true"
-       android:orientation="vertical" >
+       android:orientation="vertical"
+       android:background="@color/background_fragment" >
 
        <jp.co.jokerpiece.piecebase.util.DownloadImageView
            android:id="@+id/goodsView"
