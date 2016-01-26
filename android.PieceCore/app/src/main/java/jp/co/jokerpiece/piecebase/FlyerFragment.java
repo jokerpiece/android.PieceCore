@@ -20,6 +20,7 @@ import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -247,6 +248,11 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener 
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         menu.clear();
 //        inflater.inflate(R.menu.menu_coupon, menu);
+        //カートのURLがセットされている場合のみ
+        //カートの画像を表示する。
+        if(Config.CARTURL !="" &&   Config.CARTURL != null) {
+            inflater.inflate(R.menu.menu_cart, menu);
+        }
         super.onCreateOptionsMenu(menu, inflater);
     }
 
@@ -378,6 +384,25 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener 
                 }
             });
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        super.onOptionsItemSelected(item);
+
+        if(Config.CARTURL !="" &&   Config.CARTURL != null) {
+
+            FragmentManager fm = getFragmentManager();
+            FragmentTransaction ft = fm.beginTransaction();
+            ft.addToBackStack(null);
+            WebViewFragment fragment = new WebViewFragment();
+            Bundle bundle = new Bundle();
+            bundle.putString("send_url", Config.CARTURL);
+            fragment.setArguments(bundle);
+            ft.replace(R.id.fragment, fragment);
+            ft.commit();
+        }
+        return true;
     }
 
     @Override
