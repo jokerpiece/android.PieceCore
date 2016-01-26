@@ -56,6 +56,8 @@
     <string name="login1">LOGIN</string>
     <string name="paypal0">PAYPAL</string>
     <string name="paypal1">PAYPAL</string>
+    <string name="reminder0">REMINDER</string>
+    <string name="reminder1">Reminder</string>
 
         <!-- default theme -->
     <drawable name="actionbar_background">#FFFFFF</drawable>
@@ -117,4 +119,19 @@
     <string name="title_activity_gpslocation">GPSLocationActivity</string>
     <string name="title_activity_get_question">GetQuestionActivity</string>
 
+    <!--Reminder-->
+    <string name="reminder_explanation">プレゼントを渡したい人の誕生日等や記念日などを入れておくと、日付が近くなったら(20日前)通知を受け取ることができます。</string>
+    <string name="reminder_noties_name">通知したい日付の名前</string>
+    <string name="reminder_noties_day">通知したい日付の月日</string>
+    <string name="reminder_fathers_day">父の日</string>
+    <string name="reminder_mothers_day">母の日</string>
+    <string name="reminder_respect_for_the_aged_day">敬老の日</string>
+    <string name="reminder_childrens_day">子供の日</string>
+    <string name="reminder_valentines_day">バレンタインデー</string>
+    <string name="reminder_save">保存</string>
+    <string name="reminder_dokujituuci_setei">独自通知設定</string>
+    <string name="reminder_teikei_noties">定型通知設定</string>
+    <string name="clear">clear</string>
+    <string name="left">left</string>
+    <string name="center">center</string>
 </resources>

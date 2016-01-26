@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_fragment"
+    tools:context=".PayPalFragment">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#FFF"
+        android:gravity="center_horizontal"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#FFF"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            >
+            <Space
+                android:layout_width="20dp"
+                android:layout_height="fill_parent" />
+
+            <TextView
+                android:id="@+id/tv_explanatoin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="#000000"
+                android:gravity="top"
+                android:text="@string/reminder_explanation" />
+            <Space
+                android:layout_width="20dp"
+                android:layout_height="fill_parent" />
+
+        </LinearLayout>
+        <Space
+            android:layout_width="fill_parent"
+            android:layout_height="10dp" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+            <Space
+                android:layout_width="20dp"
+                android:layout_height="fill_parent" />
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:baselineAligned="false">
+
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center_horizontal"
+                    android:background="#111111"
+                    android:orientation="vertical" >
+                    <TextView
+                        android:id="@+id/tv_dokuji"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:textColor="#FFF"
+                        android:text="@string/reminder_dokujituuci_setei" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:background="#C8C8C8"
+                    android:orientation="horizontal">
+                    <Space
+                        android:layout_width="10dp"
+                        android:layout_height="fill_parent"
+                        android:background="#C8C8C8"/>
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical" >
+                        <Space
+                            android:layout_width="fill_parent"
+                            android:layout_height="10dp" />
+                        <TextView
+                            android:id="@+id/tv_notes_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="18sp"
+                            android:layout_gravity="left"
+                            android:textColor="#000000"
+                            android:text="@string/reminder_noties_name" />
+                        <Space
+                            android:layout_width="fill_parent"
+                            android:layout_height="5dp" />
+                        <EditText
+                            android:id="@+id/et_notice_name"
+                            android:layout_width="240dp"
+                            android:layout_height="24dp"
+                            android:background="#FFF"
+                            android:layout_gravity="left"
+                            android:textColor="#000000"
+                            android:maxLength="20"/>
+                        <Space
+                            android:layout_width="fill_parent"
+                            android:layout_height="10dp" />
+                        <TextView
+                            android:id="@+id/tv_notes_day"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="18sp"
+                            android:layout_gravity="left"
+                            android:textColor="#000000"
+                            android:text="@string/reminder_noties_day" />
+                        <Space
+                            android:layout_width="fill_parent"
+                            android:layout_height="5dp" />
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                              android:background="#C8C8C8"
+                            android:orientation="horizontal" >
+                            <TextView
+                                android:id="@+id/et_notice_day"
+                                android:layout_height="24dp"
+                                android:layout_width="100dp"
+                                android:layout_gravity="left"
+                                android:textColor="#000000"
+                                android:background="#FFF"/>
+                            <Space
+                                android:layout_width="24dp"
+                                android:layout_height="wrap_content" />
+                            <Button
+                                android:layout_width="60dp"
+                                android:layout_height="24dp"
+                                android:text="@string/clear"
+                                android:id="@+id/remaind_clear_button"
+                                android:textColor="#FFF"
+                                android:background="@drawable/shape_button"
+                                android:gravity="top|center"
+                                android:layout_gravity="left"
+                                />
+
+                        </LinearLayout>
+                        <Space
+                            android:layout_width="fill_parent"
+                            android:layout_height="10dp" />
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center_horizontal"
+                    android:background="#111111"
+                    android:orientation="vertical" >
+                    <TextView
+                        android:id="@+id/tv_teikei"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:textColor="#FFF"
+                        android:text="@string/reminder_teikei_noties" />
+
+                </LinearLayout>
+                <GridLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:columnCount="2"
+                    android:rowCount = "3"
+                    android:background="#C8C8C8"
+                    android:orientation="horizontal" >
+                    <CheckBox
+                        android:id="@+id/cb_fathersday"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:textColor="#000000"
+                        android:layout_gravity="left"
+                        android:text="@string/reminder_fathers_day" />
+                    <CheckBox
+                        android:id="@+id/cb_mothersday"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:textColor="#000000"
+                        android:layout_gravity="left"
+                        android:text="@string/reminder_mothers_day" />
+
+                    <CheckBox
+                        android:id="@+id/cb_keirounohi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:textColor="#000000"
+                        android:layout_gravity="left"
+                        android:text="@string/reminder_respect_for_the_aged_day" />
+                    <CheckBox
+                        android:id="@+id/cb_childernday"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:layout_gravity="left"
+                        android:textColor="#000000"
+                        android:text="@string/reminder_childrens_day" />
+
+                    <CheckBox
+                        android:id="@+id/cb_valentain"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:textColor="#000000"
+                        android:layout_gravity="left"
+                        android:text="@string/reminder_valentines_day" />
+                </GridLayout>
+            </LinearLayout>
+            <Space
+                android:layout_width="20dp"
+                android:layout_height="fill_parent" />
+        </LinearLayout>
+        <Space
+            android:layout_width="fill_parent"
+            android:layout_height="10dp" />
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFF"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            >
+            <Space
+                android:layout_width="20dp"
+                android:layout_height="fill_parent" />
+            <Button
+
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="保存"
+                android:id="@+id/remaind_save_button"
+                android:gravity="center"
+                android:textColor="#FFF"
+                android:background="#292999"
+                android:layout_gravity="bottom" />
+            <Space
+                android:layout_width="20dp"
+                android:layout_height="fill_parent" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

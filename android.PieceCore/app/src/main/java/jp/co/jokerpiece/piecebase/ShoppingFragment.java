@@ -13,11 +13,13 @@ import android.support.v4.app.LoaderManager;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -74,8 +76,8 @@ public class ShoppingFragment extends BaseFragment implements OnItemClickListene
 	public void onResume() {
 		super.onResume();
 		AppUtil.setTitleOfActionBar(
-				getActivity().getActionBar(),
-				MainBaseActivity.titleOfActionBar.get(ShoppingFragment.class.getSimpleName()));
+                getActivity().getActionBar(),
+                MainBaseActivity.titleOfActionBar.get(ShoppingFragment.class.getSimpleName()));
 		getActivity().invalidateOptionsMenu();
 //		if(categoryData == null){
 			getGenreList();
@@ -91,9 +93,33 @@ public class ShoppingFragment extends BaseFragment implements OnItemClickListene
 	@Override
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 		menu.clear();
-//        inflater.inflate(R.menu.menu_coupon, menu);
+
+        //カートのURLがセットされている場合のみ
+        //カートの画像を表示する。
+        if(Config.CARTURL !="" &&   Config.CARTURL != null) {
+            inflater.inflate(R.menu.menu_cart, menu);
+        }
         super.onCreateOptionsMenu(menu, inflater);
 	}
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        super.onOptionsItemSelected(item);
+
+        if(Config.CARTURL !="" &&   Config.CARTURL != null) {
+
+            FragmentManager fm = getFragmentManager();
+            FragmentTransaction ft = fm.beginTransaction();
+            ft.addToBackStack(null);
+            WebViewFragment fragment = new WebViewFragment();
+            Bundle bundle = new Bundle();
+            bundle.putString("send_url", Config.CARTURL);
+            fragment.setArguments(bundle);
+            ft.replace(R.id.fragment, fragment);
+            ft.commit();
+        }
+        return true;
+    }
 
 	private void showCategoryView() {
         if(SaveData.Categorydata != null) {
@@ -127,7 +153,7 @@ public class ShoppingFragment extends BaseFragment implements OnItemClickListene
 		ShoppingGoodsFragment fragment = new ShoppingGoodsFragment();
 		Bundle bundle = new Bundle();
 		//bundle.putInt("category_id", data.category_id);
-        bundle.putString("category_id",data.category_id);
+        bundle.putString("category_id", data.category_id);
         bundle.putString("category_img_url", data.img_url);
         bundle.putString("category_text", data.category_text);
         bundle.putString("category_name", data.category_name);

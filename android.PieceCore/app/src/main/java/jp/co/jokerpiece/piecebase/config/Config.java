@@ -25,6 +25,7 @@ public class Config {
     public static final String PAYPAL_BNCODE;
     public static final String PAY_SELECT_KBN;
     public static final String DELIVERY;
+    public static final String CARTURL;
 //  public static String APP_ID = "pieceSample";
 //  public static final String APP_ID = "pushColor";
 //	public static final String APP_ID = "otonagokoro";
@@ -131,6 +132,7 @@ public class Config {
     public static int TwitterFragmentNum;
     public static int PaypalFragmentNum;
     public static int ResoultFragmentNum;
+    public static int ReminederFragmentNum;
 
     public static List Savelist = new ArrayList<>();
     public static  Class<?> TwitterBackToMain = MainBaseActivity.class;
@@ -266,7 +268,7 @@ public class Config {
 
             String paypalBncode = map.get("paypal_bncode");
             if (paypalBncode != null && !paypalBncode.equals("")) {
-                PAYPAL_BNCODE = paypalEnvironment;
+                PAYPAL_BNCODE = paypalBncode;
             } else {
                 PAYPAL_BNCODE = "";
             }
@@ -285,6 +287,12 @@ public class Config {
                 DELIVERY = "0";
             }
 
+            String carturl = map.get("carturl");
+            if (carturl != null && !carturl.equals("") ) {
+                CARTURL = carturl;
+            } else {
+                CARTURL = "";
+            }
 
         } else {
             SERVER_URL = "http://jokapi.jp/";
@@ -299,6 +307,7 @@ public class Config {
             PAYPAL_BNCODE = "";
             PAY_SELECT_KBN = "";
             DELIVERY = "0";
+            CARTURL = "";
         }
 
         SERVER_API_URL = SERVER_URL + "manager/html/xml/";

@@ -36,7 +36,7 @@
 
     <!-- カメラの設定(ここまで) -->
     <!-- ライブラリのアプリケーションを使用するため -->
-    "jp.co.jokerpiece.piecebase.util.App"を設定する必要があります
+    <!--"jp.co.jokerpiece.piecebase.util.App"を設定する必要があります-->
     <application
         android:name=".util.App"
         android:allowBackup="true"
@@ -85,6 +85,8 @@
                 <category android:name="${applicationId}" />
             </intent-filter>
         </receiver>
+        <receiver
+            android:name=".LocalPush"></receiver>
         <!-- プッシュ通知に必要なアクティビティ(ここまで) -->
 
 

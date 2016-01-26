@@ -12,6 +12,7 @@ import android.text.SpannableStringBuilder;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import jp.co.jokerpiece.piecebase.api.CheckDataAPI;
 import jp.co.jokerpiece.piecebase.config.Common;
@@ -60,8 +61,13 @@ public class LoginActivity extends Activity {
                 order_num = sbOrderNum.toString();
                 AppUtil.debugLog("checkData", "order" + order_num);
                 AppUtil.debugLog("checkData", "mail" + mailAddress);
+                //メールアドレスと注文NOが入力されていた場合、処理する
                 if (!mailAddress.equals("") && !order_num.equals("")) {
                     getData();
+                }else{
+
+                    Toast.makeText(context, "注文番号とメールアドレスを入力してください。", Toast.LENGTH_SHORT).show();
+
                 }
             }
         });
@@ -141,10 +147,15 @@ public class LoginActivity extends Activity {
 //                                    setContentView(R.layout.activity_login);
 //                                }
 //                            });
-                            if (mailAddress != null && !mailAddress.isEmpty()) {
+//                            if (mailAddress != null && !mailAddress.isEmpty()) {
+                            try {
+                                Thread.sleep(1000);
+                            }catch (InterruptedException e){
+                                e.printStackTrace();
+                            }
                                 Intent i = new Intent(context, LoginFailedActivity.class);
                                 context.startActivity(i);
-                            }
+//                            }
                         } else {
                             Intent i = null;
                             if (data.type_code.equals("1") || data.type_code.equals("2")) {
@@ -161,10 +172,12 @@ public class LoginActivity extends Activity {
                                 i.putExtra("token", data.token);
                                 context.startActivity(i);
                             }
+
+                            finish();
                         }
                     }
                 }
-                finish();
+
             }
 
             @Override

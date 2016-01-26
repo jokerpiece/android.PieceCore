@@ -63,7 +63,7 @@ public class FlyerListAPI extends AsyncTaskLoader<FlyerData> implements HttpClie
 			int error_code = rootObject.getInt("error_code");
 			if(error_code != 0){
 				return null;
-			}
+		}
 			flyerData.header_list = new ArrayList<FlyerData.FlyerHeaderData>();
 			flyerData.body_list = new ArrayList<FlyerData.FlyerBodyData>();
 

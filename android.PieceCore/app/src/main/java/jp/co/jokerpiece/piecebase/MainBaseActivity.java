@@ -2,6 +2,7 @@ package jp.co.jokerpiece.piecebase;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
@@ -105,6 +106,11 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
             }
         }.start();
 
+
+        //ローカルプッシュ通知の設定
+        NotificationManager mManager;
+        mManager = (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
+        mManager.cancelAll();
 
         settingData = setConfig();
         titleOfActionBar = setTitleOfActionBar();
@@ -426,6 +432,19 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
                     {
                         put("cls", TwitterFragment.class);
                     }
+                },
+                new HashMap<String, Object>() {
+                    {
+                        put("tabTitle", getString(R.string.reminder1));
+                    }
+
+                    {
+                        put("tabIcon", R.drawable.icon_birthday_2x_360);
+                    }
+
+                    {
+                        put("cls", ReminderFragment.class);
+                    }
                 }
         ));
     }
@@ -491,6 +510,11 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
                 put(TwitterFragment.class.getSimpleName(), R.string.twitter0);
             }
 
+            {
+                put(ReminderFragment.class.getSimpleName(), R.string.reminder0);
+            }
+
+
         };
     }
 
@@ -508,6 +532,7 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
         Config.SnsFragmentNum = 8;
         Config.TwitterFragmentNum = 9;
         Config.WebViewFragmentNum = 10;
+        Config.ReminederFragmentNum = 11;
     }
 
     /**
