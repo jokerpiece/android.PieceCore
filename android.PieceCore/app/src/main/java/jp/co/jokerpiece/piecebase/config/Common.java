@@ -98,7 +98,7 @@ public class Common {
     // プッシュ通知で必要な内容(ここから)
     // Play serviceが有効かチェック
     private static GoogleCloudMessaging gcm;
-    private static String regid = "";
+    public static String regid = "";
     private static Activity activity = null;
     private static int loaderID = 100000;
 	public static void setupGcm(Context context,Activity activity,int loaderID){

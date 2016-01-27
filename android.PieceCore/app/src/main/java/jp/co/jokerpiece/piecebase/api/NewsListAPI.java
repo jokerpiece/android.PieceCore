@@ -32,7 +32,9 @@ public class NewsListAPI extends AsyncTaskLoader<NewsListData> implements HttpCl
     	HashMap<String, String> parameter = new HashMap<String, String>();
     	parameter.put("app_id", Config.APP_ID);
     	parameter.put("uuid", Common.getUUID(getContext()));
-        String result = null;
+		parameter.put("device_token", Common.regid);
+
+		String result = null;
         try {
             byte[] resData = HttpClient.getByteArrayFromUrlPost(Config.SENDID_NEWS_LIST, parameter,this);
             if(resData == null){
