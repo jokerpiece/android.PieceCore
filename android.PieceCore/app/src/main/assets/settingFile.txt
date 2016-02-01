@@ -8,6 +8,6 @@ beacon_isEnabled=false
 paypal_clientId=
 paypal_environment=mock
 paypal_bncode=
-pay_select_kbn=0
+pay_select_kbn=1
 delivery=
 carturl=

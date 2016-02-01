@@ -3,6 +3,7 @@ package jp.co.jokerpiece.piecebase;
 import android.app.Activity;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.Context;
+import android.content.Intent;
 import android.content.Loader;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -19,7 +20,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -108,15 +108,18 @@ public class ShoppingFragment extends BaseFragment implements OnItemClickListene
 
         if(Config.CARTURL !="" &&   Config.CARTURL != null) {
 
-            FragmentManager fm = getFragmentManager();
-            FragmentTransaction ft = fm.beginTransaction();
-            ft.addToBackStack(null);
-            WebViewFragment fragment = new WebViewFragment();
-            Bundle bundle = new Bundle();
-            bundle.putString("send_url", Config.CARTURL);
-            fragment.setArguments(bundle);
-            ft.replace(R.id.fragment, fragment);
-            ft.commit();
+            Intent intent = new Intent(context,WebViewActivity.class);
+            intent.putExtra("send_url",Config.CARTURL);
+            context.startActivity(intent);
+//            FragmentManager fm = getFragmentManager();
+//            FragmentTransaction ft = fm.beginTransaction();
+//            ft.addToBackStack(null);
+//            WebViewFragment fragment = new WebViewFragment();
+//            Bundle bundle = new Bundle();
+//            bundle.putString("send_url", Config.CARTURL);
+//            fragment.setArguments(bundle);
+//            ft.replace(R.id.fragment, fragment);
+//            ft.commit();
         }
         return true;
     }

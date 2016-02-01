@@ -2,10 +2,10 @@ package jp.co.jokerpiece.piecebase;
 
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.Context;
+import android.content.Intent;
 import android.content.Loader;
 import android.graphics.Point;
 import android.os.Bundle;
-import android.provider.SyncStateContract;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -192,16 +192,18 @@ public class ShoppingGoodsFragment extends Fragment implements OnItemClickListen
             //Paypal決済できる詳細画面に遷移する。
 
         } else {
-
-            FragmentManager fm = getFragmentManager();
-            FragmentTransaction ft = fm.beginTransaction();
-            ft.addToBackStack(null);
-            WebViewFragment fragment = new WebViewFragment();
-            Bundle bundle = new Bundle();
-            bundle.putString("send_url", data.item_url);
-            fragment.setArguments(bundle);
-            ft.replace(R.id.fragment, fragment);
-            ft.commit();
+            Intent intent = new Intent(getActivity(),WebViewActivity.class);
+            intent.putExtra("send_url",data.item_url);
+            getActivity().startActivity(intent);
+//            FragmentManager fm = getFragmentManager();
+//            FragmentTransaction ft = fm.beginTransaction();
+//            ft.addToBackStack(null);
+//            WebViewFragment fragment = new WebViewFragment();
+//            Bundle bundle = new Bundle();
+//            bundle.putString("send_url", data.item_url);
+//            fragment.setArguments(bundle);
+//            ft.replace(R.id.fragment, fragment);
+//            ft.commit();
         }
 
     }
@@ -314,15 +316,18 @@ public class ShoppingGoodsFragment extends Fragment implements OnItemClickListen
 
         if (Config.CARTURL != "" && Config.CARTURL != null) {
 
-            FragmentManager fm = getFragmentManager();
-            FragmentTransaction ft = fm.beginTransaction();
-            ft.addToBackStack(null);
-            WebViewFragment fragment = new WebViewFragment();
-            Bundle bundle = new Bundle();
-            bundle.putString("send_url", Config.CARTURL);
-            fragment.setArguments(bundle);
-            ft.replace(R.id.fragment, fragment);
-            ft.commit();
+            Intent intent = new Intent(getActivity(),WebViewActivity.class);
+            intent.putExtra("send_url",Config.CARTURL);
+            getActivity().startActivity(intent);
+//            FragmentManager fm = getFragmentManager();
+//            FragmentTransaction ft = fm.beginTransaction();
+//            ft.addToBackStack(null);
+//            WebViewFragment fragment = new WebViewFragment();
+//            Bundle bundle = new Bundle();
+//            bundle.putString("send_url", Config.CARTURL);
+//            fragment.setArguments(bundle);
+//            ft.replace(R.id.fragment, fragment);
+//            ft.commit();
         }
         return true;
     }

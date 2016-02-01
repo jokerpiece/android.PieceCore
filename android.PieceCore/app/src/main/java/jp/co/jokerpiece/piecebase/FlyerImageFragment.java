@@ -5,11 +5,10 @@ import jp.co.jokerpiece.piecebase.data.FlyerData.FlyerHeaderData;
 import jp.co.jokerpiece.piecebase.util.DownloadImageSync;
 import jp.co.jokerpiece.piecebase.util.DownloadImageSync.DownloadImageSyncCallback;
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -66,16 +65,19 @@ public class FlyerImageFragment extends Fragment implements DownloadImageSyncCal
 
 	public void onClickFlyer(String url) {
         if (!url.equals("") && !url.equals("null")) {
-            FragmentManager fm =  ((MainBaseActivity)getActivity()).getSupportFragmentManager();
-            FragmentTransaction ft = fm.beginTransaction();
-
-            WebViewFragment fragment = new WebViewFragment();
-            Bundle bundle = new Bundle();
-            bundle.putString("send_url", url);
-            fragment.setArguments(bundle);
-            ft.replace(R.id.fragment, fragment);
-            ft.addToBackStack(null);
-            ft.commit();
+			Intent intent = new Intent(getActivity(),WebViewActivity.class);
+			intent.putExtra("send_url",url);
+			getActivity().startActivity(intent);
+//            FragmentManager fm =  ((MainBaseActivity)getActivity()).getSupportFragmentManager();
+//            FragmentTransaction ft = fm.beginTransaction();
+//
+//            WebViewFragment fragment = new WebViewFragment();
+//            Bundle bundle = new Bundle();
+//            bundle.putString("send_url", url);
+//            fragment.setArguments(bundle);
+//            ft.replace(R.id.fragment, fragment);
+//            ft.addToBackStack(null);
+//            ft.commit();
         }
 	}
 

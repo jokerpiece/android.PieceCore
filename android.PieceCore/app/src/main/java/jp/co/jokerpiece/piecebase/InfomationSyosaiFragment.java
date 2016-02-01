@@ -2,10 +2,13 @@ package jp.co.jokerpiece.piecebase;
 
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.Context;
+import android.content.Intent;
 import android.content.Loader;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Spannable;
+import android.text.style.UnderlineSpan;
 import android.text.util.Linkify;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -137,15 +140,27 @@ public class InfomationSyosaiFragment extends Fragment implements DownloadImageS
 				llBase = new LinearLayout(context);
 				View listView = inflater.inflate(R.layout.infomationsyosai_list_view, container, false);
 				tvUrlTitle = (TextView) listView.findViewById(R.id.InfoUrlTitleTv);
-				tvUrlTitle.setText(linkListData.link_title);
-				Pattern pattern = Pattern.compile(linkListData.link_title);
-				Linkify.TransformFilter filter = new Linkify.TransformFilter() {
+				String underLineText = linkListData.link_title;
+				Spannable t = Spannable.Factory.getInstance().newSpannable(underLineText);
+				UnderlineSpan us = new UnderlineSpan();
+				t.setSpan(us,0,underLineText.length(),t.getSpanFlags(us));
+				tvUrlTitle.setText(t, TextView.BufferType.SPANNABLE);
+				tvUrlTitle.setOnClickListener(new View.OnClickListener() {
 					@Override
-					public String transformUrl(Matcher match, String url) {
-						return linkListData.link_url;
+					public void onClick(View v) {
+						Intent i = new Intent(getActivity(),WebViewActivity.class);
+						i.putExtra("send_url", linkListData.link_url);
+						getActivity().startActivity(i);
 					}
-				};
-				Linkify.addLinks(tvUrlTitle, pattern, linkListData.link_url, null, filter);
+				});
+//				Pattern pattern = Pattern.compile(linkListData.link_title);
+//				Linkify.TransformFilter filter = new Linkify.TransformFilter() {
+//					@Override
+//					public String transformUrl(Matcher match, String url) {
+//						return linkListData.link_url;
+//					}
+//				};
+//				Linkify.addLinks(tvUrlTitle, pattern, linkListData.link_url, null, filter);
 				llBase.addView(listView);
 				llListView.addView(llBase);
 

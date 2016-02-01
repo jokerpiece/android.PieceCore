@@ -201,6 +201,12 @@
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:screenOrientation="portrait">
         </activity>
+        <activity android:name=".WebViewActivity"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:screenOrientation="portrait">
+        </activity>
+
         <activity
             android:name=".RadarActivity"/>
         <activity
