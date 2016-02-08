@@ -8,6 +8,7 @@ import com.google.android.gms.analytics.Tracker;
 
 import java.util.HashMap;
 
+import jp.co.jokerpiece.piecebase.R;
 import jp.co.jokerpiece.piecebase.config.Config;
 
 public class App extends Application {
@@ -30,7 +31,7 @@ public class App extends Application {
 //        }
         if(!mTrackers.containsKey(trackerId)){
             GoogleAnalytics analytics = GoogleAnalytics.getInstance(this);
-            Tracker t = analytics.newTracker(Config.PROPERTY_ID);
+            Tracker t = analytics.newTracker(R.xml.tracker);
             t.enableAdvertisingIdCollection(true);
             mTrackers.put(trackerId,t);
         }

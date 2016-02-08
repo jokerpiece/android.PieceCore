@@ -109,7 +109,12 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener 
         if (bundle != null) {
             flyer_ID = bundle.getInt("flyer_ID");
         }
-
+        if(!Config.PROPERTY_ID.equals("") && Config.PROPERTY_ID != null){
+            App app = (App)getActivity().getApplication();
+            Tracker t = app.getTracker(App.TrackerName.APP_TRACKER);
+            t.setScreenName(getString(R.string.flyer0));
+            t.send(new HitBuilders.ScreenViewBuilder().build());
+        }
 //        if(flyer_ID < 0){
 //        	getHomeFlyerID();
 //        }else{
@@ -120,19 +125,10 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener 
 //        		new ArrayList<FlyerHeaderData>());
         setFragmentPagerAdapter();
 
+
         return rootView;
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        if(!Config.PROPERTY_ID.equals("") && Config.PROPERTY_ID != null){
-            App app = (App)getActivity().getApplication();
-            Tracker t = app.getTracker(App.TrackerName.APP_TRACKER);
-            t.setScreenName(getString(R.string.flyer0));
-            t.send(new HitBuilders.ScreenViewBuilder().build());
-        }
-    }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
