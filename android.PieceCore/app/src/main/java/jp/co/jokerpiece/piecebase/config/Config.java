@@ -26,6 +26,8 @@ public class Config {
     public static final String PAY_SELECT_KBN;
     public static final String DELIVERY;
     public static final String CARTURL;
+    public static final String SEARCHMODE;
+    public static final String PROPERTY_ID; // googleAnalytics
 //  public static String APP_ID = "pieceSample";
 //  public static final String APP_ID = "pushColor";
 //	public static final String APP_ID = "otonagokoro";
@@ -293,6 +295,18 @@ public class Config {
             } else {
                 CARTURL = "";
             }
+            String searchMode = map.get("search_mode");
+            if(searchMode != null && !searchMode.equals("")){
+                SEARCHMODE = searchMode;
+            }else{
+                SEARCHMODE = "true";
+            }
+            String property_id = map.get("prorerty_id"); //google analytics
+            if(property_id != null && !property_id.equals("")){
+                PROPERTY_ID = property_id;
+            }else{
+                PROPERTY_ID = "";
+            }
 
         } else {
             SERVER_URL = "http://jokapi.jp/";
@@ -308,6 +322,8 @@ public class Config {
             PAY_SELECT_KBN = "";
             DELIVERY = "0";
             CARTURL = "";
+            SEARCHMODE = "true";
+            PROPERTY_ID = "";
         }
 
         SERVER_API_URL = SERVER_URL + "manager/html/xml/";

@@ -1,7 +1,9 @@
 package jp.co.jokerpiece.piecebase;
 
+import android.app.AlertDialog;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.Loader;
 import android.graphics.Point;
@@ -26,6 +28,9 @@ import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.SearchView.OnQueryTextListener;
 import android.widget.TextView;
+
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -84,7 +89,19 @@ public class ShoppingGoodsFragment extends Fragment implements OnItemClickListen
             couponID = bundle.getString("coupon_ID");
             categoryImgUrl = bundle.getString("category_img_url");
         }
-
+        if(searchKeyword != null) {
+            if (!searchKeyword.equals("null")) {
+                tvItemCount.setVisibility(View.GONE);
+            } else {
+                tvItemCount.setVisibility(View.VISIBLE);
+            }
+        }
+        if(!Config.PROPERTY_ID.equals("") && Config.PROPERTY_ID != null){
+            App app = (App)getActivity().getApplication();
+            Tracker t = app.getTracker();
+            t.setScreenName(getString(R.string.item_list));
+            t.send(new HitBuilders.ScreenViewBuilder().build());
+        }
 //        getItemList();
 
         return rootView;
@@ -124,6 +141,23 @@ public class ShoppingGoodsFragment extends Fragment implements OnItemClickListen
 
     private void showItemView() {
         if (getActivity() == null) return;
+        if(Config.SEARCHMODE.equals("true")) {
+            if (itemData.data_list.size() == 0) {
+                getActivity().getSupportFragmentManager().popBackStack();
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
+                alertDialogBuilder.setTitle("確認");
+                alertDialogBuilder.setMessage("検索にヒットする商品はありませんでした。");
+                alertDialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                });
+                alertDialogBuilder.setCancelable(true);
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
+                return;
+            }
+        }
         Display display = getActivity().getWindowManager().getDefaultDisplay();
         Point point = new Point();
         display.getSize(point);
@@ -237,6 +271,7 @@ public class ShoppingGoodsFragment extends Fragment implements OnItemClickListen
                         //itemData.data_list.addAll(data.data_list);
                         addItem = data.data_list;
                     }
+
                     nowPageCount++;
                     connecting = false;
                     showItemView();

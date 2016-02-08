@@ -17,9 +17,17 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.SearchView;
+import android.widget.TextView;
+
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 
 import java.util.ArrayList;
 
@@ -29,6 +37,7 @@ import jp.co.jokerpiece.piecebase.config.Config;
 import jp.co.jokerpiece.piecebase.data.CategoryListData;
 import jp.co.jokerpiece.piecebase.data.CategoryListData.CategoryData;
 import jp.co.jokerpiece.piecebase.data.SaveData;
+import jp.co.jokerpiece.piecebase.util.App;
 import jp.co.jokerpiece.piecebase.util.AppUtil;
 import jp.co.jokerpiece.piecebase.util.BitmapCache;
 import jp.co.jokerpiece.piecebase.util.BitmapDownloader;
@@ -39,24 +48,77 @@ public class ShoppingFragment extends BaseFragment implements OnItemClickListene
 
 	static final int MP = ViewGroup.LayoutParams.MATCH_PARENT;
 	static final int WC = ViewGroup.LayoutParams.WRAP_CONTENT;
-
+    RelativeLayout rl;
+    SearchView searchView;
+    Button btn_Cancel;
 	CategoryListData categoryData = null;
 	ArrayList<DownloadImageView> alImageViewList = new ArrayList<DownloadImageView>();
 
+    InputMethodManager inputMethodManager;
 	ListView shoppingListView;
+    String strSearch = "";
+
 //	private int loderCount = 0;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
         context = getActivity();
-        AppUtil.debugLog("mAdapter", "6");
         Common.setCurrentFragment(Config.ShoppingFragmentNum);
 		View rootView = inflater.inflate(R.layout.fragment_shopping, container, false);
-
+        rl = (RelativeLayout)rootView.findViewById(R.id.Rl_search);
 		shoppingListView = (ListView)rootView.findViewById(R.id.shoppingListView);
 //        getActionBar().setIcon(R.drawable.icon_shopping);
 //        getActionBar().setTitle(R.string.genre_list);
+        if(!Config.PROPERTY_ID.equals("") && Config.PROPERTY_ID != null){
+            App app = (App)getActivity().getApplication();
+            Tracker t = app.getTracker();
+            t.setScreenName(getString(R.string.shopping0));
+            t.send(new HitBuilders.ScreenViewBuilder().build());
+        }
+        if(Config.SEARCHMODE.equals("true")) {
+            rl.setVisibility(View.VISIBLE);
+            searchView = (SearchView) rootView.findViewById(R.id.searchView);
+            inputMethodManager = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+            btn_Cancel = (Button) rootView.findViewById(R.id.search_cancel);
+            btn_Cancel.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    inputMethodManager.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+                }
+            });
+            searchView.setQueryHint("名前で検索");
+            searchView.setIconifiedByDefault(false);
+            searchView.setSubmitButtonEnabled(false);
+            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextSubmit(String query) {
+                    strSearch = query;
+
+                    inputMethodManager.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+                    FragmentManager fm = ((MainBaseActivity) context).getSupportFragmentManager();
+                    FragmentTransaction ft = fm.beginTransaction();
+                    ShoppingGoodsFragment fragment = new ShoppingGoodsFragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("searchKeyword", strSearch);
+                    fragment.setArguments(bundle);
+                    ft.replace(R.id.fragment, fragment);
+                    ft.addToBackStack(null);
+
+                    ft.commit();
+
+                    return false;
+                }
+
+                @Override
+                public boolean onQueryTextChange(String newText) {
+                    return false;
+                }
+
+            });
+        }else{
+            rl.setVisibility(View.GONE);
+        }
         if(SaveData.Categorydata != null){
             showCategoryView();
         }else {
@@ -151,6 +213,7 @@ public class ShoppingFragment extends BaseFragment implements OnItemClickListene
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
 		CategoryData data = categoryData.data_list.get(position);
+        inputMethodManager.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
 		FragmentManager fm = ((MainBaseActivity)context).getSupportFragmentManager();
 		FragmentTransaction ft = fm.beginTransaction();
 		ShoppingGoodsFragment fragment = new ShoppingGoodsFragment();

@@ -1,5 +1,5 @@
 server_url=http://jokapi.jp/
-app_id=piecesample
+app_id=otonagokoro
 app_key=jokerpiece_appKey
 cookie_domain=http://t.otonagokoro.com
 splash_time=3
@@ -11,3 +11,5 @@ paypal_bncode=
 pay_select_kbn=1
 delivery=
 carturl=
+search_mode=true
+prorerty_id=

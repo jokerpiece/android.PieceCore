@@ -8,6 +8,7 @@ import java.util.HashMap;
 import jp.co.jokerpiece.piecebase.config.Config;
 import jp.co.jokerpiece.piecebase.data.ItemListData;
 import jp.co.jokerpiece.piecebase.data.ItemListData.ItemData;
+import jp.co.jokerpiece.piecebase.util.AppUtil;
 import jp.co.jokerpiece.piecebase.util.HttpClient;
 import jp.co.jokerpiece.piecebase.util.HttpClient.HttpClientInterface;
 
@@ -73,7 +74,7 @@ public class ItemListAPI extends AsyncTaskLoader<ItemListData> implements HttpCl
 		}
         try {
 			JSONObject rootObject = new JSONObject(result);
-			//AppUtil.debugLog("JSON", rootObject.toString());
+			AppUtil.debugLog("JSON", rootObject.toString());
 
 			int error_code = rootObject.getInt("error_code");
 			if(error_code != 0){

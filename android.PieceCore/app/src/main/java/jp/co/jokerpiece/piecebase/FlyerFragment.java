@@ -31,6 +31,9 @@ import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -41,6 +44,7 @@ import jp.co.jokerpiece.piecebase.config.Config;
 import jp.co.jokerpiece.piecebase.data.FlyerData;
 import jp.co.jokerpiece.piecebase.data.FlyerData.FlyerHeaderData;
 import jp.co.jokerpiece.piecebase.data.SaveData;
+import jp.co.jokerpiece.piecebase.util.App;
 import jp.co.jokerpiece.piecebase.util.AppUtil;
 import jp.co.jokerpiece.piecebase.util.BitmapCache;
 import jp.co.jokerpiece.piecebase.util.BitmapDownloader;
@@ -104,6 +108,12 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener 
         Bundle bundle = getArguments();
         if (bundle != null) {
             flyer_ID = bundle.getInt("flyer_ID");
+        }
+        if(!Config.PROPERTY_ID.equals("") && Config.PROPERTY_ID != null){
+            App app = (App)getActivity().getApplication();
+            Tracker t = app.getTracker();
+            t.setScreenName(getString(R.string.flyer0));
+            t.send(new HitBuilders.ScreenViewBuilder().build());
         }
 //        if(flyer_ID < 0){
 //        	getHomeFlyerID();

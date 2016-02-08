@@ -21,6 +21,9 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+
 public class InfomationFragment extends Fragment  {
 	Context context;
 
@@ -42,7 +45,12 @@ public class InfomationFragment extends Fragment  {
 //        viewPagerTab = (PagerTabStrip) rootView.findViewById(R.id.tab);
 
         //viewPager.setOnPageChangeListener(this);
-
+		if(!Config.PROPERTY_ID.equals("") && Config.PROPERTY_ID != null){
+			App app = (App)getActivity().getApplication();
+			Tracker t = app.getTracker();
+			t.setScreenName(getString(R.string.info0));
+			t.send(new HitBuilders.ScreenViewBuilder().build());
+		}
         getInfomation();
 
         return rootView;

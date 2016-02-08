@@ -5,6 +5,26 @@
     android:orientation="vertical"
     android:background="@color/background_fragment" >
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/Rl_search"
+        >
+        <SearchView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_toLeftOf="@+id/search_cancel"
+            android:id="@+id/searchView"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/search_cancel"
+            android:text="キャンセル"
+            android:background="#ffffff"
+            android:layout_marginRight="5dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"/>
+    </RelativeLayout>
     <ListView
         android:id="@+id/shoppingListView"
         android:layout_width="match_parent"

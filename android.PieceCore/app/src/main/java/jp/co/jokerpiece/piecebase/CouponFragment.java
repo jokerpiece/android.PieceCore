@@ -20,6 +20,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+
 import java.util.ArrayList;
 
 import jp.co.jokerpiece.piecebase.api.CouponListAPI;
@@ -29,6 +32,7 @@ import jp.co.jokerpiece.piecebase.data.CouponListData;
 import jp.co.jokerpiece.piecebase.data.CouponListData.CouponData;
 import jp.co.jokerpiece.piecebase.data.GetCouponData;
 import jp.co.jokerpiece.piecebase.data.SaveData;
+import jp.co.jokerpiece.piecebase.util.App;
 import jp.co.jokerpiece.piecebase.util.AppUtil;
 import jp.co.jokerpiece.piecebase.util.BitmapCache;
 import jp.co.jokerpiece.piecebase.util.BitmapDownloader;
@@ -85,7 +89,12 @@ public class CouponFragment extends BaseFragment implements OnPageChangeListener
         if (bundle != null) {
         	couponCode = bundle.getString("coupon_code");
         }
-
+		if(!Config.PROPERTY_ID.equals("") && Config.PROPERTY_ID != null){
+			App app = (App)getActivity().getApplication();
+			Tracker t = app.getTracker();
+			t.setScreenName(getString(R.string.coupon0));
+			t.send(new HitBuilders.ScreenViewBuilder().build());
+		}
         AppUtil.debugLog(TAG, "uuid: " + Common.getUUID(context));
 
         if (SaveData.Cdata != null){

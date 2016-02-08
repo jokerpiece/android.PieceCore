@@ -22,11 +22,17 @@ import android.widget.ExpandableListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
+import jp.co.jokerpiece.piecebase.config.Config;
 import jp.co.jokerpiece.piecebase.data.CategoryListData;
+import jp.co.jokerpiece.piecebase.util.App;
+import jp.co.jokerpiece.piecebase.util.AppUtil;
 import jp.co.jokerpiece.piecebase.util.DownloadImageView;
 
 /*
@@ -96,6 +102,12 @@ public class ReminderFragment extends BaseFragment implements ExpandableListView
         et_noties_name.setText(pref.getString(NOTIES_NAME, ""));
         tv_noties_day.setText(pref.getString(NOTIES_DAY, ""));
 
+        if(!Config.PROPERTY_ID.equals("") && Config.PROPERTY_ID != null){
+            App app = (App)getActivity().getApplication();
+            Tracker t = app.getTracker();
+            t.setScreenName(getString(R.string.reminder0));
+            t.send(new HitBuilders.ScreenViewBuilder().build());
+        }
         if ("true".equals(pref.getString(FATHERS_DAY, "false"))) {
             cb_fathersday.setChecked(true);
         } else {
@@ -135,7 +147,10 @@ public class ReminderFragment extends BaseFragment implements ExpandableListView
     @Override
     public void onResume() {
         super.onResume();
-
+        AppUtil.setTitleOfActionBar(
+                getActivity().getActionBar(),
+                MainBaseActivity.titleOfActionBar.get(ReminderFragment.class.getSimpleName()));
+        getActivity().invalidateOptionsMenu();
     }
 
     /*
