@@ -12,4 +12,4 @@ pay_select_kbn=1
 delivery=
 carturl=
 search_mode=true
-prorerty_id=
+property_id=UA-73312243-1

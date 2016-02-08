@@ -301,7 +301,7 @@ public class Config {
             }else{
                 SEARCHMODE = "true";
             }
-            String property_id = map.get("prorerty_id"); //google analytics
+            String property_id = map.get("property_id"); //google analytics
             if(property_id != null && !property_id.equals("")){
                 PROPERTY_ID = property_id;
             }else{
