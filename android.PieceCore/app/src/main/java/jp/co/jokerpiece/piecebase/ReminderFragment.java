@@ -102,12 +102,12 @@ public class ReminderFragment extends BaseFragment implements ExpandableListView
         et_noties_name.setText(pref.getString(NOTIES_NAME, ""));
         tv_noties_day.setText(pref.getString(NOTIES_DAY, ""));
 
-        if(!Config.PROPERTY_ID.equals("") && Config.PROPERTY_ID != null){
-            App app = (App)getActivity().getApplication();
-            Tracker t = app.getTracker();
-            t.setScreenName(getString(R.string.reminder0));
-            t.send(new HitBuilders.ScreenViewBuilder().build());
-        }
+//        if(!Config.PROPERTY_ID.equals("") && Config.PROPERTY_ID != null){
+//            App app = (App)getActivity().getApplication();
+//            Tracker t = app.getTracker();
+//            t.setScreenName(getString(R.string.reminder0));
+//            t.send(new HitBuilders.ScreenViewBuilder().build());
+//        }
         if ("true".equals(pref.getString(FATHERS_DAY, "false"))) {
             cb_fathersday.setChecked(true);
         } else {
@@ -136,7 +136,16 @@ public class ReminderFragment extends BaseFragment implements ExpandableListView
         }
         return rootView;
     }
-
+    @Override
+    public void onStart() {
+        super.onStart();
+        if(!Config.PROPERTY_ID.equals("") && Config.PROPERTY_ID != null){
+            App app = (App)getActivity().getApplication();
+            Tracker t = app.getTracker(App.TrackerName.APP_TRACKER);
+            t.setScreenName(getString(R.string.reminder0));
+            t.send(new HitBuilders.ScreenViewBuilder().build());
+        }
+    }
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);

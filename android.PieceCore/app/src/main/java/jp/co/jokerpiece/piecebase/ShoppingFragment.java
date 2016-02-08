@@ -70,12 +70,12 @@ public class ShoppingFragment extends BaseFragment implements OnItemClickListene
 		shoppingListView = (ListView)rootView.findViewById(R.id.shoppingListView);
 //        getActionBar().setIcon(R.drawable.icon_shopping);
 //        getActionBar().setTitle(R.string.genre_list);
-        if(!Config.PROPERTY_ID.equals("") && Config.PROPERTY_ID != null){
-            App app = (App)getActivity().getApplication();
-            Tracker t = app.getTracker();
-            t.setScreenName(getString(R.string.shopping0));
-            t.send(new HitBuilders.ScreenViewBuilder().build());
-        }
+//        if(!Config.PROPERTY_ID.equals("") && Config.PROPERTY_ID != null){
+//            App app = (App)getActivity().getApplication();
+//            Tracker t = app.getTracker();
+//            t.setScreenName(getString(R.string.shopping0));
+//            t.send(new HitBuilders.ScreenViewBuilder().build());
+//        }
         if(Config.SEARCHMODE.equals("true")) {
             rl.setVisibility(View.VISIBLE);
             searchView = (SearchView) rootView.findViewById(R.id.searchView);
@@ -126,7 +126,16 @@ public class ShoppingFragment extends BaseFragment implements OnItemClickListene
         }
         return rootView;
 	}
-
+    @Override
+    public void onStart() {
+        super.onStart();
+        if(!Config.PROPERTY_ID.equals("") && Config.PROPERTY_ID != null){
+            App app = (App)getActivity().getApplication();
+            Tracker t = app.getTracker(App.TrackerName.APP_TRACKER);
+            t.setScreenName(getString(R.string.shopping0));
+            t.send(new HitBuilders.ScreenViewBuilder().build());
+        }
+    }
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);

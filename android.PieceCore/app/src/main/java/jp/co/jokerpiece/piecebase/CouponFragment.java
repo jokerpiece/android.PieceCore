@@ -89,12 +89,12 @@ public class CouponFragment extends BaseFragment implements OnPageChangeListener
         if (bundle != null) {
         	couponCode = bundle.getString("coupon_code");
         }
-		if(!Config.PROPERTY_ID.equals("") && Config.PROPERTY_ID != null){
-			App app = (App)getActivity().getApplication();
-			Tracker t = app.getTracker();
-			t.setScreenName(getString(R.string.coupon0));
-			t.send(new HitBuilders.ScreenViewBuilder().build());
-		}
+//		if(!Config.PROPERTY_ID.equals("") && Config.PROPERTY_ID != null){
+//			App app = (App)getActivity().getApplication();
+//			Tracker t = app.getTracker();
+//			t.setScreenName(getString(R.string.coupon0));
+//			t.send(new HitBuilders.ScreenViewBuilder().build());
+//		}
         AppUtil.debugLog(TAG, "uuid: " + Common.getUUID(context));
 
         if (SaveData.Cdata != null){
@@ -104,6 +104,16 @@ public class CouponFragment extends BaseFragment implements OnPageChangeListener
         }
 
         return rootView;
+	}
+	@Override
+	public void onStart() {
+		super.onStart();
+		if(!Config.PROPERTY_ID.equals("") && Config.PROPERTY_ID != null){
+			App app = (App)getActivity().getApplication();
+			Tracker t = app.getTracker(App.TrackerName.APP_TRACKER);
+			t.setScreenName(getString(R.string.coupon0));
+			t.send(new HitBuilders.ScreenViewBuilder().build());
+		}
 	}
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
