@@ -109,7 +109,7 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener 
         if (bundle != null) {
             flyer_ID = bundle.getInt("flyer_ID");
         }
-        if(!Config.PROPERTY_ID.equals("") && Config.PROPERTY_ID != null){
+        if(Config.ANALYTICS_MODE.equals("true")){
             App app = (App)getActivity().getApplication();
             Tracker t = app.getTracker(App.TrackerName.APP_TRACKER);
             t.setScreenName(getString(R.string.flyer0));

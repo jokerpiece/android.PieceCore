@@ -3,5 +3,5 @@
     <integer name = "ga_sessionTimeout">300</integer>
     <bool name="ga_autoActivityTracking">true</bool>
     <screenName name = " jp.co.jokerpiece.piecebase.MainBaseActivity"></screenName>
-    <string name = "ga_trackingId">UA-73312243-1</string>
+    <string name = "ga_trackingId"></string>
 </resource>

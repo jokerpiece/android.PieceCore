@@ -129,7 +129,7 @@ public class ShoppingFragment extends BaseFragment implements OnItemClickListene
     @Override
     public void onStart() {
         super.onStart();
-        if(!Config.PROPERTY_ID.equals("") && Config.PROPERTY_ID != null){
+        if(Config.ANALYTICS_MODE.equals("true")){
             App app = (App)getActivity().getApplication();
             Tracker t = app.getTracker(App.TrackerName.APP_TRACKER);
             t.setScreenName(getString(R.string.shopping0));

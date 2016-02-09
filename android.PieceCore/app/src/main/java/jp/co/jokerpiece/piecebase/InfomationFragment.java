@@ -45,12 +45,7 @@ public class InfomationFragment extends Fragment  {
 //        viewPagerTab = (PagerTabStrip) rootView.findViewById(R.id.tab);
 
         //viewPager.setOnPageChangeListener(this);
-//		if(!Config.PROPERTY_ID.equals("") && Config.PROPERTY_ID != null){
-//			App app = (App)getActivity().getApplication();
-//			Tracker t = app.getTracker();
-//			t.setScreenName(getString(R.string.info0));
-//			t.send(new HitBuilders.ScreenViewBuilder().build());
-//		}
+
         getInfomation();
 
         return rootView;
@@ -58,7 +53,7 @@ public class InfomationFragment extends Fragment  {
 	@Override
 	public void onStart() {
 		super.onStart();
-		if(!Config.PROPERTY_ID.equals("") && Config.PROPERTY_ID != null){
+		if(Config.ANALYTICS_MODE.equals("true")){
 			App app = (App)getActivity().getApplication();
 			Tracker t = app.getTracker(App.TrackerName.APP_TRACKER);
 			t.setScreenName(getString(R.string.info0));

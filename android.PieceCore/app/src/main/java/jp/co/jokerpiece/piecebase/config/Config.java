@@ -27,7 +27,7 @@ public class Config {
     public static final String DELIVERY;
     public static final String CARTURL;
     public static final String SEARCHMODE;
-    public static final String PROPERTY_ID; // googleAnalytics
+    public static final String ANALYTICS_MODE; // googleAnalytics
 //  public static String APP_ID = "pieceSample";
 //  public static final String APP_ID = "pushColor";
 //	public static final String APP_ID = "otonagokoro";
@@ -301,11 +301,11 @@ public class Config {
             }else{
                 SEARCHMODE = "true";
             }
-            String property_id = map.get("property_id"); //google analytics
-            if(property_id != null && !property_id.equals("")){
-                PROPERTY_ID = property_id;
+            String analytics_mode = map.get("analytics_mode"); //google analytics
+            if(analytics_mode != null && !analytics_mode.equals("")){
+                ANALYTICS_MODE = analytics_mode;
             }else{
-                PROPERTY_ID = "";
+                ANALYTICS_MODE = "false";
             }
 
         } else {
@@ -323,7 +323,7 @@ public class Config {
             DELIVERY = "0";
             CARTURL = "";
             SEARCHMODE = "true";
-            PROPERTY_ID = "";
+            ANALYTICS_MODE = "false";
         }
 
         SERVER_API_URL = SERVER_URL + "manager/html/xml/";
