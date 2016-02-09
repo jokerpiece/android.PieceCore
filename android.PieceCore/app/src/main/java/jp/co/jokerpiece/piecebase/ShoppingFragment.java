@@ -222,7 +222,9 @@ public class ShoppingFragment extends BaseFragment implements OnItemClickListene
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
 		CategoryData data = categoryData.data_list.get(position);
-        inputMethodManager.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+        if(Config.SEARCHMODE.equals("true")) {
+            inputMethodManager.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+        }
 		FragmentManager fm = ((MainBaseActivity)context).getSupportFragmentManager();
 		FragmentTransaction ft = fm.beginTransaction();
 		ShoppingGoodsFragment fragment = new ShoppingGoodsFragment();
