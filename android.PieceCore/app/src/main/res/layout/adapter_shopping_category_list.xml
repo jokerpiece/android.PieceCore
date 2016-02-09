@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textColor="@color/theme_text_color"
-        android:textSize="30sp"/>
+        android:textSize="20sp"/>
     <ImageView
         android:id="@+id/categoryImage"
         android:layout_width="match_parent"

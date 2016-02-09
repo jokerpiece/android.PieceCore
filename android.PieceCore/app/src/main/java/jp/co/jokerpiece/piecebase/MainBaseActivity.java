@@ -86,7 +86,7 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
         timer = Config.SPLASH_TIME * 1000;
         list.add(Fy);
         list.add(Cf);
-        list.add(Sf);
+        //list.add(Sf);
 
         for (int i = 0; i < list.size(); i++) {
             if (!SaveData.SplashIsFinished) {

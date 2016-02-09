@@ -79,6 +79,7 @@ public class ShoppingListAdapter extends ArrayAdapter<CategoryData> implements D
                 AppUtil.setImageBitmap(bitmap, iv);
 //              iv.setImageBitmap(bitmap);
                 iv.setVisibility(View.VISIBLE);
+
 				break;
 			}
 		}
