@@ -105,8 +105,13 @@ public class WebViewActivity extends FragmentActivity {
             CookieSyncManager.getInstance().sync();
         }
 
-        if (strUrl != null && !strUrl.equals("")) {
-            webView.loadUrl(strUrl);
+        if(!strUrl.startsWith("file:") && !strUrl.startsWith("http:") && !strUrl.startsWith("https:")){
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(strUrl));
+            this.startActivity(intent);
+        }else {
+            if (strUrl != null && !strUrl.equals("")) {
+                webView.loadUrl(strUrl);
+            }
         }
 
         goBack.setOnClickListener(new View.OnClickListener() {
