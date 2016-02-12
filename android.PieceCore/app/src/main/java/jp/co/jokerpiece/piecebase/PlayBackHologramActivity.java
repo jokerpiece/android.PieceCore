@@ -1,35 +1,22 @@
 package jp.co.jokerpiece.piecebase;
 
 import android.app.Activity;
-import android.app.Dialog;
-import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Point;
 import android.graphics.SurfaceTexture;
 import android.media.MediaPlayer;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.os.Environment;
-import android.os.Handler;
-import android.os.Message;
 import android.view.Display;
 import android.view.Surface;
 import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
-import java.io.File;
 import java.io.IOException;
-
-import jp.co.jokerpiece.piecebase.util.AppUtil;
-import jp.co.jokerpiece.piecebase.util.AsyncFileDownload;
-import jp.co.jokerpiece.piecebase.util.ProgressHandler;
 
 
 /**
@@ -37,7 +24,7 @@ import jp.co.jokerpiece.piecebase.util.ProgressHandler;
  */
 public class PlayBackHologramActivity extends Activity{
 
-    String file_data;
+    //String file_data;
 
     Context context;
     //private String pathToVideo = "rtsp://r2---sn-a5m7zu76.c.youtube.com/Ck0LENy73wIaRAnTmlo5oUgpQhMYESARFEgGUg5yZWNvbW1lbmRhdGlvbnIhAWL2kyn64K6aQtkZVJdTxRoO88HsQjpE1a8d1GxQnGDmDA==/0/0/0/video.3gp";

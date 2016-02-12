@@ -5,42 +5,57 @@
     android:background="#000000"
     >
 
-    <TextureView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:id="@+id/playback_video4"
-        android:rotation="90"
+    <FrameLayout
+        android:layout_width="128dp"
+        android:layout_height="128dp"
         android:layout_toLeftOf="@+id/replay_layout"
-        android:layout_alignTop="@+id/replay_layout"/>
-
-    <TextureView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:id="@+id/playback_video3"
-        android:rotation="90"
+        android:layout_centerInParent="true">
+        <TextureView
+            android:layout_width="72dp"
+            android:layout_height="128dp"
+            android:layout_gravity="center"
+            android:id="@+id/playback_video4"/>
+    </FrameLayout>
+    <FrameLayout
+        android:layout_width="128dp"
+        android:layout_height="128dp"
         android:layout_below="@+id/replay_layout"
-        android:layout_alignLeft="@+id/replay_layout"
-        />
-
-    <TextureView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:id="@+id/playback_video2"
-        android:layout_marginRight="10dp"
-        android:rotation="90"
-        android:layout_toRightOf="@+id/replay_layout"
-        android:layout_alignTop="@+id/replay_layout"/>
-
-    <TextureView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:id="@+id/playback_video1"
-        android:layout_above="@+id/replay_layout"
-        android:layout_alignLeft="@+id/replay_layout"/>
+        android:layout_centerInParent="true">
+        <TextureView
+            android:layout_width="72dp"
+            android:layout_height="128dp"
+            android:layout_gravity="center"
+            android:id="@+id/playback_video3"
+            />
+    </FrameLayout>
 
     <FrameLayout
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:layout_toRightOf="@+id/replay_layout"
+        android:layout_centerInParent="true">
+        <TextureView
+            android:layout_width="72dp"
+            android:layout_height="128dp"
+            android:layout_gravity="center"
+            android:id="@+id/playback_video2"/>
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:layout_above="@+id/replay_layout"
+        android:layout_centerInParent="true">
+        <TextureView
+            android:layout_width="72dp"
+            android:layout_height="128dp"
+            android:layout_gravity="center"
+            android:id="@+id/playback_video1"/>
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="72dp"
+        android:layout_height="72dp"
         android:id="@+id/replay_layout"
         android:layout_centerInParent="true">
         <Button
