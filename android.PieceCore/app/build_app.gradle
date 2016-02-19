@@ -52,7 +52,9 @@ dependencies {
     compile 'com.journeyapps:zxing-android-embedded:3.0.2@aar'
     compile 'com.facebook.android:facebook-android-sdk:4.2.0'
     compile 'org.twitter4j:twitter4j-core:4.0.2'
-    compile 'com.paypal.sdk:paypal-android-sdk:2.12.5'
+    compile('com.paypal.sdk:paypal-android-sdk:2.13.1') {
+        exclude group: 'io.card'
+    }
     compile 'com.paypal.sdk:rest-api-sdk:1.4.1'
 }
 
