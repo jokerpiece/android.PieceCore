@@ -71,7 +71,7 @@ public class PayPalPieceFragment extends Fragment {
     String item_url = null;
 
     //税
-    BigDecimal tax;
+    //BigDecimal tax;
     //配送料
     BigDecimal shopping;
 
@@ -109,11 +109,11 @@ public class PayPalPieceFragment extends Fragment {
             text = bundle.getString("text");
 
             //消費税
-            tax = new BigDecimal((new BigDecimal(Integer.valueOf(item_price).intValue() * 0.08).longValue()));
+            //tax = new BigDecimal((new BigDecimal(Integer.valueOf(item_price) * 0.08).longValue()));
             //配送手数料
             shopping = new BigDecimal(Config.DELIVERY);
-            shoppingtax = "(内訳 本体価格:" + item_price + "円 税:" + tax.toString() + "円 配送料：" + shopping + "円)";
-            totalprice = "合計金額：" + new BigDecimal(item_price).add(tax).add(shopping).toString() + "円";
+            shoppingtax = "(内訳 本体価格:" + item_price + "円" + /*税:" + tax.toString() + "円"*/ " 配送料：" + shopping + "円)";
+            totalprice = "合計金額：" + new BigDecimal(item_price)/*.add(tax)*/.add(shopping).toString() + "円";
         }
         TextView vi = (TextView) rootView.findViewById(R.id.priceTotal);
         vi.setText(totalprice);
@@ -208,9 +208,9 @@ public class PayPalPieceFragment extends Fragment {
         //複数商品あった場合の集計処理。
         BigDecimal subtotal = PayPalItem.getItemTotal(items);
 
-        PayPalPaymentDetails paymentDetails = new PayPalPaymentDetails(shopping, subtotal, tax);
+        PayPalPaymentDetails paymentDetails = new PayPalPaymentDetails(shopping, subtotal, /*tax*/null);
 
-        BigDecimal amount = subtotal.add(shopping).add(tax);
+        BigDecimal amount = subtotal.add(shopping)/*.add(tax)*/;
         Long amount2 = amount.longValue();
         PayPalPayment payment = new PayPalPayment(new BigDecimal(amount2), "JPY", item_id + ":" + item_title, paymentIntent);
         payment.items(items).paymentDetails(paymentDetails);
@@ -230,7 +230,7 @@ public class PayPalPieceFragment extends Fragment {
                 try {
                     Log.i("paymentExample", confirm.toJSONObject().toString(4));
                     Log.i("Payment", confirm.getPayment().toJSONObject().toString(4));
-                    Log.i("Environment", confirm.getEnvironment().toString());
+                    Log.i("Environment", confirm.getEnvironment());
                     Log.i("ProofOfPayment", confirm.getProofOfPayment().toJSONObject().toString());
 
                     //購入画面に遷移する前に取得したPayPalから送られてきた情報を元にPieceのDBに登録をするようにする。
