@@ -12,7 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.paypal.android.sdk.payments.PayPalConfiguration;
@@ -55,7 +55,7 @@ public class PayPalPieceFragment extends Fragment {
     View rootView;
 
     //PayPal決済用ボタン
-    ImageButton deciedBtn;
+    ImageView deciedBtn;
 
     //引継ぎ情報
     //商品画像のURL
@@ -93,7 +93,7 @@ public class PayPalPieceFragment extends Fragment {
         //Paypal購入画面を取得
         rootView = inflater.inflate(R.layout.fragment_paypal, container, false);
 
-        deciedBtn = (ImageButton) rootView.findViewById(R.id.buyItBtn);
+        deciedBtn = (ImageView)rootView.findViewById(R.id.buyItBtn);
         //引継ぎ情報取得
         Bundle bundle = getArguments();
 

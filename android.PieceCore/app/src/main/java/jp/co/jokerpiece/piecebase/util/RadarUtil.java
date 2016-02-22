@@ -37,7 +37,7 @@ public class RadarUtil {
     private static ArrayList<BeaconData> beaconList = null;    // 検知したビーコンのリスト
     private static BeaconData nearestBeacon;            // 検知したビーコンの中で一番近いもの
 
-    private static final int SCAN_SECONDS = 3;                // ビーコンスキャン時間
+    private static final int SCAN_SECONDS = 1;                // ビーコンスキャン時間
     private static final boolean IS_DIALOG_SHOWN = false;   // ダイアログを表示するかどうか
     public static final int REQUEST_ENABLE_BT = 0;           // onActivityResultのリクエストコード
 

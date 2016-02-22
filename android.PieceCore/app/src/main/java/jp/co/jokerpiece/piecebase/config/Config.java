@@ -14,6 +14,8 @@ import jp.co.jokerpiece.piecebase.util.App;
 
 import android.content.Context;
 
+import com.paypal.android.sdk.payments.PayPalConfiguration;
+
 public class Config {
     // --- staticイニシャライザで定数を設定(ここから) --- //
     public static final String APP_ID;
@@ -249,7 +251,7 @@ public class Config {
 
             String beaconEnabled = map.get("beacon_isEnabled");
             if (beaconEnabled != null && !beaconEnabled.equals("")) {
-                IS_BEACON_ENABLED = Boolean.valueOf(beaconEnabled).booleanValue();
+                IS_BEACON_ENABLED = Boolean.valueOf(beaconEnabled);
             } else {
                 IS_BEACON_ENABLED = false;
             }
@@ -265,7 +267,7 @@ public class Config {
             if (paypalEnvironment != null && !paypalEnvironment.equals("")) {
                 PAYPAL_ENVIRONMENT = paypalEnvironment;
             } else {
-                PAYPAL_ENVIRONMENT = "mock";
+                PAYPAL_ENVIRONMENT = PayPalConfiguration.ENVIRONMENT_NO_NETWORK;
             }
 
             String paypalBncode = map.get("paypal_bncode");
@@ -317,7 +319,7 @@ public class Config {
             PROJECT_ID = "367759414941";
             IS_BEACON_ENABLED = false;
             PAYPAL_CLIENT_ID =  "credential from developer.paypal.com";
-            PAYPAL_ENVIRONMENT =  "mock";
+            PAYPAL_ENVIRONMENT =  PayPalConfiguration.ENVIRONMENT_NO_NETWORK;
             PAYPAL_BNCODE = "";
             PAY_SELECT_KBN = "";
             DELIVERY = "0";
