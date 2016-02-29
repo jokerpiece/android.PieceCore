@@ -1,4 +1,4 @@
-package jp.co.jokerpiece.piecebase.Oauth;
+package jp.co.jokerpiece.piecebase.oauth;
 
 import android.app.Activity;
 import android.content.Context;
