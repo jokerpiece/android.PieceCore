@@ -26,8 +26,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Calendar;
 
-import jp.co.jokerpiece.piecebase.oauth.FacebookActivity;
-import jp.co.jokerpiece.piecebase.oauth.TwitterActivity;
+import jp.co.jokerpiece.piecebase.oauth_temp.FacebookActivity;
+import jp.co.jokerpiece.piecebase.oauth_temp.TwitterActivity;
 import jp.co.jokerpiece.piecebase.config.Common;
 import jp.co.jokerpiece.piecebase.config.Config;
 import jp.co.jokerpiece.piecebase.util.AppUtil;
