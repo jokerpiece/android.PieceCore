@@ -19,6 +19,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTabHost;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -71,6 +72,7 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
     boolean onTab = false;
     long timer;
     public ArrayList<BaseFragment> list = new ArrayList<BaseFragment>();
+    public static String intentClassName = null;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -196,6 +198,11 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
         //最初のフラグメントを記録
         Config.Savelist.add(0);
         setFragmentNum();
+//        if(GcmIntentService.notification_flg){
+//            GcmIntentService.notification_flg = false;
+//            MainBaseActivity.tabHost.setCurrentTab(AppUtil.getPosition("Infomation"));
+//        }
+
     }
 
     @Override
@@ -742,6 +749,7 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
         }
     }
 
+
     /**
      * getIntent()で取得できた場合の処理を記述します。
      * 本メソッドをonResume()で呼んでいるのは、launchModeがsingleTaskの場合、
@@ -752,7 +760,8 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
         if (bundle != null && bundle.getString("type") != null) {
             switch (bundle.getString("type")) {
                 case NewsListData.NEWS_DATA_TYPE_INFOMATION + "":
-                    MainBaseActivity.tabHost.setCurrentTab(AppUtil.getPosition("Infomation"));
+                    intentClassName = "Infomation";
+                    //MainBaseActivity.tabHost.setCurrentTab(AppUtil.getPosition("Infomation"));
 //    			FragmentManager fmInfo = getSupportFragmentManager();
 //    			FragmentTransaction ftInfo = fmInfo.beginTransaction();
 //    			ftInfo.addToBackStack(null);
@@ -764,7 +773,8 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
 //    			ftInfo.commit();
                     break;
                 case NewsListData.NEWS_DATA_TYPE_FLYER + "":
-                    MainBaseActivity.tabHost.setCurrentTab(AppUtil.getPosition("Flyer"));
+                    intentClassName = "Flyer";
+                    //MainBaseActivity.tabHost.setCurrentTab(AppUtil.getPosition("Flyer"));
 //    			FragmentManager fmNews = getSupportFragmentManager();
 //    			FragmentTransaction ftNews = fmNews.beginTransaction();
 //    			ftNews.addToBackStack(null);
@@ -776,7 +786,8 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
 //    			ftNews.commit();
                     break;
                 case NewsListData.NEWS_DATA_TYPE_COUPON + "":
-                    MainBaseActivity.tabHost.setCurrentTab(AppUtil.getPosition("Coupon"));
+                    intentClassName = "Coupon";
+                    //MainBaseActivity.tabHost.setCurrentTab(AppUtil.getPosition("Coupon"));
 //    			FragmentManager fmCoupon = getSupportFragmentManager();
 //    			FragmentTransaction ftCoupon = fmCoupon.beginTransaction();
 //    			ftCoupon.addToBackStack(null);

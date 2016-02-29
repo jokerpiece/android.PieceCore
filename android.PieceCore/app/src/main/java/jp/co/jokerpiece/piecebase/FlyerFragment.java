@@ -16,6 +16,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.util.Log;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -214,6 +215,14 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener 
                 MainBaseActivity.titleOfActionBar.get(FlyerFragment.class.getSimpleName()));
         getActivity().invalidateOptionsMenu();
 
+        if(GcmIntentService.start_from_notification){
+            GcmIntentService.start_from_notification = false;
+            if(MainBaseActivity.intentClassName != null){
+                MainBaseActivity.tabHost.setCurrentTab(AppUtil.getPosition(MainBaseActivity.intentClassName));
+            }else{
+                MainBaseActivity.tabHost.setCurrentTab(AppUtil.getPosition(InfomationFragment.class.getSimpleName()));
+            }
+        }
         if (!MainBaseActivity.startFromSchemeFlg) {
             Intent intent = getActivity().getIntent();
             String action = intent.getAction();
