@@ -1,5 +1,6 @@
 package jp.co.jokerpiece.piecebase;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.Context;
@@ -45,8 +46,8 @@ import jp.co.jokerpiece.piecebase.util.AppUtil;
 import jp.co.jokerpiece.piecebase.util.DownloadImageView;
 
 public class ShoppingGoodsFragment extends Fragment implements OnItemClickListener, OnScrollListener, OnQueryTextListener {
-    final Context context = App.getContext();
-
+//    final Context context = App.getContext();
+    Context context;
     static final int MP = ViewGroup.LayoutParams.MATCH_PARENT;
     static final int WC = ViewGroup.LayoutParams.WRAP_CONTENT;
 
@@ -79,6 +80,7 @@ public class ShoppingGoodsFragment extends Fragment implements OnItemClickListen
         categoryBase = (FrameLayout) rootView.findViewById(R.id.categoryImageBase);
         tvItemCount = (TextView) rootView.findViewById(R.id.itemCount);
 
+        context = getActivity();
 //        getActionBar().setIcon(R.drawable.icon_shopping);
 //        getActionBar().setTitle(R.string.goods_list);
         Bundle bundle = getArguments();
@@ -248,7 +250,8 @@ public class ShoppingGoodsFragment extends Fragment implements OnItemClickListen
     }
     private void getItemList() {
         connecting = true;
-        getActivity().getLoaderManager().initLoader(Config.loaderCnt++, null, new LoaderCallbacks<ItemListData>() {
+        if(getActivity() == null) return;
+        ((Activity)context).getLoaderManager().initLoader(Config.loaderCnt++, null, new LoaderCallbacks<ItemListData>() {
             @Override
             public Loader<ItemListData> onCreateLoader(int id, Bundle args) {
                 ItemListAPI itemAPI = null;
