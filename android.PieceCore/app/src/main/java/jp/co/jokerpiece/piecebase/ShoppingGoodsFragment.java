@@ -46,7 +46,7 @@ import jp.co.jokerpiece.piecebase.util.AppUtil;
 import jp.co.jokerpiece.piecebase.util.DownloadImageView;
 
 public class ShoppingGoodsFragment extends Fragment implements OnItemClickListener, OnScrollListener, OnQueryTextListener {
-//    final Context context = App.getContext();
+    //    final Context context = App.getContext();
     Context context;
     static final int MP = ViewGroup.LayoutParams.MATCH_PARENT;
     static final int WC = ViewGroup.LayoutParams.WRAP_CONTENT;
@@ -223,18 +223,21 @@ public class ShoppingGoodsFragment extends Fragment implements OnItemClickListen
             //Paypal決済できる詳細画面に遷移する。
 
         } else {
-            Intent intent = new Intent(getActivity(),WebViewActivity.class);
-            intent.putExtra("send_url",data.item_url);
-            getActivity().startActivity(intent);
-//            FragmentManager fm = getFragmentManager();
-//            FragmentTransaction ft = fm.beginTransaction();
-//            ft.addToBackStack(null);
-//            WebViewFragment fragment = new WebViewFragment();
-//            Bundle bundle = new Bundle();
-//            bundle.putString("send_url", data.item_url);
-//            fragment.setArguments(bundle);
-//            ft.replace(R.id.fragment, fragment);
-//            ft.commit();
+            if(Config.WEBVIEW_ACTIVITY_MODE.equals("true")) {
+                Intent intent = new Intent(getActivity(), WebViewActivity.class);
+                intent.putExtra("send_url", data.item_url);
+                getActivity().startActivity(intent);
+            }else {
+                FragmentManager fm = getFragmentManager();
+                FragmentTransaction ft = fm.beginTransaction();
+                ft.addToBackStack(null);
+                WebViewFragment fragment = new WebViewFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString("send_url", data.item_url);
+                fragment.setArguments(bundle);
+                ft.replace(R.id.fragment, fragment);
+                ft.commit();
+            }
         }
 
     }
@@ -357,19 +360,21 @@ public class ShoppingGoodsFragment extends Fragment implements OnItemClickListen
         super.onOptionsItemSelected(item);
 
         if (Config.CARTURL != "" && Config.CARTURL != null) {
-
-            Intent intent = new Intent(getActivity(),WebViewActivity.class);
-            intent.putExtra("send_url",Config.CARTURL);
-            getActivity().startActivity(intent);
-//            FragmentManager fm = getFragmentManager();
-//            FragmentTransaction ft = fm.beginTransaction();
-//            ft.addToBackStack(null);
-//            WebViewFragment fragment = new WebViewFragment();
-//            Bundle bundle = new Bundle();
-//            bundle.putString("send_url", Config.CARTURL);
-//            fragment.setArguments(bundle);
-//            ft.replace(R.id.fragment, fragment);
-//            ft.commit();
+            if(Config.WEBVIEW_ACTIVITY_MODE.equals("true")) {
+                Intent intent = new Intent(getActivity(), WebViewActivity.class);
+                intent.putExtra("send_url", Config.CARTURL);
+                getActivity().startActivity(intent);
+            }else {
+                FragmentManager fm = getFragmentManager();
+                FragmentTransaction ft = fm.beginTransaction();
+                ft.addToBackStack(null);
+                WebViewFragment fragment = new WebViewFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString("send_url", Config.CARTURL);
+                fragment.setArguments(bundle);
+                ft.replace(R.id.fragment, fragment);
+                ft.commit();
+            }
         }
         return true;
     }

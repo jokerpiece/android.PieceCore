@@ -282,19 +282,22 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener 
 
             //遷移先のURLがURLではない場合、flyerから商品購入画面に遷移する。
             if (!url.startsWith("paypal")) {
-                Intent intent = new Intent(context,WebViewActivity.class);
-                intent.putExtra("send_url",url);
-                context.startActivity(intent);
-//                FragmentManager fm = ((MainBaseActivity) context).getSupportFragmentManager();
-//                FragmentTransaction ft = fm.beginTransaction();
-//
-//                WebViewFragment fragment = new WebViewFragment();
-//                Bundle bundle = new Bundle();
-//                bundle.putString("send_url", url);
-//                fragment.setArguments(bundle);
-//                ft.replace(R.id.fragment, fragment);
-//                ft.addToBackStack(null);
-//                ft.commit();
+                if(Config.WEBVIEW_ACTIVITY_MODE.equals("true")) {
+                    Intent intent = new Intent(context, WebViewActivity.class);
+                    intent.putExtra("send_url", url);
+                    context.startActivity(intent);
+                }else {
+                    FragmentManager fm = ((MainBaseActivity) context).getSupportFragmentManager();
+                    FragmentTransaction ft = fm.beginTransaction();
+
+                    WebViewFragment fragment = new WebViewFragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("send_url", url);
+                    fragment.setArguments(bundle);
+                    ft.replace(R.id.fragment, fragment);
+                    ft.addToBackStack(null);
+                    ft.commit();
+                }
             } else {
                 FragmentManager fm = getFragmentManager();
                 FragmentTransaction ft = fm.beginTransaction();
@@ -415,19 +418,21 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener 
         super.onOptionsItemSelected(item);
 
         if(Config.CARTURL !="" &&   Config.CARTURL != null) {
-
-            Intent intent = new Intent(context,WebViewActivity.class);
-            intent.putExtra("send_url",Config.CARTURL);
-            context.startActivity(intent);
-//            FragmentManager fm = getFragmentManager();
-//            FragmentTransaction ft = fm.beginTransaction();
-//            ft.addToBackStack(null);
-//            WebViewFragment fragment = new WebViewFragment();
-//            Bundle bundle = new Bundle();
-//            bundle.putString("send_url", Config.CARTURL);
-//            fragment.setArguments(bundle);
-//            ft.replace(R.id.fragment, fragment);
-//            ft.commit();
+            if(Config.WEBVIEW_ACTIVITY_MODE.equals("true")) {
+                Intent intent = new Intent(context, WebViewActivity.class);
+                intent.putExtra("send_url", Config.CARTURL);
+                context.startActivity(intent);
+            }else {
+                FragmentManager fm = getFragmentManager();
+                FragmentTransaction ft = fm.beginTransaction();
+                ft.addToBackStack(null);
+                WebViewFragment fragment = new WebViewFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString("send_url", Config.CARTURL);
+                fragment.setArguments(bundle);
+                ft.replace(R.id.fragment, fragment);
+                ft.commit();
+            }
         }
         return true;
     }

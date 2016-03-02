@@ -9,6 +9,8 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -27,16 +29,16 @@ public class FlyerImageFragment extends Fragment implements DownloadImageSyncCal
 	public FlyerImageFragment() {
 		super();
 	}
-	 public FlyerImageFragment(FlyerHeaderData flyerData) {
-		 this.imageURL = flyerData.img_url;
-		 this.itemURL = flyerData.item_url;
+	public FlyerImageFragment(FlyerHeaderData flyerData) {
+		this.imageURL = flyerData.img_url;
+		this.itemURL = flyerData.item_url;
 	}
 
 	@SuppressLint("InflateParams")
 	@Override
 	public View onCreateView(LayoutInflater inflater,
-			    ViewGroup container,
-			    Bundle savedInstanceState) {
+							 ViewGroup container,
+							 Bundle savedInstanceState) {
 		view = (LinearLayout)inflater.inflate(R.layout.fragment_flyer_image, null);
 		imageView = (ImageView)view.findViewById(R.id.header_image);
 		getLoaderManager();
@@ -60,33 +62,36 @@ public class FlyerImageFragment extends Fragment implements DownloadImageSyncCal
 				}
 			});
 		}
-	    return view;
+		return view;
 	}
 
 	public void onClickFlyer(String url) {
-        if (!url.equals("") && !url.equals("null")) {
-			Intent intent = new Intent(getActivity(),WebViewActivity.class);
-			intent.putExtra("send_url",url);
-			getActivity().startActivity(intent);
-//            FragmentManager fm =  ((MainBaseActivity)getActivity()).getSupportFragmentManager();
-//            FragmentTransaction ft = fm.beginTransaction();
-//
-//            WebViewFragment fragment = new WebViewFragment();
-//            Bundle bundle = new Bundle();
-//            bundle.putString("send_url", url);
-//            fragment.setArguments(bundle);
-//            ft.replace(R.id.fragment, fragment);
-//            ft.addToBackStack(null);
-//            ft.commit();
-        }
+		if (!url.equals("") && !url.equals("null")) {
+			if(Config.WEBVIEW_ACTIVITY_MODE.equals("true")) {
+				Intent intent = new Intent(getActivity(), WebViewActivity.class);
+				intent.putExtra("send_url", url);
+				getActivity().startActivity(intent);
+			}else {
+				FragmentManager fm =  ((MainBaseActivity)getActivity()).getSupportFragmentManager();
+				FragmentTransaction ft = fm.beginTransaction();
+
+				WebViewFragment fragment = new WebViewFragment();
+				Bundle bundle = new Bundle();
+				bundle.putString("send_url", url);
+				fragment.setArguments(bundle);
+				ft.replace(R.id.fragment, fragment);
+				ft.addToBackStack(null);
+				ft.commit();
+			}
+		}
 	}
 
 	@Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putString("image_url", imageURL);
-        outState.putString("item_url", itemURL);
-    }
+	public void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+		outState.putString("image_url", imageURL);
+		outState.putString("item_url", itemURL);
+	}
 
 	@Override
 	public void onDestroyView() {

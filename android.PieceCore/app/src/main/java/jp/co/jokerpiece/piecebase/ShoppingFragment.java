@@ -44,30 +44,30 @@ import jp.co.jokerpiece.piecebase.util.BitmapDownloader;
 import jp.co.jokerpiece.piecebase.util.DownloadImageView;
 
 public class ShoppingFragment extends BaseFragment implements OnItemClickListener {
-	Context context;
+    Context context;
 
-	static final int MP = ViewGroup.LayoutParams.MATCH_PARENT;
-	static final int WC = ViewGroup.LayoutParams.WRAP_CONTENT;
+    static final int MP = ViewGroup.LayoutParams.MATCH_PARENT;
+    static final int WC = ViewGroup.LayoutParams.WRAP_CONTENT;
     RelativeLayout rl;
     SearchView searchView;
     Button btn_Cancel;
-	CategoryListData categoryData = null;
-	ArrayList<DownloadImageView> alImageViewList = new ArrayList<DownloadImageView>();
+    CategoryListData categoryData = null;
+    ArrayList<DownloadImageView> alImageViewList = new ArrayList<DownloadImageView>();
 
     InputMethodManager inputMethodManager;
-	ListView shoppingListView;
+    ListView shoppingListView;
     String strSearch = "";
 
 //	private int loderCount = 0;
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
         context = getActivity();
         Common.setCurrentFragment(Config.ShoppingFragmentNum);
-		View rootView = inflater.inflate(R.layout.fragment_shopping, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_shopping, container, false);
         rl = (RelativeLayout)rootView.findViewById(R.id.Rl_search);
-		shoppingListView = (ListView)rootView.findViewById(R.id.shoppingListView);
+        shoppingListView = (ListView)rootView.findViewById(R.id.shoppingListView);
 //        getActionBar().setIcon(R.drawable.icon_shopping);
 //        getActionBar().setTitle(R.string.genre_list);
 //        if(!Config.PROPERTY_ID.equals("") && Config.PROPERTY_ID != null){
@@ -125,7 +125,7 @@ public class ShoppingFragment extends BaseFragment implements OnItemClickListene
             getGenreList();
         }
         return rootView;
-	}
+    }
     @Override
     public void onStart() {
         super.onStart();
@@ -143,15 +143,15 @@ public class ShoppingFragment extends BaseFragment implements OnItemClickListene
         setHasOptionsMenu(true);
     }
 
-	@Override
-	public void onResume() {
-		super.onResume();
-		AppUtil.setTitleOfActionBar(
+    @Override
+    public void onResume() {
+        super.onResume();
+        AppUtil.setTitleOfActionBar(
                 getActivity().getActionBar(),
                 MainBaseActivity.titleOfActionBar.get(ShoppingFragment.class.getSimpleName()));
-		getActivity().invalidateOptionsMenu();
+        getActivity().invalidateOptionsMenu();
 //		if(categoryData == null){
-			getGenreList();
+        getGenreList();
 //		}else{
 //			for(DownloadImageView iv : alImageViewList){
 //				if(!iv.loadImageView()){
@@ -159,11 +159,11 @@ public class ShoppingFragment extends BaseFragment implements OnItemClickListene
 //				}
 //			}
 //		}
-	}
+    }
 
-	@Override
-	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-		menu.clear();
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        menu.clear();
 
         //カートのURLがセットされている場合のみ
         //カートの画像を表示する。
@@ -171,31 +171,33 @@ public class ShoppingFragment extends BaseFragment implements OnItemClickListene
             inflater.inflate(R.menu.menu_cart, menu);
         }
         super.onCreateOptionsMenu(menu, inflater);
-	}
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         super.onOptionsItemSelected(item);
 
         if(Config.CARTURL !="" &&   Config.CARTURL != null) {
-
-            Intent intent = new Intent(context,WebViewActivity.class);
-            intent.putExtra("send_url",Config.CARTURL);
-            context.startActivity(intent);
-//            FragmentManager fm = getFragmentManager();
-//            FragmentTransaction ft = fm.beginTransaction();
-//            ft.addToBackStack(null);
-//            WebViewFragment fragment = new WebViewFragment();
-//            Bundle bundle = new Bundle();
-//            bundle.putString("send_url", Config.CARTURL);
-//            fragment.setArguments(bundle);
-//            ft.replace(R.id.fragment, fragment);
-//            ft.commit();
+            if(Config.WEBVIEW_ACTIVITY_MODE.equals("true")) {
+                Intent intent = new Intent(context, WebViewActivity.class);
+                intent.putExtra("send_url", Config.CARTURL);
+                context.startActivity(intent);
+            }else {
+                FragmentManager fm = getFragmentManager();
+                FragmentTransaction ft = fm.beginTransaction();
+                ft.addToBackStack(null);
+                WebViewFragment fragment = new WebViewFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString("send_url", Config.CARTURL);
+                fragment.setArguments(bundle);
+                ft.replace(R.id.fragment, fragment);
+                ft.commit();
+            }
         }
         return true;
     }
 
-	private void showCategoryView() {
+    private void showCategoryView() {
         if(SaveData.Categorydata != null) {
             categoryData = SaveData.Categorydata;
         }
@@ -203,74 +205,74 @@ public class ShoppingFragment extends BaseFragment implements OnItemClickListene
 //            shoppingListView.setAdapter(Config.Sadapter);
 //            shoppingListView.setOnItemClickListener(this);
 //        }else {
-            if (categoryData.data_list != null && categoryData.data_list.size() >= 1) {
-                shoppingListView.setVisibility(View.VISIBLE);
+        if (categoryData.data_list != null && categoryData.data_list.size() >= 1) {
+            shoppingListView.setVisibility(View.VISIBLE);
 
-                ShoppingListAdapter adapter = new ShoppingListAdapter(context,
-                        R.layout.adapter_shopping_category_list,
-                        categoryData.data_list,
-                        ((FragmentActivity) context).getSupportLoaderManager());
-                shoppingListView.setAdapter(adapter);
-                shoppingListView.setOnItemClickListener(this);
-            } else {
-                shoppingListView.setVisibility(View.GONE);
-            }
+            ShoppingListAdapter adapter = new ShoppingListAdapter(context,
+                    R.layout.adapter_shopping_category_list,
+                    categoryData.data_list,
+                    ((FragmentActivity) context).getSupportLoaderManager());
+            shoppingListView.setAdapter(adapter);
+            shoppingListView.setOnItemClickListener(this);
+        } else {
+            shoppingListView.setVisibility(View.GONE);
+        }
 
-	}
+    }
 
-	@Override
-	public void onItemClick(AdapterView<?> parent, View view, int position,
-			long id) {
-		CategoryData data = categoryData.data_list.get(position);
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position,
+                            long id) {
+        CategoryData data = categoryData.data_list.get(position);
         if(Config.SEARCHMODE.equals("true")) {
             inputMethodManager.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
         }
-		FragmentManager fm = ((MainBaseActivity)context).getSupportFragmentManager();
-		FragmentTransaction ft = fm.beginTransaction();
-		ShoppingGoodsFragment fragment = new ShoppingGoodsFragment();
-		Bundle bundle = new Bundle();
-		//bundle.putInt("category_id", data.category_id);
+        FragmentManager fm = ((MainBaseActivity)context).getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        ShoppingGoodsFragment fragment = new ShoppingGoodsFragment();
+        Bundle bundle = new Bundle();
+        //bundle.putInt("category_id", data.category_id);
         bundle.putString("category_id", data.category_id);
         bundle.putString("category_img_url", data.img_url);
         bundle.putString("category_text", data.category_text);
         bundle.putString("category_name", data.category_name);
 
-		fragment.setArguments(bundle);
-		ft.replace(R.id.fragment, fragment);
+        fragment.setArguments(bundle);
+        ft.replace(R.id.fragment, fragment);
         ft.addToBackStack(null);
 
         ft.commit();
-	}
+    }
 
-	private void getGenreList(){
+    private void getGenreList(){
         Loader l = ((Activity)context).getLoaderManager().getLoader(Config.loaderCnt);
         if (l != null){
             return;
         }
         ((Activity)context).getLoaderManager().initLoader(Config.loaderCnt++, null, new LoaderCallbacks<CategoryListData>(){
-			@Override
-			public Loader<CategoryListData> onCreateLoader(int id, Bundle args) {
-				 CategoryListAPI categoryAPI = new CategoryListAPI(context);
-				 categoryAPI.forceLoad();
-				 return categoryAPI;
-				}
+            @Override
+            public Loader<CategoryListData> onCreateLoader(int id, Bundle args) {
+                CategoryListAPI categoryAPI = new CategoryListAPI(context);
+                categoryAPI.forceLoad();
+                return categoryAPI;
+            }
 
-			@Override
-			public void onLoadFinished(Loader<CategoryListData> loader, CategoryListData data) {
-				if(data == null){
-					Common.serverErrorMessage(context);
-					return;
-				}
-				categoryData = data;
-				showCategoryView();
-			}
+            @Override
+            public void onLoadFinished(Loader<CategoryListData> loader, CategoryListData data) {
+                if(data == null){
+                    Common.serverErrorMessage(context);
+                    return;
+                }
+                categoryData = data;
+                showCategoryView();
+            }
 
-			@Override
-			public void onLoaderReset(Loader<CategoryListData> loader) {
-			}
+            @Override
+            public void onLoaderReset(Loader<CategoryListData> loader) {
+            }
         });
 
-	}
+    }
 
     @Override
     public void doInSplash(final Activity activity) {

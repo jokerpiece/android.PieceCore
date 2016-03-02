@@ -30,6 +30,7 @@ public class Config {
     public static final String CARTURL;
     public static final String SEARCHMODE;
     public static final String ANALYTICS_MODE; // googleAnalytics
+    public static final String WEBVIEW_ACTIVITY_MODE;
 //  public static String APP_ID = "pieceSample";
 //  public static final String APP_ID = "pushColor";
 //	public static final String APP_ID = "otonagokoro";
@@ -43,34 +44,34 @@ public class Config {
     public static final boolean IS_BEACON_ENABLED;
     public static boolean changeToDevFlg = false;
 
-	//新大人ゴコロ本番
+    //新大人ゴコロ本番
 
-   // public  static final String SERVER_URL = "http://192.168.77.200/piece_dev/";
+    // public  static final String SERVER_URL = "http://192.168.77.200/piece_dev/";
 
-	//大人ゴコロ本番
-	//public static final String SERVER_API_URL = "http://jokapi.jp/PieceProxy/service/api/shop/kodomogokoro/";
-	//大人ゴコロステージング
-	//public static final String SERVER_API_URL = "http://home.noumin.net/PieceProxy/service/api/shop/kodomogokoro/";
-	//public static final String SERVER_API_URL = "http://192.168.77.68/piece/html/xml/";
+    //大人ゴコロ本番
+    //public static final String SERVER_API_URL = "http://jokapi.jp/PieceProxy/service/api/shop/kodomogokoro/";
+    //大人ゴコロステージング
+    //public static final String SERVER_API_URL = "http://home.noumin.net/PieceProxy/service/api/shop/kodomogokoro/";
+    //public static final String SERVER_API_URL = "http://192.168.77.68/piece/html/xml/";
 
-	//http://192.168.77.68/piece/html/xml/device_token/index.php
-	//スタブ
-	//public static final String SERVER_API_URL = "http://192.168.77.83:8888/pieceSever/";
+    //http://192.168.77.68/piece/html/xml/device_token/index.php
+    //スタブ
+    //public static final String SERVER_API_URL = "http://192.168.77.83:8888/pieceSever/";
 
-	//デバッグ用UUID デバッグではない場合nullに;
-	//public static final String getDebugUUID = "jokerpiece-test-uuid";
-	public static final String getDebugUUID = null;
+    //デバッグ用UUID デバッグではない場合nullに;
+    //public static final String getDebugUUID = "jokerpiece-test-uuid";
+    public static final String getDebugUUID = null;
 
     //OSタイプ (1:iOS, 2:android)
     public static final String OS_TYPE = "2";
 
-	//サーバー接続までのタイムアウト時間
-	public static final int connectionTimeOut = 5000;
+    //サーバー接続までのタイムアウト時間
+    public static final int connectionTimeOut = 5000;
 
-	//サーバー接続後の読み込みタイムアウト時間
-	public static final int readTimeOut = 30000;
+    //サーバー接続後の読み込みタイムアウト時間
+    public static final int readTimeOut = 30000;
 
-	// プッシュ通知で必要なフィールド(ここから)
+    // プッシュ通知で必要なフィールド(ここから)
 //	public static final String PROJECT_ID = "367759414941";	//プロジェクトIDを設定する
     public static final String PROJECT_ID;
     public static final String EXTRA_MESSAGE = "message";
@@ -79,23 +80,23 @@ public class Config {
     public final static int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
 
     // プッシュ通知で必要なフィールド(ここまで)
-	//検索機能対応
-	public static final boolean SEARCH_PERMISSION = true;
+    //検索機能対応
+    public static final boolean SEARCH_PERMISSION = true;
 
     public  static final String SERVER_API_URL;
-	public static final String USER_NAME;
-	public static final String SENDID_NEWS_LIST;
-	public static final String SENDID_NEWS_INFO;
-	public static final String SENDID_FLIYER_LIST;
-	public static final String SENDID_CTGRY;
-	public static final String SENDID_ITEM;
-	public static final String SENDID_ITEM_COUPON;
-	public static final String SENDID_ITEM_BARCODE;
-	public static final String SENDID_CPN_GIVE;
-	public static final String SENDID_CPN_TAKE;
-	public static final String SENDID_GET_CPN;
+    public static final String USER_NAME;
+    public static final String SENDID_NEWS_LIST;
+    public static final String SENDID_NEWS_INFO;
+    public static final String SENDID_FLIYER_LIST;
+    public static final String SENDID_CTGRY;
+    public static final String SENDID_ITEM;
+    public static final String SENDID_ITEM_COUPON;
+    public static final String SENDID_ITEM_BARCODE;
+    public static final String SENDID_CPN_GIVE;
+    public static final String SENDID_CPN_TAKE;
+    public static final String SENDID_GET_CPN;
     public static final String SENDID_GET_QUES;
-	public static final String PUSHSERVER_URL;
+    public static final String PUSHSERVER_URL;
     public static final String SENDID_MAP_LIST;
     public static final String SENDID_STAMP_LIST;
     public static final String SENDID_CHECKDATA;
@@ -117,9 +118,9 @@ public class Config {
     public static final String YOUTUBE_APIV3 = "https://www.googleapis.com/upload/youtube/v3/videos?part=snippet,status";
 
 
-	public static final String PASS_WORD = null;
+    public static final String PASS_WORD = null;
 
-	public static final long scrollDelay = 4000;
+    public static final long scrollDelay = 4000;
 
     //使ったフラグメントを記録するための設定
     public static int FragmentCurrentNum;
@@ -163,18 +164,18 @@ public class Config {
     final public static int Bottom = 2;
 
     /** loaderCount */
-	public static int loaderCnt = 0;
-	/** タブ画面で戻るボタン押下時の動作 */
-	public static final String BACK_STACK_KEY = "BACK_STACK";
+    public static int loaderCnt = 0;
+    /** タブ画面で戻るボタン押下時の動作 */
+    public static final String BACK_STACK_KEY = "BACK_STACK";
 
-	static public List<MenuData> getMenuList(Context context) {
-		ArrayList<MenuData> dataList = new ArrayList<>();
-		dataList.add(new MenuData(0,R.drawable.icon_flyer,context.getResources().getString(R.string.flyer0)));
-		dataList.add(new MenuData(1,R.drawable.icon_infomation,context.getResources().getString(R.string.info)));
-		dataList.add(new MenuData(2,R.drawable.icon_shopping,context.getResources().getString(R.string.shopping)));
-		dataList.add(new MenuData(3,R.drawable.icon_coupon,context.getResources().getString(R.string.coupon)));
-		return dataList;
-	}
+    static public List<MenuData> getMenuList(Context context) {
+        ArrayList<MenuData> dataList = new ArrayList<>();
+        dataList.add(new MenuData(0,R.drawable.icon_flyer,context.getResources().getString(R.string.flyer0)));
+        dataList.add(new MenuData(1,R.drawable.icon_infomation,context.getResources().getString(R.string.info)));
+        dataList.add(new MenuData(2,R.drawable.icon_shopping,context.getResources().getString(R.string.shopping)));
+        dataList.add(new MenuData(3,R.drawable.icon_coupon,context.getResources().getString(R.string.coupon)));
+        return dataList;
+    }
 
     static {
         boolean isSuccess = true;
@@ -246,7 +247,7 @@ public class Config {
             if (projectId != null && !projectId.equals("")) {
                 PROJECT_ID = projectId;
             } else {
-                PROJECT_ID = "367759414941";
+                PROJECT_ID = "412701246274";
             }
 
             String beaconEnabled = map.get("beacon_isEnabled");
@@ -309,14 +310,19 @@ public class Config {
             }else{
                 ANALYTICS_MODE = "false";
             }
-
+            String webView_activity_mode = map.get("webview_activity_mode");
+            if(webView_activity_mode != null && !webView_activity_mode.equals("")){
+                WEBVIEW_ACTIVITY_MODE = webView_activity_mode;
+            }else{
+                WEBVIEW_ACTIVITY_MODE = "false";
+            }
         } else {
             SERVER_URL = "http://jokapi.jp/";
             APP_ID = "pieceSample";
             APP_KEY = "jokerpiece_appKey";
             COOKIE_DOMAIN = "t.otonagokoro.com";
             SPLASH_TIME = 2;
-            PROJECT_ID = "367759414941";
+            PROJECT_ID = "412701246274";
             IS_BEACON_ENABLED = false;
             PAYPAL_CLIENT_ID =  "credential from developer.paypal.com";
             PAYPAL_ENVIRONMENT =  PayPalConfiguration.ENVIRONMENT_NO_NETWORK;
@@ -326,6 +332,7 @@ public class Config {
             CARTURL = "";
             SEARCHMODE = "true";
             ANALYTICS_MODE = "false";
+            WEBVIEW_ACTIVITY_MODE = "false";
         }
 
         SERVER_API_URL = SERVER_URL + "manager/html/xml/";

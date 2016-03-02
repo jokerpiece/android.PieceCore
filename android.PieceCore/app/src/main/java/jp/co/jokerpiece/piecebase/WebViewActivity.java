@@ -62,6 +62,12 @@ public class WebViewActivity extends FragmentActivity {
                     Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
                     view.getContext().startActivity(intent);
                     return true;
+                }else if(url.startsWith("https://line.me")){
+                    webView.stopLoading();
+
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                    view.getContext().startActivity(intent);
+                    return true;
                 }
                 return super.shouldOverrideUrlLoading(view, url);
             }
@@ -107,7 +113,11 @@ public class WebViewActivity extends FragmentActivity {
 
         if(!strUrl.startsWith("file:") && !strUrl.startsWith("http:") && !strUrl.startsWith("https:")){
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(strUrl));
-            this.startActivity(intent);
+            try {
+                this.startActivity(intent);
+            }catch (Exception e){
+                AppUtil.debugLog("intentError",""+e);
+            }
         }else {
             if (strUrl != null && !strUrl.equals("")) {
                 webView.loadUrl(strUrl);
