@@ -15,7 +15,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginLeft="15dp"
             android:text="@string/notification_text"
-            android:textSize="20dp"/>
+            android:textSize="23dp"/>
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
@@ -42,8 +42,8 @@
                 android:layout_toLeftOf="@+id/notifi_switch"
                 android:layout_toRightOf="@+id/icon_sound"
                 android:layout_marginLeft="10dp"
-                android:gravity="center"
-                android:textSize="25dp"
+                android:textSize="20dp"
+                android:paddingTop="2dp"
                 android:text="@string/sound_text"/>
             <Switch
                 android:layout_width="wrap_content"

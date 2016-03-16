@@ -28,7 +28,7 @@ public class SettingFragment extends BaseFragment {
 //        Config.soundFlg = AppUtil.getPrefBoolean(getActivity(), "notifiFlg", false);
         swNotification = (Switch)rootView.findViewById(R.id.notifi_switch);
         Common.setCurrentFragment(Config.SettingFragmentNum);
-        swNotification.setChecked(AppUtil.getPrefBoolean(getActivity(), "notifiFlg", false));
+        swNotification.setChecked(AppUtil.getPrefBoolean(getActivity(), "notifiFlg", true));
         swNotification.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
