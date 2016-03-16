@@ -14,3 +14,4 @@ carturl=
 search_mode=true
 analytics_mode=false
 webview_activity_mode=true
+notifi_sound_mode=false

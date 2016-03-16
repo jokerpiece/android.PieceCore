@@ -58,6 +58,9 @@
     <string name="paypal1">PAYPAL</string>
     <string name="reminder0">REMINDER</string>
     <string name="reminder1">Reminder</string>
+    <string name="setting">設定</string>
+    <string name="setting0">SETTING</string>
+    <string name="setting1">Setting</string>
 
         <!-- default theme -->
     <drawable name="actionbar_background">#FFFFFF</drawable>
@@ -111,8 +114,8 @@
     <string name="twitter_consumer_key">N1qd3k7y8mT73CZ2hAVxh4JTr</string>
     <string name="twitter_consumer_secret">uQqLoh6lV9KQn6F7o6JyRiQkDueNNPIlrR8GwsmW7P95Q8OZ8d</string>
     <string name="twitter_callback_url">gabu://twitter</string>
-    <string name="screenName">KuoWenHsin</string>
-    <string name="repliseName">KuoWenHsin</string>
+    <string name="screenName">test</string>
+    <string name="repliseName">test</string>
 
     <string name="gmail">gmail</string>
     <string name="title_activity_radar">RadarActivity</string>
@@ -134,4 +137,8 @@
     <string name="clear">clear</string>
     <string name="left">left</string>
     <string name="center">center</string>
+
+    <!--setting-->
+    <string name="sound_text">サウンド</string>
+    <string name="notification_text">プッシュ通知</string>
 </resources>

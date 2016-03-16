@@ -112,6 +112,18 @@ public class AppUtil {
         editor.commit();
     }
 
+    public static void setPrefBoolean(Context context,String key,boolean value){
+        SharedPreferences pref = context.getSharedPreferences(Config.PREF_KEY, Activity.MODE_PRIVATE );
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putBoolean(key, value);
+        editor.commit();
+    }
+    public static boolean getPrefBoolean(Context context, String key, boolean initValue){
+        SharedPreferences pref = context.getSharedPreferences(Config.PREF_KEY, Activity.MODE_PRIVATE);
+        boolean value = pref.getBoolean(key, initValue);
+        return value;
+    }
+
     /**
      * チェックデジットを解除する。(cdIDはString)
      * @param cdID コンテキスト

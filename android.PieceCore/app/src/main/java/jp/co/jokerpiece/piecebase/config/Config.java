@@ -31,6 +31,7 @@ public class Config {
     public static final String SEARCHMODE;
     public static final String ANALYTICS_MODE; // googleAnalytics
     public static final String WEBVIEW_ACTIVITY_MODE;
+    public static final String NOTIFI_SOUND_MODE;
 //  public static String APP_ID = "pieceSample";
 //  public static final String APP_ID = "pushColor";
 //	public static final String APP_ID = "otonagokoro";
@@ -71,6 +72,8 @@ public class Config {
     //サーバー接続後の読み込みタイムアウト時間
     public static final int readTimeOut = 30000;
 
+    // プッシュ通知のサンウドフラグ
+    public static boolean soundFlg; //音を出すかどうか
     // プッシュ通知で必要なフィールド(ここから)
 //	public static final String PROJECT_ID = "367759414941";	//プロジェクトIDを設定する
     public static final String PROJECT_ID;
@@ -138,6 +141,7 @@ public class Config {
     public static int PaypalFragmentNum;
     public static int ResoultFragmentNum;
     public static int ReminederFragmentNum;
+    public static int SettingFragmentNum;
 
     public static List Savelist = new ArrayList<>();
     public static  Class<?> TwitterBackToMain = MainBaseActivity.class;
@@ -316,6 +320,12 @@ public class Config {
             }else{
                 WEBVIEW_ACTIVITY_MODE = "false";
             }
+            String notifi_sound_mode = map.get("notifi_sound_mode");
+            if(notifi_sound_mode != null && !notifi_sound_mode.equals("")){
+                NOTIFI_SOUND_MODE = notifi_sound_mode;
+            }else{
+                NOTIFI_SOUND_MODE = "false";
+            }
         } else {
             SERVER_URL = "http://jokapi.jp/";
             APP_ID = "pieceSample";
@@ -333,6 +343,8 @@ public class Config {
             SEARCHMODE = "true";
             ANALYTICS_MODE = "false";
             WEBVIEW_ACTIVITY_MODE = "false";
+            NOTIFI_SOUND_MODE = "false";
+
         }
 
         SERVER_API_URL = SERVER_URL + "manager/html/xml/";

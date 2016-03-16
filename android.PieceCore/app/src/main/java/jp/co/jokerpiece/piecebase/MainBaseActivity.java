@@ -452,6 +452,19 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
                     {
                         put("cls", ReminderFragment.class);
                     }
+                },
+                new HashMap<String, Object>() {
+                    {
+                        put("tabTitle", getString(R.string.setting1));
+                    }
+
+                    {
+                        put("tabIcon", R.drawable.ic_action_settings);
+                    }
+
+                    {
+                        put("cls", SettingFragment.class);
+                    }
                 }
         ));
     }
@@ -520,7 +533,9 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
             {
                 put(ReminderFragment.class.getSimpleName(), R.string.reminder0);
             }
-
+            {
+                put(SettingFragment.class.getSimpleName(),R.string.setting0);
+            }
 
         };
     }
@@ -540,6 +555,7 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
         Config.TwitterFragmentNum = 9;
         Config.WebViewFragmentNum = 10;
         Config.ReminederFragmentNum = 11;
+        Config.SettingFragmentNum = 12;
     }
 
     /**

@@ -101,7 +101,7 @@
             android:value="@string/app_id" />
 
         <activity
-            android:name=".Oauth.FacebookActivity"
+            android:name=".oauth.FacebookActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
         <activity
             android:name="com.facebook.FacebookActivity"
@@ -114,7 +114,7 @@
             android:exported="true" />
 
         <activity
-            android:name=".Oauth.TwitterActivity"
+            android:name=".oauth.TwitterActivity"
             android:launchMode="singleInstance"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar">
