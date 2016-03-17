@@ -73,7 +73,8 @@ public class Config {
     public static final int readTimeOut = 30000;
 
     // プッシュ通知のサンウドフラグ
-    public static boolean soundFlg; //音を出すかどうか
+    public static boolean soundFlg = true
+            ; //音を出すかどうか
     // プッシュ通知で必要なフィールド(ここから)
 //	public static final String PROJECT_ID = "367759414941";	//プロジェクトIDを設定する
     public static final String PROJECT_ID;
