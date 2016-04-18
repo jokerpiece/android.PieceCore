@@ -212,6 +212,7 @@ public class ShoppingFragment extends BaseFragment implements OnItemClickListene
                     R.layout.adapter_shopping_category_list,
                     categoryData.data_list,
                     ((FragmentActivity) context).getSupportLoaderManager());
+
             shoppingListView.setAdapter(adapter);
             shoppingListView.setOnItemClickListener(this);
         } else {

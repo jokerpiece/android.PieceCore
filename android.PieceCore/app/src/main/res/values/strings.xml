@@ -138,7 +138,32 @@
     <string name="left">left</string>
     <string name="center">center</string>
 
+    <!--shopping: spinner-->
+    <string name="goods_default_amount">１個</string>
+    <string-array name="goods_amount_array">
+
+        <item>１個</item>
+        <item>２個</item>
+        <item>３個</item>
+        <item>４個</item>
+        <item>５個</item>
+        <item>６個</item>
+        <item>７個</item>
+        <item>８個</item>
+        <item>９個</item>
+        <item>１０個</item>
+        <item>その他</item>
+
+    </string-array>
+
+    <!--shopping: spinner_dialog-->
+    <string name="dialog_instruction">欲しい商品の数を入力して下さい</string>
+    <string name="dialog_item_amount_label">個</string>
+    <string name="dialog_button_cancel">cancel</string>
+    <string name="dialog_button_ok">ok</string>
+
     <!--setting-->
     <string name="sound_text">サウンド</string>
     <string name="notification_text">プッシュ通知</string>
+    <string name="notification_pay">アプリ内決済</string>
 </resources>

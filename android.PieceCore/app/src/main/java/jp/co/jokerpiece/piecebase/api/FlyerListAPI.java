@@ -16,32 +16,39 @@ import jp.co.jokerpiece.piecebase.config.Config;
 import jp.co.jokerpiece.piecebase.data.FlyerData;
 import jp.co.jokerpiece.piecebase.data.FlyerData.FlyerBodyData;
 import jp.co.jokerpiece.piecebase.data.FlyerData.FlyerHeaderData;
+import jp.co.jokerpiece.piecebase.util.AppUtil;
 import jp.co.jokerpiece.piecebase.util.HttpClient;
 import jp.co.jokerpiece.piecebase.util.HttpClient.HttpClientInterface;
 
 public class FlyerListAPI extends AsyncTaskLoader<FlyerData> implements HttpClientInterface {
 	int flyerID = -1;
+
 	public FlyerListAPI(Context context,int flyerID) {
 		super(context);
 		this.flyerID = flyerID;
 	}
 
 	@Override
-	public FlyerData loadInBackground() {
-		if(flyerID < 0){
+	public FlyerData loadInBackground()
+	{
+		if(flyerID < 0)
+		{
 			return null;
 		}
 		FlyerData flyerData = new FlyerData();
     	HashMap<String, String> parameter = new HashMap<String, String>();
     	parameter.put("app_id", Config.APP_ID);
-        if(flyerID > 0) {
+        if(flyerID > 0)
+		{
             parameter.put("flyer_id", String.valueOf(flyerID));
         }
-        else{
+        else
+		{
             parameter.put("flyer_id", "");
         }
         String result = null;
-        try {
+        try
+		{
 //			AppUtil.debugLog("Parameter",parameter.toString());
             byte[] resData = HttpClient.getByteArrayFromUrlPost(Config.SENDID_FLIYER_LIST, parameter,this);
             if(resData == null){
@@ -56,14 +63,18 @@ public class FlyerListAPI extends AsyncTaskLoader<FlyerData> implements HttpClie
 			e.printStackTrace();
 			return null;
 		}
-        try {
+
+		//JSON DATA
+		try
+		{
 			JSONObject rootObject = new JSONObject(result);
-			//AppUtil.debugLog("JSON", rootObject.toString());
+			AppUtil.debugLog("JSON", rootObject.toString());
 
 			int error_code = rootObject.getInt("error_code");
 			if(error_code != 0){
 				return null;
-		}
+			}
+
 			flyerData.header_list = new ArrayList<FlyerData.FlyerHeaderData>();
 			flyerData.body_list = new ArrayList<FlyerData.FlyerBodyData>();
 
@@ -77,6 +88,7 @@ public class FlyerListAPI extends AsyncTaskLoader<FlyerData> implements HttpClie
 			    	data.category_id = jsonObject.getString("category_id");
 			    }
 			    data.item_url = jsonObject.getString("item_url");
+				data.item_id = jsonObject.getString("item_id");
 			    flyerData.header_list.add(data);
 			}
 			
@@ -87,6 +99,8 @@ public class FlyerListAPI extends AsyncTaskLoader<FlyerData> implements HttpClie
 				FlyerBodyData data = flyerData.new FlyerBodyData();
 			    data.img_url = jsonObject.getString("img_url");
 			    data.item_url = jsonObject.getString("item_url");
+				data.item_id = jsonObject.getString("item_id");
+
 			    flyerData.body_list.add(data);
 			}
 		} catch (JSONException e) {

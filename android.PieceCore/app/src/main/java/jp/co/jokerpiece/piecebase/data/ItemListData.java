@@ -2,7 +2,8 @@ package jp.co.jokerpiece.piecebase.data;
 
 import java.util.ArrayList;
 
-public class ItemListData {
+public class ItemListData
+{
 	public int error_code;
 	public String error_message;
 	

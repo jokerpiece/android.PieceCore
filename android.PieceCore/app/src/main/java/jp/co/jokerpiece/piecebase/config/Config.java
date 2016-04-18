@@ -25,13 +25,15 @@ public class Config {
     public static final String PAYPAL_CLIENT_ID;
     public static final String PAYPAL_ENVIRONMENT;
     public static final String PAYPAL_BNCODE;
-    public static final String PAY_SELECT_KBN;
+    public static String PAY_SELECT_KBN;
     public static final String DELIVERY;
     public static final String CARTURL;
     public static final String SEARCHMODE;
     public static final String ANALYTICS_MODE; // googleAnalytics
     public static final String WEBVIEW_ACTIVITY_MODE;
     public static final String NOTIFI_SOUND_MODE;
+
+
 //  public static String APP_ID = "pieceSample";
 //  public static final String APP_ID = "pushColor";
 //	public static final String APP_ID = "otonagokoro";
@@ -87,7 +89,7 @@ public class Config {
     //検索機能対応
     public static final boolean SEARCH_PERMISSION = true;
 
-    public  static final String SERVER_API_URL;
+    public static final String SERVER_API_URL;
     public static final String USER_NAME;
     public static final String SENDID_NEWS_LIST;
     public static final String SENDID_NEWS_INFO;
@@ -118,6 +120,17 @@ public class Config {
     public static final String SENDID_MESSAGE_UPLOAD;
     public static final String SENDID_MESSAGE_UPLOAD_DONE;
     public static final String SENDID_REGUST_APP_PAYMENT;
+
+    //declare by sou
+    public static final String SENDID_SEND_PROFILE;
+    public static final String GET_ADDRESS_BY_POSTNUMBER;
+    public static final String SENDID_DELIVERY_PRICE;
+    public static final String LINE_PAY_REGISTER;
+    public static final String URL_SCHEME_LINEPAY_ACTIVITY;
+    public static final String GET_ORDER_ID;
+    public static final String GET_LINEPAY_CONFIRM;
+    public static final String REGIST_LINEPAY_APP_PAYMENT;
+
 
     public static final String YOUTUBE_APIV3 = "https://www.googleapis.com/upload/youtube/v3/videos?part=snippet,status";
 
@@ -379,6 +392,16 @@ public class Config {
         SENDID_MESSAGE_UPLOAD = SERVER_URL + "manager/html/webview/message/index.php";
         SENDID_MESSAGE_UPLOAD_DONE = SERVER_URL +"manager/html/webview/message/done.html";
         SENDID_REGUST_APP_PAYMENT = SERVER_API_URL + "regist_app_payment";
+
+        //crated by sou
+        SENDID_SEND_PROFILE = "http://192.168.77.200/piece_dev/manager/html/xml/send_profile/";
+        GET_ADDRESS_BY_POSTNUMBER = "http://zipcloud.ibsnet.co.jp/api/search?zipcode=";
+        SENDID_DELIVERY_PRICE = "http://192.168.77.200/piece_dev/manager/html/xml/delivery_price/";
+        LINE_PAY_REGISTER ="http://192.168.77.200/piece_dev/manager/html/xml/linepay/index.php?Action=reserve";
+        URL_SCHEME_LINEPAY_ACTIVITY="piece://linepay";
+        GET_ORDER_ID="http://192.168.77.200/piece_dev/manager/html/xml/order_id/";
+        GET_LINEPAY_CONFIRM="http://192.168.77.200/piece_dev/manager/html/xml/linepay/index.php?Action=confirm";
+        REGIST_LINEPAY_APP_PAYMENT = "http://192.168.77.200/piece_dev/manager/html/xml/regist_app_payment/";
     }
 
 }

@@ -20,6 +20,7 @@ public class SettingFragment extends BaseFragment {
 
     View rootView;
     Switch swNotification;
+    Switch linePaySwitch;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -32,15 +33,45 @@ public class SettingFragment extends BaseFragment {
         swNotification.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked){
-                    AppUtil.setPrefBoolean(getActivity(),"notifiFlg",true);
+                if (isChecked) {
+                    AppUtil.setPrefBoolean(getActivity(), "notifiFlg", true);
                     Config.soundFlg = true;
-                }else{
-                    AppUtil.setPrefBoolean(getActivity(),"notifiFlg",false);
+                } else {
+                    AppUtil.setPrefBoolean(getActivity(), "notifiFlg", false);
                     Config.soundFlg = false;
                 }
             }
         });
+
+        linePaySwitch = (Switch)rootView.findViewById(R.id.linepay_switch);
+
+        //LinePay
+        if(Config.PAY_SELECT_KBN.equals("1"))
+        {
+            linePaySwitch.setChecked(true);
+        }
+        //WebView
+        if(Config.PAY_SELECT_KBN.equals("0"))
+        {
+            linePaySwitch.setChecked(false);
+        }
+
+        linePaySwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked)
+                {
+                    Config.PAY_SELECT_KBN = "1";//Pay by LinePay
+                    linePaySwitch.setChecked(true);
+                }
+                else
+                {
+                    Config.PAY_SELECT_KBN = "0";//Pay by WebView
+                    linePaySwitch.setChecked(false);
+                }
+            }
+        });
+
 
 
         return rootView;

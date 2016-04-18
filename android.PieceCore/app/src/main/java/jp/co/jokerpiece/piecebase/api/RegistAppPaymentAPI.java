@@ -32,6 +32,7 @@ public class RegistAppPaymentAPI extends AsyncTaskLoader<RegustAppPaymentData> i
         this.regustAppPaymentData = paymentData;
     }
 
+
     @Override
     public RegustAppPaymentData loadInBackground() {
         RegustAppPaymentData data = null;

@@ -1,10 +1,13 @@
 package jp.co.jokerpiece.piecebase;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.Loader;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.net.Uri;
@@ -40,10 +43,12 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import jp.co.jokerpiece.piecebase.api.FlyerListAPI;
+import jp.co.jokerpiece.piecebase.api.ItemListAPI;
 import jp.co.jokerpiece.piecebase.config.Common;
 import jp.co.jokerpiece.piecebase.config.Config;
 import jp.co.jokerpiece.piecebase.data.FlyerData;
 import jp.co.jokerpiece.piecebase.data.FlyerData.FlyerHeaderData;
+import jp.co.jokerpiece.piecebase.data.ItemListData;
 import jp.co.jokerpiece.piecebase.data.SaveData;
 import jp.co.jokerpiece.piecebase.util.App;
 import jp.co.jokerpiece.piecebase.util.AppUtil;
@@ -76,10 +81,17 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener 
     int headerNowPage = 0;
     public FlyerImagePageAdapter pageFlagment;
 
+    //ItemListAPI
+    public static ItemListData itemData = null;
+
+    //String item_id_flyer;
+
+
     public void setFragmentPagerAdapter() {
         pageFlagment = new FlyerImagePageAdapter(getChildFragmentManager(),
                 context,
                 new ArrayList<FlyerHeaderData>());
+
     }
 
     @Override
@@ -124,6 +136,7 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener 
 //        pageFlagment = new FlyerImagePageAdapter(getChildFragmentManager(),
 //        		context,
 //        		new ArrayList<FlyerHeaderData>());
+
         setFragmentPagerAdapter();
 
 
@@ -178,29 +191,43 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener 
         }
         int count = 0;
         LinearLayout llBase = null;
-        for (FlyerData.FlyerBodyData data : flyerData.body_list) {
-            if (count % 2 == 0) {
+
+        //flyerData.body_list
+        for (FlyerData.FlyerBodyData data : flyerData.body_list)
+        {
+            if (count % 2 == 0)
+            {
                 llBase = new LinearLayout(context);
                 MarginLayoutParams baseLp = new MarginLayoutParams(MP, WC);
                 baseLp.setMargins(0, 4, 0, 0);
                 llFlyerBase.addView(llBase, baseLp);
             }
             DownloadImageView dlIv = new DownloadImageView(context);
-            if (!dlIv.setImageURL(data.img_url)) {
+            if (!dlIv.setImageURL(data.img_url))
+            {
                 ((FragmentActivity) context).getSupportLoaderManager().initLoader(Config.loaderCnt++, null, dlIv);
             }
 
             LayoutParams lp = new LinearLayout.LayoutParams((int) (320 * scale), (int) (320 * scale));
             dlIv.setScaleType(ScaleType.CENTER_CROP);
+
+            //get data from API
             final String itemURL = data.item_url;
             final String imgURL = data.img_url;
+            final String itemId = data.item_id;//Flyer Date's item_id
+            //item_id_flyer=data.item_id;
 
-            dlIv.setOnClickListener(new OnClickListener() {
+
+            //body list on click
+            dlIv.setOnClickListener(new OnClickListener()
+            {
                 @Override
-                public void onClick(View v) {
-                    onClickFlyer(itemURL, imgURL);
+                public void onClick(View v)
+                {
+                    onClickFlyer(itemURL, imgURL, itemId);
                 }
             });
+
             llBase.addView(dlIv, lp);
             alImageViewList.add(dlIv);
             count++;
@@ -277,16 +304,65 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener 
         super.onCreateOptionsMenu(menu, inflater);
     }
 
-    public void onClickFlyer(String url, String imgurl) {
-        if (url != null && !url.equals("") && !url.equals("null")) {
+    public void onClickFlyer(String url, String imgurl, String item_id_flyer) {
+
+
+        if (url != null && !url.equals("") && !url.equals("null"))
+        {
 
             //遷移先のURLがURLではない場合、flyerから商品購入画面に遷移する。
-            if (!url.startsWith("paypal")) {
-                if(Config.WEBVIEW_ACTIVITY_MODE.equals("true")) {
-                    Intent intent = new Intent(context, WebViewActivity.class);
-                    intent.putExtra("send_url", url);
-                    context.startActivity(intent);
-                }else {
+            if (!url.startsWith("paypal"))
+            {
+                if(Config.WEBVIEW_ACTIVITY_MODE.equals("true"))
+                {
+                    if(!item_id_flyer.equals(""))// item_id has value
+                    {
+                        AppUtil.debugLog("item_id_flyer",item_id_flyer);
+                        if("1".equals(Config.PAY_SELECT_KBN))//LinePay Native
+                        {
+                            //get Item by ItemListAPI
+                            getItemList(item_id_flyer);
+
+                        }
+                        else if ("2".equals(Config.PAY_SELECT_KBN))//Paypal Native
+                        {
+                            FragmentManager fm = getFragmentManager();
+                            FragmentTransaction ft = fm.beginTransaction();
+                            ft.addToBackStack(null);
+                            PayPalPieceFragment fragment = new PayPalPieceFragment();
+
+                            Bundle bundle = new Bundle();
+
+                            //bundle.putString("item_id", data.item_id);
+                            //bundle.putString("price", data.price);
+                            //bundle.putString("stocks", data.stocks);
+                            //bundle.putString("img_url", data.img_url);
+                            //bundle.putString("item_title", data.item_title);
+                            //bundle.putString("text", data.text);
+                            fragment.setArguments(bundle);
+                            ft.replace(R.id.fragment, fragment);
+                            ft.commit();
+                            //Paypal決済できる詳細画面に遷移する。
+
+                        }
+                        else
+                        {
+                            Intent intent = new Intent(context, WebViewActivity.class);
+                            intent.putExtra("send_url", url);
+                            context.startActivity(intent);
+                        }
+                    }
+                    else// item_id = null ＞＞＞＞go WebView
+                    {
+                        Intent intent = new Intent(context, WebViewActivity.class);
+                        intent.putExtra("send_url", url);
+                        context.startActivity(intent);
+                    }
+
+
+                }
+                else //WEBVIEW_ACTIVITY_MODE = flase
+                {
                     FragmentManager fm = ((MainBaseActivity) context).getSupportFragmentManager();
                     FragmentTransaction ft = fm.beginTransaction();
 
@@ -298,7 +374,10 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener 
                     ft.addToBackStack(null);
                     ft.commit();
                 }
-            } else {
+
+            }
+            else //url start with paypal
+            {
                 FragmentManager fm = getFragmentManager();
                 FragmentTransaction ft = fm.beginTransaction();
                 ft.addToBackStack(null);
@@ -337,32 +416,7 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener 
         }
     }
 
-    private void getFlyerWithID(final int flyerID) {
-        this.flyer_ID = flyerID;
-        ((Activity) context).getLoaderManager().initLoader(Config.loaderCnt++, null, new LoaderCallbacks<FlyerData>() {
-            @Override
-            public Loader<FlyerData> onCreateLoader(int id, Bundle args) {
-                FlyerListAPI flyerAPI = new FlyerListAPI(context, flyerID);
-                flyerAPI.forceLoad();
-                return flyerAPI;
-            }
 
-            @Override
-            public void onLoadFinished(Loader<FlyerData> loader, FlyerData data) {
-                if (data == null) {
-                    Common.serverErrorMessage(context);
-                    return;
-                }
-                flyerData = data;
-                ShowFlyerView();
-
-            }
-
-            @Override
-            public void onLoaderReset(Loader<FlyerData> loader) {
-            }
-        });
-    }
 
     @Override
     public void onPageScrollStateChanged(int state) {
@@ -516,6 +570,138 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener 
             public void onLoaderReset(Loader<FlyerData> loader) {
             }
         });
+    }
+
+
+
+
+
+    //get FlyerListAPI data
+    private void getFlyerWithID(final int flyerID) {
+        this.flyer_ID = flyerID;
+        ((Activity) context).getLoaderManager().initLoader(Config.loaderCnt++, null, new LoaderCallbacks<FlyerData>() {
+            @Override
+            public Loader<FlyerData> onCreateLoader(int id, Bundle args) {
+                FlyerListAPI flyerAPI = new FlyerListAPI(context, flyerID);
+                flyerAPI.forceLoad();
+                return flyerAPI;
+            }
+
+            @Override
+            public void onLoadFinished(Loader<FlyerData> loader, FlyerData data) {
+                if (data == null) {
+                    Common.serverErrorMessage(context);
+                    return;
+                }
+                flyerData = data;
+
+                ShowFlyerView();
+
+
+            }
+
+            @Override
+            public void onLoaderReset(Loader<FlyerData> loader) {
+            }
+        });
+    }
+
+
+
+
+
+    //get good's detail
+    private void getItemList(final String item_id_flyer)
+    {
+
+        ((Activity)context).getLoaderManager().initLoader(Config.loaderCnt++, null, new LoaderCallbacks<ItemListData>()
+        {
+
+            @Override
+            public Loader<ItemListData> onCreateLoader(int id, Bundle args)
+            {
+                ItemListAPI itemAPI = new ItemListAPI(context, item_id_flyer);
+                itemAPI.forceLoad();
+                return itemAPI;
+            }
+
+            @Override
+            public void onLoadFinished(Loader<ItemListData> loader, ItemListData data)
+            {
+
+                Bundle bundle = new Bundle();
+
+                if(data.data_list.size()!=0)
+                {
+                    for(int position=0; position<data.data_list.size(); position++) {
+                        ItemListData.ItemData itemdata = data.data_list.get(position);
+
+
+                        if (item_id_flyer.equals(itemdata.item_id)) {
+                            AppUtil.debugLog("ItemListAPI on Finish IF", "If has been executed");
+                            //detabaseの商品資料をLinePayFragmentに送る
+                            bundle.putString("item_id", itemdata.item_id);
+                            bundle.putString("price", itemdata.price);
+                            bundle.putString("stocks", itemdata.stocks);
+                            bundle.putString("img_url", itemdata.img_url);
+                            bundle.putString("item_title", itemdata.item_title);
+                            bundle.putString("text", itemdata.text);
+                            bundle.putString("item_url", itemdata.item_url);
+                            FragmentManager fm = getActivity().getSupportFragmentManager();
+                            FragmentTransaction ft = fm.beginTransaction();
+                            ft.addToBackStack(null);
+                            LinePayFragment fragment = new LinePayFragment();
+
+
+                            fragment.setArguments(bundle);
+                            ft.replace(R.id.fragment, fragment);
+                            ft.commit();
+                            //LinePay決済できる詳細画面に遷移する。
+                        }
+                    }
+                }
+                else
+                {
+                    AppUtil.debugLog("ItemListAPI on Finish IF", "else has been executed");
+                    new AlertDialog.Builder(FlyerFragment.this.getActivity())
+                            .setTitle("申し訳ありませんが、商品が存在しません。")
+                            .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                }
+                            }).show();
+                }
+
+
+                /*
+                FragmentManager fm = getActivity().getSupportFragmentManager();
+                FragmentTransaction ft = fm.beginTransaction();
+                ft.addToBackStack(null);
+                LinePayFragment fragment = new LinePayFragment();
+
+
+                fragment.setArguments(bundle);
+                ft.replace(R.id.fragment, fragment);
+                ft.commit();
+                //LinePay決済できる詳細画面に遷移する。
+                */
+
+            }
+
+            @Override
+            public void onLoaderReset(Loader<ItemListData> loader) {
+            }
+        });
+    }
+
+    //If need
+    public int getListNum(int page, int quantity) {
+        if (quantity < 0) {
+            return 0;
+        } else {
+            return (quantity > ((page - 1) * 10) ? ((page - 1) * 10) : quantity);
+        }
     }
 
 

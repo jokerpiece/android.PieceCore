@@ -8,6 +8,7 @@ import java.util.HashMap;
 import jp.co.jokerpiece.piecebase.config.Config;
 import jp.co.jokerpiece.piecebase.data.CategoryListData;
 import jp.co.jokerpiece.piecebase.data.CategoryListData.CategoryData;
+import jp.co.jokerpiece.piecebase.util.AppUtil;
 import jp.co.jokerpiece.piecebase.util.HttpClient;
 import jp.co.jokerpiece.piecebase.util.HttpClient.HttpClientInterface;
 
@@ -69,6 +70,7 @@ public class CategoryListAPI extends AsyncTaskLoader<CategoryListData> implement
 			    data.shop_category_url = jsonObject.getString("shop_url");
 			    data.img_url = jsonObject.getString("img_url");
 			    data.category_text = jsonObject.getString("text");
+				AppUtil.debugLog("Category_name",data.category_name);
 
 			    categoryData.data_list.add(data);
 			}

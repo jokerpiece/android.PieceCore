@@ -53,16 +53,42 @@ public class ShoppingGoodsListAdapter extends ArrayAdapter<ItemData> implements 
 		}
 		TextView tv3 = (TextView) convertView.findViewById(R.id.tvStocks);
 		tv3.setText(list.get(position).stocks);
-		if(list.get(position).stocks != null) {
-			if (list.get(position).stocks.startsWith("売り切れ")) {
+
+		if(list.get(position).stocks != null)
+		{
+			if (list.get(position).stocks.startsWith("売り切れ"))
+			{
 				tv3.setTextColor(Color.WHITE);
+				tv3.setText(list.get(position).stocks);
 				Bg.setVisibility(View.VISIBLE);
 				Bg.setBackgroundColor(Color.GRAY);
-			}else{
-				tv3.setTextColor(Color.GRAY);
+			}
+			else if(list.get(position).stocks.equals(""))
+			{
+				tv3.setText("");
+				Bg.setVisibility(View.GONE);
+
+			}
+			else if(Integer.parseInt(list.get(position).stocks)<=5)
+			{
+				tv3.setTextColor(Color.WHITE);
+				tv3.setText("残りわずか");
+				Bg.setVisibility(View.VISIBLE);
+				Bg.setBackgroundColor(Color.GRAY);
+			}
+			else
+			{
+				tv3.setText("");
 				Bg.setVisibility(View.GONE);
 			}
 		}
+		else
+		{
+			tv3.setText("");
+			Bg.setVisibility(View.GONE);
+		}
+
+
 		ImageView iv = (ImageView) convertView.findViewById(R.id.ivItemImage);
 		iv.setVisibility(View.INVISIBLE);
 		iv.setScaleType(ScaleType.CENTER_CROP);

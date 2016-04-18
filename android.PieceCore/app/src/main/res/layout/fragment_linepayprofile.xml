@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_fragment">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:id="@+id/wrapper"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/deliveryTitle"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/component_border2"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:text = "配送先を入力して下さい"/>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/component_border"
+                >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:textColor="#000000"
+                    android:background="#D1D1D1"
+                    android:textSize="20sp"
+                    android:text = "  名前を入力して下さい。"/>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:textColor="#000000"
+                        android:textSize="20sp"
+                        android:text="姓"/>
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:textColor="#000000"
+                        android:textSize="20sp"
+                        android:singleLine="true"
+                        android:id="@+id/lastNameInputBar" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:textColor="#000000"
+                        android:textSize="20sp"
+                        android:text="名"/>
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:textColor="#000000"
+                        android:textSize="20sp"
+                        android:singleLine="true"
+                        android:id="@+id/firstNameInputBar"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:background="#D1D1D1"
+                    android:textSize="20sp"
+                    android:text = "  住所を入力して下さい。" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:textColor="#000000"
+                        android:textSize="20sp"
+                        android:text="郵便番号" />
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:layout_width="200sp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:id="@+id/postNumberInputBar"
+                        android:singleLine="true"
+                        android:inputType="number"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/address_search"
+                        android:id="@+id/postNumberSearch"/>
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="#000000"
+                    android:textSize="20sp"
+                    android:text="都道府県" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:id="@+id/tdfkInputBar"
+                    android:singleLine="true" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="#000000"
+                    android:textSize="20sp"
+                    android:text="市区町村" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:id="@+id/cityInputBar"
+                    android:singleLine="true" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="#000000"
+                    android:textSize="20sp"
+                    android:text="番地" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:singleLine="true"
+                    android:id="@+id/streetInputBar" />
+
+
+
+            </LinearLayout >
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/component_border">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:textColor="#000000"
+                    android:background="#D1D1D1"
+                    android:textSize="20sp"
+                    android:text = "  連絡先を設定して下さい。"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:textColor="#000000"
+                    android:textSize="20sp"
+                    android:text="電話番号" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:id="@+id/telInputBar"
+                    android:singleLine="true"
+                    android:inputType="number"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="#000000"
+                    android:textSize="20sp"
+                    android:text="メールアドレス" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:id="@+id/mailAddressInputBar"
+                    android:singleLine="true"
+                    android:inputType="textEmailAddress" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="#000000"
+                    android:textSize="20sp"
+                    android:text="メールアドレス確認" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="2dp"
+                    android:id="@+id/mailAddressCheckInputBar"
+                    android:singleLine="true"
+                    android:inputType="textEmailAddress" />
+
+
+            </LinearLayout>
+
+
+
+
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/component_border">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:background="#D1D1D1"
+                    android:textSize="20sp"
+                    android:text = "  配送時間を設定して下さい。"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:background="#D1D1D1"
+                    android:textSize="10sp"
+                    android:text = "  ※地域によりまして、ご指定のお時間に届かない場合があります。\n　またメール便は時間指定ができませんので予めご了承ください。"/>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:id="@+id/anytimeBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#598f60"
+                        android:clickable="true"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginLeft="10dp"
+                        android:textSize="17sp"
+                        android:text = "指定なし"
+                        android:gravity="center"
+                        android:layout_weight="0.14" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/befor12Btn"
+                        android:layout_width="11dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="#598f60"
+                        android:clickable="true"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginLeft="10dp"
+                        android:textSize="17sp"
+                        android:text = "午前中"
+                        android:layout_weight="1"
+                        android:gravity="center"/>
+
+                    <TextView
+                        android:id="@+id/from12to14Btn"
+                        android:layout_width="11dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="#598f60"
+                        android:clickable="true"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginLeft="10dp"
+                        android:textSize="17sp"
+                        android:text = "12:00~14:00"
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        />
+
+                    <TextView
+                        android:id="@+id/from14to16Btn"
+                        android:layout_width="11dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="#598f60"
+                        android:clickable="true"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:textSize="17sp"
+                        android:text = "14:00~16:00"
+                        android:gravity="center"
+                        android:layout_weight="1"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/from16to18Btn"
+                        android:layout_width="11dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="#598f60"
+                        android:clickable="true"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginLeft="10dp"
+                        android:textSize="17sp"
+                        android:text = "16:00~18:00"
+                        android:gravity="center"
+                        android:layout_weight="1"/>
+
+                    <TextView
+                        android:id="@+id/from18to20Btn"
+                        android:layout_width="11dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="#598f60"
+                        android:clickable="true"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginLeft="10dp"
+                        android:textSize="17sp"
+                        android:text = "18:00~20:00"
+                        android:gravity="center"
+                        android:layout_weight="1"/>
+
+                    <TextView
+                        android:id="@+id/from20to21Btn"
+                        android:layout_width="11dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="#598f60"
+                        android:clickable="true"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:textSize="17sp"
+                        android:text = "20:00~21:00"
+                        android:gravity="center"
+                        android:layout_weight="1"/>
+
+                </LinearLayout>
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginBottom="20dp"
+                    android:src="@drawable/send_message"
+                    android:id = "@+id/sendMessage"
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+    </ScrollView>
+
+</RelativeLayout>

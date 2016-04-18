@@ -19,10 +19,12 @@ public class FlyerData {
 		public String img_url;
 		public String category_id;
 		public String item_url;
+		public String item_id;
 	}
 	public class FlyerBodyData{
 		public int key;
 		public String img_url;
 		public String item_url;
+		public String item_id;
 	}
 }

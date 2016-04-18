@@ -29,6 +29,7 @@
 			        android:layout_alignParentBottom="true"
 			        android:layout_margin="24dp" />
 		    </RelativeLayout>
+
 			<LinearLayout
 			    android:id="@+id/flyer_base"
 			    android:layout_width="match_parent"

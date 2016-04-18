@@ -1,8 +1,9 @@
 package jp.co.jokerpiece.piecebase;
 
 import java.util.ArrayList;
-
 import jp.co.jokerpiece.piecebase.data.FlyerData.FlyerHeaderData;
+import jp.co.jokerpiece.piecebase.data.ItemListData;
+
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -15,17 +16,19 @@ public class FlyerImagePageAdapter extends FragmentPagerAdapter{
 
 	Context context;
 	ArrayList<FlyerHeaderData> dataList;
+	ItemListData.ItemData itemdata;
 
 	public FlyerImagePageAdapter(FragmentManager fm ,Context context,
 			ArrayList<FlyerHeaderData> dataList) {
 		super(fm);
 		this.context = context;
-		this.dataList = dataList;
+		this.dataList = dataList;//heder data
+
 	}
 
 	@Override
-	public Fragment getItem(int i) {
-
+	public Fragment getItem(int i)
+	{
 		return new FlyerImageFragment(dataList.get(i));
 	}
 
@@ -75,4 +78,6 @@ public class FlyerImagePageAdapter extends FragmentPagerAdapter{
 		dataList.clear();
 		notifyDataSetChanged();
 	}
+
+
 }

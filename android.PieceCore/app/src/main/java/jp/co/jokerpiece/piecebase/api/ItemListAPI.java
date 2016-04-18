@@ -25,6 +25,8 @@ public class ItemListAPI extends AsyncTaskLoader<ItemListData> implements HttpCl
     String sarch_word = null;
 	int page = -1;
 	String coupon_id = null;
+	String item_id;
+
 	public ItemListAPI(Context context,String category_id,String sarch_word,int page) {
 		super(context);
 		this.category_id = category_id;
@@ -36,9 +38,16 @@ public class ItemListAPI extends AsyncTaskLoader<ItemListData> implements HttpCl
 		super(context);
 		this.coupon_id = coupon_id;
 		this.page = page;
+
 	}
 
+	public ItemListAPI(Context context, String item_id)
+	{
+		super(context);
+		this.item_id=item_id;
+	}
 
+	//grab data
 	@Override
 	public ItemListData loadInBackground() {
 		ItemListData itemListData = new ItemListData();
@@ -57,8 +66,16 @@ public class ItemListAPI extends AsyncTaskLoader<ItemListData> implements HttpCl
         	parameter.put("coupon_id", coupon_id);
         	url = Config.SENDID_ITEM_COUPON;
         }
-    	parameter.put("get_list_num", String.valueOf(page));
-        try {
+		if(page!=-1)
+		{
+			parameter.put("get_list_num", String.valueOf(page));
+		}
+    	if(item_id!=null)
+		{
+			parameter.put("item_id",item_id);
+		}
+
+		try {
             byte[] resData = HttpClient.getByteArrayFromUrlPost(url, parameter,this);
             if(resData == null){
             	return null;
@@ -72,22 +89,27 @@ public class ItemListAPI extends AsyncTaskLoader<ItemListData> implements HttpCl
 			e.printStackTrace();
 			return null;
 		}
-        try {
+        try
+		{
 			JSONObject rootObject = new JSONObject(result);
 			AppUtil.debugLog("JSON", rootObject.toString());
 
 			int error_code = rootObject.getInt("error_code");
-			if(error_code != 0){
+			if(error_code != 0)
+			{
 				return null;
 			}
-			if(!rootObject.isNull("img_url")){
+			if(!rootObject.isNull("img_url"))
+			{
 				itemListData.category_img_url = rootObject.getString("img_url");
 			}
 			itemListData.data_list = new ArrayList<ItemListData.ItemData>();
 			itemListData.quantity  = rootObject.getString("quantity");
-			if(rootObject.getInt("more_flg") == 1){
+			if(rootObject.getInt("more_flg") == 1)
+			{
 				itemListData.more_flg  = true;
-			}else{
+			} else
+			{
 				itemListData.more_flg  = false;
 			}
 
@@ -114,7 +136,7 @@ public class ItemListAPI extends AsyncTaskLoader<ItemListData> implements HttpCl
 			e.printStackTrace();
 		}
         return itemListData;
-	}
+	}//end grab data
 
 	@Override
 	public void HttpClientProgress(float progress) {
