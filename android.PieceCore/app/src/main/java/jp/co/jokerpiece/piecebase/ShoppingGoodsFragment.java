@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.Loader;
+import android.content.SharedPreferences;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -69,6 +70,9 @@ public class ShoppingGoodsFragment extends Fragment implements OnItemClickListen
     boolean connecting = false;
     int nowPageCount = 1;
     int quantity = -1;
+
+    SharedPreferences systemData;
+    SharedPreferences.Editor systemDataEditor;
 
 //	private int loderCount = 0;
 
@@ -253,6 +257,13 @@ public class ShoppingGoodsFragment extends Fragment implements OnItemClickListen
         //1 = LinePay
         else if("1".equals(Config.PAY_SELECT_KBN))
         {
+            //memory back fragment if the buying is done
+            String fromWhatFragment = "ShoppingGoodsFragment";
+            systemData = getActivity().getSharedPreferences("SystemDataSave", Context.MODE_PRIVATE);
+            systemDataEditor = systemData.edit();
+            systemDataEditor.putString("from_what_fragment",fromWhatFragment);
+            systemDataEditor.commit();
+
             FragmentManager fm = getFragmentManager();
             FragmentTransaction ft = fm.beginTransaction();
             ft.addToBackStack(null);

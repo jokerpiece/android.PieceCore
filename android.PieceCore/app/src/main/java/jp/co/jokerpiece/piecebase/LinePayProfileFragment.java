@@ -210,6 +210,8 @@ public class LinePayProfileFragment extends Fragment
                 String address_street = personalData.getString("Address_street", "");
                 String tel = personalData.getString("Tel", "");
                 String mail_address = personalData.getString("Mail_address", "");
+                String deliveryTime = personalData.getString("delivery_time","");
+
                 seiEdText.setText(sei);
                 meiEdText.setText(mei);
                 postEdText.setText(post);
@@ -219,6 +221,56 @@ public class LinePayProfileFragment extends Fragment
                 telEdText.setText(tel);
                 mailAddressEdText.setText(mail_address);
                 mailAddressConfirmEdText.setText(mail_address);
+                currentSelectedTime=deliveryTime;
+
+                if(deliveryTime.equals("指定なし"))
+                {
+                    anyTimeBtn.setBackgroundResource(R.drawable.component_linepay_timeselect_border);
+                    anyTimeBtn.setTextColor(Color.WHITE);
+                    lastBtn = 1;
+                }
+                else if (deliveryTime.equals("午前中"))
+                {
+                    before12Btn.setBackgroundResource(R.drawable.component_linepay_timeselect_border);
+                    before12Btn.setTextColor(Color.WHITE);
+                    lastBtn = 2;
+
+                }
+                else if (deliveryTime.equals("12:00~14:00"))
+                {
+                    from12To14Btn.setBackgroundResource(R.drawable.component_linepay_timeselect_border);
+                    from12To14Btn.setTextColor(Color.WHITE);
+                    lastBtn = 3;
+
+                }
+                else if (deliveryTime.equals("14:00~16:00"))
+                {
+                    from14To16Btn.setBackgroundResource(R.drawable.component_linepay_timeselect_border);
+                    from14To16Btn.setTextColor(Color.WHITE);
+                    lastBtn = 4;
+
+                }
+                else if (deliveryTime.equals("16:00~18:00"))
+                {
+                    from16To18Btn.setBackgroundResource(R.drawable.component_linepay_timeselect_border);
+                    from16To18Btn.setTextColor(Color.WHITE);
+                    lastBtn = 5;
+
+                }
+                else if (deliveryTime.equals("18:00~20:00"))
+                {
+                    from18To20Btn.setBackgroundResource(R.drawable.component_linepay_timeselect_border);
+                    from18To20Btn.setTextColor(Color.WHITE);
+                    lastBtn = 6;
+
+                }
+                else if (deliveryTime.equals("20:00~21:00"))
+                {
+                    from20To21Btn.setBackgroundResource(R.drawable.component_linepay_timeselect_border);
+                    from20To21Btn.setTextColor(Color.WHITE);
+                    lastBtn = 7;
+
+                }
 
             }
             else
@@ -276,6 +328,7 @@ public class LinePayProfileFragment extends Fragment
                 {
                     lastBtn = 1;
                     currentSelectedTime="指定なし";
+
                 }
 
                 currentBtn = 1;
@@ -299,6 +352,7 @@ public class LinePayProfileFragment extends Fragment
                 {
                     lastBtn = 2;
                     currentSelectedTime="午前中";
+
                 }
                 currentBtn = 2;
                 if (currentBtn != lastBtn)
@@ -319,6 +373,7 @@ public class LinePayProfileFragment extends Fragment
                 {
                     lastBtn = 3;
                     currentSelectedTime="12:00~14:00";
+
                 }
                 currentBtn = 3;
                 if (currentBtn != lastBtn)
@@ -340,6 +395,7 @@ public class LinePayProfileFragment extends Fragment
                 {
                     lastBtn = 4;
                     currentSelectedTime="14:00~16:00";
+
                 }
                 currentBtn = 4;
                 if (currentBtn != lastBtn)
@@ -359,6 +415,7 @@ public class LinePayProfileFragment extends Fragment
                 {
                     lastBtn = 5;
                     currentSelectedTime="16:00~18:00";
+
                 }
                 currentBtn = 5;
                 if (currentBtn != lastBtn)
@@ -378,6 +435,7 @@ public class LinePayProfileFragment extends Fragment
                 {
                     lastBtn = 6;
                     currentSelectedTime="18:00~20:00";
+
                 }
                 currentBtn = 6;
                 if (currentBtn != lastBtn)
@@ -399,6 +457,7 @@ public class LinePayProfileFragment extends Fragment
                 {
                     lastBtn = 7;
                     currentSelectedTime="20:00~21:00";
+
                 }
                 currentBtn = 7;
                 if (currentBtn != lastBtn)
@@ -1021,15 +1080,30 @@ public class LinePayProfileFragment extends Fragment
         super.onResume();
 
         String buyingOver = systemData.getString("buying_over","");
+        String fromWhatFragment = systemData.getString("from_what_fragment","");
         if(buyingOver.equals("true"))
         {
-            FragmentManager fm = getFragmentManager();
-            FragmentTransaction ft = fm.beginTransaction();
-            ft.addToBackStack(null);
-            ShoppingFragment fragment = new ShoppingFragment();
+            if(fromWhatFragment.equals("ShoppingGoodsFragment"))
+            {
+                FragmentManager fm = getFragmentManager();
+                FragmentTransaction ft = fm.beginTransaction();
+                ft.addToBackStack(null);
+                ShoppingFragment fragment = new ShoppingFragment();
 
-            ft.replace(R.id.fragment, fragment);
-            ft.commit();
+                ft.replace(R.id.fragment, fragment);
+                ft.commit();
+            }
+            else if(fromWhatFragment.equals("FlyerFragment"))
+            {
+                FragmentManager fm = getFragmentManager();
+                FragmentTransaction ft = fm.beginTransaction();
+                ft.addToBackStack(null);
+                FlyerFragment fragment = new FlyerFragment();
+
+                ft.replace(R.id.fragment, fragment);
+                ft.commit();
+            }
+
         }
 
     }

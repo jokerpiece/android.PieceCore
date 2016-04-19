@@ -86,6 +86,9 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener 
 
     //String item_id_flyer;
 
+    SharedPreferences systemData;
+    SharedPreferences.Editor systemDataEditor;
+
 
     public void setFragmentPagerAdapter() {
         pageFlagment = new FlyerImagePageAdapter(getChildFragmentManager(),
@@ -637,8 +640,17 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener 
                         ItemListData.ItemData itemdata = data.data_list.get(position);
 
 
-                        if (item_id_flyer.equals(itemdata.item_id)) {
+                        if (item_id_flyer.equals(itemdata.item_id))
+                        {
                             AppUtil.debugLog("ItemListAPI on Finish IF", "If has been executed");
+
+                            //memory back fragment if the buying is done
+                            String fromWhatFragment = "FlyerFragment";
+                            systemData = getActivity().getSharedPreferences("SystemDataSave", Context.MODE_PRIVATE);
+                            systemDataEditor = systemData.edit();
+                            systemDataEditor.putString("from_what_fragment", fromWhatFragment);
+                            systemDataEditor.commit();
+
                             //detabaseの商品資料をLinePayFragmentに送る
                             bundle.putString("item_id", itemdata.item_id);
                             bundle.putString("price", itemdata.price);
@@ -664,7 +676,7 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener 
                 {
                     AppUtil.debugLog("ItemListAPI on Finish IF", "else has been executed");
                     new AlertDialog.Builder(FlyerFragment.this.getActivity())
-                            .setTitle("申し訳ありませんが、商品が存在しません。")
+                            .setTitle("商品が存在しません。")
                             .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {

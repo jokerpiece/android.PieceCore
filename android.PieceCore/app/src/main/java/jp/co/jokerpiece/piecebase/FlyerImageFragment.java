@@ -13,6 +13,7 @@ import android.app.LoaderManager;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.Loader;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -32,6 +33,8 @@ public class FlyerImageFragment extends Fragment implements DownloadImageSyncCal
 	LinearLayout view;
 	ImageView imageView;
 
+	SharedPreferences systemData;
+	SharedPreferences.Editor systemDataEditor;
 
 //	private static int loderCount = 2000;
 
@@ -254,7 +257,16 @@ public class FlyerImageFragment extends Fragment implements DownloadImageSyncCal
 						ItemListData.ItemData itemdata = data.data_list.get(position);
 
 
-						if (item_id_flyer.equals(itemdata.item_id)) {
+						if (item_id_flyer.equals(itemdata.item_id))
+						{
+
+							//memory back fragment if the buying is done
+							String fromWhatFragment = "FlyerFragment";
+							systemData = getActivity().getSharedPreferences("SystemDataSave", getActivity().MODE_PRIVATE);
+							systemDataEditor = systemData.edit();
+							systemDataEditor.putString("from_what_fragment", fromWhatFragment);
+							systemDataEditor.commit();
+
 							//detabaseの商品資料をLinePayFragmentに送る
 							bundle.putString("item_id", itemdata.item_id);
 							bundle.putString("price", itemdata.price);
@@ -279,7 +291,7 @@ public class FlyerImageFragment extends Fragment implements DownloadImageSyncCal
 				else
 				{
 					new AlertDialog.Builder(FlyerImageFragment.this.getActivity())
-							.setTitle("申し訳ありませんが、商品が存在しません。")
+							.setTitle("商品が存在しません。")
 							.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener()
 							{
 								@Override

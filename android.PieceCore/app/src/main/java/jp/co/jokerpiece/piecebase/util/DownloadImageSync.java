@@ -5,8 +5,12 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.LoaderManager.LoaderCallbacks;
 import android.support.v4.content.Loader;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+
+import java.util.concurrent.Executors;
+import java.util.concurrent.RejectedExecutionException;
 
 
 public class DownloadImageSync implements LoaderCallbacks<Bitmap>{
@@ -54,10 +58,22 @@ public class DownloadImageSync implements LoaderCallbacks<Bitmap>{
     }
 
     @Override
-    public Loader<Bitmap> onCreateLoader(int id, Bundle args) {
-        BitmapDownloader bmDownloader = new BitmapDownloader(context,imageURL);
-        bmDownloader.forceLoad();
-        return bmDownloader;
+    public Loader<Bitmap> onCreateLoader(int id, Bundle args)
+    {
+        BitmapDownloader bmDownloader=new BitmapDownloader(context, imageURL);
+        Executors.newCachedThreadPool();
+
+        try
+        {
+            bmDownloader.forceLoad();
+
+        }
+        catch (RejectedExecutionException e)
+        {
+            Log.d("catch error", "catch error");
+
+        }
+            return bmDownloader;
     }
     @Override
     public void onLoadFinished(Loader<Bitmap> loader, Bitmap data) {

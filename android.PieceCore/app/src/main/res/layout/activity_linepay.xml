@@ -16,19 +16,7 @@
             android:layout_centerVertical="true"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/deliveryTitle"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:textColor="#FFFFFF"
-                android:background="@drawable/component_border2"
-                android:textSize="20sp"
-                android:gravity="center"
-                android:text = "以下の内容で決済を行います"/>
+
 
             <LinearLayout
                 android:id="@+id/lin_layout1"
@@ -52,7 +40,7 @@
                     android:layout_marginBottom="4dp"
                     android:layout_marginLeft="4dp"
                     android:layout_marginRight="4dp"
-                    android:text = "お届け先情報" />
+                    android:text = "ご購入情報" />
 
                 <LinearLayout
                     android:id="@+id/lin_layout1_1"
@@ -64,7 +52,7 @@
 
 
                     <TextView
-                        android:layout_width="75dp"
+                        android:layout_width="50dp"
                         android:layout_height="wrap_content"
                         android:textColor="#000000"
                         android:layout_marginTop="5dp"
@@ -72,7 +60,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="5dp"
                         android:textSize="15sp"
-                        android:gravity="left"
+                        android:gravity="right"
                         android:text = "商品名" />
                     <TextView
                         android:layout_width="match_parent"
@@ -83,7 +71,6 @@
                         android:layout_marginLeft="5dp"
                         android:layout_marginRight="10dp"
                         android:textSize="15sp"
-                        android:gravity="left"
                         android:text = "入力欄"
                         android:id="@+id/item_name"/>
 
@@ -98,7 +85,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="75dp"
+                        android:layout_width="50dp"
                         android:layout_height="wrap_content"
                         android:textColor="#000000"
                         android:layout_marginTop="5dp"
@@ -106,7 +93,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="5dp"
                         android:textSize="15sp"
-                        android:gravity="left"
+                        android:gravity="right"
                         android:text = "価格" />
                     <TextView
                         android:layout_width="match_parent"
@@ -132,7 +119,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="75dp"
+                        android:layout_width="50dp"
                         android:layout_height="wrap_content"
                         android:textColor="#000000"
                         android:layout_marginTop="5dp"
@@ -140,7 +127,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="5dp"
                         android:textSize="15sp"
-                        android:gravity="left"
+                        android:gravity="right"
                         android:text = "送料" />
                     <TextView
                         android:layout_width="match_parent"
@@ -167,7 +154,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="75dp"
+                        android:layout_width="50dp"
                         android:layout_height="wrap_content"
                         android:textColor="#000000"
                         android:layout_marginTop="5dp"
@@ -175,7 +162,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="5dp"
                         android:textSize="15sp"
-                        android:gravity="left"
+                        android:gravity="right"
                         android:text = "合計" />
                     <TextView
                         android:layout_width="match_parent"
@@ -200,7 +187,7 @@
                 android:layout_height="match_parent"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="35dp"
                 android:background="@drawable/component_border_frame"
                 android:orientation="vertical"
                 >
@@ -227,7 +214,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="75dp"
+                        android:layout_width="50dp"
                         android:layout_height="wrap_content"
                         android:textColor="#000000"
                         android:layout_marginTop="5dp"
@@ -235,7 +222,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="5dp"
                         android:textSize="15sp"
-                        android:gravity="left"
+                        android:gravity="right"
                         android:text = "配送先" />
                     <TextView
                         android:layout_width="wrap_content"
@@ -246,7 +233,6 @@
                         android:layout_marginLeft="5dp"
                         android:layout_marginRight="5dp"
                         android:textSize="15sp"
-                        android:gravity="center"
                         android:text = "入力欄"
                         android:id="@+id/delivery_address"/>
                 </LinearLayout>
@@ -260,7 +246,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="75dp"
+                        android:layout_width="50dp"
                         android:layout_height="wrap_content"
                         android:textColor="#000000"
                         android:layout_marginTop="5dp"
@@ -268,7 +254,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="5dp"
                         android:textSize="15sp"
-                        android:gravity="left"
+                        android:gravity="right"
                         android:text = "氏名" />
                     <TextView
                         android:layout_width="wrap_content"
@@ -295,7 +281,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="75dp"
+                        android:layout_width="50dp"
                         android:layout_height="wrap_content"
                         android:textColor="#000000"
                         android:layout_marginTop="5dp"
@@ -303,7 +289,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="5dp"
                         android:textSize="15sp"
-                        android:gravity="left"
+                        android:gravity="right"
                         android:text = "MAIL" />
                     <TextView
                         android:layout_width="wrap_content"
@@ -328,7 +314,7 @@
                 android:layout_height="match_parent"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="45dp"
                 android:orientation="horizontal">
 
 
