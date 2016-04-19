@@ -13,5 +13,5 @@ delivery=
 carturl=
 search_mode=false
 analytics_mode=false
-webview_activity_mode=true
+webview_activity_mode=false
 notifi_sound_mode=false
