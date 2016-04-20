@@ -92,7 +92,7 @@ public class FlyerImageFragment extends Fragment implements DownloadImageSyncCal
 			{
 				if(Config.WEBVIEW_ACTIVITY_MODE.equals("true"))
 				{
-					if(!item_id_flyer.equals(""))// item_id has value
+					if((!item_id_flyer.equals("null"))&&(!item_id_flyer.equals("")))// item_id has value
 					{
 
 
@@ -130,7 +130,7 @@ public class FlyerImageFragment extends Fragment implements DownloadImageSyncCal
 							getActivity().startActivity(intent);
 						}
 					}
-					else// item_id = null ＞＞＞＞go WebView
+					else// item_id = null or space ＞＞＞＞go WebView
 					{
 						Intent intent = new Intent(getActivity(), WebViewActivity.class);
 						intent.putExtra("send_url", url);
@@ -139,7 +139,7 @@ public class FlyerImageFragment extends Fragment implements DownloadImageSyncCal
 
 
 				}
-				else //WEBVIEW_ACTIVITY_MODE = flase
+				else //WEBVIEW_ACTIVITY_MODE = false >>> WebView fragment内で表示
 				{
 					FragmentManager fm =  ((MainBaseActivity)getActivity()).getSupportFragmentManager();
 					FragmentTransaction ft = fm.beginTransaction();

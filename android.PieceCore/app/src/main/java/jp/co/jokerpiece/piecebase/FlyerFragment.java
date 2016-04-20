@@ -84,7 +84,7 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener 
     //ItemListAPI
     public static ItemListData itemData = null;
 
-    //String item_id_flyer;
+
 
     SharedPreferences systemData;
     SharedPreferences.Editor systemDataEditor;
@@ -218,7 +218,7 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener 
             final String itemURL = data.item_url;
             final String imgURL = data.img_url;
             final String itemId = data.item_id;//Flyer Date's item_id
-            //item_id_flyer=data.item_id;
+
 
 
             //body list on click
@@ -318,7 +318,7 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener 
             {
                 if(Config.WEBVIEW_ACTIVITY_MODE.equals("true"))
                 {
-                    if(!item_id_flyer.equals(""))// item_id has value
+                    if((!item_id_flyer.equals("null"))&&(!item_id_flyer.equals("")))// item_id has value
                     {
                         AppUtil.debugLog("item_id_flyer",item_id_flyer);
                         if("1".equals(Config.PAY_SELECT_KBN))//LinePay Native
@@ -355,7 +355,7 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener 
                             context.startActivity(intent);
                         }
                     }
-                    else// item_id = null ＞＞＞＞go WebView
+                    else// item_id = null or space ＞＞＞＞go WebView
                     {
                         Intent intent = new Intent(context, WebViewActivity.class);
                         intent.putExtra("send_url", url);
