@@ -203,6 +203,12 @@ public class LinePayProfileFragment extends Fragment
             if(f.exists())
             {
 
+            }
+            else
+            {
+                //提醒使用者輸入新訊息
+            }
+
                 //get saving data by SharedPreference
 
                 personalData = getActivity().getSharedPreferences("PersonalDataSave", Context.MODE_PRIVATE);
@@ -276,11 +282,7 @@ public class LinePayProfileFragment extends Fragment
 
                 }
 
-            }
-            else
-            {
-                //提醒使用者輸入新訊息
-            }
+
 
         }
         else if (newButton)
