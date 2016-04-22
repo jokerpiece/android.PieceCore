@@ -4,6 +4,7 @@ import jp.co.jokerpiece.piecebase.api.ItemListAPI;
 import jp.co.jokerpiece.piecebase.config.Config;
 import jp.co.jokerpiece.piecebase.data.FlyerData.FlyerHeaderData;
 import jp.co.jokerpiece.piecebase.data.ItemListData;
+import jp.co.jokerpiece.piecebase.util.AppUtil;
 import jp.co.jokerpiece.piecebase.util.DownloadImageSync;
 import jp.co.jokerpiece.piecebase.util.DownloadImageSync.DownloadImageSyncCallback;
 import android.annotation.SuppressLint;
@@ -92,7 +93,7 @@ public class FlyerImageFragment extends Fragment implements DownloadImageSyncCal
 			{
 				if(Config.WEBVIEW_ACTIVITY_MODE.equals("true"))
 				{
-					if((!item_id_flyer.equals("null"))&&(!item_id_flyer.equals("")))// item_id has value
+					if((!item_id_flyer.equals(""))&&(!item_id_flyer.equals(null)))// item_id has value
 					{
 
 
@@ -253,45 +254,54 @@ public class FlyerImageFragment extends Fragment implements DownloadImageSyncCal
 
 				if(data.data_list.size()!=0)
 				{
-					for(int position=0; position<data.data_list.size(); position++) {
-						ItemListData.ItemData itemdata = data.data_list.get(position);
+					int sameIdDetect = 0;
 
+					for(int position=0; position<data.data_list.size(); position++)
+					{
+						ItemListData.ItemData itemdata = data.data_list.get(position);
 
 						if (item_id_flyer.equals(itemdata.item_id))
 						{
+							sameIdDetect++;
+							//複数の同じ商品IDが発見した時のコントロール
+							if(sameIdDetect==1)
+							{
+								//memory back fragment if the buying is done
+								String fromWhatFragment = "FlyerFragment";
+								systemData = getActivity().getSharedPreferences("SystemDataSave", getActivity().MODE_PRIVATE);
+								systemDataEditor = systemData.edit();
+								systemDataEditor.putString("from_what_fragment", fromWhatFragment);
+								systemDataEditor.commit();
 
-							//memory back fragment if the buying is done
-							String fromWhatFragment = "FlyerFragment";
-							systemData = getActivity().getSharedPreferences("SystemDataSave", getActivity().MODE_PRIVATE);
-							systemDataEditor = systemData.edit();
-							systemDataEditor.putString("from_what_fragment", fromWhatFragment);
-							systemDataEditor.commit();
+								//detabaseの商品資料をLinePayFragmentに送る
+								bundle.putString("item_id", itemdata.item_id);
+								bundle.putString("price", itemdata.price);
+								bundle.putString("stocks", itemdata.stocks);
+								bundle.putString("img_url", itemdata.img_url);
+								bundle.putString("item_title", itemdata.item_title);
+								bundle.putString("text", itemdata.text);
+								bundle.putString("item_url", itemdata.item_url);
 
-							//detabaseの商品資料をLinePayFragmentに送る
-							bundle.putString("item_id", itemdata.item_id);
-							bundle.putString("price", itemdata.price);
-							bundle.putString("stocks", itemdata.stocks);
-							bundle.putString("img_url", itemdata.img_url);
-							bundle.putString("item_title", itemdata.item_title);
-							bundle.putString("text", itemdata.text);
-							bundle.putString("item_url", itemdata.item_url);
-
-							FragmentManager fm = getActivity().getSupportFragmentManager();
-							FragmentTransaction ft = fm.beginTransaction();
-							ft.addToBackStack(null);
-							LinePayFragment fragment = new LinePayFragment();
+								FragmentManager fm = getActivity().getSupportFragmentManager();
+								FragmentTransaction ft = fm.beginTransaction();
+								ft.addToBackStack(null);
+								LinePayFragment fragment = new LinePayFragment();
 
 
-							fragment.setArguments(bundle);
-							ft.replace(R.id.fragment, fragment);
-							ft.commit();
+								fragment.setArguments(bundle);
+								ft.replace(R.id.fragment, fragment);
+								ft.commit();
+							}
+
+
 						}
 					}
 				}
 				else
 				{
 					new AlertDialog.Builder(FlyerImageFragment.this.getActivity())
-							.setTitle("商品が存在しません。")
+							.setTitle("商品が見つかりません。")
+							.setMessage("選択された商品は存在しません。")
 							.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener()
 							{
 								@Override

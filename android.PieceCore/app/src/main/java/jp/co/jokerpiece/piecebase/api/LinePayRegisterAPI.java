@@ -12,8 +12,6 @@ import java.net.MalformedURLException;
 
 import java.util.HashMap;
 
-import jp.co.jokerpiece.piecebase.LinePayFragment;
-import jp.co.jokerpiece.piecebase.LinePayProfileFragment;
 import jp.co.jokerpiece.piecebase.config.Common;
 import jp.co.jokerpiece.piecebase.config.Config;
 
@@ -106,10 +104,15 @@ public class LinePayRegisterAPI extends AsyncTaskLoader<LinePayRegisterData> imp
             AppUtil.debugLog("JSON", rootObject.toString());
 
             int error_code = rootObject.getInt("error_code");
+            linePayRegisterData.returnCode = rootObject.getInt("error_code");
             if(error_code != 0)
             {
-                return null;
+                linePayRegisterData.returnMessage=rootObject.getString("returnMessage");
+                return linePayRegisterData;
+
             }
+            else
+
 
             linePayRegisterData.paymentUrlWeb=rootObject.getString("paymentUrl.web");
             linePayRegisterData.paymentUrl=rootObject.getString("paymentUrl.app");

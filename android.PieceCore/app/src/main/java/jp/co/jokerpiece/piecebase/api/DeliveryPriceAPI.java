@@ -27,12 +27,14 @@ public class DeliveryPriceAPI extends AsyncTaskLoader<DeliveryPriceData> impleme
     private String post;
     private String address_tdfk;
     private String deliveryPrice;
+    private String price;
 
     public DeliveryPriceAPI(Context context, Bundle bundle)
     {
         super(context);
         post = bundle.getString("Post");
         address_tdfk = bundle.getString("Address_tdfk");
+        price = bundle.getString("item_price");
     }
 
     @Override
@@ -46,7 +48,7 @@ public class DeliveryPriceAPI extends AsyncTaskLoader<DeliveryPriceData> impleme
         parameter.put("passward", "sample");
         parameter.put("post", post);
         parameter.put("address_tdfk", address_tdfk);
-        parameter.put("price", "5200");
+        parameter.put("price",price );
 
         String url = Config.SENDID_DELIVERY_PRICE;//sending address
 
@@ -93,6 +95,7 @@ public class DeliveryPriceAPI extends AsyncTaskLoader<DeliveryPriceData> impleme
         {
             e.printStackTrace();
         }
+
 
 
         //saving delivery_price to DeliveryPriceData

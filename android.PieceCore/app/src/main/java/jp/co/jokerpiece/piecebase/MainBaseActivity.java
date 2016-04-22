@@ -154,7 +154,8 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
                             onTabChange = false;
                         }
 //                        getCurrentRootFragment().getChildFragmentManager()
-//                                .popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+//                                .popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+
                         int backStackCount = getSupportFragmentManager().getBackStackEntryCount();
                         for (int i = 0; i < backStackCount; i++) {
                             getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
@@ -235,7 +236,9 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
                 int backStackCnt = getSupportFragmentManager().getBackStackEntryCount();
                 if (backStackCnt != 0) {
                     getSupportFragmentManager().popBackStack();
-                } else {
+                }
+                else
+                {
                     if (Config.Backflg) {
                         if (Config.FragmentCurrentNum > 0) {
                             MainBaseActivity.tabHost.setCurrentTab((Integer) Config.Savelist.get(Config.FragmentCurrentNum - 1));

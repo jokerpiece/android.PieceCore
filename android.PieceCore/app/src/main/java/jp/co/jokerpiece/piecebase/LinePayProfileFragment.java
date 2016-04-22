@@ -864,6 +864,7 @@ public class LinePayProfileFragment extends Fragment
                             //set Post Number response
                             addressTdfkEdText.setText(address1);
                             addressCityEdText.setText(address2+address3);
+
                             //close the keyboard
                             InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
                             imm.hideSoftInputFromWindow(postEdText.getWindowToken(), 0);
@@ -919,7 +920,22 @@ public class LinePayProfileFragment extends Fragment
                         systemDataEditor.putString("payment_price",payment_price);
 
                         //Call LinePayRegisterAPI
-                        getLinePayRegister();
+                        if(payment_price!=null && payment_price!="0")
+                        {
+                            getLinePayRegister();
+                        }
+                        else
+                        {
+                            new AlertDialog.Builder(LinePayProfileFragment.this.getActivity())
+                                    .setTitle("エラー")
+                                    .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+
+                                        }
+                                    }).show();
+                        }
+
                     }
 
                     @Override
@@ -950,36 +966,51 @@ public class LinePayProfileFragment extends Fragment
                     public void onLoadFinished(Loader<LinePayRegisterData> loader, LinePayRegisterData data) {
 
 
-                        //get LinePay Url form LinePayRegisterData
-                        paymentUrlWeb = data.paymentUrlWeb;
-                        paymentUrl = data.paymentUrl;
-                        trans_no = data.transaction;
-                        AppUtil.debugLog("static paymentUrlWeb", paymentUrlWeb);
-                        AppUtil.debugLog("paymentUrl", paymentUrl);
-                        AppUtil.debugLog("trans_no", trans_no);
+                        if(data.returnCode!=0)
+                        {
+                            new AlertDialog.Builder(LinePayProfileFragment.this.getActivity())
+                                    .setTitle(data.returnMessage)
+                                    .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
 
-                        bundleAPI.putString("trans_no", trans_no);
+                                        }
+                                    }).show();
+                        }
+                        else
+                        {
+                            //get LinePay Url form LinePayRegisterData
+                            paymentUrlWeb = data.paymentUrlWeb;
+                            paymentUrl = data.paymentUrl;
+                            trans_no = data.transaction;
+                            AppUtil.debugLog("static paymentUrlWeb", paymentUrlWeb);
+                            AppUtil.debugLog("paymentUrl", paymentUrl);
+                            AppUtil.debugLog("trans_no", trans_no);
 
-                        systemDataEditor.putString("trans_no", trans_no);
-                        systemDataEditor.putString("paymentUrlWeb", paymentUrlWeb);
-                        systemDataEditor.putString("paymentUrl", paymentUrl);
-                        systemDataEditor.putString("order_id",order_id);
+                            bundleAPI.putString("trans_no", trans_no);
 
-                        systemDataEditor.putString("img_url",img_url);
-                        systemDataEditor.putString("item_url",item_url);
-                        systemDataEditor.putString("item_id",item_id);
-                        systemDataEditor.putString("item_price",item_price);
-                        systemDataEditor.putString("item_title",item_title);
-                        systemDataEditor.putString("text",text);
-                        systemDataEditor.putString("item_stocks",item_stocks);
-                        systemDataEditor.putString("order_amount", order_amount);
+                            systemDataEditor.putString("trans_no", trans_no);
+                            systemDataEditor.putString("paymentUrlWeb", paymentUrlWeb);
+                            systemDataEditor.putString("paymentUrl", paymentUrl);
+                            systemDataEditor.putString("order_id",order_id);
 
-                        systemDataEditor.commit();
+                            systemDataEditor.putString("img_url",img_url);
+                            systemDataEditor.putString("item_url",item_url);
+                            systemDataEditor.putString("item_id",item_id);
+                            systemDataEditor.putString("item_price",item_price);
+                            systemDataEditor.putString("item_title",item_title);
+                            systemDataEditor.putString("text",text);
+                            systemDataEditor.putString("item_stocks",item_stocks);
+                            systemDataEditor.putString("order_amount", order_amount);
 
-                        //Open Line Pay Web
-                        Uri uri = Uri.parse(paymentUrlWeb);
-                        Intent intentLinePay = new Intent(Intent.ACTION_VIEW,uri);
-                        startActivity(intentLinePay);
+                            systemDataEditor.commit();
+
+                            //Open Line Pay Web
+                            Uri uri = Uri.parse(paymentUrlWeb);
+                            Intent intentLinePay = new Intent(Intent.ACTION_VIEW,uri);
+                            startActivity(intentLinePay);
+                        }
+
 
 
 
@@ -1067,12 +1098,21 @@ public class LinePayProfileFragment extends Fragment
     //calculate the payment pirce
     private String getPaymentPrice(String item_price, String delivery_price, String fee )
     {
+        int paymentPrice;
+        if(delivery_price!=null)
+        {
+             paymentPrice = Integer.parseInt(item_price)*Integer.parseInt(order_amount)+
+                    Integer.parseInt(delivery_price)+
+                    Integer.parseInt(fee);
 
-        int paymentPrice = Integer.parseInt(item_price)*Integer.parseInt(order_amount)+
-                Integer.parseInt(delivery_price)+
-                Integer.parseInt(fee);
+             return Integer.toString(paymentPrice);
+        }
+        else
+        {
+            return null;
 
-        return Integer.toString(paymentPrice);
+        }
+
     }
 
     @Override

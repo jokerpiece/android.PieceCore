@@ -5,7 +5,7 @@ package jp.co.jokerpiece.piecebase.data;
  */
 public class LinePayRegisterData
 {
-    public String returnCode;
+    public int  returnCode;
     public String returnMessage;
     public String transaction;
     public String paymentUrlWeb;

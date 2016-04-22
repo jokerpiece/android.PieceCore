@@ -318,7 +318,7 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener 
             {
                 if(Config.WEBVIEW_ACTIVITY_MODE.equals("true"))
                 {
-                    if((!item_id_flyer.equals("null"))&&(!item_id_flyer.equals("")))// item_id has value
+                    if((!item_id_flyer.equals(""))&&(!item_id_flyer.equals(null)))// item_id has value
                     {
                         AppUtil.debugLog("item_id_flyer",item_id_flyer);
                         if("1".equals(Config.PAY_SELECT_KBN))//LinePay Native
@@ -355,11 +355,13 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener 
                             context.startActivity(intent);
                         }
                     }
-                    else// item_id = null or space ＞＞＞＞go WebView
+                    // item_id = null or space ＞＞＞＞go WebView
+                    else
                     {
                         Intent intent = new Intent(context, WebViewActivity.class);
                         intent.putExtra("send_url", url);
                         context.startActivity(intent);
+
                     }
 
 
@@ -383,7 +385,7 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener 
             {
                 FragmentManager fm = getFragmentManager();
                 FragmentTransaction ft = fm.beginTransaction();
-                ft.addToBackStack(null);
+
                 PayPalPieceFragment fragment = new PayPalPieceFragment();
 
                 Bundle bundle = new Bundle();
@@ -636,39 +638,46 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener 
 
                 if(data.data_list.size()!=0)
                 {
+                    int sameIdDetect = 0;
                     for(int position=0; position<data.data_list.size(); position++) {
                         ItemListData.ItemData itemdata = data.data_list.get(position);
 
 
                         if (item_id_flyer.equals(itemdata.item_id))
                         {
-                            AppUtil.debugLog("ItemListAPI on Finish IF", "If has been executed");
+                            sameIdDetect++;
+                            //複数の同じ商品IDが発見した時のコントロール
+                            if(sameIdDetect==1)
+                            {
+                                AppUtil.debugLog("ItemListAPI on Finish IF", "If has been executed");
 
-                            //memory back fragment if the buying is done
-                            String fromWhatFragment = "FlyerFragment";
-                            systemData = getActivity().getSharedPreferences("SystemDataSave", Context.MODE_PRIVATE);
-                            systemDataEditor = systemData.edit();
-                            systemDataEditor.putString("from_what_fragment", fromWhatFragment);
-                            systemDataEditor.commit();
+                                //memory back fragment if the buying is done
+                                String fromWhatFragment = "FlyerFragment";
+                                systemData = getActivity().getSharedPreferences("SystemDataSave", Context.MODE_PRIVATE);
+                                systemDataEditor = systemData.edit();
+                                systemDataEditor.putString("from_what_fragment", fromWhatFragment);
+                                systemDataEditor.commit();
 
-                            //detabaseの商品資料をLinePayFragmentに送る
-                            bundle.putString("item_id", itemdata.item_id);
-                            bundle.putString("price", itemdata.price);
-                            bundle.putString("stocks", itemdata.stocks);
-                            bundle.putString("img_url", itemdata.img_url);
-                            bundle.putString("item_title", itemdata.item_title);
-                            bundle.putString("text", itemdata.text);
-                            bundle.putString("item_url", itemdata.item_url);
-                            FragmentManager fm = getActivity().getSupportFragmentManager();
-                            FragmentTransaction ft = fm.beginTransaction();
-                            ft.addToBackStack(null);
-                            LinePayFragment fragment = new LinePayFragment();
+                                //detabaseの商品資料をLinePayFragmentに送る
+                                bundle.putString("item_id", itemdata.item_id);
+                                bundle.putString("price", itemdata.price);
+                                bundle.putString("stocks", itemdata.stocks);
+                                bundle.putString("img_url", itemdata.img_url);
+                                bundle.putString("item_title", itemdata.item_title);
+                                bundle.putString("text", itemdata.text);
+                                bundle.putString("item_url", itemdata.item_url);
+                                FragmentManager fm = getActivity().getSupportFragmentManager();
+                                FragmentTransaction ft = fm.beginTransaction();
+                                ft.addToBackStack(null);
+                                LinePayFragment fragment = new LinePayFragment();
 
 
-                            fragment.setArguments(bundle);
-                            ft.replace(R.id.fragment, fragment);
-                            ft.commit();
-                            //LinePay決済できる詳細画面に遷移する。
+                                fragment.setArguments(bundle);
+                                ft.replace(R.id.fragment, fragment);
+                                ft.commit();
+                                //LinePay決済できる詳細画面に遷移する。
+                            }
+
                         }
                     }
                 }
@@ -676,7 +685,8 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener 
                 {
                     AppUtil.debugLog("ItemListAPI on Finish IF", "else has been executed");
                     new AlertDialog.Builder(FlyerFragment.this.getActivity())
-                            .setTitle("商品が存在しません。")
+                            .setTitle("商品が見つかりません。")
+                            .setMessage("選択された商品は存在しません。")
                             .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
@@ -685,19 +695,6 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener 
                             }).show();
                 }
 
-
-                /*
-                FragmentManager fm = getActivity().getSupportFragmentManager();
-                FragmentTransaction ft = fm.beginTransaction();
-                ft.addToBackStack(null);
-                LinePayFragment fragment = new LinePayFragment();
-
-
-                fragment.setArguments(bundle);
-                ft.replace(R.id.fragment, fragment);
-                ft.commit();
-                //LinePay決済できる詳細画面に遷移する。
-                */
 
             }
 
