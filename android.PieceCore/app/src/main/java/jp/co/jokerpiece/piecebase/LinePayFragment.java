@@ -347,7 +347,7 @@ public class LinePayFragment extends Fragment {
             {
                 //Check if sharekeyperference is exist
                 File f = new File(
-                        "/data/data/jp.co.jokerpiece.piecebase/shared_prefs/PersonalDataSave.xml");
+                        "/data/data/"+Config.PACKAGE_NAME+"/shared_prefs/PersonalDataSave.xml");
                 if(f.exists()) //go to LinePaySelectDeliveryFragment
                 {
 
