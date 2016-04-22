@@ -40,6 +40,7 @@ public class DeliveryPriceAPI extends AsyncTaskLoader<DeliveryPriceData> impleme
     @Override
     public DeliveryPriceData loadInBackground()
     {
+        DeliveryPriceData deliveryPriceData = new DeliveryPriceData();
         HashMap<String, String> parameter = new HashMap<String, String>();
 
         parameter.put("app_id", Config.APP_ID);
@@ -85,11 +86,17 @@ public class DeliveryPriceAPI extends AsyncTaskLoader<DeliveryPriceData> impleme
             int error_code = rootObject.getInt("error_code");
             if(error_code != 0)
             {
-                return null;
+                deliveryPrice = rootObject.getString("delivery_price");
+                deliveryPriceData.delivery_price = deliveryPrice;
+                return deliveryPriceData;
             }
 
             deliveryPrice = rootObject.getString("delivery_price");
             AppUtil.debugLog("Delivery Price", deliveryPrice);
+            //saving delivery_price to DeliveryPriceData
+
+            deliveryPriceData.delivery_price = deliveryPrice;
+
         }
         catch (JSONException e)
         {
@@ -98,11 +105,9 @@ public class DeliveryPriceAPI extends AsyncTaskLoader<DeliveryPriceData> impleme
 
 
 
-        //saving delivery_price to DeliveryPriceData
-        DeliveryPriceData deliveryPriceData = new DeliveryPriceData();
-        deliveryPriceData.delivery_price = deliveryPrice;
-
         return deliveryPriceData;
+
+
     }
 
     @Override

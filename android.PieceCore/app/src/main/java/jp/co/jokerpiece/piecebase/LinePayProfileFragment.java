@@ -9,6 +9,7 @@ import android.content.Loader;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.Environment;
 import android.support.v4.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
@@ -193,9 +194,12 @@ public class LinePayProfileFragment extends Fragment
         if(sameAsBeforeButton)
         {
             //Check if sharekeyperference is exist
+            /*
             File f = new File(
                     "/data/data/jp.co.jokerpiece.piecebase/shared_prefs/PersonalDataSave.xml");
+            */
 
+            File f = new File("/data/data/"+Config.PACKAGE_NAME+"/shared_prefs/PersonalDataSave.xml");
             if(f.exists())
             {
 
@@ -906,18 +910,35 @@ public class LinePayProfileFragment extends Fragment
                     @Override
                     public void onLoadFinished(Loader<DeliveryPriceData> loader, DeliveryPriceData data)
                     {
-                        deliveryPrice = data.delivery_price;
+                        AppUtil.debugLog("data.delivery_price",data.delivery_price);
+                        if((data.delivery_price.equals(""))||(data.delivery_price.equals(null)))
+                        {
+                            new AlertDialog.Builder(LinePayProfileFragment.this.getActivity())
+                                    .setTitle("配送料取得エラー")
+                                    .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener()
+                                    {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which)
+                                        {
 
-                        bundleAPI.putString("delivery_price",deliveryPrice);
+                                        }
+                                    }).show();
+                        }
+                        else
+                        {
+                            deliveryPrice = data.delivery_price;
 
-                        systemDataEditor.putString("delivery_price",deliveryPrice);
+                            bundleAPI.putString("delivery_price",deliveryPrice);
 
-                        //Get Payment Price
-                        payment_price=getPaymentPrice(item_price, deliveryPrice, fee);
+                            systemDataEditor.putString("delivery_price",deliveryPrice);
 
-                        bundleAPI.putString("payment_price",payment_price);
+                            //Get Payment Price
+                            payment_price=getPaymentPrice(item_price, deliveryPrice, fee);
 
-                        systemDataEditor.putString("payment_price",payment_price);
+                            bundleAPI.putString("payment_price",payment_price);
+
+                            systemDataEditor.putString("payment_price", payment_price);
+                        }
 
                         //Call LinePayRegisterAPI
                         if(payment_price!=null && payment_price!="0")
@@ -927,7 +948,7 @@ public class LinePayProfileFragment extends Fragment
                         else
                         {
                             new AlertDialog.Builder(LinePayProfileFragment.this.getActivity())
-                                    .setTitle("エラー")
+                                    .setTitle("金額エラー")
                                     .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {

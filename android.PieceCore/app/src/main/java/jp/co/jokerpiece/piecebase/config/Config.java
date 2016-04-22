@@ -18,6 +18,7 @@ import com.paypal.android.sdk.payments.PayPalConfiguration;
 
 public class Config {
     // --- staticイニシャライザで定数を設定(ここから) --- //
+
     public static final String APP_ID;
     public static final String APP_KEY;
     public static final int SPLASH_TIME;
@@ -25,6 +26,7 @@ public class Config {
     public static final String PAYPAL_CLIENT_ID;
     public static final String PAYPAL_ENVIRONMENT;
     public static final String PAYPAL_BNCODE;
+    public static String PACKAGE_NAME;
     public static String PAY_SELECT_KBN;
     public static final String DELIVERY;
     public static final String CARTURL;

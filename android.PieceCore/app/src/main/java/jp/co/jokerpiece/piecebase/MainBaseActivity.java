@@ -77,6 +77,7 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         context = this;
+        Config.PACKAGE_NAME = getApplicationContext().getPackageName();
         FlyerFragment Fy = new FlyerFragment();
         CouponFragment Cf = new CouponFragment();
         ShoppingFragment Sf = new ShoppingFragment();
