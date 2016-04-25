@@ -1,5 +1,5 @@
-server_url=
-app_id=pieceSample
+server_url=http://jokapi.jp/
+app_id=otonagokoro
 app_key=jokerpiece_appKey
 cookie_domain=http://otonagokoro.com
 splash_time=3

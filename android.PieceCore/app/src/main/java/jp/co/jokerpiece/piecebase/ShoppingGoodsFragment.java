@@ -70,6 +70,7 @@ public class ShoppingGoodsFragment extends Fragment implements OnItemClickListen
     boolean connecting = false;
     int nowPageCount = 1;
     int quantity = -1;
+    String defaultStocks = "10";
 
     SharedPreferences systemData;
     SharedPreferences.Editor systemDataEditor;
@@ -243,7 +244,15 @@ public class ShoppingGoodsFragment extends Fragment implements OnItemClickListen
 
             bundle.putString("item_id", data.item_id);
             bundle.putString("price", data.price);
-            bundle.putString("stocks", data.stocks);
+            //if stocks parameter from itemlistAPI is null, send default stocks.
+            if(data.stocks.equals(""))
+            {
+                bundle.putString("stocks", defaultStocks);
+            }
+            else
+            {
+                bundle.putString("stocks", data.stocks);
+            }
             bundle.putString("img_url", data.img_url);
             bundle.putString("item_title", data.item_title);
             bundle.putString("text", data.text);
