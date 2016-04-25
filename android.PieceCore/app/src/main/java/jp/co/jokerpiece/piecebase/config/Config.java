@@ -128,10 +128,10 @@ public class Config {
     public static final String GET_ADDRESS_BY_POSTNUMBER;
     public static final String SENDID_DELIVERY_PRICE;
     public static final String LINE_PAY_REGISTER;
-    public static final String URL_SCHEME_LINEPAY_ACTIVITY;
     public static final String GET_ORDER_ID;
     public static final String GET_LINEPAY_CONFIRM;
     public static final String REGIST_LINEPAY_APP_PAYMENT;
+    public static String URL_SCHEME_LINEPAY_ACTIVITY;
 
 
     public static final String YOUTUBE_APIV3 = "https://www.googleapis.com/upload/youtube/v3/videos?part=snippet,status";
@@ -342,6 +342,18 @@ public class Config {
             }else{
                 NOTIFI_SOUND_MODE = "false";
             }
+
+            //url scheme setting
+            String line_pay_url_scheme = map.get("line_pay_url_scheme");
+            if(line_pay_url_scheme != null && !line_pay_url_scheme.equals(""))
+            {
+                URL_SCHEME_LINEPAY_ACTIVITY = line_pay_url_scheme;
+            }
+            else
+            {
+                URL_SCHEME_LINEPAY_ACTIVITY="piece://linepay";
+            }
+
         } else {
             SERVER_URL = "http://jokapi.jp/";
             APP_ID = "pieceSample";
@@ -400,7 +412,7 @@ public class Config {
         GET_ADDRESS_BY_POSTNUMBER = "http://zipcloud.ibsnet.co.jp/api/search?zipcode=";
         SENDID_DELIVERY_PRICE = "http://192.168.77.200/piece_dev/manager/html/xml/delivery_price/";
         LINE_PAY_REGISTER ="http://192.168.77.200/piece_dev/manager/html/xml/linepay/index.php?Action=reserve";
-        URL_SCHEME_LINEPAY_ACTIVITY="piece://linepay";
+
         GET_ORDER_ID="http://192.168.77.200/piece_dev/manager/html/xml/order_id/";
         GET_LINEPAY_CONFIRM="http://192.168.77.200/piece_dev/manager/html/xml/linepay/index.php?Action=confirm";
         REGIST_LINEPAY_APP_PAYMENT = "http://192.168.77.200/piece_dev/manager/html/xml/regist_app_payment/";
