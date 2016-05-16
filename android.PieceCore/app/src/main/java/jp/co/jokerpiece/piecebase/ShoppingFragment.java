@@ -245,6 +245,7 @@ public class ShoppingFragment extends BaseFragment implements OnItemClickListene
         ft.commit();
     }
 
+    //Get category list
     private void getGenreList(){
         Loader l = ((Activity)context).getLoaderManager().getLoader(Config.loaderCnt);
         if (l != null){

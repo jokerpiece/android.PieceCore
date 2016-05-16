@@ -44,7 +44,7 @@ public class DeliveryPriceAPI extends AsyncTaskLoader<DeliveryPriceData> impleme
         HashMap<String, String> parameter = new HashMap<String, String>();
 
         parameter.put("app_id", Config.APP_ID);
-        parameter.put("app_key",Config.APP_KEY);
+        //parameter.put("app_key",Config.APP_KEY);
         parameter.put("user_id", "sample");
         parameter.put("passward", "sample");
         parameter.put("post", post);
@@ -86,8 +86,10 @@ public class DeliveryPriceAPI extends AsyncTaskLoader<DeliveryPriceData> impleme
             int error_code = rootObject.getInt("error_code");
             if(error_code != 0)
             {
-                deliveryPrice = rootObject.getString("delivery_price");
-                deliveryPriceData.delivery_price = deliveryPrice;
+
+                deliveryPriceData.delivery_price = "";
+                deliveryPriceData.error_code = rootObject.getString("error_code");
+                deliveryPriceData.error_message = rootObject.getString("error_message");
                 return deliveryPriceData;
             }
 

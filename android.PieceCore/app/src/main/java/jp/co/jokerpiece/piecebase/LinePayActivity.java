@@ -60,6 +60,7 @@ public class LinePayActivity extends Activity
     SharedPreferences data;
 
     //linePayActivityBundle
+    private String kikaku_name;         // = 規格名称
     private String order_id;             // = 注文番号
     private String item_id;           // = 商品ID
     private String item_title;         //商品名
@@ -115,7 +116,7 @@ public class LinePayActivity extends Activity
                 trans_no=data.getString("trans_no", "");
                 payment_price=data.getString("payment_price", "");
                 order_id=data.getString("order_id", "");
-
+                kikaku_name=data.getString("kikaku_name","");
 
         //create bundleAPI
         context = this;
@@ -138,7 +139,7 @@ public class LinePayActivity extends Activity
         bundleAPI.putString("delivery_price",delivery_price);
         bundleAPI.putString("delivery_time",delivery_time);
         bundleAPI.putString("payment_price", payment_price);
-
+        bundleAPI.putString("kikaku_name",kikaku_name);
 
         /*
         //Open Line Pay Web

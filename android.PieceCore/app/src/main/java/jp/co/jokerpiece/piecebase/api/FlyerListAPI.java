@@ -108,7 +108,7 @@ public class FlyerListAPI extends AsyncTaskLoader<FlyerData> implements HttpClie
 				FlyerBodyData data = flyerData.new FlyerBodyData();
 			    data.img_url = jsonObject.getString("img_url");
 			    data.item_url = jsonObject.getString("item_url");
-
+				data.category_id = jsonObject.getString("category_id");
 				if(!jsonObject.isNull("item_id"))
 				{
 					data.item_id = jsonObject.getString("item_id");

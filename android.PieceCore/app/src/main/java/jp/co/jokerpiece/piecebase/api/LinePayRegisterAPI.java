@@ -53,7 +53,7 @@ public class LinePayRegisterAPI extends AsyncTaskLoader<LinePayRegisterData> imp
         String result = null;
         HashMap<String, String> parameter = new HashMap<String, String>();
         parameter.put("app_id", Config.APP_ID);
-        parameter.put("app_key", Config.APP_KEY);
+        //parameter.put("app_key", Config.APP_KEY);
         parameter.put("uuid", Common.getUUID(getContext()));
         parameter.put("productName", productName);
         parameter.put("productImageUrl", productImageUrl);

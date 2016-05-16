@@ -35,7 +35,7 @@ public class OrderIdAPI extends AsyncTaskLoader<OrderIdData> implements HttpClie
         HashMap<String, String> parameter = new HashMap<String, String>();
 
         parameter.put("app_id",app_id);
-        parameter.put("app_key",app_key);
+        //parameter.put("app_key",app_key);
 
         String url = Config.GET_ORDER_ID;//sending address
 
@@ -73,7 +73,10 @@ public class OrderIdAPI extends AsyncTaskLoader<OrderIdData> implements HttpClie
             int error_code = rootObject.getInt("error_code");
             if(error_code != 0)
             {
-                return null;
+                orderIdData.order_id = "";
+                orderIdData.error_code= rootObject.getString("error_code");
+                orderIdData.error_message=rootObject.getString("error_message");
+                return orderIdData;
             }
 
             orderIdData.order_id = rootObject.getString("order_no");

@@ -48,14 +48,14 @@ public class LinePaymentConfirmAPI extends AsyncTaskLoader<LinePaymentConfirmDat
         String result = null;
         HashMap<String, String> parameter = new HashMap<String, String>();
         parameter.put("app_id", app_id);
-        parameter.put("app_key", app_key);
+        //parameter.put("app_key", app_key);
         parameter.put("uuid", uuid);
         parameter.put("transaction", transaction);
         parameter.put("amount", amount);
         parameter.put("order_id", order_id);
         parameter.put("currency",currency);
 
-        String url = Config.GET_LINEPAY_CONFIRM;
+        String url = Config.ITEM_DETAIL;
 
         try
         {

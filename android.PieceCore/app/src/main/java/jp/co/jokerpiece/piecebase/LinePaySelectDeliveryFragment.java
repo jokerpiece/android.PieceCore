@@ -47,7 +47,8 @@ public class LinePaySelectDeliveryFragment extends Fragment
     private String item_stocks = null;
     //商品注文数
     private String order_amount = null;
-
+    //
+    private String kikaku_name = null;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -64,6 +65,7 @@ public class LinePaySelectDeliveryFragment extends Fragment
         item_url=bundle.getString("item_url");
         item_stocks=bundle.getString("item_stocks");
         order_amount = bundle.getString("order_amount");
+        kikaku_name = bundle.getString("kikaku_name");
 
         context = getActivity();
 
@@ -134,7 +136,7 @@ public class LinePaySelectDeliveryFragment extends Fragment
                 bundle.putString("text",text);
                 bundle.putString("item_stocks",item_stocks);
                 bundle.putString("order_amount", order_amount);
-
+                bundle.putString("kikaku_name",kikaku_name);
 
                 fragment.setArguments(bundle);
 
@@ -170,6 +172,7 @@ public class LinePaySelectDeliveryFragment extends Fragment
                 bundle.putString("text",text);
                 bundle.putString("item_stocks",item_stocks);
                 bundle.putString("order_amount", order_amount);
+                bundle.putString("kikaku_name",kikaku_name);
 
                 fragment.setArguments(bundle);
 

@@ -77,6 +77,9 @@ public class LinePayProfileFragment extends Fragment
     private String item_stocks = null;
     //商品注文数
     private String order_amount = "1";
+    //
+    private String kikaku_name=null;
+
 
     Context context;
     //View
@@ -111,6 +114,7 @@ public class LinePayProfileFragment extends Fragment
     public String Anniversary_name;    //= 記念日名
     public String Anniversary;         //= yyyyMMdd
     public String order_id;
+
 
     //post number API response
     public String address1,address2,address3;
@@ -176,6 +180,7 @@ public class LinePayProfileFragment extends Fragment
             item_url=bundle.getString("item_url");
             item_stocks=bundle.getString("item_stocks");
             order_amount = bundle.getString("order_amount");
+            kikaku_name = bundle.getString("kikaku_name");
 
             //put data to bundle API
             bundleAPI.putString("img_url",img_url);
@@ -186,7 +191,7 @@ public class LinePayProfileFragment extends Fragment
             bundleAPI.putString("text",text);
             bundleAPI.putString("item_stocks",item_stocks);
             bundleAPI.putString("order_amount", order_amount);
-
+            bundleAPI.putString("kikaku_name",kikaku_name);
 
 
         }
@@ -694,9 +699,9 @@ public class LinePayProfileFragment extends Fragment
                     bundleAPI.putString("Mei",Mei);
                     bundleAPI.putString("Post",Post);
                     bundleAPI.putString("Address_tdfk",Address_tdfk);
-                    bundleAPI.putString("Address_city",Address_city);
-                    bundleAPI.putString("Address_street",Address_street);
-                    bundleAPI.putString("Mail_address",Mail_address);
+                    bundleAPI.putString("Address_city", Address_city);
+                    bundleAPI.putString("Address_street", Address_street);
+                    bundleAPI.putString("Mail_address", Mail_address);
                     bundleAPI.putString("Tel", Tel);
                     bundleAPI.putString("delivery_time", currentSelectedTime);
 
@@ -916,12 +921,11 @@ public class LinePayProfileFragment extends Fragment
                         if((data.delivery_price.equals(""))||(data.delivery_price.equals(null)))
                         {
                             new AlertDialog.Builder(LinePayProfileFragment.this.getActivity())
-                                    .setTitle("配送料取得エラー")
-                                    .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener()
-                                    {
+                                    .setTitle("DELIVERY PRICE ERROR")
+                                    .setMessage("ERROR CODE: "+data.error_code+"\n"+"ERROR MESSAGE: "+data.error_message)
+                                    .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                                         @Override
-                                        public void onClick(DialogInterface dialog, int which)
-                                        {
+                                        public void onClick(DialogInterface dialog, int which) {
 
                                         }
                                     }).show();
@@ -992,7 +996,8 @@ public class LinePayProfileFragment extends Fragment
                         if(data.returnCode!=0)
                         {
                             new AlertDialog.Builder(LinePayProfileFragment.this.getActivity())
-                                    .setTitle(data.returnMessage)
+                                    .setTitle("LINEPAY REGISTER ERROR")
+                                    .setMessage("ERROR CODE: "+data.returnCode+"\n"+"ERROR MESSAGE: "+data.returnMessage)
                                     .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
@@ -1025,6 +1030,7 @@ public class LinePayProfileFragment extends Fragment
                             systemDataEditor.putString("text",text);
                             systemDataEditor.putString("item_stocks",item_stocks);
                             systemDataEditor.putString("order_amount", order_amount);
+                            systemDataEditor.putString("kikaku_name",kikaku_name);
 
                             systemDataEditor.commit();
 
@@ -1070,13 +1076,29 @@ public class LinePayProfileFragment extends Fragment
                     @Override
                     public void onLoadFinished(Loader<OrderIdData> loader, OrderIdData data)
                     {
-                        order_id=data.order_id;
-                        bundleAPI.putString("order_id",order_id);
-                        AppUtil.debugLog("order_id Data", data.order_id);
-                        AppUtil.debugLog("static order_id Data", order_id);
+                        if(data.order_id==null||data.order_id.equals("")||data.order_id.equals("null"))
+                        {
+                            new AlertDialog.Builder(LinePayProfileFragment.this.getActivity())
+                                    .setTitle("ORDER_ID ERROR")
+                                    .setMessage("ERROR CODE: "+data.error_code+"\n"+"ERROR MESSAGE: "+data.error_message)
+                                    .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
 
-                        //call DeliveryPriceAPI
-                        getDeliveryPrice();
+                                        }
+                                    }).show();
+                        }
+                        else
+                        {
+                            order_id=data.order_id;
+                            bundleAPI.putString("order_id",order_id);
+                            AppUtil.debugLog("order_id Data", data.order_id);
+                            AppUtil.debugLog("static order_id Data", order_id);
+
+                            //call DeliveryPriceAPI
+                            getDeliveryPrice();
+                        }
+
                     }
 
                     @Override
@@ -1128,7 +1150,17 @@ public class LinePayProfileFragment extends Fragment
                     Integer.parseInt(delivery_price)+
                     Integer.parseInt(fee);
 
-             return Integer.toString(paymentPrice);
+            if(paymentPrice>=0)
+            {
+                AppUtil.debugLog("getPyamentPrice()>0",Integer.toString(paymentPrice));
+                return Integer.toString(paymentPrice);
+
+            }
+            else
+            {
+                AppUtil.debugLog("getPyamentPrice()<0",Integer.toString(paymentPrice));
+                return null;
+            }
         }
         else
         {

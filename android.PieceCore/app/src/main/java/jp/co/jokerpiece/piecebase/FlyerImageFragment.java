@@ -1,8 +1,10 @@
 package jp.co.jokerpiece.piecebase;
 
+import jp.co.jokerpiece.piecebase.api.ItemDetailAPI;
 import jp.co.jokerpiece.piecebase.api.ItemListAPI;
 import jp.co.jokerpiece.piecebase.config.Config;
 import jp.co.jokerpiece.piecebase.data.FlyerData.FlyerHeaderData;
+import jp.co.jokerpiece.piecebase.data.ItemDetailData;
 import jp.co.jokerpiece.piecebase.data.ItemListData;
 import jp.co.jokerpiece.piecebase.util.AppUtil;
 import jp.co.jokerpiece.piecebase.util.DownloadImageSync;
@@ -27,15 +29,22 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import org.json.JSONException;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class FlyerImageFragment extends Fragment implements DownloadImageSyncCallback {
 	String imageURL;
 	String itemURL;
 	String item_id_flyer;
+	String category_id;
 	LinearLayout view;
 	ImageView imageView;
 
 	SharedPreferences systemData;
 	SharedPreferences.Editor systemDataEditor;
+	Bundle bundleSendData;
 
 //	private static int loderCount = 2000;
 
@@ -48,7 +57,7 @@ public class FlyerImageFragment extends Fragment implements DownloadImageSyncCal
 		this.imageURL = flyerData.img_url;
 		this.itemURL = flyerData.item_url;
 		this.item_id_flyer = flyerData.item_id;
-
+		this.category_id = flyerData.category_id;
 	}
 
 	@SuppressLint("InflateParams")
@@ -56,6 +65,9 @@ public class FlyerImageFragment extends Fragment implements DownloadImageSyncCal
 	public View onCreateView(LayoutInflater inflater,
 							 ViewGroup container,
 							 Bundle savedInstanceState) {
+		//sending data
+		bundleSendData = new Bundle();
+
 		view = (LinearLayout)inflater.inflate(R.layout.fragment_flyer_image, null);
 		imageView = (ImageView)view.findViewById(R.id.header_image);
 		getLoaderManager();
@@ -75,14 +87,14 @@ public class FlyerImageFragment extends Fragment implements DownloadImageSyncCal
 			imageView.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v) {
-					onClickFlyer(itemURL);
+					onClickFlyer(itemURL, category_id);
 				}
 			});
 		}
 		return view;
 	}
 
-	public void onClickFlyer(String url) //Click the flyer picture
+	public void onClickFlyer(String url, String category_id) //Click the flyer picture
 	{
 
 		if (!url.equals("") && !url.equals("null"))
@@ -99,8 +111,9 @@ public class FlyerImageFragment extends Fragment implements DownloadImageSyncCal
 
 						if("1".equals(Config.PAY_SELECT_KBN))//LinePay Native
 						{
-							//call itemlistAPI
-							getItemList(item_id_flyer);
+							//call ItemDetailAPI
+							getItemDetail(item_id_flyer, category_id);
+
 
 						}
 						else if ("2".equals(Config.PAY_SELECT_KBN))//Paypal Native
@@ -248,8 +261,6 @@ public class FlyerImageFragment extends Fragment implements DownloadImageSyncCal
 			public void onLoadFinished(Loader<ItemListData> loader, ItemListData data)
 			{
 
-				Bundle bundle = new Bundle();
-
 				//find item_id's good's detail
 
 				if(data.data_list.size()!=0)
@@ -274,13 +285,13 @@ public class FlyerImageFragment extends Fragment implements DownloadImageSyncCal
 								systemDataEditor.commit();
 
 								//detabaseの商品資料をLinePayFragmentに送る
-								bundle.putString("item_id", itemdata.item_id);
-								bundle.putString("price", itemdata.price);
-								bundle.putString("stocks", itemdata.stocks);
-								bundle.putString("img_url", itemdata.img_url);
-								bundle.putString("item_title", itemdata.item_title);
-								bundle.putString("text", itemdata.text);
-								bundle.putString("item_url", itemdata.item_url);
+								bundleSendData.putString("item_id", itemdata.item_id);
+								bundleSendData.putString("price", itemdata.price);
+								bundleSendData.putString("stocks", itemdata.stocks);
+								bundleSendData.putString("img_url", itemdata.img_url);
+								bundleSendData.putString("item_title", itemdata.item_title);
+								bundleSendData.putString("text", itemdata.text);
+								bundleSendData.putString("item_url", itemdata.item_url);
 
 								FragmentManager fm = getActivity().getSupportFragmentManager();
 								FragmentTransaction ft = fm.beginTransaction();
@@ -288,7 +299,7 @@ public class FlyerImageFragment extends Fragment implements DownloadImageSyncCal
 								LinePayFragment fragment = new LinePayFragment();
 
 
-								fragment.setArguments(bundle);
+								fragment.setArguments(bundleSendData);
 								ft.replace(R.id.fragment, fragment);
 								ft.commit();
 							}
@@ -317,6 +328,104 @@ public class FlyerImageFragment extends Fragment implements DownloadImageSyncCal
 
 			@Override
 			public void onLoaderReset(Loader<ItemListData> loader) {
+			}
+		});
+	}
+
+	private void getItemDetail(final String item_id_flyer, final String category_id )
+	{
+
+		getActivity().getLoaderManager().initLoader(Config.loaderCnt++, null, new LoaderManager.LoaderCallbacks<ItemDetailData>()
+		{
+
+			@Override
+			public Loader<ItemDetailData> onCreateLoader(int id, Bundle args)
+			{
+				Bundle bundleAPI = new Bundle();
+				bundleAPI.putString("category_id",category_id);
+				bundleAPI.putString("item_id",item_id_flyer);
+				ItemDetailAPI itemDetailAPI = new ItemDetailAPI(getActivity(),bundleAPI);
+				itemDetailAPI.forceLoad();
+				return itemDetailAPI;
+
+			}
+
+			@Override
+			public void onLoadFinished(Loader<ItemDetailData> loader, ItemDetailData data) {
+
+
+				ArrayList<HashMap<String,String>> itemDetailDataArrayList = new ArrayList<HashMap<String, String>>();
+
+				if(data.error_code==0)
+				{
+					if(data.itemDetailJSONArray.length()!=0)
+					{
+						for(int i=0; i< data.itemDetailJSONArray.length();i++)
+						{
+							HashMap<String,String> itemDetailDataHashMap = new HashMap<String, String>();
+							try
+							{
+								itemDetailDataHashMap.put(
+										"item_code",
+										data.itemDetailJSONArray.getJSONObject(i).getString("item_code")
+								);
+								itemDetailDataHashMap.put(
+										"kikaku_name",
+										data.itemDetailJSONArray.getJSONObject(i).getString("kikaku_name")
+
+								);
+								itemDetailDataHashMap.put(
+										"price",
+										data.itemDetailJSONArray.getJSONObject(i).getString("price")
+								);
+								itemDetailDataHashMap.put(
+										"amount",
+										data.itemDetailJSONArray.getJSONObject(i).getString("amount")
+								);
+
+								itemDetailDataArrayList.add(itemDetailDataHashMap);
+
+							} catch (JSONException e)
+							{
+								e.printStackTrace();
+							}
+						}
+					}
+
+
+				}
+
+				//put dataDetailAPI's parameter
+				if(data.error_code==0)
+				{
+					bundleSendData.putString("data_detail_item_id",data.item_id);
+					bundleSendData.putString("data_detail_quantity",data.quantity);
+					bundleSendData.putString("data_exist","true");
+
+					if(data.itemDetailJSONArray.length()!=0)
+					{
+						bundleSendData.putSerializable("data_detail_detail", itemDetailDataArrayList);
+						bundleSendData.putString("data_detail_exist", "true");
+					}
+					else
+					{
+						bundleSendData.putString("data_detail_exist","false");
+					}
+				}
+				else
+				{
+					bundleSendData.putString("data_exist","false");
+				}
+
+				//get Item by ItemListAPI
+				getItemList(item_id_flyer);
+			}
+
+			@Override
+			public void onLoaderReset(Loader<ItemDetailData> loader)
+			{
+
+
 			}
 		});
 	}

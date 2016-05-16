@@ -132,7 +132,7 @@ public class Config {
     public static final String GET_LINEPAY_CONFIRM;
     public static final String REGIST_LINEPAY_APP_PAYMENT;
     public static String URL_SCHEME_LINEPAY_ACTIVITY;
-
+    public static final String ITEM_DETAIL;
 
     public static final String YOUTUBE_APIV3 = "https://www.googleapis.com/upload/youtube/v3/videos?part=snippet,status";
 
@@ -408,14 +408,15 @@ public class Config {
         SENDID_REGUST_APP_PAYMENT = SERVER_API_URL + "regist_app_payment";
 
         //crated by sou
-        SENDID_SEND_PROFILE = "http://192.168.77.200/piece_dev/manager/html/xml/send_profile/";
         GET_ADDRESS_BY_POSTNUMBER = "http://zipcloud.ibsnet.co.jp/api/search?zipcode=";
-        SENDID_DELIVERY_PRICE = "http://192.168.77.200/piece_dev/manager/html/xml/delivery_price/";
-        LINE_PAY_REGISTER ="http://192.168.77.200/piece_dev/manager/html/xml/linepay/index.php?Action=reserve";
+        SENDID_SEND_PROFILE = SERVER_URL+"manager/html/xml/send_profile/";
+        SENDID_DELIVERY_PRICE = SERVER_URL+"manager/html/xml/delivery_price/";
+        LINE_PAY_REGISTER =SERVER_URL+"manager/html/xml/linepay/index.php?Action=reserve";
 
-        GET_ORDER_ID="http://192.168.77.200/piece_dev/manager/html/xml/order_id/";
-        GET_LINEPAY_CONFIRM="http://192.168.77.200/piece_dev/manager/html/xml/linepay/index.php?Action=confirm";
-        REGIST_LINEPAY_APP_PAYMENT = "http://192.168.77.200/piece_dev/manager/html/xml/regist_app_payment/";
+        GET_ORDER_ID=SERVER_URL+"manager/html/xml/order_id/";
+        GET_LINEPAY_CONFIRM=SERVER_URL+"manager/html/xml/linepay/index.php?Action=confirm";
+        REGIST_LINEPAY_APP_PAYMENT = SERVER_URL+"manager/html/xml/regist_app_payment/";
+        ITEM_DETAIL=SERVER_URL+"manager/html/xml/item_detail/";
     }
 
 }

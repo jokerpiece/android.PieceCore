@@ -23,6 +23,7 @@ public class FlyerData {
 	}
 	public class FlyerBodyData{
 		public int key;
+		public String category_id;
 		public String img_url;
 		public String item_url;
 		public String item_id;

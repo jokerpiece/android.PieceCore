@@ -33,6 +33,7 @@ import org.json.JSONException;
 import java.io.File;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import jp.co.jokerpiece.piecebase.config.Common;
 import jp.co.jokerpiece.piecebase.config.Config;
@@ -96,6 +97,15 @@ public class LinePayFragment extends Fragment {
     //税
     //BigDecimal tax;
     //配送料
+
+    //dataDetailAPI's parameter
+    String data_detail_item_id;
+    String data_detail_quantity;
+    ArrayList<HashMap<String, String>> data_detail_detail;
+    String kikaku_name;
+    String data_detail_exist;
+
+
     BigDecimal shopping;
 
     //表示用画像
@@ -118,12 +128,31 @@ public class LinePayFragment extends Fragment {
 
         deciedBtn = (ImageView)rootView.findViewById(R.id.buyItBtn);
         goodPriceText = (TextView)rootView.findViewById(R.id.goodPrice);
-        //引継ぎ情報取得
-        Bundle bundle = getArguments();
+
+        Spinner spinner = (Spinner) rootView.findViewById(R.id.spinner);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         String shoppingtax = null;
         String totalprice = null;
 
+
+        TextView vi = (TextView) rootView.findViewById(R.id.priceTotal);
+        //vi.setText(totalprice);
+        TextView vi2 = (TextView) rootView.findViewById(R.id.shoppingTax);
+        //vi2.setText(shoppingtax);
+        TextView vi3 = (TextView) rootView.findViewById(R.id.itemname);
+        vi3.setText(item_title);
+        TextView vi4 = (TextView) rootView.findViewById(R.id.goodsText);
+        minusButton = (TextView) rootView.findViewById(R.id.minusBtn);
+        stocksText = (TextView) rootView.findViewById(R.id.stocksText);
+        plusButton = (TextView) rootView.findViewById(R.id.plusBtn);
+        goodsEmptyText = (TextView) rootView.findViewById(R.id.goodsEmpty);
+        goodsView = (DownloadImageView) rootView.findViewById(R.id.goodsView);
+
+
+        //引継ぎ情報取得
+        Bundle bundle = getArguments();
 
         if (bundle != null)
         {
@@ -134,6 +163,103 @@ public class LinePayFragment extends Fragment {
             item_title = bundle.getString("item_title");
             text = bundle.getString("text");
             item_stocks = bundle.getString("stocks");
+            data_detail_exist = bundle.getString("data_detail_exist");
+            //表示画像取得
+            if (!goodsView.setImageURL(img_url)) {
+                ((FragmentActivity) context).getSupportLoaderManager().initLoader(Config.loaderCnt++, null, goodsView);
+            }
+
+            //IF there are datas from the response of ItemDetailAPI, set datas to the screen
+            if(bundle.getString("data_exist").equals("true"))
+            {
+                data_detail_item_id = bundle.getString("data_detail_item_id");
+                data_detail_quantity = bundle.getString("data_detail_quantity");
+
+                //If data_detail has value enable the setting of good's type
+                if(bundle.getString("data_detail_exist").equals("true"))
+                {
+                    data_detail_detail = (ArrayList<HashMap<String, String>>) bundle.getSerializable("data_detail_detail");
+
+                    //本文Test
+                    vi4.setText(text);
+
+                    for(int i=0; i<data_detail_detail.size(); i++)
+                    {
+                        adapter.add(data_detail_detail.get(i).get("kikaku_name"));
+
+                    }
+                    spinner.setAdapter(adapter);
+
+                    spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> parent, View view,
+                                                   int position, long id) {
+                            if(data_detail_detail.get(position).get("amount").equals("null"))
+                            {
+                                item_stocks = null;
+                                kikaku_name = data_detail_detail.get(position).get("kikaku_name");
+                            }
+                            else
+                            {
+                                item_stocks = data_detail_detail.get(position).get("amount");
+                                kikaku_name = data_detail_detail.get(position).get("kikaku_name");
+
+                            }
+
+                            item_price = data_detail_detail.get(position).get("price");
+                            goodPriceText.setText(item_price + "円");
+                            stockControl();
+                        }
+
+                        @Override
+                        public void onNothingSelected(AdapterView<?> arg0)
+                        {
+
+                            if(data_detail_detail.get(0).get("amount").equals("null"))
+                            {
+                                item_stocks = null;
+                                kikaku_name = data_detail_detail.get(0).get("kikaku_name");
+                            }
+                            else
+                            {
+                                item_stocks = data_detail_detail.get(0).get("amount");
+                                kikaku_name = data_detail_detail.get(0).get("kikaku_name");
+                            }
+                            item_price = data_detail_detail.get(0).get("price");
+                            goodPriceText.setText(item_price + "円");
+                            stockControl();
+                        }
+                    });
+
+
+                    rootView.findViewById(R.id.layout_good_type).setVisibility(View.VISIBLE);
+
+                }
+                else//disable the setting of good's type
+                {
+                    data_detail_detail = null;
+                    //本文Test
+                    vi4.setText(text);
+                    goodPriceText.setText(item_price+"円");
+                    stockControl();
+
+                }
+
+            }
+            else//set datas without good types.
+            {
+                data_detail_item_id = null;
+                data_detail_quantity = null;
+
+                data_detail_detail = null;
+                //本文Test
+                vi4.setText(text);
+                goodPriceText.setText(item_price+"円");
+                stockControl();
+            }
+
+
+
             //消費税
             //tax = new BigDecimal((new BigDecimal(Integer.valueOf(item_price) * 0.08).longValue()));
             //配送手数料
@@ -144,29 +270,108 @@ public class LinePayFragment extends Fragment {
 
 
         }
-        TextView vi = (TextView) rootView.findViewById(R.id.priceTotal);
-        //vi.setText(totalprice);
-        TextView vi2 = (TextView) rootView.findViewById(R.id.shoppingTax);
-        //vi2.setText(shoppingtax);
-        TextView vi3 = (TextView) rootView.findViewById(R.id.itemname);
-        vi3.setText(item_title);
-        TextView vi4 = (TextView) rootView.findViewById(R.id.goodsText);
-        vi4.setText(text);
-        goodPriceText.setText(item_price+"円");
-
-        minusButton = (TextView) rootView.findViewById(R.id.minusBtn);
-        stocksText = (TextView) rootView.findViewById(R.id.stocksText);
-        plusButton = (TextView) rootView.findViewById(R.id.plusBtn);
-        goodsEmptyText = (TextView) rootView.findViewById(R.id.goodsEmpty);
 
 
+        //LinePay購入用ボタンの処理追加
+        deciedBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                //Check if sharekeyperference is exist
+                File f = new File(
+                        "/data/data/"+Config.PACKAGE_NAME+"/shared_prefs/PersonalDataSave.xml");
+                if(f.exists()) //go to LinePaySelectDeliveryFragment
+                {
 
+                    //get OrderAmount
+                    orderAmount = Integer.toString(currentState);
+
+                    //send item Data to LinePaySelectDeliveryFragment
+                    Bundle bundle = new Bundle();
+                    bundle.putString("img_url", img_url);
+                    bundle.putString("item_url", item_url);
+                    bundle.putString("item_id", item_id);
+                    bundle.putString("item_price", item_price);
+                    bundle.putString("item_title", item_title);
+                    bundle.putString("text", text);
+                    bundle.putString("item_stocks", item_stocks);
+                    bundle.putString("order_amount", orderAmount);
+                    if(data_detail_exist.equals("true"))
+                    {
+                        bundle.putString("kikaku_name",kikaku_name);
+                    }
+                    else
+                    {
+                        bundle.putString("kikaku_name","");
+                    }
+
+                    FragmentManager fm = getFragmentManager();
+                    FragmentTransaction ft = fm.beginTransaction();
+                    ft.addToBackStack(null);
+
+                    LinePaySelectDeliveryFragment fragment = new LinePaySelectDeliveryFragment();
+
+                    //send item Data to LinePaySelectDeliveryFragment
+                    fragment.setArguments(bundle);
+
+                    ft.replace(R.id.fragment, fragment);
+                    ft.commit();
+                }
+                else//go to LinePayProfileFragment
+                {
+                    //get OrderAmount
+                    orderAmount = Integer.toString(currentState);
+
+
+                    sameAsBeforeButton=false;
+                    newButton=true;
+                    FragmentManager fm = getFragmentManager();
+                    FragmentTransaction ft = fm.beginTransaction();
+                    ft.addToBackStack(null);
+                    LinePayProfileFragment fragment = new LinePayProfileFragment();
+
+                    //send value to LinePayProfileFragment
+                    Bundle bundle = new Bundle();
+                    bundle.putBoolean("SameAsBeforeButton", sameAsBeforeButton);
+                    bundle.putBoolean("NewButton", newButton);
+
+                    //send item Data to LinePayProfileFragment
+                    bundle.putString("img_url",img_url);
+                    bundle.putString("item_url",item_url);
+                    bundle.putString("item_id",item_id);
+                    bundle.putString("item_price",item_price);
+                    bundle.putString("item_title",item_title);
+                    bundle.putString("text",text);
+                    bundle.putString("item_stocks",item_stocks);
+                    bundle.putString("order_amount", orderAmount);
+                    if(data_detail_exist.equals("true"))
+                    {
+                        bundle.putString("kikaku_name",kikaku_name);
+                    }
+                    else
+                    {
+                        bundle.putString("kikaku_name","");
+                    }
+
+                    fragment.setArguments(bundle);
+
+                    ft.replace(R.id.fragment, fragment);
+                    ft.commit();
+
+                }
+            }
+        });
+
+        return rootView;
+    }
+
+    private void stockControl()
+    {
         //在庫数の判定
         if(item_stocks!=null) //item_stocks!=null
         {
             if(!item_stocks.equals("売り切れ"))//item_stocks!=売り切れ
             {
-
                 if(item_stocks.equals(""))//if item_stocks is empty
                 {
                     item_stocks = "10";
@@ -217,52 +422,62 @@ public class LinePayFragment extends Fragment {
                 }
                 else// if item_stock exist
                 {
-                    AppUtil.debugLog("item_stock_if",item_stocks);
+                    if(Integer.parseInt(item_stocks)<=0)//売り切れ
+                    {
+                        rootView.findViewById(R.id.goodsAmountChooseLayer).setVisibility(View.GONE);
+                        deciedBtn.setVisibility(View.GONE);
+                        goodsEmptyText.setVisibility(View.VISIBLE);
+                    }
+                    else
+                    {
+                        AppUtil.debugLog("item_stock_if",item_stocks);
 
-                    stocksText.setText("1");
-                    minusButton.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
+                        stocksText.setText("1");
+                        minusButton.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
 
-                            if (1 < currentState && currentState <= Integer.parseInt(item_stocks)) {
-                                currentState--;
-                                stocksText.setText(Integer.toString(currentState));
+                                if (1 < currentState && currentState <= Integer.parseInt(item_stocks)) {
+                                    currentState--;
+                                    stocksText.setText(Integer.toString(currentState));
 
-                            } else if (currentState == Integer.parseInt(item_stocks)) {
+                                } else if (currentState == Integer.parseInt(item_stocks)) {
 
-                                currentState = Integer.parseInt(item_stocks);
+                                    currentState = Integer.parseInt(item_stocks);
 
-                            } else if (currentState < 1) {
-                                currentState = 1;
+                                } else if (currentState < 1) {
+                                    currentState = 1;
+                                }
+
                             }
+                        });
 
-                        }
-                    });
+                        plusButton.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
 
-                    plusButton.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
+                                if (0 < currentState && currentState < Integer.parseInt(item_stocks)) {
+                                    currentState++;
+                                    stocksText.setText(Integer.toString(currentState));
+                                } else if (currentState == Integer.parseInt(item_stocks)) {
+                                    currentState = Integer.parseInt(item_stocks);
+                                    new AlertDialog.Builder(LinePayFragment.this.getActivity())
+                                            .setMessage("注文数が上限です。\nこれ以上注文できません。")
+                                            .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                                                @Override
+                                                public void onClick(DialogInterface dialog, int which) {
 
-                            if (0 < currentState && currentState < Integer.parseInt(item_stocks)) {
-                                currentState++;
-                                stocksText.setText(Integer.toString(currentState));
-                            } else if (currentState == Integer.parseInt(item_stocks)) {
-                                currentState = Integer.parseInt(item_stocks);
-                                new AlertDialog.Builder(LinePayFragment.this.getActivity())
-                                        .setMessage("注文数が上限です。\nこれ以上注文できません。")
-                                        .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialog, int which) {
+                                                }
+                                            }).show();
 
-                                            }
-                                        }).show();
+                                } else if (currentState > Integer.parseInt(item_stocks)) {
+                                    currentState = Integer.parseInt(item_stocks);
+                                }
 
-                            } else if (currentState > Integer.parseInt(item_stocks)) {
-                                currentState = Integer.parseInt(item_stocks);
                             }
+                        });
+                    }
 
-                        }
-                    });
                 }
 
 
@@ -326,95 +541,6 @@ public class LinePayFragment extends Fragment {
 
 
         }
-
-
-
-
-
-
-        goodsView = (DownloadImageView) rootView.findViewById(R.id.goodsView);
-
-        //表示画像取得
-        if (!goodsView.setImageURL(img_url)) {
-            ((FragmentActivity) context).getSupportLoaderManager().initLoader(Config.loaderCnt++, null, goodsView);
-        }
-
-
-        //LinePay購入用ボタンの処理追加
-        deciedBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v)
-            {
-                //Check if sharekeyperference is exist
-                File f = new File(
-                        "/data/data/"+Config.PACKAGE_NAME+"/shared_prefs/PersonalDataSave.xml");
-                if(f.exists()) //go to LinePaySelectDeliveryFragment
-                {
-
-                    //get OrderAmount
-                    orderAmount = Integer.toString(currentState);
-                    //send item Data to LinePaySelectDeliveryFragment
-                    Bundle bundle = new Bundle();
-                    bundle.putString("img_url", img_url);
-                    bundle.putString("item_url", item_url);
-                    bundle.putString("item_id", item_id);
-                    bundle.putString("item_price", item_price);
-                    bundle.putString("item_title", item_title);
-                    bundle.putString("text", text);
-                    bundle.putString("item_stocks", item_stocks);
-                    bundle.putString("order_amount", orderAmount);
-
-
-                    FragmentManager fm = getFragmentManager();
-                    FragmentTransaction ft = fm.beginTransaction();
-                    ft.addToBackStack(null);
-
-                    LinePaySelectDeliveryFragment fragment = new LinePaySelectDeliveryFragment();
-
-                    //send item Data to LinePaySelectDeliveryFragment
-                    fragment.setArguments(bundle);
-
-                    ft.replace(R.id.fragment, fragment);
-                    ft.commit();
-                }
-                else//go to LinePayProfileFragment
-                {
-                    //get OrderAmount
-                    orderAmount = Integer.toString(currentState);
-
-                    sameAsBeforeButton=false;
-                    newButton=true;
-                    FragmentManager fm = getFragmentManager();
-                    FragmentTransaction ft = fm.beginTransaction();
-                    ft.addToBackStack(null);
-                    LinePayProfileFragment fragment = new LinePayProfileFragment();
-
-                    //send value to LinePayProfileFragment
-                    Bundle bundle = new Bundle();
-                    bundle.putBoolean("SameAsBeforeButton", sameAsBeforeButton);
-                    bundle.putBoolean("NewButton", newButton);
-
-                    //send item Data to LinePayProfileFragment
-                    bundle.putString("img_url",img_url);
-                    bundle.putString("item_url",item_url);
-                    bundle.putString("item_id",item_id);
-                    bundle.putString("item_price",item_price);
-                    bundle.putString("item_title",item_title);
-                    bundle.putString("text",text);
-                    bundle.putString("item_stocks",item_stocks);
-                    bundle.putString("order_amount", orderAmount);
-
-
-                    fragment.setArguments(bundle);
-
-                    ft.replace(R.id.fragment, fragment);
-                    ft.commit();
-
-                }
-            }
-        });
-
-        return rootView;
     }
 
 

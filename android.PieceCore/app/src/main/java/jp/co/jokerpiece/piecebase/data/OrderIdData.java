@@ -7,5 +7,7 @@ public class OrderIdData
 {
 
     public String order_id;
+    public String error_code;
+    public String error_message;
 
 }

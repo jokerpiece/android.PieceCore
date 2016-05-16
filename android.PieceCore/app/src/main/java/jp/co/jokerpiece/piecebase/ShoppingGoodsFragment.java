@@ -2,6 +2,7 @@ package jp.co.jokerpiece.piecebase;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.LoaderManager;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -34,12 +35,18 @@ import android.widget.TextView;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
+import jp.co.jokerpiece.piecebase.api.ItemDetailAPI;
 import jp.co.jokerpiece.piecebase.api.ItemListAPI;
 import jp.co.jokerpiece.piecebase.config.Common;
 import jp.co.jokerpiece.piecebase.config.Config;
+import jp.co.jokerpiece.piecebase.data.ItemDetailData;
 import jp.co.jokerpiece.piecebase.data.ItemListData;
 import jp.co.jokerpiece.piecebase.data.ItemListData.ItemData;
 import jp.co.jokerpiece.piecebase.util.App;
@@ -75,6 +82,8 @@ public class ShoppingGoodsFragment extends Fragment implements OnItemClickListen
     SharedPreferences systemData;
     SharedPreferences.Editor systemDataEditor;
 
+    public Bundle bundleAPI;
+
 //	private int loderCount = 0;
 
     @Override
@@ -90,6 +99,9 @@ public class ShoppingGoodsFragment extends Fragment implements OnItemClickListen
 //        getActionBar().setIcon(R.drawable.icon_shopping);
 //        getActionBar().setTitle(R.string.goods_list);
         Bundle bundle = getArguments();
+
+        bundleAPI = new Bundle();//Pass parameter to ItemDetailAPI
+
         if (bundle != null)
         {
             //categoryID = bundle.getInt("category_id", -1);
@@ -230,93 +242,9 @@ public class ShoppingGoodsFragment extends Fragment implements OnItemClickListen
                             long id)
     {
         ItemData data = itemData.data_list.get(position);
-        //買い物をWeb画面でするか、Android内で実施するかの制御
-        // 2 = Paypal
-        if ("2".equals(Config.PAY_SELECT_KBN))
-        {
 
-            FragmentManager fm = getFragmentManager();
-            FragmentTransaction ft = fm.beginTransaction();
-            ft.addToBackStack(null);
-            PayPalPieceFragment fragment = new PayPalPieceFragment();
+        getItemDetail(data);//call ItemDetailAPI and pass itemdata(position) to it
 
-            Bundle bundle = new Bundle();
-
-            bundle.putString("item_id", data.item_id);
-            bundle.putString("price", data.price);
-            //if stocks parameter from itemlistAPI is null, send default stocks.
-            if(data.stocks.equals(""))
-            {
-                bundle.putString("stocks", defaultStocks);
-            }
-            else
-            {
-                bundle.putString("stocks", data.stocks);
-            }
-            bundle.putString("img_url", data.img_url);
-            bundle.putString("item_title", data.item_title);
-            bundle.putString("text", data.text);
-            fragment.setArguments(bundle);
-            ft.replace(R.id.fragment, fragment);
-            ft.commit();
-            //Paypal決済できる詳細画面に遷移する。
-
-        }
-
-        //1 = LinePay
-        else if("1".equals(Config.PAY_SELECT_KBN))
-        {
-            //memory back fragment if the buying is done
-            String fromWhatFragment = "ShoppingGoodsFragment";
-            systemData = getActivity().getSharedPreferences("SystemDataSave", Context.MODE_PRIVATE);
-            systemDataEditor = systemData.edit();
-            systemDataEditor.putString("from_what_fragment",fromWhatFragment);
-            systemDataEditor.commit();
-
-            FragmentManager fm = getFragmentManager();
-            FragmentTransaction ft = fm.beginTransaction();
-            ft.addToBackStack(null);
-            LinePayFragment fragment = new LinePayFragment();
-
-            //detabaseの商品資料をLinePayFragmentに送る
-            Bundle bundle = new Bundle();
-
-            bundle.putString("item_id", data.item_id);
-            bundle.putString("price", data.price);
-            bundle.putString("stocks", data.stocks);
-            bundle.putString("img_url", data.img_url);
-            bundle.putString("item_title", data.item_title);
-            bundle.putString("text", data.text);
-            bundle.putString("item_url",data.item_url);
-            fragment.setArguments(bundle);
-            ft.replace(R.id.fragment, fragment);
-            ft.commit();
-            //LinePay決済できる詳細画面に遷移する。
-
-
-
-        }
-        else//0 = WebView mode
-        {
-            if(Config.WEBVIEW_ACTIVITY_MODE.equals("true"))
-            {
-                Intent intent = new Intent(getActivity(), WebViewActivity.class);
-                intent.putExtra("send_url", data.item_url);
-                getActivity().startActivity(intent);
-            }
-            else
-            {
-                FragmentManager fm = getFragmentManager();
-                FragmentTransaction ft = fm.beginTransaction();
-                ft.addToBackStack(null);
-                WebViewFragment fragment = new WebViewFragment();
-                Bundle bundle = new Bundle();
-                bundle.putString("send_url", data.item_url);
-                fragment.setArguments(bundle);
-                ft.replace(R.id.fragment, fragment);
-                ft.commit();
-            }
-        }
 
     }
     @Override
@@ -490,5 +418,195 @@ public class ShoppingGoodsFragment extends Fragment implements OnItemClickListen
             getItemList();
         }
         return false;
+    }
+
+
+    private void getItemDetail(final ItemData itemData)
+    {
+
+        getActivity().getLoaderManager().initLoader
+                (Config.loaderCnt++, getArguments(), new LoaderManager.LoaderCallbacks<ItemDetailData>()
+                {
+
+                    @Override
+                    public Loader<ItemDetailData> onCreateLoader(int id, Bundle args)
+                    {
+                        bundleAPI.putString("category_id",categoryID);
+                        bundleAPI.putString("item_id",itemData.item_id);
+                        ItemDetailAPI itemDetailAPI = new ItemDetailAPI(context,bundleAPI);
+                        itemDetailAPI.forceLoad();
+                        return itemDetailAPI;
+                    }
+
+                    @Override
+                    public void onLoadFinished(Loader<ItemDetailData> loader, ItemDetailData data)
+                    {
+                        ArrayList<HashMap<String,String>> itemDetailDataArrayList = new ArrayList<HashMap<String, String>>();
+
+                        if(data.error_code==0)
+                        {
+                            if(data.itemDetailJSONArray.length()!=0)
+                            {
+                                for(int i=0; i< data.itemDetailJSONArray.length();i++)
+                                {
+                                    HashMap<String,String> itemDetailDataHashMap = new HashMap<String, String>();
+                                    try
+                                    {
+                                        itemDetailDataHashMap.put(
+                                                "item_code",
+                                                data.itemDetailJSONArray.getJSONObject(i).getString("item_code")
+                                        );
+                                        itemDetailDataHashMap.put(
+                                                "kikaku_name",
+                                                data.itemDetailJSONArray.getJSONObject(i).getString("kikaku_name")
+
+                                        );
+                                        itemDetailDataHashMap.put(
+                                                "price",
+                                                data.itemDetailJSONArray.getJSONObject(i).getString("price")
+                                        );
+                                        itemDetailDataHashMap.put(
+                                                "amount",
+                                                data.itemDetailJSONArray.getJSONObject(i).getString("amount")
+                                        );
+
+                                        itemDetailDataArrayList.add(itemDetailDataHashMap);
+
+                                    } catch (JSONException e)
+                                    {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            }
+
+
+                        }
+
+
+
+                        //買い物をWeb画面でするか、Android内で実施するかの制御
+                        // 2 = Paypal
+                        if ("2".equals(Config.PAY_SELECT_KBN))
+                        {
+
+                            FragmentManager fm = getFragmentManager();
+                            FragmentTransaction ft = fm.beginTransaction();
+                            ft.addToBackStack(null);
+                            PayPalPieceFragment fragment = new PayPalPieceFragment();
+
+                            Bundle bundle = new Bundle();
+
+                            bundle.putString("item_id", itemData.item_id);
+                            bundle.putString("price", itemData.price);
+                            //if stocks parameter from itemlistAPI is null, send default stocks.
+                            if(itemData.stocks.equals(""))
+                            {
+                                bundle.putString("stocks", defaultStocks);
+                            }
+                            else
+                            {
+                                bundle.putString("stocks", itemData.stocks);
+                            }
+                            bundle.putString("img_url", itemData.img_url);
+                            bundle.putString("item_title", itemData.item_title);
+                            bundle.putString("text", itemData.text);
+
+
+                            fragment.setArguments(bundle);
+                            ft.replace(R.id.fragment, fragment);
+                            ft.commit();
+                            //Paypal決済できる詳細画面に遷移する。
+
+                        }
+
+                        //1 = LinePay
+                        else if("1".equals(Config.PAY_SELECT_KBN))
+                        {
+                            //memory back fragment if the buying is done
+                            String fromWhatFragment = "ShoppingGoodsFragment";
+                            systemData = getActivity().getSharedPreferences("SystemDataSave", Context.MODE_PRIVATE);
+                            systemDataEditor = systemData.edit();
+                            systemDataEditor.putString("from_what_fragment",fromWhatFragment);
+                            systemDataEditor.commit();
+
+                            FragmentManager fm = getFragmentManager();
+                            FragmentTransaction ft = fm.beginTransaction();
+                            ft.addToBackStack(null);
+                            LinePayFragment fragment = new LinePayFragment();
+
+                            //detabaseの商品資料をLinePayFragmentに送る
+                            Bundle bundle = new Bundle();
+
+                            bundle.putString("item_id", data.item_id);
+                            bundle.putString("price", itemData.price);
+                            bundle.putString("stocks", itemData.stocks);
+                            bundle.putString("img_url", itemData.img_url);
+                            bundle.putString("item_title", itemData.item_title);
+                            bundle.putString("text", itemData.text);
+                            bundle.putString("item_url",itemData.item_url);
+
+                            //put dataDetailAPI's parameter
+                            if(data.error_code==0)
+                            {
+                                bundle.putString("data_detail_item_id",data.item_id);
+                                bundle.putString("data_detail_quantity",data.quantity);
+                                bundle.putString("data_exist","true");
+
+                                if(data.itemDetailJSONArray.length()!=0)
+                                {
+                                    bundle.putSerializable("data_detail_detail", itemDetailDataArrayList);
+                                    bundle.putString("data_detail_exist", "true");
+                                }
+                                else
+                                {
+                                    bundle.putString("data_detail_exist","false");
+                                }
+                            }
+                            else
+                            {
+                                bundle.putString("data_exist","false");
+                            }
+
+
+                            fragment.setArguments(bundle);
+
+                            //LinePay決済できる詳細画面に遷移する。
+                            ft.replace(R.id.fragment, fragment);
+                            ft.commit();
+
+
+
+
+                        }
+                        else//0 = WebView mode
+                        {
+                            if(Config.WEBVIEW_ACTIVITY_MODE.equals("true"))
+                            {
+                                Intent intent = new Intent(getActivity(), WebViewActivity.class);
+                                intent.putExtra("send_url", itemData.item_url);
+                                getActivity().startActivity(intent);
+                            }
+                            else
+                            {
+                                FragmentManager fm = getFragmentManager();
+                                FragmentTransaction ft = fm.beginTransaction();
+                                ft.addToBackStack(null);
+                                WebViewFragment fragment = new WebViewFragment();
+                                Bundle bundle = new Bundle();
+                                bundle.putString("send_url", itemData.item_url);
+                                fragment.setArguments(bundle);
+                                ft.replace(R.id.fragment, fragment);
+                                ft.commit();
+                            }
+                        }
+
+                    }
+
+                    @Override
+                    public void onLoaderReset(Loader<ItemDetailData> loader)
+                    {
+
+                    }
+                });
     }
 }

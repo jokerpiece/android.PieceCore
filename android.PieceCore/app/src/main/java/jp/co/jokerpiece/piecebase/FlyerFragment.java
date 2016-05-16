@@ -38,16 +38,21 @@ import android.widget.RelativeLayout;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 
+import org.json.JSONException;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import jp.co.jokerpiece.piecebase.api.FlyerListAPI;
+import jp.co.jokerpiece.piecebase.api.ItemDetailAPI;
 import jp.co.jokerpiece.piecebase.api.ItemListAPI;
 import jp.co.jokerpiece.piecebase.config.Common;
 import jp.co.jokerpiece.piecebase.config.Config;
 import jp.co.jokerpiece.piecebase.data.FlyerData;
 import jp.co.jokerpiece.piecebase.data.FlyerData.FlyerHeaderData;
+import jp.co.jokerpiece.piecebase.data.ItemDetailData;
 import jp.co.jokerpiece.piecebase.data.ItemListData;
 import jp.co.jokerpiece.piecebase.data.SaveData;
 import jp.co.jokerpiece.piecebase.util.App;
@@ -88,7 +93,7 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener 
 
     SharedPreferences systemData;
     SharedPreferences.Editor systemDataEditor;
-
+    Bundle bundleSendData;
 
     public void setFragmentPagerAdapter() {
         pageFlagment = new FlyerImagePageAdapter(getChildFragmentManager(),
@@ -100,6 +105,9 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        //sending data
+        bundleSendData = new Bundle();
+
         context = getActivity();
         Common.setCurrentFragment(Config.FlyerFragmentNum);
         View rootView = inflater.inflate(R.layout.fragment_flyer, container, false);
@@ -218,7 +226,7 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener 
             final String itemURL = data.item_url;
             final String imgURL = data.img_url;
             final String itemId = data.item_id;//Flyer Date's item_id
-
+            final String categoryID = data.category_id;
 
 
             //body list on click
@@ -227,7 +235,7 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener 
                 @Override
                 public void onClick(View v)
                 {
-                    onClickFlyer(itemURL, imgURL, itemId);
+                    onClickFlyer(itemURL, imgURL, itemId, categoryID);
                 }
             });
 
@@ -307,9 +315,10 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener 
         super.onCreateOptionsMenu(menu, inflater);
     }
 
-    public void onClickFlyer(String url, String imgurl, String item_id_flyer) {
+    public void onClickFlyer(String url, String imgurl, String item_id_flyer, String category_id) {
 
 
+        //url has value
         if (url != null && !url.equals("") && !url.equals("null"))
         {
 
@@ -323,8 +332,9 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener 
                         AppUtil.debugLog("item_id_flyer",item_id_flyer);
                         if("1".equals(Config.PAY_SELECT_KBN))//LinePay Native
                         {
-                            //get Item by ItemListAPI
-                            getItemList(item_id_flyer);
+                            //get ItemDetail by ItemDetailAPI
+                            getItemDetail(item_id_flyer, category_id);
+
 
                         }
                         else if ("2".equals(Config.PAY_SELECT_KBN))//Paypal Native
@@ -406,6 +416,19 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener 
                 ft.commit();
                 //Paypal決済できる詳細画面に遷移する。
             }
+        }
+        else
+        {
+            AppUtil.debugLog("ItemListAPI on Finish IF", "else has been executed");
+            new AlertDialog.Builder(FlyerFragment.this.getActivity())
+                    .setTitle("商品が見つかりません。")
+                    .setMessage("選択された商品は存在しません。")
+                    .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                        }
+                    }).show();
         }
     }
 
@@ -634,9 +657,7 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener 
             public void onLoadFinished(Loader<ItemListData> loader, ItemListData data)
             {
 
-                Bundle bundle = new Bundle();
-
-                if(data.data_list.size()!=0)
+                if(data.data_list.size()!=0)//if can't find item by item_id, show alert
                 {
                     int sameIdDetect = 0;
                     for(int position=0; position<data.data_list.size(); position++) {
@@ -659,20 +680,20 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener 
                                 systemDataEditor.commit();
 
                                 //detabaseの商品資料をLinePayFragmentに送る
-                                bundle.putString("item_id", itemdata.item_id);
-                                bundle.putString("price", itemdata.price);
-                                bundle.putString("stocks", itemdata.stocks);
-                                bundle.putString("img_url", itemdata.img_url);
-                                bundle.putString("item_title", itemdata.item_title);
-                                bundle.putString("text", itemdata.text);
-                                bundle.putString("item_url", itemdata.item_url);
+                                bundleSendData.putString("item_id", itemdata.item_id);
+                                bundleSendData.putString("price", itemdata.price);
+                                bundleSendData.putString("stocks", itemdata.stocks);
+                                bundleSendData.putString("img_url", itemdata.img_url);
+                                bundleSendData.putString("item_title", itemdata.item_title);
+                                bundleSendData.putString("text", itemdata.text);
+                                bundleSendData.putString("item_url", itemdata.item_url);
                                 FragmentManager fm = getActivity().getSupportFragmentManager();
                                 FragmentTransaction ft = fm.beginTransaction();
                                 ft.addToBackStack(null);
                                 LinePayFragment fragment = new LinePayFragment();
 
 
-                                fragment.setArguments(bundle);
+                                fragment.setArguments(bundleSendData);
                                 ft.replace(R.id.fragment, fragment);
                                 ft.commit();
                                 //LinePay決済できる詳細画面に遷移する。
@@ -700,6 +721,109 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener 
 
             @Override
             public void onLoaderReset(Loader<ItemListData> loader) {
+            }
+        });
+    }
+
+
+    private void getItemDetail(final String item_id_flyer, final String category_id )
+    {
+
+        ((Activity)context).getLoaderManager().initLoader(Config.loaderCnt++, null, new LoaderCallbacks<ItemDetailData>()
+        {
+
+            @Override
+            public Loader<ItemDetailData> onCreateLoader(int id, Bundle args)
+            {
+                Bundle bundleAPI = new Bundle();
+                bundleAPI.putString("category_id",category_id);
+                bundleAPI.putString("item_id",item_id_flyer);
+                ItemDetailAPI itemDetailAPI = new ItemDetailAPI(context,bundleAPI);
+                itemDetailAPI.forceLoad();
+                return itemDetailAPI;
+
+            }
+
+            @Override
+            public void onLoadFinished(Loader<ItemDetailData> loader, ItemDetailData data) {
+
+
+                ArrayList<HashMap<String,String>> itemDetailDataArrayList = new ArrayList<HashMap<String, String>>();
+
+                if(data.error_code==0)
+                {
+                    if(data.itemDetailJSONArray.length()!=0)
+                    {
+                        for(int i=0; i< data.itemDetailJSONArray.length();i++)
+                        {
+                            HashMap<String,String> itemDetailDataHashMap = new HashMap<String, String>();
+                            try
+                            {
+                                itemDetailDataHashMap.put(
+                                        "item_code",
+                                        data.itemDetailJSONArray.getJSONObject(i).getString("item_code")
+                                );
+                                itemDetailDataHashMap.put(
+                                        "kikaku_name",
+                                        data.itemDetailJSONArray.getJSONObject(i).getString("kikaku_name")
+
+                                );
+                                itemDetailDataHashMap.put(
+                                        "price",
+                                        data.itemDetailJSONArray.getJSONObject(i).getString("price")
+                                );
+                                itemDetailDataHashMap.put(
+                                        "amount",
+                                        data.itemDetailJSONArray.getJSONObject(i).getString("amount")
+                                );
+
+                                itemDetailDataArrayList.add(itemDetailDataHashMap);
+
+                            } catch (JSONException e)
+                            {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                    else
+                    {
+
+                    }
+
+
+                }
+
+                //put dataDetailAPI's parameter
+                if(data.error_code==0)
+                {
+                    bundleSendData.putString("data_detail_item_id",data.item_id);
+                    bundleSendData.putString("data_detail_quantity",data.quantity);
+                    bundleSendData.putString("data_exist","true");
+
+                    if(data.itemDetailJSONArray.length()!=0)
+                    {
+                        bundleSendData.putSerializable("data_detail_detail", itemDetailDataArrayList);
+                        bundleSendData.putString("data_detail_exist", "true");
+                    }
+                    else
+                    {
+                        bundleSendData.putString("data_detail_exist","false");
+                    }
+                }
+                else
+                {
+                    bundleSendData.putString("data_exist","false");
+                }
+
+                //get Item by ItemListAPI
+                getItemList(item_id_flyer);
+            }
+
+            @Override
+            public void onLoaderReset(Loader<ItemDetailData> loader)
+            {
+
+
             }
         });
     }

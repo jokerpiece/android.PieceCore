@@ -45,6 +45,7 @@ public class LinePayRegistAppPaymentAPI extends AsyncTaskLoader<LinePayRegistApp
     private String mail_address;         // = メールアドレス,
     private String delivery_price;       //=輸送料
     private String delivery_time;        //=配送時間
+    private String kikaku_name;          // =規格名称
 
     public LinePayRegistAppPaymentAPI(Context context, Bundle bundle)
     {
@@ -70,7 +71,7 @@ public class LinePayRegistAppPaymentAPI extends AsyncTaskLoader<LinePayRegistApp
         delivery_time=bundle.getString("delivery_time");
 
         payment_price= bundle.getString("payment_price");
-
+        kikaku_name = bundle.getString("kikaku_name");
 
     }
 
@@ -81,7 +82,7 @@ public class LinePayRegistAppPaymentAPI extends AsyncTaskLoader<LinePayRegistApp
         String result = null;
         HashMap<String, String> parameter = new HashMap<String, String>();
         parameter.put("app_id", app_id);
-        parameter.put("app_key", app_key);
+        //parameter.put("app_key", app_key);
         //parameter.put("uuid", uuid);
         parameter.put("order_no", order_no);
         parameter.put("product_id", product_id);
@@ -102,7 +103,7 @@ public class LinePayRegistAppPaymentAPI extends AsyncTaskLoader<LinePayRegistApp
         parameter.put("tel", tel);
         parameter.put("delivery_price", delivery_price);
         parameter.put("delivery_time", delivery_time);
-
+        parameter.put("kikaku_name", kikaku_name);
 
         String url = Config.REGIST_LINEPAY_APP_PAYMENT;
 
