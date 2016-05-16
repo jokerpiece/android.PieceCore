@@ -46,7 +46,7 @@ public class LinePayActivity extends Activity
 
 
     private TextView itemNameText, itemPriceText, deliveryPriceText, amountText, deliveryAddressText,
-                        nameText, mailText;
+                        nameText, mailText, kikakuNameTest;
 
     private ImageView okButton, cancelButton;
 
@@ -156,6 +156,7 @@ public class LinePayActivity extends Activity
         thanksMessageTextView = (TextView)findViewById(R.id.thank_message);
 
         itemNameText = (TextView)findViewById(R.id.item_name);
+        kikakuNameTest = (TextView)findViewById(R.id.kikaku_name);
         itemPriceText = (TextView)findViewById(R.id.item_price);
         deliveryPriceText = (TextView)findViewById(R.id.delivery_price);
         amountText = (TextView)findViewById(R.id.total_price);
@@ -168,6 +169,11 @@ public class LinePayActivity extends Activity
 
         //set TextView
         itemNameText.setText(item_title);
+        if(kikaku_name!="" && kikaku_name!=null)
+        {
+            kikakuNameTest.setText(kikaku_name);
+            findViewById(R.id.kikaku_layout).setVisibility(View.VISIBLE);
+        }
         itemPriceText.setText(item_price+"円"+" * "+amount+"個"+" = "
                                 +getItemTotalPrice(item_price, amount)+" 円");
         deliveryPriceText.setText(delivery_price+" 円");

@@ -419,6 +419,11 @@ public class LinePayFragment extends Fragment {
 
                         }
                     });
+
+                    //set view
+                    goodsEmptyText.setVisibility(View.GONE);
+                    deciedBtn.setVisibility(View.VISIBLE);
+                    rootView.findViewById(R.id.goodsAmountChooseLayer).setVisibility(View.VISIBLE);
                 }
                 else// if item_stock exist
                 {
@@ -430,7 +435,7 @@ public class LinePayFragment extends Fragment {
                     }
                     else
                     {
-                        AppUtil.debugLog("item_stock_if",item_stocks);
+                        AppUtil.debugLog("item_stock_if", item_stocks);
 
                         stocksText.setText("1");
                         minusButton.setOnClickListener(new View.OnClickListener() {
@@ -476,6 +481,11 @@ public class LinePayFragment extends Fragment {
 
                             }
                         });
+
+                        //set view
+                        goodsEmptyText.setVisibility(View.GONE);
+                        deciedBtn.setVisibility(View.VISIBLE);
+                        rootView.findViewById(R.id.goodsAmountChooseLayer).setVisibility(View.VISIBLE);
                     }
 
                 }
@@ -492,7 +502,6 @@ public class LinePayFragment extends Fragment {
         }
         else //item_stock = null
         {
-
             item_stocks = "10";
             stocksText.setText("1");
             minusButton.setOnClickListener(new View.OnClickListener() {
@@ -538,6 +547,11 @@ public class LinePayFragment extends Fragment {
 
                 }
             });
+
+            //set view
+            goodsEmptyText.setVisibility(View.GONE);
+            deciedBtn.setVisibility(View.VISIBLE);
+            rootView.findViewById(R.id.goodsAmountChooseLayer).setVisibility(View.VISIBLE);
 
 
         }

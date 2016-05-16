@@ -43,6 +43,11 @@ public class WebViewActivity extends FragmentActivity {
         close = (Button)findViewById(R.id.closeWeb);
         progressBar = (ProgressBar)findViewById(R.id.progressBar);
 
+        webView.getSettings().setSupportZoom(true);
+        webView.getSettings().setBuiltInZoomControls(true);
+        webView.getSettings().setDisplayZoomControls(false);
+        webView.setFocusable(true);
+
         if(Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
             CookieSyncManager.createInstance(this);
         }

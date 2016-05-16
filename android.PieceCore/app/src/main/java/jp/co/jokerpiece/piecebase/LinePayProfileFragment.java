@@ -1032,6 +1032,7 @@ public class LinePayProfileFragment extends Fragment
                             systemDataEditor.putString("order_amount", order_amount);
                             systemDataEditor.putString("kikaku_name",kikaku_name);
 
+
                             systemDataEditor.commit();
 
                             //Open Line Pay Web

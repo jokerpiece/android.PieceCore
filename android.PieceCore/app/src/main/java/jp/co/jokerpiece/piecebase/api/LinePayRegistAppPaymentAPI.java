@@ -34,7 +34,7 @@ public class LinePayRegistAppPaymentAPI extends AsyncTaskLoader<LinePayRegistApp
     private String trans_no;             // = 取引番号
     private String item_price;           // = 商品価格
     private String amount;               // = 個数
-    private String fee="1000";                  // = 手数料
+    private String fee="0";                  // = 手数料
     private String sei;                  // = 性,
     private String mei;                  // = 名,
     private String post;                 // = 郵便番号,
@@ -83,7 +83,7 @@ public class LinePayRegistAppPaymentAPI extends AsyncTaskLoader<LinePayRegistApp
         HashMap<String, String> parameter = new HashMap<String, String>();
         parameter.put("app_id", app_id);
         //parameter.put("app_key", app_key);
-        //parameter.put("uuid", uuid);
+        parameter.put("uuid", uuid);
         parameter.put("order_no", order_no);
         parameter.put("product_id", product_id);
         parameter.put("payment_price", payment_price);

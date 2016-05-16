@@ -45,8 +45,8 @@ public class DeliveryPriceAPI extends AsyncTaskLoader<DeliveryPriceData> impleme
 
         parameter.put("app_id", Config.APP_ID);
         //parameter.put("app_key",Config.APP_KEY);
-        parameter.put("user_id", "sample");
-        parameter.put("passward", "sample");
+        //parameter.put("user_id", "sample");
+        //parameter.put("passward", "sample");
         parameter.put("post", post);
         parameter.put("address_tdfk", address_tdfk);
         parameter.put("price",price );
