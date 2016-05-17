@@ -29,20 +29,20 @@ import jp.co.jokerpiece.piecebase.util.HttpClient;
 public class SendProfileAPI extends AsyncTaskLoader<LinePayData> implements HttpClient.HttpClientInterface
 {
 
-    private String user_id="123";                   //= ユーザID
-    private String password="123";                  //= パスワード
+    private String user_id="";                   //= ユーザID
+    private String password="";                  //= パスワード
     private String sei;                             //= 性
     private String mei;                             //= 名
-    private String birthday="19880515";             //= 誕生日yyyyMMdd
+    //private String birthday="";             //= 誕生日yyyyMMdd
     private String post;                            //= 郵便番号
     private String address_tdfk;                    //= 住所(都道府県)
     private String address_city;                    //= 住所(市区町村)
     private String address_street;                  //= 住所(番地)
-    private String sex="0";                         //= 性別 0:男 1:女
+    //private String sex="0";                         //= 性別 0:男 1:女
     private String mail_address;                    //= メールアドレス
     private String tel;                             //= 電話番号
-    private String anniversary_name="valentine";    //= 記念日名
-    private String anniversary="20160214";          //= yyyyMMdd
+    //private String anniversary_name="";    //= 記念日名
+    //private String anniversary="";          //= yyyyMMdd
 
     public SendProfileAPI(Context context, Bundle bundle)
     {
@@ -81,16 +81,15 @@ public class SendProfileAPI extends AsyncTaskLoader<LinePayData> implements Http
 
         parameter.put("user_id",user_id);
         parameter.put("Password",password);
-        parameter.put("Birthday",birthday);
-        parameter.put("Sex",sex);
-        parameter.put("anniversary_name",anniversary_name);
-        parameter.put("anniversary",anniversary);
+        //parameter.put("Birthday",birthday);
+        //parameter.put("Sex",sex);
+        //parameter.put("anniversary_name",anniversary_name);
+        //parameter.put("anniversary",anniversary);
 
 
         AppUtil.debugLog("Data",Config.APP_ID+"\n"+Config.APP_KEY+"\n"+Common.getUUID(getContext())+
                 sei+"\n"+mei+"\n"+post+"\n"+address_city+"\n"+address_street+"\n"+address_tdfk+"\n"
-                +mail_address+"\n"+tel+"\n"+user_id+"\n"+password+"\n"+birthday+"\n"+sex+"\n"+anniversary
-        +"\n"+anniversary_name);
+                +mail_address+"\n"+tel+"\n");
 
         String url = Config.SENDID_SEND_PROFILE;//sending address
 

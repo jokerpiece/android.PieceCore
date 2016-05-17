@@ -27,7 +27,7 @@ public class LinePayRegistAppPaymentAPI extends AsyncTaskLoader<LinePayRegistApp
     private String app_key=Config.APP_KEY;              // = アプリキー
     private String uuid=Common.getUUID(getContext());
     private String payment_kbn=Config.PAY_SELECT_KBN;          // = 決済サービス(1:line pay)
-    private String user_id="123";              // = ユーザID
+    private String user_id="";              // = ユーザID
     private String order_no;             // = 注文番号
     private String product_id;           // = 商品ID
     private String payment_price;        //= 決済金額

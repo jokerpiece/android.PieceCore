@@ -12,98 +12,119 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         >
-        <TextView
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="15dp"
-            android:text="@string/notification_text"
-            android:textSize="23dp"/>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:background="#000000"
-            />
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="10dp">
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_alignParentLeft="true"
-                android:layout_marginLeft="20dp"
-                android:src="@drawable/sound_icon"
-                android:id="@+id/icon_sound"/>
+            android:orientation="vertical"
+            android:visibility="visible">
+
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_toLeftOf="@+id/notifi_switch"
-                android:layout_toRightOf="@+id/icon_sound"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="15dp"
+                android:text="@string/notification_text"
+                android:textSize="23dp"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginLeft="10dp"
-                android:textSize="20dp"
-                android:paddingTop="2dp"
-                android:text="@string/sound_text"/>
-            <Switch
-                android:layout_width="wrap_content"
+                android:layout_marginRight="10dp"
+                android:background="#000000"
+                />
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/notifi_switch"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="20dp"
-                android:checked="true"/>
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp">
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="20dp"
+                    android:src="@drawable/sound_icon"
+                    android:id="@+id/icon_sound"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@+id/notifi_switch"
+                    android:layout_toRightOf="@+id/icon_sound"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="20dp"
+                    android:paddingTop="2dp"
+                    android:text="@string/sound_text"/>
+                <Switch
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/notifi_switch"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="20dp"
+                    android:checked="true"/>
 
-        </RelativeLayout>
+            </RelativeLayout>
 
-        <TextView
-            android:layout_width="match_parent"
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="15dp"
-            android:text="@string/notification_pay"
-            android:textSize="23dp"/>
+            android:orientation="vertical"
+            android:visibility="gone">
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:background="#000000"
-            />
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="10dp">
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_alignParentLeft="true"
-                android:layout_marginLeft="20dp"
-                android:src="@drawable/icon_linepay_61x20"
-                android:id="@+id/icon_Linepay"/>
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_toLeftOf="@+id/linepay_switch"
-                android:layout_toRightOf="@+id/icon_Linepay"
-                android:layout_marginLeft="10dp"
-                android:textSize="20dp"
-                android:paddingTop="2dp"
-                android:text="LinePay決済"/>
-            <Switch
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/linepay_switch"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="20dp"
-                android:checked="true"/>
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="15dp"
+                android:text="@string/notification_pay"
+                android:textSize="23dp"/>
 
-        </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="#000000"
+                />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp">
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="20dp"
+                    android:src="@drawable/icon_linepay_61x20"
+                    android:id="@+id/icon_Linepay"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@+id/linepay_switch"
+                    android:layout_toRightOf="@+id/icon_Linepay"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="20dp"
+                    android:paddingTop="2dp"
+                    android:text="LinePay決済"/>
+                <Switch
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/linepay_switch"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="20dp"
+                    android:checked="true"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+
     </LinearLayout>
 </LinearLayout>
