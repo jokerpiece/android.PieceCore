@@ -168,7 +168,14 @@ public class ShoppingFragment extends BaseFragment implements OnItemClickListene
         //カートのURLがセットされている場合のみ
         //カートの画像を表示する。
         if(Config.CARTURL !="" &&   Config.CARTURL != null) {
-            inflater.inflate(R.menu.menu_cart, menu);
+            if(Config.CARTURLENABLE)
+            {
+                inflater.inflate(R.menu.menu_cart, menu);
+            }
+            else
+            {
+
+            }
         }
         super.onCreateOptionsMenu(menu, inflater);
     }

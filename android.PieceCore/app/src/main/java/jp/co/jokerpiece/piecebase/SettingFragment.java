@@ -21,6 +21,7 @@ public class SettingFragment extends BaseFragment {
     View rootView;
     Switch swNotification;
     Switch linePaySwitch;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -45,16 +46,20 @@ public class SettingFragment extends BaseFragment {
 
         linePaySwitch = (Switch)rootView.findViewById(R.id.linepay_switch);
 
+
         //LinePay
         if(Config.PAY_SELECT_KBN.equals("1"))
         {
             linePaySwitch.setChecked(true);
+            
         }
         //WebView
         if(Config.PAY_SELECT_KBN.equals("0"))
         {
             linePaySwitch.setChecked(false);
+
         }
+
 
         linePaySwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -63,11 +68,13 @@ public class SettingFragment extends BaseFragment {
                 {
                     Config.PAY_SELECT_KBN = "1";//Pay by LinePay
                     linePaySwitch.setChecked(true);
+                    Config.CARTURLENABLE=false;
                 }
                 else
                 {
                     Config.PAY_SELECT_KBN = "0";//Pay by WebView
                     linePaySwitch.setChecked(false);
+                    Config.CARTURLENABLE=true;
                 }
             }
         });

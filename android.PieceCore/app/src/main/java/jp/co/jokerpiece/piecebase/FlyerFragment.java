@@ -309,10 +309,20 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener 
 //        inflater.inflate(R.menu.menu_coupon, menu);
         //カートのURLがセットされている場合のみ
         //カートの画像を表示する。
-        if(Config.CARTURL !="" &&   Config.CARTURL != null) {
-            inflater.inflate(R.menu.menu_cart, menu);
-        }
         super.onCreateOptionsMenu(menu, inflater);
+
+        if(Config.CARTURL !="" &&   Config.CARTURL != null)
+        {
+            if(Config.CARTURLENABLE)
+            {
+                inflater.inflate(R.menu.menu_cart, menu);
+            }
+            else
+            {
+
+            }
+        }
+
     }
 
     public void onClickFlyer(String url, String imgurl, String item_id_flyer, String category_id) {
@@ -327,7 +337,7 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener 
             {
                 if(Config.WEBVIEW_ACTIVITY_MODE.equals("true"))
                 {
-                    if((!item_id_flyer.equals(""))&&(!item_id_flyer.equals(null)))// item_id has value
+                    if((!item_id_flyer.equals(""))&&(!item_id_flyer.equals(null))&&(!item_id_flyer.equals("null")))// item_id has value
                     {
                         AppUtil.debugLog("item_id_flyer",item_id_flyer);
                         if("1".equals(Config.PAY_SELECT_KBN))//LinePay Native

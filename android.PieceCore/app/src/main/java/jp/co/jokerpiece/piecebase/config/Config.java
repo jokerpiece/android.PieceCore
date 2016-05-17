@@ -30,6 +30,7 @@ public class Config {
     public static String PAY_SELECT_KBN;
     public static final String DELIVERY;
     public static final String CARTURL;
+    public static boolean CARTURLENABLE=true;
     public static final String SEARCHMODE;
     public static final String ANALYTICS_MODE; // googleAnalytics
     public static final String WEBVIEW_ACTIVITY_MODE;
@@ -353,6 +354,7 @@ public class Config {
             {
                 URL_SCHEME_LINEPAY_ACTIVITY="piece://linepay";
             }
+
 
         } else {
             SERVER_URL = "http://jokapi.jp/";

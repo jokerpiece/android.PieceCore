@@ -105,7 +105,7 @@ public class FlyerImageFragment extends Fragment implements DownloadImageSyncCal
 			{
 				if(Config.WEBVIEW_ACTIVITY_MODE.equals("true"))
 				{
-					if((!item_id_flyer.equals(""))&&(!item_id_flyer.equals(null)))// item_id has value
+					if((!item_id_flyer.equals(""))&&(!item_id_flyer.equals(null))&&(!item_id_flyer.equals("null")))// item_id has value
 					{
 
 

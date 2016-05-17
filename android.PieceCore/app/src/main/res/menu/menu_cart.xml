@@ -5,6 +5,7 @@
         android:orderInCategory="100"
         android:showAsAction="ifRoom"
         android:title="@string/shopping0"
-        android:icon="@drawable/cart_2x_360" />
+        android:icon="@drawable/cart_2x_360"
+        android:visible="true"/>
 
 </menu>
