@@ -417,7 +417,7 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener 
                 //Paypal決済できる詳細画面に遷移する。
             }
         }
-        else
+        else//If the url isn't exist, go by else
         {
             AppUtil.debugLog("ItemListAPI on Finish IF", "else has been executed");
             new AlertDialog.Builder(FlyerFragment.this.getActivity())
@@ -702,7 +702,7 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener 
                         }
                     }
                 }
-                else
+                else //If can't find good data by itemListAPI, go by else
                 {
                     AppUtil.debugLog("ItemListAPI on Finish IF", "else has been executed");
                     new AlertDialog.Builder(FlyerFragment.this.getActivity())

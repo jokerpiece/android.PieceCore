@@ -166,4 +166,6 @@
     <string name="sound_text">サウンド</string>
     <string name="notification_text">プッシュ通知</string>
     <string name="notification_pay">アプリ内決済</string>
+    <string name="notification_pay_hint">ONにすると、Lineアプリの決済機能を使ってお支払いをする事ができます。
+        \n※Lineでお支払いの場合、ポイントの付与は行われません。</string>
 </resources>
