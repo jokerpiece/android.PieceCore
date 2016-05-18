@@ -58,6 +58,7 @@ public class LinePayFragment extends Fragment {
     private int currentState = 1;
     public boolean sameAsBeforeButton;
     public boolean newButton;
+    public int currentSpinnerPosition = 0;
 
     //PayPalのSDKと連携するための設定項目
     private static final String CONFIG_ENVIRONMENT = Config.PAYPAL_ENVIRONMENT;
@@ -99,11 +100,11 @@ public class LinePayFragment extends Fragment {
     //配送料
 
     //dataDetailAPI's parameter
-    String data_detail_item_id;
-    String data_detail_quantity;
-    ArrayList<HashMap<String, String>> data_detail_detail;
-    String kikaku_name;
-    String data_detail_exist;
+    String data_detail_item_id; //規格id
+    String data_detail_quantity; //規格個数
+    ArrayList<HashMap<String, String>> data_detail_detail;//規格list
+    String kikaku_name;//規格名称
+    String data_detail_exist;//規格listの存在判定
 
 
     BigDecimal shopping;
@@ -194,12 +195,15 @@ public class LinePayFragment extends Fragment {
                         @Override
                         public void onItemSelected(AdapterView<?> parent, View view,
                                                    int position, long id) {
+
+                            currentSpinnerPosition = position;
+                            //If amount is "null", set item_stock = null
                             if(data_detail_detail.get(position).get("amount").equals("null"))
                             {
                                 item_stocks = null;
                                 kikaku_name = data_detail_detail.get(position).get("kikaku_name");
                             }
-                            else
+                            else//set item_stock = amount
                             {
                                 item_stocks = data_detail_detail.get(position).get("amount");
                                 kikaku_name = data_detail_detail.get(position).get("kikaku_name");
@@ -215,17 +219,17 @@ public class LinePayFragment extends Fragment {
                         public void onNothingSelected(AdapterView<?> arg0)
                         {
 
-                            if(data_detail_detail.get(0).get("amount").equals("null"))
+                            if(data_detail_detail.get(currentSpinnerPosition).get("amount").equals("null"))
                             {
                                 item_stocks = null;
-                                kikaku_name = data_detail_detail.get(0).get("kikaku_name");
+                                kikaku_name = data_detail_detail.get(currentSpinnerPosition).get("kikaku_name");
                             }
                             else
                             {
-                                item_stocks = data_detail_detail.get(0).get("amount");
-                                kikaku_name = data_detail_detail.get(0).get("kikaku_name");
+                                item_stocks = data_detail_detail.get(currentSpinnerPosition).get("amount");
+                                kikaku_name = data_detail_detail.get(currentSpinnerPosition).get("kikaku_name");
                             }
-                            item_price = data_detail_detail.get(0).get("price");
+                            item_price = data_detail_detail.get(currentSpinnerPosition).get("price");
                             goodPriceText.setText(item_price + "円");
                             stockControl();
                         }
@@ -367,6 +371,7 @@ public class LinePayFragment extends Fragment {
 
     private void stockControl()
     {
+        currentState=1;//reset currentState
         //在庫数の判定
         if(item_stocks!=null) //item_stocks!=null
         {
@@ -500,7 +505,7 @@ public class LinePayFragment extends Fragment {
 
 
         }
-        else //item_stock = null
+        else //item_stock = null (goods are set by 10)
         {
             item_stocks = "10";
             stocksText.setText("1");
