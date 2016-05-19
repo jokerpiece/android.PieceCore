@@ -947,20 +947,57 @@ public class LinePayProfileFragment extends Fragment
                         }
 
                         //Call LinePayRegisterAPI
-                        if(payment_price!=null && payment_price!="0")
+                        if(payment_price!=null && !payment_price.equals("0"))
                         {
                             getLinePayRegister();
                         }
                         else
                         {
-                            new AlertDialog.Builder(LinePayProfileFragment.this.getActivity())
-                                    .setTitle("金額エラー")
-                                    .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int which) {
+                            if(payment_price.equals("0"))
+                            {
+                                //Go LinePayActivity directly (without using line pay)
 
-                                        }
-                                    }).show();
+                                //AppUtil.debugLog("static paymentUrlWeb", paymentUrlWeb);
+                                //AppUtil.debugLog("paymentUrl", paymentUrl);
+
+                                trans_no = "dummy";
+                                AppUtil.debugLog("trans_no", trans_no);
+
+                                systemDataEditor.putString("trans_no", trans_no);
+                                //systemDataEditor.putString("paymentUrlWeb", paymentUrlWeb);
+                                //systemDataEditor.putString("paymentUrl", paymentUrl);
+                                systemDataEditor.putString("order_id",order_id);
+
+                                systemDataEditor.putString("img_url",img_url);
+                                systemDataEditor.putString("item_url",item_url);
+                                systemDataEditor.putString("item_id",item_id);
+                                systemDataEditor.putString("item_price",item_price);
+                                systemDataEditor.putString("item_title",item_title);
+                                systemDataEditor.putString("text",text);
+                                systemDataEditor.putString("item_stocks",item_stocks);
+                                systemDataEditor.putString("order_amount", order_amount);
+                                systemDataEditor.putString("kikaku_name",kikaku_name);
+
+
+                                systemDataEditor.commit();
+
+                                //Open LinePayActivity
+                                Intent linePayActitvity = new Intent(getActivity(), LinePayActivity.class);
+                                startActivity(linePayActitvity);
+                            }
+                            else //If payment price = null
+                            {
+                                new AlertDialog.Builder(LinePayProfileFragment.this.getActivity())
+                                        .setTitle("金額エラー")
+                                        .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+
+                                            }
+                                        }).show();
+                            }
+
+
                         }
 
                     }

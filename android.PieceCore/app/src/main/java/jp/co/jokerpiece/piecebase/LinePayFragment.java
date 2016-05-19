@@ -49,6 +49,8 @@ public class LinePayFragment extends Fragment {
 
     //various announcement created by Sou on 16/3/28.
 
+    private TextView vi3;
+    private TextView vi4;
 
     private TextView minusButton, stocksText, plusButton, goodsEmptyText, goodPriceText;
     private String orderAmount;
@@ -94,7 +96,7 @@ public class LinePayFragment extends Fragment {
     String item_url = null;
     //商品在庫数
     String item_stocks = null;
-
+    String item_stocks_empty="";
     //税
     //BigDecimal tax;
     //配送料
@@ -142,9 +144,8 @@ public class LinePayFragment extends Fragment {
         //vi.setText(totalprice);
         TextView vi2 = (TextView) rootView.findViewById(R.id.shoppingTax);
         //vi2.setText(shoppingtax);
-        TextView vi3 = (TextView) rootView.findViewById(R.id.itemname);
-        vi3.setText(item_title);
-        TextView vi4 = (TextView) rootView.findViewById(R.id.goodsText);
+        vi3 = (TextView) rootView.findViewById(R.id.itemname);
+        vi4 = (TextView) rootView.findViewById(R.id.goodsText);
         minusButton = (TextView) rootView.findViewById(R.id.minusBtn);
         stocksText = (TextView) rootView.findViewById(R.id.stocksText);
         plusButton = (TextView) rootView.findViewById(R.id.plusBtn);
@@ -164,7 +165,17 @@ public class LinePayFragment extends Fragment {
             item_title = bundle.getString("item_title");
             text = bundle.getString("text");
             item_stocks = bundle.getString("stocks");
+
             data_detail_exist = bundle.getString("data_detail_exist");
+
+            if(item_stocks!=null)
+            {
+                if(item_stocks.equals("売り切れ"))
+                {
+                    item_stocks_empty="売り切れ";
+                }
+            }
+
             //表示画像取得
             if (!goodsView.setImageURL(img_url)) {
                 ((FragmentActivity) context).getSupportLoaderManager().initLoader(Config.loaderCnt++, null, goodsView);
@@ -179,69 +190,98 @@ public class LinePayFragment extends Fragment {
                 //If data_detail has value enable the setting of good's type
                 if(bundle.getString("data_detail_exist").equals("true"))
                 {
+
+
                     data_detail_detail = (ArrayList<HashMap<String, String>>) bundle.getSerializable("data_detail_detail");
 
+
+                    //商品名
+                    vi3.setText(item_title);
                     //本文Test
                     vi4.setText(text);
+                    //kikaku name's null check
+                    int spinnerCount = 0;
 
                     for(int i=0; i<data_detail_detail.size(); i++)
                     {
-                        adapter.add(data_detail_detail.get(i).get("kikaku_name"));
-
-                    }
-                    spinner.setAdapter(adapter);
-
-                    spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                        @Override
-                        public void onItemSelected(AdapterView<?> parent, View view,
-                                                   int position, long id) {
-
-                            currentSpinnerPosition = position;
-                            //If amount is "null", set item_stock = null
-                            if(data_detail_detail.get(position).get("amount").equals("null"))
-                            {
-                                item_stocks = null;
-                                kikaku_name = data_detail_detail.get(position).get("kikaku_name");
-                            }
-                            else//set item_stock = amount
-                            {
-                                item_stocks = data_detail_detail.get(position).get("amount");
-                                kikaku_name = data_detail_detail.get(position).get("kikaku_name");
-
-                            }
-
-                            item_price = data_detail_detail.get(position).get("price");
-                            goodPriceText.setText(item_price + "円");
-                            stockControl();
-                        }
-
-                        @Override
-                        public void onNothingSelected(AdapterView<?> arg0)
+                        if(!data_detail_detail.get(i).get("kikaku_name").equals(""))
                         {
-
-                            if(data_detail_detail.get(currentSpinnerPosition).get("amount").equals("null"))
-                            {
-                                item_stocks = null;
-                                kikaku_name = data_detail_detail.get(currentSpinnerPosition).get("kikaku_name");
-                            }
-                            else
-                            {
-                                item_stocks = data_detail_detail.get(currentSpinnerPosition).get("amount");
-                                kikaku_name = data_detail_detail.get(currentSpinnerPosition).get("kikaku_name");
-                            }
-                            item_price = data_detail_detail.get(currentSpinnerPosition).get("price");
-                            goodPriceText.setText(item_price + "円");
-                            stockControl();
+                            adapter.add(data_detail_detail.get(i).get("kikaku_name"));
+                            spinnerCount++;
                         }
-                    });
+                    }
+                    //If there is any good including kikaku name
+                    if(spinnerCount!=0)
+                    {
+                        spinner.setAdapter(adapter);
+
+                        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                            @Override
+                            public void onItemSelected(AdapterView<?> parent, View view,
+                                                       int position, long id) {
+
+                                currentSpinnerPosition = position;
+                                //If amount is "null", set item_stock = null
+                                if(data_detail_detail.get(position).get("amount").equals("null"))
+                                {
+
+                                    item_stocks = null;
+                                    kikaku_name = data_detail_detail.get(position).get("kikaku_name");
+
+                                }
+                                else//set item_stock = amount
+                                {
+                                    item_stocks = data_detail_detail.get(position).get("amount");
+                                    kikaku_name = data_detail_detail.get(position).get("kikaku_name");
+
+                                }
+
+                                item_price = data_detail_detail.get(position).get("price");
+                                goodPriceText.setText(item_price + "円");
+                                stockControl();
+                            }
+
+                            @Override
+                            public void onNothingSelected(AdapterView<?> arg0)
+                            {
+
+                                if(data_detail_detail.get(currentSpinnerPosition).get("amount").equals("null"))
+                                {
+                                    item_stocks = null;
+                                    kikaku_name = data_detail_detail.get(currentSpinnerPosition).get("kikaku_name");
+                                }
+                                else
+                                {
+                                    item_stocks = data_detail_detail.get(currentSpinnerPosition).get("amount");
+                                    kikaku_name = data_detail_detail.get(currentSpinnerPosition).get("kikaku_name");
+                                }
+                                item_price = data_detail_detail.get(currentSpinnerPosition).get("price");
+                                goodPriceText.setText(item_price + "円");
+                                stockControl();
+                            }
+                        });
 
 
-                    rootView.findViewById(R.id.layout_good_type).setVisibility(View.VISIBLE);
+                        rootView.findViewById(R.id.layout_good_type).setVisibility(View.VISIBLE);
+                    }
+                    else
+                    {
+                        data_detail_detail = null;
+                        //商品名
+                        vi3.setText(item_title);
+                        //本文Test
+                        vi4.setText(text);
+                        goodPriceText.setText(item_price+"円");
+                        stockControl();
+                    }
+
 
                 }
                 else//disable the setting of good's type
                 {
                     data_detail_detail = null;
+                    //商品名
+                    vi3.setText(item_title);
                     //本文Test
                     vi4.setText(text);
                     goodPriceText.setText(item_price+"円");
@@ -261,9 +301,6 @@ public class LinePayFragment extends Fragment {
                 goodPriceText.setText(item_price+"円");
                 stockControl();
             }
-
-
-
             //消費税
             //tax = new BigDecimal((new BigDecimal(Integer.valueOf(item_price) * 0.08).longValue()));
             //配送手数料
@@ -373,75 +410,22 @@ public class LinePayFragment extends Fragment {
     {
         currentState=1;//reset currentState
         //在庫数の判定
-        if(item_stocks!=null) //item_stocks!=null
+
+        if(item_stocks_empty.equals("売り切れ"))
         {
-            if(!item_stocks.equals("売り切れ"))//item_stocks!=売り切れ
+            rootView.findViewById(R.id.goodsAmountChooseLayer).setVisibility(View.GONE);
+            deciedBtn.setVisibility(View.GONE);
+            goodsEmptyText.setVisibility(View.VISIBLE);
+        }
+        else
+        {
+            if(item_stocks!=null) //item_stocks!=null
             {
-                if(item_stocks.equals(""))//if item_stocks is empty
+                if(!item_stocks.equals("売り切れ"))//item_stocks!=売り切れ
                 {
-                    item_stocks = "10";
-                    stocksText.setText("1");
-                    minusButton.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-
-                            if (1 < currentState && currentState <= Integer.parseInt(item_stocks)) {
-                                currentState--;
-                                stocksText.setText(Integer.toString(currentState));
-
-                            } else if (currentState == Integer.parseInt(item_stocks)) {
-
-                                currentState = Integer.parseInt(item_stocks);
-
-                            } else if (currentState < 1) {
-                                currentState = 1;
-                            }
-
-                        }
-                    });
-
-                    plusButton.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-
-                            if (0 < currentState && currentState < Integer.parseInt(item_stocks)) {
-                                currentState++;
-                                stocksText.setText(Integer.toString(currentState));
-                            } else if (currentState == Integer.parseInt(item_stocks)) {
-                                currentState = Integer.parseInt(item_stocks);
-                                new AlertDialog.Builder(LinePayFragment.this.getActivity())
-                                        .setMessage("注文数が上限です。\nこれ以上注文できません。")
-                                        .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialog, int which) {
-
-                                            }
-                                        }).show();
-
-                            } else if (currentState > Integer.parseInt(item_stocks)) {
-                                currentState = Integer.parseInt(item_stocks);
-                            }
-
-                        }
-                    });
-
-                    //set view
-                    goodsEmptyText.setVisibility(View.GONE);
-                    deciedBtn.setVisibility(View.VISIBLE);
-                    rootView.findViewById(R.id.goodsAmountChooseLayer).setVisibility(View.VISIBLE);
-                }
-                else// if item_stock exist
-                {
-                    if(Integer.parseInt(item_stocks)<=0)//売り切れ
+                    if(item_stocks.equals(""))//if item_stocks is empty
                     {
-                        rootView.findViewById(R.id.goodsAmountChooseLayer).setVisibility(View.GONE);
-                        deciedBtn.setVisibility(View.GONE);
-                        goodsEmptyText.setVisibility(View.VISIBLE);
-                    }
-                    else
-                    {
-                        AppUtil.debugLog("item_stock_if", item_stocks);
-
+                        item_stocks = "10";
                         stocksText.setText("1");
                         minusButton.setOnClickListener(new View.OnClickListener() {
                             @Override
@@ -492,74 +476,138 @@ public class LinePayFragment extends Fragment {
                         deciedBtn.setVisibility(View.VISIBLE);
                         rootView.findViewById(R.id.goodsAmountChooseLayer).setVisibility(View.VISIBLE);
                     }
+                    else// if item_stock exist
+                    {
+                        if(Integer.parseInt(item_stocks)<=0)//売り切れ
+                        {
+                            rootView.findViewById(R.id.goodsAmountChooseLayer).setVisibility(View.GONE);
+                            deciedBtn.setVisibility(View.GONE);
+                            goodsEmptyText.setVisibility(View.VISIBLE);
+                        }
+                        else
+                        {
+                            AppUtil.debugLog("item_stock_if", item_stocks);
 
-                }
+                            stocksText.setText("1");
+                            minusButton.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
 
+                                    if (1 < currentState && currentState <= Integer.parseInt(item_stocks)) {
+                                        currentState--;
+                                        stocksText.setText(Integer.toString(currentState));
 
-            } else //売り切れ
-            {
-                rootView.findViewById(R.id.goodsAmountChooseLayer).setVisibility(View.GONE);
-                deciedBtn.setVisibility(View.GONE);
-                goodsEmptyText.setVisibility(View.VISIBLE);
-            }
+                                    } else if (currentState == Integer.parseInt(item_stocks)) {
 
+                                        currentState = Integer.parseInt(item_stocks);
 
-        }
-        else //item_stock = null (goods are set by 10)
-        {
-            item_stocks = "10";
-            stocksText.setText("1");
-            minusButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    if (1 < currentState && currentState <= Integer.parseInt(item_stocks)) {
-                        currentState--;
-                        stocksText.setText(Integer.toString(currentState));
-
-                    } else if (currentState == Integer.parseInt(item_stocks)) {
-
-                        currentState = Integer.parseInt(item_stocks);
-
-                    } else if (currentState < 1) {
-                        currentState = 1;
-                    }
-
-                }
-            });
-
-            plusButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    if (0 < currentState && currentState < Integer.parseInt(item_stocks)) {
-                        currentState++;
-                        stocksText.setText(Integer.toString(currentState));
-                    } else if (currentState == Integer.parseInt(item_stocks)) {
-                        currentState = Integer.parseInt(item_stocks);
-                        new AlertDialog.Builder(LinePayFragment.this.getActivity())
-                                .setMessage("注文数が上限です。\nこれ以上注文できません。")
-                                .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-
+                                    } else if (currentState < 1) {
+                                        currentState = 1;
                                     }
-                                }).show();
 
-                    } else if (currentState > Integer.parseInt(item_stocks)) {
-                        currentState = Integer.parseInt(item_stocks);
+                                }
+                            });
+
+                            plusButton.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+
+                                    if (0 < currentState && currentState < Integer.parseInt(item_stocks)) {
+                                        currentState++;
+                                        stocksText.setText(Integer.toString(currentState));
+                                    } else if (currentState == Integer.parseInt(item_stocks)) {
+                                        currentState = Integer.parseInt(item_stocks);
+                                        new AlertDialog.Builder(LinePayFragment.this.getActivity())
+                                                .setMessage("注文数が上限です。\nこれ以上注文できません。")
+                                                .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(DialogInterface dialog, int which) {
+
+                                                    }
+                                                }).show();
+
+                                    } else if (currentState > Integer.parseInt(item_stocks)) {
+                                        currentState = Integer.parseInt(item_stocks);
+                                    }
+
+                                }
+                            });
+
+                            //set view
+                            goodsEmptyText.setVisibility(View.GONE);
+                            deciedBtn.setVisibility(View.VISIBLE);
+                            rootView.findViewById(R.id.goodsAmountChooseLayer).setVisibility(View.VISIBLE);
+                        }
+
                     }
 
+
+                } else //売り切れ
+                {
+                    rootView.findViewById(R.id.goodsAmountChooseLayer).setVisibility(View.GONE);
+                    deciedBtn.setVisibility(View.GONE);
+                    goodsEmptyText.setVisibility(View.VISIBLE);
                 }
-            });
-
-            //set view
-            goodsEmptyText.setVisibility(View.GONE);
-            deciedBtn.setVisibility(View.VISIBLE);
-            rootView.findViewById(R.id.goodsAmountChooseLayer).setVisibility(View.VISIBLE);
 
 
+            }
+            else //item_stock = null (goods are set by 10)
+            {
+                item_stocks = "10";
+                stocksText.setText("1");
+                minusButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        if (1 < currentState && currentState <= Integer.parseInt(item_stocks)) {
+                            currentState--;
+                            stocksText.setText(Integer.toString(currentState));
+
+                        } else if (currentState == Integer.parseInt(item_stocks)) {
+
+                            currentState = Integer.parseInt(item_stocks);
+
+                        } else if (currentState < 1) {
+                            currentState = 1;
+                        }
+
+                    }
+                });
+
+                plusButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        if (0 < currentState && currentState < Integer.parseInt(item_stocks)) {
+                            currentState++;
+                            stocksText.setText(Integer.toString(currentState));
+                        } else if (currentState == Integer.parseInt(item_stocks)) {
+                            currentState = Integer.parseInt(item_stocks);
+                            new AlertDialog.Builder(LinePayFragment.this.getActivity())
+                                    .setMessage("注文数が上限です。\nこれ以上注文できません。")
+                                    .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+
+                                        }
+                                    }).show();
+
+                        } else if (currentState > Integer.parseInt(item_stocks)) {
+                            currentState = Integer.parseInt(item_stocks);
+                        }
+
+                    }
+                });
+
+                //set view
+                goodsEmptyText.setVisibility(View.GONE);
+                deciedBtn.setVisibility(View.VISIBLE);
+                rootView.findViewById(R.id.goodsAmountChooseLayer).setVisibility(View.VISIBLE);
+
+
+            }
         }
+
     }
 
 

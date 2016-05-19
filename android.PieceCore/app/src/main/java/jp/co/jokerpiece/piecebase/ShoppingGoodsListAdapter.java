@@ -69,10 +69,17 @@ public class ShoppingGoodsListAdapter extends ArrayAdapter<ItemData> implements 
 				Bg.setVisibility(View.GONE);
 
 			}
-			else if(Integer.parseInt(list.get(position).stocks)<=5)
+			else if(Integer.parseInt(list.get(position).stocks)<=5 && Integer.parseInt(list.get(position).stocks)>0 )
 			{
 				tv3.setTextColor(Color.WHITE);
 				tv3.setText("残りわずか");
+				Bg.setVisibility(View.VISIBLE);
+				Bg.setBackgroundColor(Color.GRAY);
+			}
+			else if(Integer.parseInt(list.get(position).stocks)<=0)
+			{
+				tv3.setTextColor(Color.WHITE);
+				tv3.setText("売り切れ");
 				Bg.setVisibility(View.VISIBLE);
 				Bg.setBackgroundColor(Color.GRAY);
 			}

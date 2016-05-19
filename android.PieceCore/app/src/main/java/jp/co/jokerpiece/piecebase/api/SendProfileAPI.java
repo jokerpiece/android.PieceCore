@@ -88,7 +88,7 @@ public class SendProfileAPI extends AsyncTaskLoader<LinePayData> implements Http
 
 
         AppUtil.debugLog("Data",Config.APP_ID+"\n"+Config.APP_KEY+"\n"+Common.getUUID(getContext())+
-                sei+"\n"+mei+"\n"+post+"\n"+address_city+"\n"+address_street+"\n"+address_tdfk+"\n"
+                "\n"+sei+"\n"+mei+"\n"+post+"\n"+address_city+"\n"+address_street+"\n"+address_tdfk+"\n"
                 +mail_address+"\n"+tel+"\n");
 
         String url = Config.SENDID_SEND_PROFILE;//sending address
