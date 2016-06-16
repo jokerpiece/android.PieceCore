@@ -360,15 +360,16 @@ public class ShoppingGoodsFragment extends Fragment implements OnItemClickListen
 
         //カートのURLがセットされている場合のみ
         //カートの画像を表示する。
-        if(Config.CARTURLENABLE)
-        {
-            inflater.inflate(R.menu.menu_cart, menu);
-        }
-        else
-        {
+        if(Config.CARTURL !="" &&   Config.CARTURL != null) {
+            if(Config.CARTURLENABLE)
+            {
+                inflater.inflate(R.menu.menu_cart, menu);
+            }
+            else
+            {
 
+            }
         }
-
         super.onCreateOptionsMenu(menu, inflater);
     }
 
