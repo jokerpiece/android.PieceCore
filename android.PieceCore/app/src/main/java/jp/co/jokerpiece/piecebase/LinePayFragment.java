@@ -20,6 +20,8 @@ import android.view.ViewGroup;
 import android.widget.*;
 
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 import com.paypal.android.sdk.payments.PayPalConfiguration;
 import com.paypal.android.sdk.payments.PayPalItem;
 import com.paypal.android.sdk.payments.PayPalPayment;
@@ -37,6 +39,7 @@ import java.util.HashMap;
 
 import jp.co.jokerpiece.piecebase.config.Common;
 import jp.co.jokerpiece.piecebase.config.Config;
+import jp.co.jokerpiece.piecebase.util.App;
 import jp.co.jokerpiece.piecebase.util.AppUtil;
 import jp.co.jokerpiece.piecebase.util.DownloadImageView;
 
@@ -122,11 +125,18 @@ public class LinePayFragment extends Fragment {
                              Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
 
+        if(Config.ANALYTICS_MODE.equals("true")){
+            App app = (App)getActivity().getApplication();
+            Tracker t = app.getTracker(App.TrackerName.APP_TRACKER);
+            t.setScreenName("LINE PAY");
+            t.send(new HitBuilders.ScreenViewBuilder().build());
+        }
+
         context = getActivity();
 
         Common.setCurrentFragment(Config.PaypalFragmentNum);
 
-        //Paypal購入画面を取得
+        //linePay購入画面を取得
         rootView = inflater.inflate(R.layout.fragment_linepayitemintro, container, false);
 
         deciedBtn = (ImageView)rootView.findViewById(R.id.buyItBtn);

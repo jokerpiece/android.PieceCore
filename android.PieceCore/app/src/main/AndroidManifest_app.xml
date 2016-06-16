@@ -35,9 +35,14 @@
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
     <!-- カメラの設定(ここまで) -->
+
     <!-- ライブラリのアプリケーションを使用するため -->
     <!--"jp.co.jokerpiece.piecebase.util.App"を設定する必要があります-->
+
+    <!--android:name="android.support.MultiDex.MultiDexApplication"-->
+    <!--android:name=".util.App"-->
     <application
+
         android:name=".util.App"
         android:allowBackup="true"
         android:hardwareAccelerated="true"

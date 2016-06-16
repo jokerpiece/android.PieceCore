@@ -488,7 +488,6 @@ public class ShoppingGoodsFragment extends Fragment implements OnItemClickListen
                         }
 
 
-
                         //買い物をWeb画面でするか、Android内で実施するかの制御
                         // 2 = Paypal
                         if ("2".equals(Config.PAY_SELECT_KBN))

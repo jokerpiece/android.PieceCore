@@ -26,6 +26,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
 import java.util.List;
@@ -35,6 +38,7 @@ import jp.co.jokerpiece.piecebase.api.LinePaymentConfirmAPI;
 import jp.co.jokerpiece.piecebase.config.Config;
 import jp.co.jokerpiece.piecebase.data.LinePayRegistAppPaymentData;
 import jp.co.jokerpiece.piecebase.data.LinePaymentConfirmData;
+import jp.co.jokerpiece.piecebase.util.App;
 import jp.co.jokerpiece.piecebase.util.AppUtil;
 
 /**
@@ -93,6 +97,12 @@ public class LinePayActivity extends Activity
 
         setContentView(R.layout.activity_linepay);
 
+        if(Config.ANALYTICS_MODE.equals("true")){
+            App app = (App)this.getApplication();
+            Tracker t = app.getTracker(App.TrackerName.APP_TRACKER);
+            t.setScreenName("LINE PAYMENT");
+            t.send(new HitBuilders.ScreenViewBuilder().build());
+        }
 
         data = getSharedPreferences("SystemDataSave", Context.MODE_PRIVATE);
 

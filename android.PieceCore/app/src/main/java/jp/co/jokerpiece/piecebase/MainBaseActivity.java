@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -36,6 +37,10 @@ import android.widget.TabHost.TabSpec;
 import android.widget.TextView;
 
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+import com.google.firebase.analytics.FirebaseAnalytics;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -44,6 +49,7 @@ import jp.co.jokerpiece.piecebase.config.Common;
 import jp.co.jokerpiece.piecebase.config.Config;
 import jp.co.jokerpiece.piecebase.data.NewsListData;
 import jp.co.jokerpiece.piecebase.data.SaveData;
+import jp.co.jokerpiece.piecebase.util.App;
 import jp.co.jokerpiece.piecebase.util.AppUtil;
 import jp.co.jokerpiece.piecebase.util.BeaconUtil;
 
@@ -74,8 +80,56 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
     public ArrayList<BaseFragment> list = new ArrayList<BaseFragment>();
     public static String intentClassName = null;
 
+    private final MainBaseActivity self = this;
+    public FirebaseAnalytics mAnalytics;
+
+    SharedPreferences systemData;
+    SharedPreferences.Editor systemDataEditor;
+
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        mAnalytics = FirebaseAnalytics.getInstance(self);
+
+        // ユーザープロパティの設定
+        //mAnalytics.setUserProperty("key", "value");
+
+        //mAnalytics.setUserProperty("favorite_food", "mFavoriteFood");
+
+        //Bundle params = new Bundle();
+        //params.putString("image_name", "name");
+        //params.putString("full_text", "text");
+        //mAnalytics.logEvent("share_image", params);
+
+        if(Config.ANALYTICS_MODE.equals("true")){
+            App app = (App)this.getApplication();
+            Tracker t = app.getTracker(App.TrackerName.APP_TRACKER);
+            t.setScreenName("MAIN ACTIVITY");
+            t.send(new HitBuilders.ScreenViewBuilder().build());
+        }
+
+        //Set the line pay switch's status
+        systemData = this.getSharedPreferences("SystemDataSave", Context.MODE_PRIVATE);
+        String status = systemData.getString("linepay_switch","");
+
+        //Check the switch status which last used
+        if(status != null)
+        {
+            if(status.equals("true"))
+            {
+                Config.PAY_SELECT_KBN = "1";
+
+                Config.CARTURLENABLE=false;
+            }
+            else
+            {
+                Config.PAY_SELECT_KBN = "0";
+
+                Config.CARTURLENABLE=true;
+            }
+        }
+
         context = this;
         Config.PACKAGE_NAME = getApplicationContext().getPackageName();
         FlyerFragment Fy = new FlyerFragment();
@@ -418,32 +472,32 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
                         put("cls", StampFragment.class);
                     }
                 },
-                new HashMap<String, Object>() {
-                    {
-                        put("tabTitle", getString(R.string.sns1));
-                    }
-
-                    {
-                        put("tabIcon", R.drawable.icon_sns);
-                    }
-
-                    {
-                        put("cls", SnsFragment.class);
-                    }
-                },
-                new HashMap<String, Object>() {
-                    {
-                        put("tabTitle", getString(R.string.twitter1));
-                    }
-
-                    {
-                        put("tabIcon", R.drawable.i_twitter);
-                    }
-
-                    {
-                        put("cls", TwitterFragment.class);
-                    }
-                },
+//                new HashMap<String, Object>() {
+//                    {
+//                        put("tabTitle", getString(R.string.sns1));
+//                    }
+//
+//                    {
+//                        put("tabIcon", R.drawable.icon_sns);
+//                    }
+//
+//                    {
+//                        put("cls", SnsFragment.class);
+//                    }
+//                },
+//                new HashMap<String, Object>() {
+//                    {
+//                        put("tabTitle", getString(R.string.twitter1));
+//                    }
+//
+//                    {
+//                        put("tabIcon", R.drawable.i_twitter);
+//                    }
+//
+//                    {
+//                        put("cls", TwitterFragment.class);
+//                    }
+//                },
                 new HashMap<String, Object>() {
                     {
                         put("tabTitle", getString(R.string.reminder1));
@@ -526,13 +580,13 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
                 put(StampFragment.class.getSimpleName(), R.string.stamp0);
             }
 
-            {
-                put(SnsFragment.class.getSimpleName(), R.string.sns0);
-            }
-
-            {
-                put(TwitterFragment.class.getSimpleName(), R.string.twitter0);
-            }
+//            {
+//                put(SnsFragment.class.getSimpleName(), R.string.sns0);
+//            }
+//
+//            {
+//                put(TwitterFragment.class.getSimpleName(), R.string.twitter0);
+//            }
 
             {
                 put(ReminderFragment.class.getSimpleName(), R.string.reminder0);

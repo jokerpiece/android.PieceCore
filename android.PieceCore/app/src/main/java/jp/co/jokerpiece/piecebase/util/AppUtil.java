@@ -20,7 +20,7 @@ import jp.co.jokerpiece.piecebase.MainBaseActivity;
 import jp.co.jokerpiece.piecebase.MainBaseActivity.TabInfo;
 import jp.co.jokerpiece.piecebase.config.Config;
 
-public class AppUtil {
+public class AppUtil{
     /**
      * デバッグログ出力
      *

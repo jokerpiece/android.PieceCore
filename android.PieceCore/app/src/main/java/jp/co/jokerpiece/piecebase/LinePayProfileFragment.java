@@ -49,7 +49,7 @@ import jp.co.jokerpiece.piecebase.data.OrderIdData;
 import jp.co.jokerpiece.piecebase.data.PostNumberData;
 import jp.co.jokerpiece.piecebase.util.AppUtil;
 import jp.co.jokerpiece.piecebase.util.HttpClient;
-import twitter4j.HttpResponse;
+
 
 /**
  * Created by Antifuture on 16/3/25.

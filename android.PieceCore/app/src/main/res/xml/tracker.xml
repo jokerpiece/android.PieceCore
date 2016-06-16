@@ -3,5 +3,10 @@
     <integer name = "ga_sessionTimeout">300</integer>
     <bool name="ga_autoActivityTracking">true</bool>
     <screenName name = " jp.co.jokerpiece.piecebase.MainBaseActivity"></screenName>
-    <string name = "ga_trackingId"></string>
+
+    <string name = "ga_trackingId">UA-79369916-1</string>
+
+    <!-- tracking id of sou@jokerpiece.co.jp
+    <string name = "ga_trackingId">UA-78632815-1</string>
+    -->
 </resource>

@@ -17,8 +17,13 @@ import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.ProgressBar;
 
+import com.google.android.gms.analytics.GoogleAnalytics;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+
 import jp.co.jokerpiece.piecebase.config.Common;
 import jp.co.jokerpiece.piecebase.config.Config;
+import jp.co.jokerpiece.piecebase.util.App;
 import jp.co.jokerpiece.piecebase.util.AppUtil;
 
 /**
@@ -32,9 +37,21 @@ public class WebViewActivity extends FragmentActivity {
     Button reload;
     Button close;
     ProgressBar progressBar;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //Google Analytics
+        if(Config.ANALYTICS_MODE.equals("true")){
+            App app = (App)this.getApplication();
+            Tracker t = app.getTracker(App.TrackerName.APP_TRACKER);
+            t.setScreenName("WEB VIEW");
+            t.send(new HitBuilders.ScreenViewBuilder().build());
+
+
+        }
+
         setContentView(R.layout.activity_webview);
         webView = (WebView)findViewById(R.id.activity_webView);
         goBack = (Button)findViewById(R.id.web_goBack);
@@ -81,6 +98,17 @@ public class WebViewActivity extends FragmentActivity {
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 super.onPageStarted(view, url, favicon);
                 progressBar.setVisibility(View.VISIBLE);
+
+                //Google Analytics
+                if(Config.ANALYTICS_MODE.equals("true")){
+                    App app = (App)WebViewActivity.this.getApplication();
+                    Tracker t = app.getTracker(App.TrackerName.APP_TRACKER);
+                    t.setScreenName(webView.getUrl());
+                    t.send(new HitBuilders.ScreenViewBuilder().build());
+                    
+                }
+
+
             }
 
             @Override

@@ -1,5 +1,7 @@
 package jp.co.jokerpiece.piecebase;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -21,6 +23,9 @@ public class SettingFragment extends BaseFragment {
     View rootView;
     Switch swNotification;
     Switch linePaySwitch;
+
+    SharedPreferences systemData;
+    SharedPreferences.Editor systemDataEditor;
 
     @Nullable
     @Override
@@ -44,21 +49,46 @@ public class SettingFragment extends BaseFragment {
             }
         });
 
+
         linePaySwitch = (Switch)rootView.findViewById(R.id.linepay_switch);
+        systemData = getActivity().getSharedPreferences("SystemDataSave", Context.MODE_PRIVATE);
 
+        //Set the line pay switch's status
+        systemData = getActivity().getSharedPreferences("SystemDataSave", Context.MODE_PRIVATE);
+        String status = systemData.getString("linepay_switch","");
 
+        //Check the switch status which last used
+        if(status != null)
+        {
+            if(status.equals("true"))
+            {
+                //Config.PAY_SELECT_KBN = "1";
+                linePaySwitch.setChecked(true);
+                //Config.CARTURLENABLE=false;
+            }
+            else
+            {
+                //Config.PAY_SELECT_KBN = "0";
+                linePaySwitch.setChecked(false);
+                //Config.CARTURLENABLE=true;
+            }
+        }
+
+        /*
         //LinePay
         if(Config.PAY_SELECT_KBN.equals("1"))
         {
             linePaySwitch.setChecked(true);
-            
+
         }
         //WebView
         if(Config.PAY_SELECT_KBN.equals("0"))
         {
             linePaySwitch.setChecked(false);
 
+
         }
+        */
 
 
         linePaySwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -69,12 +99,21 @@ public class SettingFragment extends BaseFragment {
                     Config.PAY_SELECT_KBN = "1";//Pay by LinePay
                     linePaySwitch.setChecked(true);
                     Config.CARTURLENABLE=false;
+                    //Save the switch status
+                    systemDataEditor = systemData.edit();
+                    systemDataEditor.putString("linepay_switch", "true");
+                    systemDataEditor.commit();
                 }
                 else
                 {
                     Config.PAY_SELECT_KBN = "0";//Pay by WebView
                     linePaySwitch.setChecked(false);
                     Config.CARTURLENABLE=true;
+                    //Save the switch status
+                    systemDataEditor = systemData.edit();
+                    systemDataEditor.putString("linepay_switch", "false");
+                    systemDataEditor.commit();
+
                 }
             }
         });

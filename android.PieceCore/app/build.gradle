@@ -12,7 +12,7 @@ apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "23.0.2"
+    buildToolsVersion "23.0.3"
 
     defaultConfig {
         minSdkVersion 14
@@ -20,6 +20,14 @@ android {
 
         versionCode 1
         versionName "1.0.0"
+
+        // Enabling multidex support.
+        multiDexEnabled true
+    }
+
+    dexOptions {
+        //最大ヒープサイズを4Gに設定
+        javaMaxHeapSize "4g"
     }
 
     buildTypes {
@@ -29,12 +37,12 @@ android {
         }
     }
 }
-
 dependencies {
+
     compile files('libs/zbar.jar')
     compile files('libs/YouTubeAndroidPlayerApi.jar')
     compile 'com.android.support:support-v4:23.1.1'
-    compile ('com.google.android.gms:play-services:8.4.0'){
+    compile ('com.google.android.gms:play-services:9.0.0'){
         exclude module: 'play-services-drive'
         exclude module: 'play-services-fitness'
         exclude module: 'play-services-games'
@@ -51,8 +59,11 @@ dependencies {
     compile 'com.journeyapps:zxing-android-embedded:3.0.2@aar'
     compile 'com.facebook.android:facebook-android-sdk:4.2.0'
     compile 'org.twitter4j:twitter4j-core:4.0.2'
-    compile 'com.paypal.sdk:paypal-android-sdk:2.12.5'
+    compile 'com.paypal.sdk:paypal-android-sdk:2.13.1'
     compile 'com.paypal.sdk:rest-api-sdk:1.4.1'
+
+    compile 'com.google.firebase:firebase-analytics:9.0.0'
+    compile 'com.android.support:multidex:1.0.0'
 }
 
 apply plugin: 'maven'
@@ -63,7 +74,7 @@ uploadArchives {
             repository url: "file://${projectDir}/repository"
             pom.groupId = 'jp.co.jokerpiece.android.piececore'
             pom.artifactId = 'android.piececore'
-            pom.version = '0.5.1'
+            pom.version = '0.5.2'
         }
     }
 }

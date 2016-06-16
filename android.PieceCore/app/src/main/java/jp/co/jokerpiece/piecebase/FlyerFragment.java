@@ -37,6 +37,7 @@ import android.widget.RelativeLayout;
 
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 import org.json.JSONException;
 
@@ -63,6 +64,10 @@ import jp.co.jokerpiece.piecebase.util.DownloadImageView;
 import jp.co.jokerpiece.piecebase.util.ViewPagerIndicator;
 
 public class FlyerFragment extends BaseFragment implements OnPageChangeListener {
+
+    //FireBase Analytics
+    public FirebaseAnalytics mAnalytics;
+
     Context context;
     FlyerTimerTask timerTask = null;
     Timer mTimer = null;
@@ -109,6 +114,15 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener 
         bundleSendData = new Bundle();
 
         context = getActivity();
+
+        //Firebase analytics
+        mAnalytics = FirebaseAnalytics.getInstance(context);
+        // send event
+        Bundle params = new Bundle();
+        params.putString("text_name", "logevent2");
+        params.putString("text_data", "Hello Firebase Analytics");
+        mAnalytics.logEvent("flyer_fragment", params);
+
         Common.setCurrentFragment(Config.FlyerFragmentNum);
         View rootView = inflater.inflate(R.layout.fragment_flyer, container, false);
 
