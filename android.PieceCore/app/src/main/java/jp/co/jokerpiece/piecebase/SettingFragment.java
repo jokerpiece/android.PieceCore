@@ -51,14 +51,13 @@ public class SettingFragment extends BaseFragment {
 
 
         linePaySwitch = (Switch)rootView.findViewById(R.id.linepay_switch);
-        systemData = getActivity().getSharedPreferences("SystemDataSave", Context.MODE_PRIVATE);
 
         //Set the line pay switch's status
         systemData = getActivity().getSharedPreferences("SystemDataSave", Context.MODE_PRIVATE);
         String status = systemData.getString("linepay_switch","");
 
         //Check the switch status which last used
-        if(status != null)
+        if(status != "")
         {
             if(status.equals("true"))
             {

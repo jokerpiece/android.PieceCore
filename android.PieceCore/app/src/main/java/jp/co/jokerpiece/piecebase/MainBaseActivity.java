@@ -41,6 +41,7 @@ import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 //import com.google.firebase.analytics.FirebaseAnalytics;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -109,12 +110,13 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
             t.send(new HitBuilders.ScreenViewBuilder().build());
         }
 
+
         //Set the line pay switch's status
         systemData = this.getSharedPreferences("SystemDataSave", Context.MODE_PRIVATE);
         String status = systemData.getString("linepay_switch","");
 
         //Check the switch status which last used
-        if(status != null)
+        if(status != "")
         {
             if(status.equals("true"))
             {
@@ -129,6 +131,9 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
                 Config.CARTURLENABLE=true;
             }
         }
+
+
+
 
         context = this;
         Config.PACKAGE_NAME = getApplicationContext().getPackageName();
