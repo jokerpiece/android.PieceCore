@@ -39,7 +39,7 @@ import android.widget.TextView;
 
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
-import com.google.firebase.analytics.FirebaseAnalytics;
+//import com.google.firebase.analytics.FirebaseAnalytics;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -81,7 +81,7 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
     public static String intentClassName = null;
 
     private final MainBaseActivity self = this;
-    public FirebaseAnalytics mAnalytics;
+    //public FirebaseAnalytics mAnalytics;
 
     SharedPreferences systemData;
     SharedPreferences.Editor systemDataEditor;
@@ -90,7 +90,7 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mAnalytics = FirebaseAnalytics.getInstance(self);
+        //mAnalytics = FirebaseAnalytics.getInstance(self);
 
         // ユーザープロパティの設定
         //mAnalytics.setUserProperty("key", "value");
