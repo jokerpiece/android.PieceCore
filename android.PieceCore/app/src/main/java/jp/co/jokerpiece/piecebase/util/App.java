@@ -31,7 +31,8 @@ public class App extends Application {
         ECOMMERCE_TRACKER,
     }
     HashMap<TrackerName,Tracker> mTrackers = new HashMap<TrackerName,Tracker>();
-    public synchronized  Tracker getTracker(TrackerName trackerId){
+    public synchronized  Tracker getTracker(TrackerName trackerId)
+    {
 //        if(tracker == null){
 //            GoogleAnalytics analytics = GoogleAnalytics.getInstance(this);
 //            AppUtil.debugLog("PROPERTY_ID",Config.PROPERTY_ID);

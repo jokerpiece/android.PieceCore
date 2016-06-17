@@ -93,7 +93,13 @@ public class LinePayActivity extends Activity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
+        //Google Analytics
+        if(Config.ANALYTICS_MODE.equals("true")){
+            App app = (App)this.getApplication();
+            Tracker t = app.getTracker(App.TrackerName.APP_TRACKER);
+            t.setScreenName("LinePayment");
+            t.send(new HitBuilders.ScreenViewBuilder().build());
+        }
 
         setContentView(R.layout.activity_linepay);
 

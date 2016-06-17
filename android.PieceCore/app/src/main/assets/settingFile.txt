@@ -13,6 +13,6 @@ delivery=
 carturl=123
 search_mode=true
 analytics_mode=true
-webview_activity_mode=true
+webview_activity_mode=false
 notifi_sound_mode=false
 line_pay_url_scheme=

@@ -49,7 +49,6 @@ public class WebViewActivity extends FragmentActivity {
             t.setScreenName("WEB VIEW");
             t.send(new HitBuilders.ScreenViewBuilder().build());
 
-
         }
 
         setContentView(R.layout.activity_webview);

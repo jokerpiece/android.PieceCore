@@ -21,9 +21,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+
 import jp.co.jokerpiece.piecebase.config.Common;
 import jp.co.jokerpiece.piecebase.config.Config;
 import jp.co.jokerpiece.piecebase.data.SaveData;
+import jp.co.jokerpiece.piecebase.util.App;
 import jp.co.jokerpiece.piecebase.util.AppUtil;
 
 @SuppressLint("SetJavaScriptEnabled")
@@ -60,7 +64,17 @@ public class WebViewFragment extends BaseFragment implements View.OnClickListene
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+                             Bundle savedInstanceState)
+    {
+        //Google Analytics
+        if(Config.ANALYTICS_MODE.equals("true")){
+            App app = (App)getActivity().getApplication();
+            Tracker t = app.getTracker(App.TrackerName.APP_TRACKER);
+            t.setScreenName("WEB VIEW");
+            t.send(new HitBuilders.ScreenViewBuilder().build());
+
+        }
+
             View rootView = inflater.inflate(R.layout.fragment_webview, container, false);
             ll = (LinearLayout) rootView.findViewById(R.id.base_webview);
             //conMan = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -79,6 +93,17 @@ public class WebViewFragment extends BaseFragment implements View.OnClickListene
                     public void onPageStarted(WebView view, String url, Bitmap favicon) {
                         super.onPageStarted(view, url, favicon);
                         ConnectFailed = false;
+
+                        //Google Analytics
+                        if(Config.ANALYTICS_MODE.equals("true")){
+                            App app = (App)getActivity().getApplication();
+                            Tracker t = app.getTracker(App.TrackerName.APP_TRACKER);
+                            t.setScreenName(webView.getUrl());
+                            t.send(new HitBuilders.ScreenViewBuilder().build());
+
+                        }
+
+
                     }
 
                     @Override
