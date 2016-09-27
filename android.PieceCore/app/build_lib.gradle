@@ -52,6 +52,8 @@ dependencies {
     compile 'org.twitter4j:twitter4j-core:4.0.2'
     compile 'com.paypal.sdk:paypal-android-sdk:2.12.5'
     compile 'com.paypal.sdk:rest-api-sdk:1.4.1'
+
+    compile 'com.prolificinteractive:material-calendarview:1.4.0'
 }
 
 apply plugin: 'maven'
@@ -62,7 +64,7 @@ uploadArchives {
             repository url: "file://${projectDir}/repository"
             pom.groupId = 'jp.co.jokerpiece.android.piececore'
             pom.artifactId = 'android.piececore'
-            pom.version = '0.5.6'
+            pom.version = '0.5.7'
         }
     }
 }

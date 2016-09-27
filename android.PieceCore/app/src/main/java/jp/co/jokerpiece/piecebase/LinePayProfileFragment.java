@@ -795,8 +795,6 @@ public class LinePayProfileFragment extends Fragment
         getActivity().getLoaderManager().initLoader
                 (Config.loaderCnt++, getArguments(), new LoaderManager.LoaderCallbacks<LinePayData>()
                 {
-
-
                     @Override
                     public Loader<LinePayData> onCreateLoader(int id, Bundle args)
                     {
@@ -1235,6 +1233,10 @@ public class LinePayProfileFragment extends Fragment
 
                 ft.replace(R.id.fragment, fragment);
                 ft.commit();
+            }
+            else//For library use
+            {
+                getActivity().finish();
             }
 
         }

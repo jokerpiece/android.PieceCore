@@ -352,7 +352,13 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener 
             {
                 if(Config.WEBVIEW_ACTIVITY_MODE.equals("true"))
                 {
-                    if((!item_id_flyer.equals(""))&&(!item_id_flyer.equals(null))&&(!item_id_flyer.equals("null")))// item_id has value
+                    // check if url scheme link
+                    if (item_id_flyer.startsWith(Config.APP_ID))
+                    {
+                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                        getContext().startActivity(intent);
+                    }
+                    else if((!item_id_flyer.equals(""))&&(!item_id_flyer.equals(null))&&(!item_id_flyer.equals("null")))// item_id has value
                     {
                         AppUtil.debugLog("item_id_flyer",item_id_flyer);
                         if("1".equals(Config.PAY_SELECT_KBN))//LinePay Native
@@ -396,7 +402,6 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener 
                         Intent intent = new Intent(context, WebViewActivity.class);
                         intent.putExtra("send_url", url);
                         context.startActivity(intent);
-
                     }
 
 

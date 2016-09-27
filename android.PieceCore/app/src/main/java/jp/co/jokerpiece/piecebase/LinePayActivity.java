@@ -97,18 +97,12 @@ public class LinePayActivity extends Activity
         if(Config.ANALYTICS_MODE.equals("true")){
             App app = (App)this.getApplication();
             Tracker t = app.getTracker(App.TrackerName.APP_TRACKER);
-            t.setScreenName("LinePayment");
+            t.setScreenName("LINE PAYMENT");
             t.send(new HitBuilders.ScreenViewBuilder().build());
         }
 
         setContentView(R.layout.activity_linepay);
 
-        if(Config.ANALYTICS_MODE.equals("true")){
-            App app = (App)this.getApplication();
-            Tracker t = app.getTracker(App.TrackerName.APP_TRACKER);
-            t.setScreenName("LINE PAYMENT");
-            t.send(new HitBuilders.ScreenViewBuilder().build());
-        }
 
         data = getSharedPreferences("SystemDataSave", Context.MODE_PRIVATE);
 

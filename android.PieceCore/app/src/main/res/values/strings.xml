@@ -61,6 +61,8 @@
     <string name="setting">設定</string>
     <string name="setting0">SETTING</string>
     <string name="setting1">Setting</string>
+    <string name="calendar">カレンダー</string>
+    <string name="calendar0">CALENDAR</string>
 
         <!-- default theme -->
     <drawable name="actionbar_background">#FFFFFF</drawable>

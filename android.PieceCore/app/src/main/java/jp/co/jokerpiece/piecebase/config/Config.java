@@ -124,7 +124,6 @@ public class Config {
     public static final String SENDID_MESSAGE_UPLOAD_DONE;
     public static final String SENDID_REGUST_APP_PAYMENT;
 
-    //declare by sou
     public static final String SENDID_SEND_PROFILE;
     public static final String GET_ADDRESS_BY_POSTNUMBER;
     public static final String SENDID_DELIVERY_PRICE;
@@ -134,6 +133,7 @@ public class Config {
     public static final String REGIST_LINEPAY_APP_PAYMENT;
     public static String URL_SCHEME_LINEPAY_ACTIVITY;
     public static final String ITEM_DETAIL;
+    public static final String EVENT_LIST;
 
     public static final String YOUTUBE_APIV3 = "https://www.googleapis.com/upload/youtube/v3/videos?part=snippet,status";
 
@@ -158,6 +158,7 @@ public class Config {
     public static int PaypalFragmentNum;
     public static int ResoultFragmentNum;
     public static int ReminederFragmentNum;
+    public static int CalendarFragmentNum;
     public static int SettingFragmentNum;
 
     public static List Savelist = new ArrayList<>();
@@ -409,7 +410,7 @@ public class Config {
         SENDID_MESSAGE_UPLOAD_DONE = SERVER_URL +"manager/html/webview/message/done.html";
         SENDID_REGUST_APP_PAYMENT = SERVER_API_URL + "regist_app_payment";
 
-        //crated by sou
+
         GET_ADDRESS_BY_POSTNUMBER = "http://zipcloud.ibsnet.co.jp/api/search?zipcode=";
         SENDID_SEND_PROFILE = SERVER_URL+"manager/html/xml/send_profile/";
         SENDID_DELIVERY_PRICE = SERVER_URL+"manager/html/xml/delivery_price/";
@@ -419,6 +420,7 @@ public class Config {
         GET_LINEPAY_CONFIRM=SERVER_URL+"manager/html/xml/linepay/index.php?Action=confirm";
         REGIST_LINEPAY_APP_PAYMENT = SERVER_URL+"manager/html/xml/regist_app_payment/";
         ITEM_DETAIL=SERVER_URL+"manager/html/xml/item_detail/";
+        EVENT_LIST=SERVER_URL+"manager/html/xml/reserve/?Action=event_list";
     }
 
 }

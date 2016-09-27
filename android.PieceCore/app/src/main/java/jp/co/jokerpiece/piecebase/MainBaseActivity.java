@@ -62,7 +62,8 @@ import jp.co.jokerpiece.piecebase.util.BeaconUtil;
  * "Shopping"の部分はタブに設定しているクラスのクラス名を含む文字列を設定すればOK。
  * AppUtil.getPositionメソッドが-1で返ってくる場合は何も起こりません。
  */
-public class MainBaseActivity extends FragmentActivity implements OnTabChangeListener {
+public class MainBaseActivity extends FragmentActivity implements OnTabChangeListener
+{
     private static final String TAG = MainBaseActivity.class.getSimpleName();
 
     private Context context;
@@ -477,19 +478,19 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
                         put("cls", StampFragment.class);
                     }
                 },
-//                new HashMap<String, Object>() {
-//                    {
-//                        put("tabTitle", getString(R.string.sns1));
-//                    }
-//
-//                    {
-//                        put("tabIcon", R.drawable.icon_sns);
-//                    }
-//
-//                    {
-//                        put("cls", SnsFragment.class);
-//                    }
-//                },
+                new HashMap<String, Object>() {
+                    {
+                        put("tabTitle", getString(R.string.sns1));
+                    }
+
+                    {
+                        put("tabIcon", R.drawable.icon_sns);
+                    }
+
+                    {
+                        put("cls", SnsFragment.class);
+                    }
+                },
 //                new HashMap<String, Object>() {
 //                    {
 //                        put("tabTitle", getString(R.string.twitter1));
@@ -514,6 +515,19 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
 
                     {
                         put("cls", ReminderFragment.class);
+                    }
+                },
+                new HashMap<String, Object>() {
+                    {
+                        put("tabTitle", getString(R.string.calendar0));
+                    }
+
+                    {
+                        put("tabIcon", R.drawable.icon_calendar);
+                    }
+
+                    {
+                        put("cls", CalendarFragment.class);
                     }
                 },
                 new HashMap<String, Object>() {
@@ -585,16 +599,19 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
                 put(StampFragment.class.getSimpleName(), R.string.stamp0);
             }
 
-//            {
-//                put(SnsFragment.class.getSimpleName(), R.string.sns0);
-//            }
-//
+            {
+                put(SnsFragment.class.getSimpleName(), R.string.sns0);
+            }
+
 //            {
 //                put(TwitterFragment.class.getSimpleName(), R.string.twitter0);
 //            }
 
             {
                 put(ReminderFragment.class.getSimpleName(), R.string.reminder0);
+            }
+            {
+                put(CalendarFragment.class.getSimpleName(), R.string.calendar0);
             }
             {
                 put(SettingFragment.class.getSimpleName(),R.string.setting0);
@@ -618,7 +635,8 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
         Config.TwitterFragmentNum = 9;
         Config.WebViewFragmentNum = 10;
         Config.ReminederFragmentNum = 11;
-        Config.SettingFragmentNum = 12;
+        Config.CalendarFragmentNum = 12;
+        Config.SettingFragmentNum = 13;
     }
 
     /**
