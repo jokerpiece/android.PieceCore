@@ -353,7 +353,7 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener 
                 if(Config.WEBVIEW_ACTIVITY_MODE.equals("true"))
                 {
                     // check if url scheme link
-                    if (item_id_flyer.startsWith(Config.APP_ID))
+                    if (url.startsWith(Config.APP_ID))
                     {
                         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
                         getContext().startActivity(intent);
