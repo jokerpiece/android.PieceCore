@@ -54,6 +54,7 @@ dependencies {
     compile 'com.paypal.sdk:rest-api-sdk:1.4.1'
 
     compile 'com.prolificinteractive:material-calendarview:1.4.0'
+    compile 'com.github.ksoichiro:android-observablescrollview:1.6.0'
 }
 
 apply plugin: 'maven'
@@ -64,7 +65,7 @@ uploadArchives {
             repository url: "file://${projectDir}/repository"
             pom.groupId = 'jp.co.jokerpiece.android.piececore'
             pom.artifactId = 'android.piececore'
-            pom.version = '0.5.8'
+            pom.version = '0.5.9'
         }
     }
 }

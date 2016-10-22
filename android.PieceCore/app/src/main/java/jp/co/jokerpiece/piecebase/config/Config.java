@@ -134,6 +134,7 @@ public class Config {
     public static String URL_SCHEME_LINEPAY_ACTIVITY;
     public static final String ITEM_DETAIL;
     public static final String EVENT_LIST;
+    public static final String REGIST_RESERVE;
 
     public static final String YOUTUBE_APIV3 = "https://www.googleapis.com/upload/youtube/v3/videos?part=snippet,status";
 
@@ -420,7 +421,10 @@ public class Config {
         GET_LINEPAY_CONFIRM=SERVER_URL+"manager/html/xml/linepay/index.php?Action=confirm";
         REGIST_LINEPAY_APP_PAYMENT = SERVER_URL+"manager/html/xml/regist_app_payment/";
         ITEM_DETAIL=SERVER_URL+"manager/html/xml/item_detail/";
-        EVENT_LIST=SERVER_URL+"manager/html/xml/reserve/?Action=event_list";
+        EVENT_LIST=SERVER_URL+"manager/html/xml/reserve/?Action=eventList";
+        REGIST_RESERVE=SERVER_URL+"manager/html/xml/reserve/?Action=registReserve";
+        //EVENT_LIST="http://192.168.77.200/shinden/manager/html/xml/reserve/?Action=eventList";
+        //REGIST_RESERVE = "http://192.168.77.200/shinden/manager/html/xml/reserve/?Action=registReserve";
     }
 
 }

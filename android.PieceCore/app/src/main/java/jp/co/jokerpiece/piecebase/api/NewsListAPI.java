@@ -67,6 +67,8 @@ public class NewsListAPI extends AsyncTaskLoader<NewsListData> implements HttpCl
 			    //data.text = jsonObject.getString("text");
 				data.type = jsonObject.getString("type");
 				data.id = jsonObject.getString("id");
+				data.delivered_datetime = jsonObject.getString("delivered_datetime");
+
 			    newsListData.data_list.add(data);
 			}
 		} catch (JSONException e) {

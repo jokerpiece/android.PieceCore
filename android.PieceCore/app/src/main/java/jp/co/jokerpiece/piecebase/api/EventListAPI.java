@@ -4,11 +4,13 @@ import android.content.AsyncTaskLoader;
 import android.content.Context;
 import android.os.Bundle;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import jp.co.jokerpiece.piecebase.config.Common;
@@ -26,7 +28,7 @@ public class EventListAPI extends AsyncTaskLoader<EventListData> implements Http
 
     private String app_id = Config.APP_ID;
     private String app_key = Config.APP_KEY;
-    private String uuid = Common.getUUID(getContext());
+    //private String uuid = Common.getUUID(getContext());
     private String cal_date ="null";
 
     public EventListAPI(Context context, Bundle bundle)
@@ -82,15 +84,52 @@ public class EventListAPI extends AsyncTaskLoader<EventListData> implements Http
             AppUtil.debugLog("JSON", rootObject.toString());
 
 
-            int error_code = rootObject.getInt("error_code");
+            ArrayList<HashMap<String, String>> eventList = new ArrayList<>();
+            ArrayList<HashMap<String, String>> reserveList = new ArrayList<>();
 
-            eventListData.error_code = rootObject.getString("error_code");
-            eventListData.error_message = rootObject.getString("error_message");
 
-            if(error_code != 0)
+            JSONArray eventListArray = rootObject.getJSONArray("event_list");
+            for(int i = 0; i < eventListArray.length(); i++)
             {
-                return null;
+                JSONObject jsonObject = eventListArray.getJSONObject(i);
+                HashMap<String, String> eventListHashMap = new HashMap<>();
+
+                eventListHashMap.put("event_id",jsonObject.getString("EVENT_ID"));
+                eventListHashMap.put("event_name",jsonObject.getString("EVENT_NAME"));
+                eventListHashMap.put("event_date",jsonObject.getString("EVENT_DATE"));
+                eventList.add(eventListHashMap);
+
+
             }
+
+//            JSONArray reserveListArray = rootObject.getJSONArray("reserve_list");
+//            for(int i = 0; i < reserveListArray.length(); i++)
+//            {
+//                JSONObject jsonObject = reserveListArray.getJSONObject(i);
+//                HashMap<String, String> reserveListHashMap = new HashMap<>();
+//
+//                reserveListHashMap.put("event_id",jsonObject.getString("RESERVE_ID"));
+//                reserveListHashMap.put("event_name",jsonObject.getString("RESERVE_DATE"));
+//                reserveList.add(reserveListHashMap);
+//
+//            }
+
+            eventListData.eventList = eventList;
+//            eventListData.reserveList = reserveList;
+
+//            int error_code = rootObject.getInt("error_code");
+//
+//            if(error_code != 0)
+//            {
+//                eventListData.error_code = rootObject.getString("error_code");
+//                eventListData.error_message = rootObject.getString("error_message");
+//
+//            }
+//            else
+//            {
+//                eventListData.error_code = rootObject.getString("error_code");
+//                eventListData.error_message = rootObject.getString("error_message");
+//            }
 
 
         }

@@ -28,5 +28,6 @@ public class NewsListData implements Serializable {
 		public String text;
 		public String type;
 		public String id;
+		public String delivered_datetime;
 	}
 }

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,7 +31,6 @@ public class InfomationListFragment extends Fragment implements OnItemClickListe
 	private InfoListAdapter adapter;
 	private NewsListData data;
 	private int type;
-
 	/**
 	 * コンストラクタ
 	 */
@@ -202,7 +202,7 @@ public class InfomationListFragment extends Fragment implements OnItemClickListe
 		@SuppressLint("InflateParams")
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
-			TextView tvTitle;
+			TextView tvTitle, tvDate, tvNew;
 			ImageView ivInfo;
 			View v = convertView;
 			if (v == null) {
@@ -214,12 +214,15 @@ public class InfomationListFragment extends Fragment implements OnItemClickListe
 			//NewsData data = (NewsData)getItem(position);
 			//　表示順番を逆にするため
 			NewsData data = (NewsData)getItem(getCount() - 1 - position);
+
 			if (data != null) {
 				tvTitle = (TextView) v.findViewById(R.id.tv_title);
 				ivInfo = (ImageView) v.findViewById(R.id.iv_info);
+				tvDate = (TextView) v.findViewById(R.id.tv_date);
 
 				String title = data.title;
 				String type = data.type;
+				String date = data.delivered_datetime;
 
 				if (title != null) {
 					tvTitle.setText(title);
@@ -227,18 +230,34 @@ public class InfomationListFragment extends Fragment implements OnItemClickListe
 
 				if (type != null) {
 					switch (type) {
-					case "1":
-						setImageResource(ivInfo, R.drawable.news_infomation);
-						break;
-					case "2":
-						setImageResource(ivInfo, R.drawable.news_shopping);
-						break;
-					case "3":
-						setImageResource(ivInfo, R.drawable.news_coupon);
-						break;
+						case "1":
+							setImageResource(ivInfo, R.drawable.news_infomation);
+							break;
+						case "2":
+							setImageResource(ivInfo, R.drawable.news_shopping);
+							break;
+						case "3":
+							setImageResource(ivInfo, R.drawable.news_coupon);
+							break;
 					}
 				}
+
+				tvDate.setText(date);
+
+				Log.d("position",Integer.toString(position));
 			}
+
+			tvNew = (TextView) v.findViewById(R.id.tv_new);
+
+			if(position == 0)
+			{
+				tvNew.setText("new!");
+			}
+			else
+			{
+				tvNew.setText("");
+			}
+
 
 			return v;
 		}

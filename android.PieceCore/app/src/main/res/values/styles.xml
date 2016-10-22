@@ -60,4 +60,12 @@
         <item name="android:background">@drawable/actionbar_background_cute</item>
     </style>
 
+
+    <!--draw behind action bar-->
+    <style name="ThemeActionBarOverlay" parent="@style/Theme.AppCompat">
+
+        <item name="windowActionBarOverlay">true</item> <!-- for ActionBarSherlock -->
+        <item name="android:windowActionBarOverlay">true</item>
+    </style>
+
 </resources>

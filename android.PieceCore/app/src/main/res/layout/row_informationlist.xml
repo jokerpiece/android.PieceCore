@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:layout_width="0dp"
-        android:layout_height="65dp"
+        android:layout_height="75dp"
         android:layout_weight="2"
         android:gravity="center"
         android:orientation="vertical" >
@@ -21,6 +21,12 @@
             android:scaleType="fitCenter"
             android:src="@drawable/news_coupon"
             android:visibility="invisible" />
+
+		<TextView
+			android:id="@+id/tv_new"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text=""/>
     </LinearLayout>
 
     <LinearLayout
@@ -35,6 +41,15 @@
 		    android:layout_height="wrap_content"
 		    android:layout_margin="5dp"
 		    android:textSize="14sp" />
+		<TextView
+			android:id="@+id/tv_date"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:text="2016/01/01"
+			android:layout_margin="5dp"
+			android:textSize="14sp"
+			android:gravity="right"/>
+
     </LinearLayout>
 
 </LinearLayout>
