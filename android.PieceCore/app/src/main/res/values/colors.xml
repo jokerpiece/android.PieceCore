@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+    <color name="defaultBackgroundColor">#fff3f3f3</color>
     <color name="white">#FFFFFF</color>
     <color name="white_transparent">#5affffff</color>
     <color name="grey">#bebebe</color>
@@ -8,5 +8,6 @@
     <color name="yellow">#ffd640</color>
     <color name="red">#ff6a6a</color>
     <color name="blue">#5895ff</color>
+    <color name="dark_brown">#3d341b</color>
 
 </resources>

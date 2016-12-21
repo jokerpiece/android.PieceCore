@@ -28,6 +28,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class CouponUseFragment extends Fragment implements OnPageChangeListener {
@@ -50,6 +51,9 @@ public class CouponUseFragment extends Fragment implements OnPageChangeListener 
 //	private static final int MP = ViewGroup.LayoutParams.MATCH_PARENT;
 //	private static final int WC = ViewGroup.LayoutParams.WRAP_CONTENT;
 
+	//Coupon Tab
+	private Button btnCouponDelivered, btnCouponGet;
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -57,7 +61,25 @@ public class CouponUseFragment extends Fragment implements OnPageChangeListener 
 		View rootView = inflater.inflate(R.layout.fragment_coupon_use, container, false);
         Common.setCurrentFragment(Config.CouponFragmentNum);
 		activity = getActivity();
-        viewPager = (ViewPager) rootView.findViewById(R.id.couponpager);
+
+		btnCouponDelivered = (Button)rootView.findViewById(R.id.btn_coupon_delivered);
+		btnCouponGet = (Button)rootView.findViewById(R.id.btn_coupon_get);
+
+		btnCouponDelivered.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				//Back to CouponUseFragment
+				getActivity().getSupportFragmentManager().popBackStack();
+			}
+		});
+
+		btnCouponGet.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				//Do nothing
+			}
+		});
+		viewPager = (ViewPager) rootView.findViewById(R.id.couponpager);
         viewPagerIndicator = (ViewPagerIndicator) rootView.findViewById(R.id.indicator);
         tvNoCoupon = (TextView) rootView.findViewById(R.id.tv_nocoupon);
         viewPager.setOnPageChangeListener(this);
@@ -87,9 +109,9 @@ public class CouponUseFragment extends Fragment implements OnPageChangeListener 
 	@Override
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 		menu.clear();
-        if(!Config.haveUrlFlg) {
-            inflater.inflate(R.menu.menu_coupon_use, menu);
-        }
+//        if(!Config.haveUrlFlg) {
+//            inflater.inflate(R.menu.menu_coupon_use, menu);
+//        }
 
 //		MenuItem haveCoupon = menu.add(0 , Menu.FIRST, Menu.NONE ,"閉じる");
 //		haveCoupon.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
@@ -102,13 +124,7 @@ public class CouponUseFragment extends Fragment implements OnPageChangeListener 
 		super.onOptionsItemSelected(item);
 		int itemId = item.getItemId();
 		if (itemId == R.id.action_coupon_use) {
-			getActivity().getSupportFragmentManager().popBackStack();
-//			FragmentManager fm = getFragmentManager();
-//			FragmentTransaction ft = fm.beginTransaction();
-//			CouponFragment fragment = new CouponFragment();
-//			ft.replace(R.id.fragment, fragment);
-//            ft.addToBackStack(null);
-//			ft.commit();
+//			getActivity().getSupportFragmentManager().popBackStack();
 		}
 		return true;
 	}

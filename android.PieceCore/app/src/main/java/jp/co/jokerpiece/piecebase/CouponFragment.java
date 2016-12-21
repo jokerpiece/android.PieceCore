@@ -18,6 +18,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.android.gms.analytics.HitBuilders;
@@ -65,12 +66,39 @@ public class CouponFragment extends BaseFragment implements OnPageChangeListener
 //	private static final int MP = ViewGroup.LayoutParams.MATCH_PARENT;
 //	private static final int WC = ViewGroup.LayoutParams.WRAP_CONTENT;
 
+	//Coupon Tab
+	private Button btnCouponDelivered, btnCouponGet;
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
         context = getActivity();
         Common.setCurrentFragment(Config.CouponFragmentNum);
 		View rootView = inflater.inflate(R.layout.fragment_coupon, container, false);
+
+		btnCouponDelivered = (Button)rootView.findViewById(R.id.btn_coupon_delivered);
+		btnCouponGet = (Button)rootView.findViewById(R.id.btn_coupon_get);
+
+		btnCouponDelivered.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+			//Do nothing
+			}
+		});
+
+		btnCouponGet.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				//Go to CouponUseFragment
+				FragmentManager fm = getFragmentManager();
+				FragmentTransaction ft = fm.beginTransaction();
+				CouponUseFragment fragment = new CouponUseFragment();
+				ft.replace(R.id.fragment, fragment);
+				ft.addToBackStack(null);
+				ft.commit();
+
+			}
+		});
 
         activity = getActivity();
         viewPager = (ViewPager) rootView.findViewById(R.id.couponpager);
@@ -135,6 +163,7 @@ public class CouponFragment extends BaseFragment implements OnPageChangeListener
 	@Override
 	public void onResume() {
 		super.onResume();
+
 		AppUtil.setTitleOfActionBar(
 				getActivity().getActionBar(),
 				MainBaseActivity.titleOfActionBar.get(CouponFragment.class.getSimpleName()));
@@ -160,9 +189,9 @@ public class CouponFragment extends BaseFragment implements OnPageChangeListener
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 		menu.clear();
      //   if(!Config.isGetUrl) {
-        if(!Config.haveUrlFlg){
-            inflater.inflate(R.menu.menu_coupon, menu);
-        }
+//        if(!Config.haveUrlFlg){
+//            inflater.inflate(R.menu.menu_coupon, menu);
+//        }
 //		MenuItem haveCoupon = menu.add(0 , Menu.FIRST, Menu.NONE ,"取得済みクーポン");
 //		haveCoupon.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
 //		haveCoupon.setIcon(R.drawable.icon_coupon);
@@ -175,12 +204,12 @@ public class CouponFragment extends BaseFragment implements OnPageChangeListener
 		AppUtil.debugLog("itemID", "itemID"+item.getItemId());
 		int itemId = item.getItemId();
 		if (itemId == R.id.action_coupon) {
-			FragmentManager fm = getFragmentManager();
-			FragmentTransaction ft = fm.beginTransaction();
-			CouponUseFragment fragment = new CouponUseFragment();
-			ft.replace(R.id.fragment, fragment);
-            ft.addToBackStack(null);
-            ft.commit();
+//			FragmentManager fm = getFragmentManager();
+//			FragmentTransaction ft = fm.beginTransaction();
+//			CouponUseFragment fragment = new CouponUseFragment();
+//			ft.replace(R.id.fragment, fragment);
+//            ft.addToBackStack(null);
+//            ft.commit();
 		}
 		return true;
 	}

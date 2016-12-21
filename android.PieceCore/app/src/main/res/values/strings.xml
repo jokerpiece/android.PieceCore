@@ -170,4 +170,7 @@
     <string name="notification_pay">アプリ内決済</string>
     <string name="notification_pay_hint">ONにすると、Lineアプリの決済機能を使ってお支払いをする事ができます。
         \n※Lineでお支払いの場合、ポイントの付与は行われません。</string>
+    <!--Coupon Tab-->
+    <string name="coupon_tab_delivered">配布中のクーポン</string>
+    <string name="coupon_tab_get">獲得したクーポン</string>
 </resources>
