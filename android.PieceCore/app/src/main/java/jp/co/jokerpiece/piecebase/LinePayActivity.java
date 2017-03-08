@@ -46,9 +46,6 @@ import jp.co.jokerpiece.piecebase.util.AppUtil;
  */
 public class LinePayActivity extends Activity
 {
-
-
-
     private TextView itemNameText, itemPriceText, deliveryPriceText, amountText, deliveryAddressText,
                         nameText, mailText, kikakuNameTest;
 
@@ -229,13 +226,8 @@ public class LinePayActivity extends Activity
                                 editor.putString("buying_over",buying_over);
                                 editor.commit();
                                 finish();
-
-
                             }
                         });
-
-
-
                     }
                 });
 

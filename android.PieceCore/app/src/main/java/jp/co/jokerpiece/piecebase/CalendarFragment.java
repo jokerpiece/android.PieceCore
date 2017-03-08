@@ -102,27 +102,8 @@ public class CalendarFragment extends BaseFragment implements OnDateSelectedList
         calendarView.setOnDateChangedListener(this);
         calendarView.setShowOtherDates(MaterialCalendarView.SHOW_ALL);
 
-//        instance = Calendar.getInstance();
-//        calendarView.setSelectedDate(instance.getTime());
-//        CalendarDay day = from(instance.getTime());
-//        eventDateSlectedControl(day);
-
-
-//
-//        Calendar instance1 = Calendar.getInstance();
-//        instance1.set(instance1.get(Calendar.YEAR), Calendar.JANUARY, 1);
-//
-//        Calendar instance2 = Calendar.getInstance();
-//        instance2.set(instance2.get(Calendar.YEAR), Calendar.DECEMBER, 31);
-//
-//        calendarView.state().edit()
-//                .setMinimumDate(instance1.getTime())
-//                .setMaximumDate(instance2.getTime())
-//                .commit();
-
         calendarView.addDecorators(
                 new HighlightWeekendsDecorator()
-//                ,oneDayDecorator
         );
 
 
@@ -134,14 +115,6 @@ public class CalendarFragment extends BaseFragment implements OnDateSelectedList
         eventDate = (TextView) rootView.findViewById(R.id.txt_event_date);
         btnReserve = (Button) rootView.findViewById(R.id.btn_reserve);
         btnRserveFrame = (RelativeLayout)rootView.findViewById(R.id.btn_reserve_frame);
-
-        eventName.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), CalendarBookingActivity.class);
-                startActivity(intent);
-            }
-        });
     }
 
     private void eventListApi()
@@ -220,9 +193,6 @@ public class CalendarFragment extends BaseFragment implements OnDateSelectedList
         SimpleDateFormat sdf = new SimpleDateFormat(pattern);
         try {
             Date d = sdf.parse(date);
-//            sdf = new SimpleDateFormat("yyyy-MM-dd");
-//            System.out.println(sdf.format(d));
-//            System.out.println(d.getTime());
             return d.getTime();
         } catch (Exception e) {
             e.printStackTrace();

@@ -48,11 +48,15 @@
 			android:layout_alignTop="@id/couponpager"
 			android:layout_marginTop="5dp"
 			android:visibility="gone" />
+
 		<LinearLayout
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
 			android:gravity="center"
-			android:orientation="horizontal" >
+			android:orientation="horizontal"
+			android:layout_alignParentTop="true"
+			android:layout_toRightOf="@+id/couponpager"
+			android:layout_toEndOf="@+id/couponpager">
 			<TextView
 				android:id="@+id/tv_nocoupon"
 				android:layout_width="wrap_content"

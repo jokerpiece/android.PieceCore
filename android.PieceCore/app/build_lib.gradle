@@ -65,7 +65,7 @@ uploadArchives {
             repository url: "file://${projectDir}/repository"
             pom.groupId = 'jp.co.jokerpiece.android.piececore'
             pom.artifactId = 'android.piececore'
-            pom.version = '0.5.9'
+            pom.version = '0.6.1'
         }
     }
 }

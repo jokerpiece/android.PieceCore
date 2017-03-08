@@ -111,15 +111,6 @@ public class CalendarReserveFragment extends Fragment implements ObservableScrol
             }
         });
 
-//        edtxtDate.setOnTouchListener(new View.OnTouchListener() {
-//            @Override
-//            public boolean onTouch(View v, MotionEvent event) {
-//                edtxtDate.setHintTextColor(getResources().getColor(R.color.grey));
-//                edtxtDate.setHint("日にち");
-//                return false;
-//            }
-//        });
-
         edtxtTime.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -169,26 +160,6 @@ public class CalendarReserveFragment extends Fragment implements ObservableScrol
                     edtxtTotal.setHint("人数を入力して下さい");
                     error_message+="人数を入力して下さい。\n\n";
                 }
-
-                //Date validation
-//                if(edtxtDate.getText().toString().equals(""))
-//                {
-//                    edtxtDate.setHintTextColor(getResources().getColor(R.color.red));
-//                    edtxtDate.setHint("日にちを入力して下さい");
-//                    error_message+="日にちを入力して下さい。\n\n";
-//                }
-//                else
-//                {
-//                    DateValidator dateValidator = new DateValidator();
-//                    Boolean validate = dateValidator.validate(edtxtDate.getText().toString());
-//
-//                    if(!validate)
-//                    {
-//                        edtxtDate.setHintTextColor(getResources().getColor(R.color.red));
-//                        edtxtDate.setHint("日にちの形式が不正です");
-//                        error_message+="日にちの形式が不正です。\n\n";
-//                    }
-//                }
 
                 //Time validation
                 if(edtxtTime.getText().toString().equals(""))

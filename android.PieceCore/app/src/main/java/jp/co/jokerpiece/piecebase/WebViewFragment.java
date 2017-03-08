@@ -100,10 +100,7 @@ public class WebViewFragment extends BaseFragment implements View.OnClickListene
                             Tracker t = app.getTracker(App.TrackerName.APP_TRACKER);
                             t.setScreenName(webView.getUrl());
                             t.send(new HitBuilders.ScreenViewBuilder().build());
-
                         }
-
-
                     }
 
                     @Override
