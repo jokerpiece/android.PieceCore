@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--<CalendarView-->
+        <!--android:id="@+id/calendar_calendarview"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="300dp"-->
+        <!--android:layout_marginBottom="16dp"-->
+        <!--android:showWeekNumber="false"-->
+        <!--/>-->
+
+    <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/calendar_calendarview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:mcv_tileWidth="50dp"
+        app:mcv_tileHeight="38dp"
+        app:mcv_showOtherDates="defaults"
+        app:mcv_selectionColor="#ffc424"
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/event_mark"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="25sp"
+                    android:text="．"
+                    android:textColor="@color/red"
+                    android:layout_toLeftOf="@+id/event_mark_name"/>
+
+                <TextView
+                    android:id="@+id/event_mark_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="45dp"
+                    android:textSize="15sp"
+                    android:textColor="@color/red"
+                    android:gravity="center"
+                    android:layout_alignParentRight="true"
+                    android:text="イベント"/>
+
+            </RelativeLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txt_event_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="Event Date"
+                    android:textSize="25sp"
+                    android:layout_weight="1"
+                    android:visibility="gone"
+                    />
+                <TextView
+                    android:id="@+id/txt_event_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="No Event"
+                    android:textSize="25sp"
+                    android:layout_weight="1"/>
+
+                <RelativeLayout
+                    android:id="@+id/btn_reserve_frame"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.8"
+                    android:visibility="gone"
+                    >
+
+                    <Button
+                        android:id="@+id/btn_reserve"
+                        android:layout_width="250dp"
+                        android:layout_height="40dp"
+                        android:layout_centerInParent="true"
+                        android:textColor="@color/white"
+                        android:background="@drawable/shape_round_rectangle_blue"
+                        android:text="Reserve"
+                        />
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>

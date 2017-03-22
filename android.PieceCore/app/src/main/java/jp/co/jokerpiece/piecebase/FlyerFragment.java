@@ -46,11 +46,13 @@ import java.util.HashMap;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import jp.co.jokerpiece.piecebase.InterFaces.PushNotifyTransition;
 import jp.co.jokerpiece.piecebase.api.FlyerListAPI;
 import jp.co.jokerpiece.piecebase.api.ItemDetailAPI;
 import jp.co.jokerpiece.piecebase.api.ItemListAPI;
 import jp.co.jokerpiece.piecebase.config.Common;
 import jp.co.jokerpiece.piecebase.config.Config;
+import jp.co.jokerpiece.piecebase.config.Constants;
 import jp.co.jokerpiece.piecebase.data.FlyerData;
 import jp.co.jokerpiece.piecebase.data.FlyerData.FlyerHeaderData;
 import jp.co.jokerpiece.piecebase.data.ItemDetailData;
@@ -63,7 +65,7 @@ import jp.co.jokerpiece.piecebase.util.BitmapDownloader;
 import jp.co.jokerpiece.piecebase.util.DownloadImageView;
 import jp.co.jokerpiece.piecebase.util.ViewPagerIndicator;
 
-public class FlyerFragment extends BaseFragment implements OnPageChangeListener {
+public class FlyerFragment extends BaseFragment implements OnPageChangeListener, PushNotifyTransition {
 
     //FireBase Analytics
     //public FirebaseAnalytics mAnalytics;
@@ -268,14 +270,15 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener 
                 MainBaseActivity.titleOfActionBar.get(FlyerFragment.class.getSimpleName()));
         getActivity().invalidateOptionsMenu();
 
-        if(GcmIntentService.start_from_notification){
-            GcmIntentService.start_from_notification = false;
-            if(MainBaseActivity.intentClassName != null){
-                MainBaseActivity.tabHost.setCurrentTab(AppUtil.getPosition(MainBaseActivity.intentClassName));
-            }else{
-                MainBaseActivity.tabHost.setCurrentTab(AppUtil.getPosition(InfomationFragment.class.getSimpleName()));
-            }
-        }
+        pushNotifyTransitionInBackGround();
+//        if(GcmIntentService.start_from_notification){
+//            GcmIntentService.start_from_notification = false;
+//            if(MainBaseActivity.intentClassName != null){
+//                MainBaseActivity.tabHost.setCurrentTab(AppUtil.getPosition(MainBaseActivity.intentClassName));
+//            }else{
+//                MainBaseActivity.tabHost.setCurrentTab(AppUtil.getPosition(InfomationFragment.class.getSimpleName()));
+//            }
+//        }
         if (!MainBaseActivity.startFromSchemeFlg) {
             Intent intent = getActivity().getIntent();
             String action = intent.getAction();
@@ -507,6 +510,24 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener 
         timerTask = new FlyerTimerTask();
         mTimer = new Timer(true);
         mTimer.schedule(timerTask, Config.scrollDelay);
+    }
+
+    @Override
+    public void pushNotifyTransitionInBackGround() {
+        //プッシュ通知からアプリを起動する場合、フラグによりプッシュタイプに応じるビューに遷移する。
+        if(GcmIntentService.notifyMode == Constants.IS_START_FROM_NOTIFICATION) {
+            GcmIntentService.notifyMode = -1;
+            if(MainBaseActivity.intentClassName != null && MainBaseActivity.tabHost!=null) {
+                MainBaseActivity.tabHost.setCurrentTab(AppUtil.getPosition(MainBaseActivity.intentClassName));
+            } else {
+                MainBaseActivity.tabHost.setCurrentTab(AppUtil.getPosition(InfomationFragment.class.getSimpleName()));
+            }
+        }
+    }
+
+    @Override
+    public void pushNotifyTransitionInForeground() {
+
     }
 
     class FlyerTimerTask extends TimerTask {

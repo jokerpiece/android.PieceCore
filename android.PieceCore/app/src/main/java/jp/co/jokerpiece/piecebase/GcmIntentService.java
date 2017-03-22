@@ -27,8 +27,8 @@ public class GcmIntentService extends IntentService {
     public static final int NOTIFICATION_ID = 1;
     private NotificationManager mNotificationManager;
     NotificationCompat.Builder builder;
-    public static boolean start_from_notification = false;
-
+//    public static boolean start_from_notification = false;
+    public static int notifyMode = -1;
 
     public GcmIntentService() {
         super("GcmIntentService");
@@ -39,7 +39,7 @@ public class GcmIntentService extends IntentService {
         Bundle extras = intent.getExtras();
         GoogleCloudMessaging gcm = GoogleCloudMessaging.getInstance(this);
         String messageType = gcm.getMessageType(intent);
-        start_from_notification = true;
+//        start_from_notification = true;
         if (!extras.isEmpty()) {
             if (GoogleCloudMessaging.MESSAGE_TYPE_SEND_ERROR.equals(messageType)) {
                 AppUtil.debugLog("LOG", "messageType(error): " + messageType + ",body:" + extras.toString());
@@ -64,7 +64,6 @@ public class GcmIntentService extends IntentService {
             }
         }
         GcmBroadcastReceiver.completeWakefulIntent(intent);
-
 
     }
 

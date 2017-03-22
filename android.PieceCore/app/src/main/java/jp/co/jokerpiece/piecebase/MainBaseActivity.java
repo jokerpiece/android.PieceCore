@@ -46,8 +46,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
+import jp.co.jokerpiece.piecebase.InterFaces.PushNotifyTransition;
 import jp.co.jokerpiece.piecebase.config.Common;
 import jp.co.jokerpiece.piecebase.config.Config;
+import jp.co.jokerpiece.piecebase.config.Constants;
 import jp.co.jokerpiece.piecebase.data.NewsListData;
 import jp.co.jokerpiece.piecebase.data.SaveData;
 import jp.co.jokerpiece.piecebase.util.App;
@@ -62,7 +64,7 @@ import jp.co.jokerpiece.piecebase.util.BeaconUtil;
  * "Shopping"の部分はタブに設定しているクラスのクラス名を含む文字列を設定すればOK。
  * AppUtil.getPositionメソッドが-1で返ってくる場合は何も起こりません。
  */
-public class MainBaseActivity extends FragmentActivity implements OnTabChangeListener
+public class MainBaseActivity extends FragmentActivity implements OnTabChangeListener, PushNotifyTransition
 {
     private static final String TAG = MainBaseActivity.class.getSimpleName();
 
@@ -694,6 +696,22 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
         tabHost.addTab(tabSpec, RootFragment.class, args);
     }
 
+    @Override
+    public void pushNotifyTransitionInBackGround() {
+
+    }
+
+    @Override
+    public void pushNotifyTransitionInForeground() {
+        //アプリがすでに起動している時に、プッシュ通知が来た場合、以下のコードを実行する。
+        if(GcmIntentService.notifyMode == Constants.IS_NOT_START_FROM_NOTIFACTION) {
+            GcmIntentService.notifyMode = -1;
+            if(MainBaseActivity.intentClassName != null && MainBaseActivity.tabHost!=null) {
+                MainBaseActivity.tabHost.setCurrentTab(AppUtil.getPosition(InfomationFragment.class.getSimpleName()));
+            }
+        }
+    }
+
     /**
      * タブ情報を保持しておくクラス。
      */
@@ -858,46 +876,19 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
             switch (bundle.getString("type")) {
                 case NewsListData.NEWS_DATA_TYPE_INFOMATION + "":
                     intentClassName = "Infomation";
-                    //MainBaseActivity.tabHost.setCurrentTab(AppUtil.getPosition("Infomation"));
-//    			FragmentManager fmInfo = getSupportFragmentManager();
-//    			FragmentTransaction ftInfo = fmInfo.beginTransaction();
-//    			ftInfo.addToBackStack(null);
-//    			InfomationSyosaiFragment fragmentInfo = new InfomationSyosaiFragment();
-//    			Bundle bundleInfo = new Bundle();
-//    			bundleInfo.putString("newsId", bundle.getString("newsId"));
-//    			fragmentInfo.setArguments(bundleInfo);
-//    			ftInfo.replace(R.id.fragment, fragmentInfo);
-//    			ftInfo.commit();
                     break;
                 case NewsListData.NEWS_DATA_TYPE_FLYER + "":
                     intentClassName = "Flyer";
-                    //MainBaseActivity.tabHost.setCurrentTab(AppUtil.getPosition("Flyer"));
-//    			FragmentManager fmNews = getSupportFragmentManager();
-//    			FragmentTransaction ftNews = fmNews.beginTransaction();
-//    			ftNews.addToBackStack(null);
-//    			FlyerFragment fragmentNews = new FlyerFragment();
-//    			Bundle bundleNews= new Bundle();
-//    			bundleNews.putString("flyer_ID", bundle.getString("flyer_ID"));
-//    			fragmentNews.setArguments(bundleNews);
-//    			ftNews.replace(R.id.fragment, fragmentNews);
-//    			ftNews.commit();
                     break;
                 case NewsListData.NEWS_DATA_TYPE_COUPON + "":
                     intentClassName = "Coupon";
-                    //MainBaseActivity.tabHost.setCurrentTab(AppUtil.getPosition("Coupon"));
-//    			FragmentManager fmCoupon = getSupportFragmentManager();
-//    			FragmentTransaction ftCoupon = fmCoupon.beginTransaction();
-//    			ftCoupon.addToBackStack(null);
-//    			CouponFragment fragmentCoupon = new CouponFragment();
-//    			Bundle bundleCoupon= new Bundle();
-//    			bundleCoupon.putString("coupon_code", bundle.getString("coupon_code"));
-//    			fragmentCoupon.setArguments(bundleCoupon);
-//    			ftCoupon.replace(R.id.fragment, fragmentCoupon);
-//    			ftCoupon.commit();
                     break;
                 default:
                     break;
             }
+
+            //Start transition
+            pushNotifyTransitionInForeground();
         }
     }
 
