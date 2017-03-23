@@ -17,7 +17,7 @@ public class GcmBroadcastReceiver extends WakefulBroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
 
-        //Check the app is in foreground or not
+        //Check the app is in foreground or not when push notification delivered.
         try {
             boolean foreground = new ForegroundCheckTask().execute(context).get();
             if(!foreground){

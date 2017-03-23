@@ -87,7 +87,7 @@ public class GcmIntentService extends IntentService {
         return map;
     }
 
-    private void sendNotification(HashMap<String, String> map) {
+    protected void sendNotification(HashMap<String, String> map) {
 
         String title = getBlankIfNull(map.get("title"));
         String msg = getBlankIfNull(map.get("alert"));

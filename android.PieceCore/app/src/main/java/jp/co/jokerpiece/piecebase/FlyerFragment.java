@@ -519,15 +519,13 @@ public class FlyerFragment extends BaseFragment implements OnPageChangeListener,
             GcmIntentService.notifyMode = -1;
             if(MainBaseActivity.intentClassName != null && MainBaseActivity.tabHost!=null) {
                 MainBaseActivity.tabHost.setCurrentTab(AppUtil.getPosition(MainBaseActivity.intentClassName));
-            } else {
-                MainBaseActivity.tabHost.setCurrentTab(AppUtil.getPosition(InfomationFragment.class.getSimpleName()));
             }
         }
     }
 
     @Override
     public void pushNotifyTransitionInForeground() {
-
+        //ホームページにしたクラスの場合、空のままで。
     }
 
     class FlyerTimerTask extends TimerTask {

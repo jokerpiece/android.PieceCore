@@ -698,13 +698,14 @@ public class MainBaseActivity extends FragmentActivity implements OnTabChangeLis
 
     @Override
     public void pushNotifyTransitionInBackGround() {
-
+        //MainBaseActivity、またはMainBaseActivityを継続したクラスの場合、空のままで。
     }
 
     @Override
     public void pushNotifyTransitionInForeground() {
         //アプリがすでに起動している時に、プッシュ通知が来た場合、以下のコードを実行する。
         if(GcmIntentService.notifyMode == Constants.IS_NOT_START_FROM_NOTIFACTION) {
+            AppUtil.debugLog("pushNotify","Got message in foreground, go to information view.");
             GcmIntentService.notifyMode = -1;
             if(MainBaseActivity.intentClassName != null && MainBaseActivity.tabHost!=null) {
                 MainBaseActivity.tabHost.setCurrentTab(AppUtil.getPosition(InfomationFragment.class.getSimpleName()));
